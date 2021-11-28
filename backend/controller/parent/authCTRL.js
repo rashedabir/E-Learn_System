@@ -57,11 +57,11 @@ const authCTRL = {
     if (!rf_token) {
       return res.status(400).json({ msg: "Please Login or Register." });
     }
-    jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+    jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, parent) => {
       if (err) {
         return res.status(400).json({ msg: "Please Login or Register." });
       }
-      const accessToken = createAccessToken({ id: user.id });
+      const accessToken = createAccessToken({ id: parent.id });
 
       res.json({ accessToken });
     });
@@ -72,17 +72,17 @@ const authCTRL = {
       if (!mobile || !password) {
         return res.status(400).json({ msg: "Invalid Creadential." });
       }
-      const user = await Parent.findOne({ mobile });
-      if (!user) {
+      const parent = await Parent.findOne({ mobile });
+      if (!parent) {
         return res.status(400).json({ msg: "User Doesn't Exists." });
       }
-      const isMatch = await bcrypt.compare(password, user.password);
+      const isMatch = await bcrypt.compare(password, parent.password);
       if (!isMatch) {
         return res.status(400).json({ msg: "Incorrect Password." });
       }
 
-      const accessToken = createAccessToken({ id: user._id });
-      const refreshToken = createRefreshToken({ id: user._id });
+      const accessToken = createAccessToken({ id: parent._id });
+      const refreshToken = createRefreshToken({ id: parent._id });
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
@@ -110,7 +110,7 @@ const authCTRL = {
   },
   getUser: async (req, res) => {
     try {
-      const parent = await Parent.findById(req.user.id).select("-password");
+      const parent = await Parent.findById(req.parent.id).select("-password");
       if (!parent) {
         return res.status(400).json({ msg: "User Doesn't Exists." });
       }
@@ -121,12 +121,14 @@ const authCTRL = {
   },
 };
 
-const createAccessToken = (user) => {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" });
+const createAccessToken = (parent) => {
+  return jwt.sign(parent, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" });
 };
 
-const createRefreshToken = (user) => {
-  return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "7d" });
+const createRefreshToken = (parent) => {
+  return jwt.sign(parent, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: "7d",
+  });
 };
 
 module.exports = authCTRL;

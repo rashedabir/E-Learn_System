@@ -6,11 +6,11 @@ const parent = (req, res, next) => {
     if (!token) {
       return res.status(400).json({ msg: "Invalid Athentication." });
     }
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, parent) => {
       if (err) {
         return res.status(400).json({ msg: "Invalid Athentication" });
       }
-      req.user = user;
+      req.parent = parent;
       next();
     });
   } catch (error) {
