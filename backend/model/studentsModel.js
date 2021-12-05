@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 
-const parentSchema = new mongoose.Schema(
+const studentSchema = new mongoose.Schema(
   {
+    userName: {
+      type: String,
+      require: true,
+      trim: true,
+      unique: true,
+    },
     nid: {
       type: String,
       require: true,
@@ -36,4 +42,4 @@ const parentSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Parent", parentSchema);
+module.exports = mongoose.model("Student", studentSchema);
