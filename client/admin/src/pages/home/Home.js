@@ -1,8 +1,7 @@
 import React from "react";
+import Navbar from "../../components/navbar/Navbar";
 
 const home = () => {
-    return (
-        <div>Admin works!</div>)
-
-}
+  return <Navbar />;
+};
 export default home;
