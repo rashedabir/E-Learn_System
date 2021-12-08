@@ -18,8 +18,10 @@ app.use(
 
 app.use("/api", require("./routes/parentRoute/tokenRouter"));
 app.use("/api", require("./routes/studentRoute/tokenRouter"));
-app.use("/parent", require("./routes/parentRoute/authRouter"));
-app.use("/student", require("./routes/studentRoute/authRoute"));
+app.use("/api", require("./routes/instructorRoute/tokenRouter"));
+app.use("/api/parent", require("./routes/parentRoute/authRouter"));
+app.use("/api/student", require("./routes/studentRoute/authRoute"));
+app.use("/api/instructor", require("./routes/instructorRoute/authRouter"));
 
 const PORT = process.env.PORT;
 const URI = process.env.MONGO_URI;
