@@ -13,12 +13,4 @@ router
   .route("/course/review/:id")
   .put(auth, authStudent, courseCTRL.reviewCourse);
 
-router
-  .route("/course/task/:course_id")
-  .put(auth, authInstructor, courseCTRL.addTask);
-
-router
-  .route("/course/update_task/:task_id")
-  .put(auth, authStudent, courseCTRL.updateTask);
-
 module.exports = router;

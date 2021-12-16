@@ -36,53 +36,6 @@ const videoSchema = mongoose.Schema(
   }
 );
 
-const taskSchema = mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    start: {
-      type: String,
-      required: true,
-    },
-    end: {
-      type: String,
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-const submittedTaskSchema = mongoose.Schema(
-  {
-    task_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "tasks",
-    },
-    student: {
-      type: Object,
-      required: true,
-    },
-    marks: {
-      type: String,
-    },
-    answer: {
-      type: String,
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
 const courseSchema = mongoose.Schema(
   {
     user: {
@@ -133,8 +86,6 @@ const courseSchema = mongoose.Schema(
     },
     videos: [videoSchema],
     comments: [commentSchema],
-    tasks: [taskSchema],
-    submission: [submittedTaskSchema],
   },
   {
     timestamps: true,

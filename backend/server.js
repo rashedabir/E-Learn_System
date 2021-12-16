@@ -21,6 +21,7 @@ app.use("/api", require("./routes/studentRoute/tokenRouter"));
 app.use("/api", require("./routes/instructorRoute/tokenRouter"));
 app.use("/api", require("./routes/uploadRoute/uploadRoute"));
 app.use("/api", require("./routes/courseRoute/courseRoute"));
+app.use("/api", require("./routes/courseRoute/taskRoute"));
 app.use("/api/parent", require("./routes/parentRoute/authRouter"));
 app.use("/api/student", require("./routes/studentRoute/authRoute"));
 app.use("/api/instructor", require("./routes/instructorRoute/authRouter"));

@@ -124,60 +124,6 @@ const courseCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
-  addTask: async (req, res) => {
-    try {
-      const { title, description, start, end } = req.body;
-      if (!title || !description || !start || !end) {
-        return res.status(400).json({ msg: "Invalid Task Details." });
-      }
-      const course = await Course.findById(req.params.course_id);
-      if (!course) {
-        return res.status(400).json({ msg: "Course Not Found." });
-      }
-      course.tasks.push({
-        title,
-        description,
-        start,
-        end,
-      });
-      course.save();
-      res.json({ msg: "Task Created." });
-    } catch (error) {
-      return res.status(500).json({ msg: error.message });
-    }
-  },
-  updateTask: async (req, res) => {
-    try {
-      const { answer } = req.body;
-      if (!answer) {
-        return res.status(400).json({ msg: "Invalid Answer." });
-      }
-      const user = req.user.id;
-      const student = await Student.findOne({ _id: user }).select("-password");
-      const course = await Course.findOne(
-        {
-          "tasks.$._id": req.params.task_id,
-        }
-        // },
-        // { "tasks.$": 1 }
-      );
-      const task_id = req.params.task_id;
-      // await Course.findOneAndUpdate(
-      //   { tasks: { $elemMatch: { _id: req.params.task_id } } },
-      //   { $set: { "tasks.$.answer": [answer] } }
-      // );
-      // res.json({ msg: "Task Updated." });
-      course.submission.push({
-        task_id,
-        answer,
-        student,
-      });
-      course.save();
-      res.json({ msg: "Task Submitted." });
-    } catch (error) {
-      return res.status(500).json({ msg: error.message });
-    }
-  },
 };
 
 module.exports = courseCTRL;
