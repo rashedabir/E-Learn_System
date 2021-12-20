@@ -107,7 +107,7 @@ const courseCTRL = {
       if (comment.length < 3) {
         return res.status(400).json({ msg: "Comment Must be 3 Lengths Long." });
       }
-      const course = await Course.findById(req.params.id);
+      const course = await Course.findById(req.params.course_id);
       if (!course) {
         return res.status(400).json({ msg: "Course Not Found." });
       }
@@ -120,6 +120,26 @@ const courseCTRL = {
       });
       course.save();
       res.json({ msg: "Successfully Commented." });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
+  createLessons: async (req, res) => {
+    try {
+      const { heading, videos } = req.body;
+      if (!heading || !videos) {
+        return res.status(400).json({ msg: "Invalid Lesoons." });
+      }
+      const course = await Course.findById(req.params.course_id);
+      if (!course) {
+        return res.status(400).json({ msg: "Course Not Found." });
+      }
+      course.videos.push({
+        heading,
+        videos,
+      });
+      course.save();
+      res.json({ msg: "Successfully Added Lesson." });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }

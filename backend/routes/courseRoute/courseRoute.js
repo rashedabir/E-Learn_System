@@ -10,7 +10,11 @@ router
   .get(courseCTRL.getCourse);
 
 router
-  .route("/course/review/:id")
+  .route("/course/review/:course_id")
   .put(auth, authStudent, courseCTRL.reviewCourse);
+
+router
+  .route("/course/add_lesson/:course_id")
+  .put(auth, authInstructor, courseCTRL.createLessons);
 
 module.exports = router;
