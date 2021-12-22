@@ -9,12 +9,14 @@ router
   .post(auth, authInstructor, courseCTRL.createCourse)
   .get(courseCTRL.getCourse);
 
+router.route("/course_details/:course_id").get(courseCTRL.courseDetails);
+
 router
   .route("/course/review/:course_id")
   .put(auth, authStudent, courseCTRL.reviewCourse);
 
-router
-  .route("/course/add_lesson/:course_id")
-  .put(auth, authInstructor, courseCTRL.createLessons);
+// router
+//   .route("/course/add_lesson/:course_id")
+//   .put(auth, authInstructor, courseCTRL.createLessons);
 
 module.exports = router;

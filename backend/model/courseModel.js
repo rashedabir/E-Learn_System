@@ -20,22 +20,6 @@ const commentSchema = mongoose.Schema(
   }
 );
 
-const videoSchema = mongoose.Schema(
-  {
-    heading: {
-      type: String,
-      required: true,
-    },
-    videos: {
-      type: Array,
-      default: [],
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
 const courseSchema = mongoose.Schema(
   {
     user: {
@@ -84,7 +68,6 @@ const courseSchema = mongoose.Schema(
       type: Object,
       require: true,
     },
-    videos: [videoSchema],
     comments: [commentSchema],
   },
   {

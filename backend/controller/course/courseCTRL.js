@@ -1,4 +1,6 @@
 const Course = require("../../model/courseModel");
+const Tasks = require("../../model/taskModel");
+const Lessons = require("../../model/lessonModel");
 const Instructor = require("../../model/instructorModel");
 const Student = require("../../model/studentsModel");
 
@@ -124,26 +126,41 @@ const courseCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
-  createLessons: async (req, res) => {
+  courseDetails: async (req, res) => {
     try {
-      const { heading, videos } = req.body;
-      if (!heading || !videos) {
-        return res.status(400).json({ msg: "Invalid Lesoons." });
-      }
-      const course = await Course.findById(req.params.course_id);
-      if (!course) {
-        return res.status(400).json({ msg: "Course Not Found." });
-      }
-      course.videos.push({
-        heading,
-        videos,
-      });
-      course.save();
-      res.json({ msg: "Successfully Added Lesson." });
+      const course_id = req.params.course_id;
+      const courseDetails = await Course.findOne({ _id: course_id });
+      const tasks = await Tasks.find({ course_id: course_id }).select(
+        "-course_id"
+      );
+      const lessons = await Lessons.find({ course_id: course_id }).select(
+        "-course_id"
+      );
+      res.json({ courseDetails: courseDetails, tasks, lessons });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
   },
+  // createLessons: async (req, res) => {
+  //   try {
+  //     const { heading, videos } = req.body;
+  //     if (!heading || !videos) {
+  //       return res.status(400).json({ msg: "Invalid Lesoons." });
+  //     }
+  //     const course = await Course.findById(req.params.course_id);
+  //     if (!course) {
+  //       return res.status(400).json({ msg: "Course Not Found." });
+  //     }
+  //     course.videos.push({
+  //       heading,
+  //       videos,
+  //     });
+  //     course.save();
+  //     res.json({ msg: "Successfully Added Lesson." });
+  //   } catch (error) {
+  //     return res.status(500).json({ msg: error.message });
+  //   }
+  // },
 };
 
 module.exports = courseCTRL;
