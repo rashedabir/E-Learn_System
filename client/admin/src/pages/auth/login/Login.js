@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, TextField, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStyle } from "./styles";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -30,7 +30,10 @@ const Login = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/home");
+  };
   return (
     <div className={classes.root}>
       <form className={classes.formWrapper}>
@@ -78,6 +81,9 @@ const Login = () => {
           fullWidth
           variant="contained"
           sx={{ my: 3 }}
+          onClick={() => {
+            handleClick()
+          }}
         >
           sign in
         </Button>
