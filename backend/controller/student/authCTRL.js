@@ -123,9 +123,7 @@ const authCTRL = {
   },
   getUser: async (req, res) => {
     try {
-      const student = await Student.findById(req.student.id).select(
-        "-password"
-      );
+      const student = await Student.findById(req.user.id).select("-password");
       if (!student) {
         return res.status(400).json({ msg: "User Doesn't Exists." });
       }

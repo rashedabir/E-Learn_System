@@ -117,7 +117,7 @@ const authCTRL = {
   },
   getUser: async (req, res) => {
     try {
-      const instructor = await Instructor.findById(req.instructor.id).select(
+      const instructor = await Instructor.findById(req.user.id).select(
         "-password"
       );
       if (!instructor) {

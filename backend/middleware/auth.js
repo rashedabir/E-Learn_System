@@ -1,16 +1,16 @@
 const jwt = require("jsonwebtoken");
 
-const parent = (req, res, next) => {
+const auth = (req, res, next) => {
   try {
     const token = req.header("Authorization");
     if (!token) {
-      return res.status(400).json({ msg: "Invalid Athentication." });
+      return res.status(400).json({ msg: "Invalid Athentication" });
     }
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, parent) => {
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
       if (err) {
         return res.status(400).json({ msg: "Invalid Athentication" });
       }
-      req.parent = parent;
+      req.user = user;
       next();
     });
   } catch (error) {
@@ -18,4 +18,4 @@ const parent = (req, res, next) => {
   }
 };
 
-module.exports = parent;
+module.exports = auth;

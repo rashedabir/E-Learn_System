@@ -110,7 +110,7 @@ const authCTRL = {
   },
   getUser: async (req, res) => {
     try {
-      const parent = await Parent.findById(req.parent.id).select("-password");
+      const parent = await Parent.findById(req.user.id).select("-password");
       if (!parent) {
         return res.status(400).json({ msg: "User Doesn't Exists." });
       }
