@@ -29,6 +29,7 @@ const Navbar = () => {
           </Button>
         </Toolbar>
       </AppBar>
+
     </div>
   );
 };
