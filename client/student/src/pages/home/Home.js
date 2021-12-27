@@ -1,4 +1,4 @@
-import { Container, Grid, InputBase, Button, Link } from "@mui/material";
+import { Container, Grid, InputBase, Button } from "@mui/material";
 import React from "react";
 import { useStyle } from "./styles";
 
@@ -7,19 +7,21 @@ const Home = () => {
   return <div className={classes.root}>
     <Container>
       <Grid className={classes.banner} container spacing={2}>
-        <Grid item xs={12} md={5}>
-          <span className={classes.headertxt}>Learn for the sake of the future!</span>
-          <span className={classes.headerbodytxt}>Learn valuable, practical skills for as low as $12.99. Sale ends tomorrow!</span>
+        <Grid item xs={12} md={6}>
+          <div>
+            <span className={classes.headertxt}>Learn for the sake of the future!</span>
+            <span className={classes.headerbodytxt}>Learn valuable, practical skills for as low as $12.99. Sale ends tomorrow!</span>
 
-          <div className={classes.serach}>
-            <InputBase className={classes.hints}
-              placeholder="What do you want to learn?"
-            />
-            <Button><img src="https://i.ibb.co/HHKCkRy/Group-751.png" alt="Group-751" border="0" /></Button>
+            <div className={classes.serach}>
+              <InputBase className={classes.hints}
+                placeholder="What do you want to learn?"
+              />
+              <Button><img src="https://i.ibb.co/HHKCkRy/Group-751.png" alt="Group-751" /></Button>
+            </div>
           </div>
 
         </Grid>
-        <Grid item xs={12} md={7}>
+        <Grid item xs={12} md={6}>
           <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
         </Grid>
       </Grid>

@@ -5,10 +5,11 @@ export const useStyle = makeStyles({
 
   },
   banner: {
+    padding: "10px",
     height: "100%",
     display: "flex",
     alignItems: "center",
-    alignContent: "center",
+    alignContent: "right",
     justifyContent: "space-between"
   },
   headertxt: {
@@ -24,20 +25,23 @@ export const useStyle = makeStyles({
     color: "#5B6A72",
   },
   serach: {
+    margin: "10px",
     border: "1px solid red",
     borderRadius: "80px",
     backgroundColor: "#FFF1F1",
-    width: "75%",
-    height: "40px",
-    padding: "10px",
+    width: "55%",
+    height: "30px",
+    paddingTop: "13px",
+    paddingBottom: "13px",
+    paddingLeft: "10px",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "right"
   },
   hints: {
     width: "100%"
   },
   image: {
-    width: "75% ",
+    width: "100%",
     height: "75%",
   },
 
