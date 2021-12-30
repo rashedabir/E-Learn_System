@@ -1,16 +1,14 @@
 import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
-  root: {
-
-  },
+  root: {},
   banner: {
     padding: "10px",
     height: "100%",
     display: "flex",
     alignItems: "center",
     alignContent: "right",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   headertxt: {
     display: "flex",
@@ -35,10 +33,10 @@ export const useStyle = makeStyles({
     paddingBottom: "13px",
     paddingLeft: "10px",
     display: "flex",
-    justifyContent: "right"
+    justifyContent: "right",
   },
   hints: {
-    width: "100%"
+    width: "100%",
   },
   image: {
     width: "100%",
@@ -71,7 +69,6 @@ export const useStyle = makeStyles({
   },
   cardtexthead: {
     fontWeight: 700,
-
   },
   cardtextbody: {
     fontWeight: 400,
@@ -83,7 +80,6 @@ export const useStyle = makeStyles({
     borderRadius: "50px",
     paddingLeft: "5px",
     margin: "10px",
-
   },
   buttontxt: {
     color: "white",
@@ -97,5 +93,4 @@ export const useStyle = makeStyles({
   },
 
   //footer
-
 });
