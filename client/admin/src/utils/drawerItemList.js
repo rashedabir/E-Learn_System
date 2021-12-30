@@ -38,11 +38,3 @@ export const adminDrawerItemList = [
   },
 ];
 
-export const isLoggedDrawerItemList = [
-  {
-    id: 5,
-    title: "Enrolled",
-    icon: <SubscriptionsIcon />,
-    path: "/enroll_list",
-  },
-];
