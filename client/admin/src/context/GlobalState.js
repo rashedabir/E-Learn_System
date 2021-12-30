@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import CategoriesAPI from "../api/CategoriesAPI";
 
-
 export const GlobalState = createContext();
 
 export const DataProvider = ({ children }) => {
@@ -21,9 +20,7 @@ export const DataProvider = ({ children }) => {
 
   const state = {
     token: [token, setToken],
-
     categoryAPI: CategoriesAPI(),
-    
   };
   return <GlobalState.Provider value={state}>{children}</GlobalState.Provider>;
 };

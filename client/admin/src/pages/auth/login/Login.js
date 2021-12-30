@@ -85,7 +85,7 @@ const Login = () => {
           variant="contained"
           sx={{ my: 3 }}
           onClick={() => {
-            handleClick()
+            handleClick();
           }}
         >
           sign in

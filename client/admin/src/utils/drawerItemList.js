@@ -4,7 +4,6 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import CategoryIcon from "@mui/icons-material/Category";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 
-
 export const adminDrawerItemList = [
   {
     id: 1,
