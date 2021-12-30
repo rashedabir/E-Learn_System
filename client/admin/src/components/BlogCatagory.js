@@ -12,7 +12,6 @@ import {
   IconButton,
   Modal,
   Box,
-  Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";

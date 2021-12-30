@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { makeStyles } from "@mui/styles";
 import Instructor from "./Instructor";
-import BlogCatagory from "./BlogCatagory";
 const useStyles = makeStyles((theme) => ({}));
 
 function TabPanel(props) {

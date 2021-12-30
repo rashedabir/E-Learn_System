@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import pic from "../assets/images/mypic.jpg";
 import {
-  Typography,
   MenuItem,
   FormControl,
   Select,
@@ -11,7 +10,6 @@ import {
   TextField,
   Paper,
   Grid,
-  Box,
   Button,
   TableContainer,
   TableHead,
@@ -61,7 +59,7 @@ export default function InstructorInfo() {
       <Grid item sm={12} md={7}>
         <Item>
           <TableContainer>
-            <Table className={classes.table} aria-label="simple table" >
+            <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <TableCell>

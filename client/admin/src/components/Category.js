@@ -12,7 +12,6 @@ import {
   IconButton,
   Modal,
   Box,
-  Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
@@ -72,17 +71,6 @@ const style = {
   flexDirection: "column",
   justifyContent: "space-evenly",
 };
-
-function createData(name) {
-  return { name };
-}
-
-// const rows = [
-//   createData("FrontEnd Development"),
-//   createData("BackEnd Development"),
-//   createData("Full Stack Development"),
-//   createData("Database"),
-// ];
 
 function Category() {
   const classes = useStyles();
