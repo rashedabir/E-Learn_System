@@ -4,7 +4,8 @@ export const useStyle = makeStyles({
   root: {
     background: "#FDFDFD",
     minHeight: "90vh",
-    padding: "50px 20px",
+    textAlign: "center",
+    margin: "80px auto",
   },
   heading: {
     padding: "50px 0",

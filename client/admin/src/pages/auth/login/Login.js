@@ -40,19 +40,22 @@ const Login = () => {
         <TextField
           fullWidth
           id="outlined-basic"
+          autoComplete={false}
           label="User Name"
           variant="outlined"
           color="warning"
           type="text"
+          autoFocus
           sx={{ pb: 2 }}
         />
-        <FormControl sx={{ width: "46.5ch" }} variant="outlined">
+        <FormControl sx={{ width: "100%" }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password" color="warning">
             Password
           </InputLabel>
           <OutlinedInput
             fullWidth
             id="outlined-adornment-password"
+            autoComplete={false}
             color="warning"
             type={values.showPassword ? "text" : "password"}
             value={values.password}
