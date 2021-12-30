@@ -15,11 +15,13 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React, { useContext, useState } from "react";
+import React from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import Navbar from "./navbar/Navbar";
+import rows from "../fakeData/categories.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,12 +77,12 @@ function createData(name) {
   return { name };
 }
 
-const rows = [
-  createData("FrontEnd Development"),
-  createData("BackEnd Development"),
-  createData("Full Stack Development"),
-  createData("Database"),
-];
+// const rows = [
+//   createData("FrontEnd Development"),
+//   createData("BackEnd Development"),
+//   createData("Full Stack Development"),
+//   createData("Database"),
+// ];
 
 function Category() {
   const classes = useStyles();
@@ -91,98 +93,100 @@ function Category() {
 
   return (
     <>
-      <div className={classes.root}>
-        <div>
-          <Button
-            variant="contained"
-            color="secondary"
-            type="submit"
-            size="large"
-            onClick={handleOpen}
-          >
-            <AddIcon className={classes.icon} />
-            Add
-          </Button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <h2
-                style={{
-                  color: "black",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                Add Category
-              </h2>
-              <TextField
-                id="outlined-basic"
-                label="Category Name"
-                variant="outlined"
-                //value={category}
-                onChange={(e) => {
-                  //setCategory(e.target.value);
-                }}
-              />
-              <Button
-                className={classes.button}
-                variant="contained"
-                type="submit"
-              >
-                <SaveAltIcon className={classes.icon} /> {"save"}
-              </Button>
-            </Box>
-          </Modal>
-        </div>
+      <Navbar>
+        <div className={classes.root}>
+          <div>
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              size="large"
+              onClick={handleOpen}
+            >
+              <AddIcon className={classes.icon} />
+              Add
+            </Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <h2
+                  style={{
+                    color: "black",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  Add Category
+                </h2>
+                <TextField
+                  id="outlined-basic"
+                  label="Category Name"
+                  variant="outlined"
+                  //value={category}
+                  onChange={(e) => {
+                    //setCategory(e.target.value);
+                  }}
+                />
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  type="submit"
+                >
+                  <SaveAltIcon className={classes.icon} /> {"save"}
+                </Button>
+              </Box>
+            </Modal>
+          </div>
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} xl={8} md={8}>
-            <TableContainer className={classes.paper} component={Paper}>
-              <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell align="left">
-                      <h3>Category Name</h3>
-                    </TableCell>
-                    <TableCell align="right">
-                      <h3>Action</h3>
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row) => (
-                    <TableRow key={row._id}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} xl={8} md={8}>
+              <TableContainer className={classes.paper} component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
                       <TableCell align="left">
-                        <strong>{row.name}</strong>
+                        <h3>Category Name</h3>
                       </TableCell>
-                      <TableCell align="right" style={{ display: "flex" }}>
-                        <IconButton
-                          variant="contained"
-                          color="secondary"
-                          onClick={() => {}}
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                        <IconButton
-                          variant="contained"
-                          color="default"
-                          onClick={() => {}}
-                        >
-                          <EditIcon />
-                        </IconButton>{" "}
+                      <TableCell align="right">
+                        <h3>Action</h3>
                       </TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map((row) => (
+                      <TableRow key={row._id}>
+                        <TableCell align="left">
+                          <strong>{row.name}</strong>
+                        </TableCell>
+                        <TableCell align="right" style={{ display: "flex" }}>
+                          <IconButton
+                            variant="contained"
+                            color="secondary"
+                            onClick={() => {}}
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                          <IconButton
+                            variant="contained"
+                            color="default"
+                            onClick={() => {}}
+                          >
+                            <EditIcon />
+                          </IconButton>{" "}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
+      </Navbar>
     </>
   );
 }

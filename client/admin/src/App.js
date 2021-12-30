@@ -14,16 +14,14 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        
-        <Navbar>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/category" element={<Category />} />
-            <Route path="/instructor" element={<BasicTabs />} />
-            <Route path="/blog" element={<BlogCatagory />} />
-            <Route path="/instructorInfo" element={<InstructorInfo />} />
-          </Routes>
-        </Navbar>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/instructor" element={<BasicTabs />} />
+          <Route path="/blog" element={<BlogCatagory />} />
+          <Route path="/instructorInfo" element={<InstructorInfo />} />
+          <Route path="/" element={<Login />} />
+        </Routes>
       </Router>
     </ThemeProvider>
   );

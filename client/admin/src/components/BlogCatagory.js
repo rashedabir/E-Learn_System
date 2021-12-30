@@ -15,15 +15,12 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React, { useContext, useState } from "react";
-import { GlobalState } from "../context/GlobalState";
+import React from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { toast } from "react-toastify";
-import axios from "axios";
 import AddIcon from "@mui/icons-material/Add";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
-import { width } from "@mui/system";
+import Navbar from "./navbar/Navbar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,7 +91,7 @@ function BlogCatagory() {
   const handleClose = () => setOpen(false);
 
   return (
-    <>
+    <Navbar>
       <div className={classes.root}>
         <div className={classes.addButton}>
           <Button
@@ -193,7 +190,7 @@ function BlogCatagory() {
           </Grid>
         </Grid>
       </div>
-    </>
+    </Navbar>
   );
 }
 
