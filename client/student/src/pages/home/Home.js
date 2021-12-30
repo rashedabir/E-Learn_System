@@ -1,5 +1,7 @@
 import { Container, Grid, InputBase, Button } from "@mui/material";
 import React from "react";
+import CarouselCards from "./CarouselCards/CarouselCards";
+import CoursesTab from "./CoursesTab/CoursesTab";
 import { useStyle } from "./styles";
 
 const Home = () => {
@@ -27,6 +29,8 @@ const Home = () => {
       </Grid>
     </Container>
 
+    {/* Courses Tab  */}
+    <CoursesTab></CoursesTab>
 
     <div className={classes.featurethree}>
       <Container>
@@ -96,15 +100,20 @@ const Home = () => {
       </Container>
     </div>
 
+    {/* another card carousel  */}
+    <Container>
+      <CarouselCards></CarouselCards>
+    </Container>
+
 
     {/* first div */}
     <div>
       <Container>
         <Grid className={classes.banner} container spacing={2}>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={6}>
             <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
           </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={6}>
             <span><span className={classes.headertxt}>E earning</span>system</span>
             <span className={classes.headerbodytxt}>Get unlimited access to 6,000+ of Udemy’s top courses for your team. Learn and improve skills across business, tech, design, and more.</span>
 
@@ -121,7 +130,7 @@ const Home = () => {
       <Container>
         <Grid className={classes.banner} container spacing={2}>
 
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={6}>
             <span><span className={classes.headertxt}>Become an instructor</span>.</span>
             <span className={classes.headerbodytxt}>Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.</span>
 
@@ -129,7 +138,7 @@ const Home = () => {
               <Button> <span className={classes.buttontxt}> Start Teaching Today</span></Button>
             </div>
           </Grid>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={6}>
             <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
           </Grid>
         </Grid>
@@ -140,10 +149,10 @@ const Home = () => {
     <div>
       <Container>
         <Grid className={classes.banner} container spacing={2}>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={6}>
             <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
           </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={6}>
             <span><span className={classes.headertxt}>Transform your life through education</span>.</span>
             <span className={classes.headerbodytxt}>Learners around the world are launching new careers, advancing in their fields, and enriching their lives.</span>
             <div className={classes.buttons}>
