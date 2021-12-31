@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '@mui/material/Card';
-import Avatar from '@mui/material/Avatar';
 import { Grid } from '@mui/material';
 import { useStyle } from "./styles";
 import StarRateIcon from '@mui/icons-material/StarRate';
@@ -12,28 +11,28 @@ const Cards = () => {
     const classes = useStyle();
     return (
         <div className={classes.root}>
-            <Card sx={{ maxWidth: 345 }}>
-                <img width="100%" height="100%" src="https://picsum.photos/800/600?random=2" alt="" />
+            <Card>
+                <img className={classes.cardimg} width="100%" src="https://picsum.photos/800/600?random=2" alt="" />
                 <button className={classes.tag}>Beginer</button>
-                <h1 className={classes.heading}>Shrimp and Chorizo Paella</h1>
+                <h1 className={classes.heading}>Python and Django Full Stack Web Developer Bootcamp</h1>
                 <div className={classes.flexitem}>
                     <div className={classes.avatar}>
-                        <Avatar>
-                            <img width="100%" height="100%" src="https://picsum.photos/800/600?random=2" alt="" />
-                        </Avatar>
+                        <img className={classes.avatarimg} src="https://picsum.photos/800/600?random=2" alt="" />
                     </div>
                     <p className={classes.avatar}>Sohag Raha</p>
                 </div>
-                <hr />
                 <Grid className={classes.gridcontainer} container spacing={2}>
-                    <Grid className={classes.flexitem} item xs={3}>
-                        <StarRateIcon /> 4.6
+                    <Grid className={classes.flexitem} item xs={2}>
+                        <StarRateIcon className={classes.star} /> <span className={classes.startext}>4.6</span>
                     </Grid>
                     <Grid className={classes.flexitem} item xs={3}>
-                        <PeopleOutlineIcon /> 1200+
+                        <PeopleOutlineIcon className={classes.enroll} /> <span className={classes.enrolltxt}>1200+</span>
                     </Grid>
-                    <Grid className={classes.flexitem} item xs={6}>
-                        <AttachMoneyIcon /> 58.60 <span className={classes.linecut}><AttachMoneyIcon /> 58.60</span>
+                    <Grid className={classes.flexitem} item xs={3}>
+                        <span className={classes.normal}><AttachMoneyIcon className={classes.dollar} /><span className={classes.pricetxt}>58.60</span></span>
+                    </Grid>
+                    <Grid className={classes.flexitem} item xs={3}>
+                        <span className={classes.linecut}><AttachMoneyIcon className={classes.dollarcut} /><span className={classes.pricetxt}>58.60</span></span>
                     </Grid>
 
                 </Grid>

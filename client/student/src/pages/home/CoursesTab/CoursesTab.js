@@ -23,13 +23,13 @@ const CoursesTab = () => {
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'white', }}>
                         <TabList variant="scrollable" className={classes.tabcontainer} onChange={handleChange}>
-                            <Tab label="Item One" value="1" />
-                            <Tab label="Item Two" value="2" />
-                            <Tab label="Item Three" value="3" />
-                            <Tab label="Item Four" value="4" />
-                            <Tab label="Item Five" value="5" />
-                            <Tab label="Item Six" value="6" />
-                            <Tab label="Item Seven" value="7" />
+                            <Tab sx={{ textTransform: 'none' }} label="Python" value="1" />
+                            <Tab sx={{ textTransform: 'none' }} label="Excel" value="2" />
+                            <Tab sx={{ textTransform: 'none' }} label="Web Development" value="3" />
+                            <Tab sx={{ textTransform: 'none' }} label="JavaScript" value="4" />
+                            <Tab sx={{ textTransform: 'none' }} label="Data Science" value="5" />
+                            <Tab sx={{ textTransform: 'none' }} label="Aws Certification" value="6" />
+                            <Tab sx={{ textTransform: 'none' }} label="Drawing" value="7" />
                         </TabList>
                     </Box>
                     <TabPanel value="1">

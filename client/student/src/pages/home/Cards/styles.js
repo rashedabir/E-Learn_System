@@ -1,29 +1,67 @@
 import { makeStyles } from "@mui/styles";
-import { margin } from "@mui/system";
 
 export const useStyle = makeStyles({
     root: {
         maxWidth: "100%",
-        margin: "5px",
+        marginBottom: "50px",
+        border: "none",
+        boxShadow: "rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;",
+    },
+    cardimg: {
+        height: "150px",
+
     },
     tag: {
-        backgroundColor: "orange",
+        backgroundColor: "#FFA400",
         color: "white",
-        outline: "none",
-        outlineColor: "yellow",
+        border: "none",
+        borderRadius: "3px",
+        padding: "5px",
+        marginLeft: "8px"
     },
     heading: {
-        fontSize: "14px",
-        padding: "0px 0px 0px 15px",
+        fontSize: "15px",
+        marginLeft: "15px",
+        fontWeight: 500,
+        lineHeight: "22px",
+        marginBottom: 0,
     },
     avatar: {
-        padding: "0px 0px 0px 8px",
+        marginLeft: "2px",
+        color: "#5B6A72",
+        fontWeight: 500,
+        fontSize: "10px",
+        height: "15px"
+    },
+    avatarimg: {
+        marginLeft: "5px",
+        height: "16px",
+        width: "16px",
+        borderRadius: "50%",
     },
     flexitem: {
+        marginBottom: "12px",
         display: "flex",
         alignItems: "center"
     },
+    star: {
+        color: "#FFA400",
+        transform: "scale(0.6)",
+    },
+    startext: {
+        color: "#3D3B37",
+        fontSize: "10px",
+    },
+    enroll: {
+        color: "#BDBDBD",
+        transform: "scale(0.8)",
+    },
+    enrolltxt: {
+        color: "#5B6A72",
+        fontSize: "10px",
+    },
     gridcontainer: {
+        borderTop: "0.356586px solid #E0E0E0",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -32,9 +70,27 @@ export const useStyle = makeStyles({
         fontWeight: 700,
         paddingBottom: "5px",
     },
+    normal: {
+        color: "#2C3644",
+        fontSize: "14.30px",
+        display: "flex",
+        alignItems: "center",
+    },
+    pricetxt: {
+        marginLeft: "-7px",
+    },
+    dollar: {
+        transform: "scale(0.9)",
+    },
+    dollarcut: {
+        transform: "scale(0.7)",
+    },
     linecut: {
+        color: "#5B6A72",
+        fontSize: "11.5px",
         display: "flex",
         alignItems: "center",
         textDecoration: "line-through",
-    }
+
+    },
 })

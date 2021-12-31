@@ -25,6 +25,7 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -72,11 +73,11 @@ const Navbar = () => {
               </Menu>
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button color="inherit" component={Link} to="/">
-                <img src="https://i.ibb.co/ZWyrKZ3/image-2.png" alt="image-2" border="0" />
+              <Button sx={{ textTransform: 'none' }} color="inherit" component={Link} to="/">
+                <img src="https://i.ibb.co/ZWyrKZ3/image-2.png" alt="mainbanner" />
               </Button>
-              <Button color="inherit" component={Link} to="/login">
-                All Category
+              <Button sx={{ textTransform: 'none' }} className={classes.menubutton} color="inherit" component={Link} to="/login">
+                All Courses
               </Button>
 
               <div className={classes.serach}>
@@ -84,21 +85,23 @@ const Navbar = () => {
                   placeholder="Search Here"
                 />
               </div>
-              <Button color="inherit" component={Link} to="/login">
+              <Button sx={{ textTransform: 'none' }} className={classes.menubutton} color="inherit" component={Link} to="/login">
                 Udemy Business
               </Button>
-              <Button color="inherit" component={Link} to="/login">
+              <Button sx={{ textTransform: 'none' }} className={classes.menubutton} color="inherit" component={Link} to="/login">
                 Tech on Udemy
               </Button>
             </Box>
 
             <Box className={classes.signin} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button color="inherit" component={Link} to="/login">
-                Sign In
+
+              <Button sx={{ textTransform: 'none' }} color="inherit" component={Link} to="/registration">
+                <span className={classes.signinbtn} >Sign In</span>
               </Button>
-              <Button color="inherit" component={Link} to="/registration">
-                Sign Up
+              <Button sx={{ textTransform: 'none' }} color="inherit" component={Link} to="/registration">
+                <span className={classes.signup} >Sign Up</span>
               </Button>
+
             </Box>
             <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
               <Tooltip title="Open settings">

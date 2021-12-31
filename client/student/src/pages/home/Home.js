@@ -7,21 +7,20 @@ import { useStyle } from "./styles";
 const Home = () => {
   const classes = useStyle();
   return <div className={classes.root}>
+    {/* Main Banner  */}
     <Container>
       <Grid className={classes.banner} container spacing={2}>
         <Grid item xs={12} md={6}>
           <div>
             <span className={classes.headertxt}>Learn for the sake of the future!</span>
             <span className={classes.headerbodytxt}>Learn valuable, practical skills for as low as $12.99. Sale ends tomorrow!</span>
-
             <div className={classes.serach}>
               <InputBase className={classes.hints}
                 placeholder="What do you want to learn?"
               />
-              <Button><img src="https://i.ibb.co/HHKCkRy/Group-751.png" alt="Group-751" /></Button>
+              <Button sx={{ borderRadius: 28 }} className={classes.searchbtn}><img src="https://i.ibb.co/HHKCkRy/Group-751.png" alt="Group-751" /></Button>
             </div>
           </div>
-
         </Grid>
         <Grid item xs={12} md={6}>
           <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
@@ -29,79 +28,86 @@ const Home = () => {
       </Grid>
     </Container>
 
+    <div className={classes.coursestabtxt}>
+      <h1 className={classes.coursestabh}>A broad selection of courses</h1>
+      <p className={classes.coursestabp}>Choose from 183,000 online video courses with new additions published every month</p>
+    </div>
     {/* Courses Tab  */}
-    <CoursesTab></CoursesTab>
+    <div className={classes.background}>
+      <CoursesTab></CoursesTab>
 
-    <div className={classes.featurethree}>
-      <Container>
-        <Grid container spacing={2}>
-          <Grid className={classes.featurethreecard} item xs={12} md={4}>
-            <div className={classes.featurethreecardinner}>
-              <Grid className={classes.card} container spacing={2}>
-                <Grid item xs={2}>
-                  <img src="https://i.ibb.co/0B99wM0/Group-49.png" alt="Group-49" border="0" />
+      {/* three feature added here  */}
+      <div className={classes.featurethree}>
+        <Container>
+          <Grid container spacing={2}>
+            <Grid className={classes.featurethreecard} item xs={12} md={4}>
+              <div className={classes.featurethreecardinner}>
+                <Grid className={classes.card} container spacing={2}>
+                  <Grid item xs={2}>
+                    <img src="https://i.ibb.co/0B99wM0/Group-49.png" alt="Group-49" border="0" />
+                  </Grid>
+                  <Grid item xs={10}>
+                    <div className={classes.cardtext}>
+                      <p className={classes.cardtexthead}>
+                        1,205 Courses in 25 subjects
+                      </p>
+                      <p className={classes.cardtextbody}>
+                        Develop your skills in a huge
+                        range of subjects
+                      </p>
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={10}>
-                  <div className={classes.cardtext}>
-                    <p className={classes.cardtexthead}>
-                      1,205 Courses in 25 subjects
-                    </p>
-                    <p className={classes.cardtextbody}>
-                      Develop your skills in a huge
-                      range of subjects
-                    </p>
-                  </div>
+              </div>
+            </Grid>
+            <Grid className={classes.featurethreecard} item xs={12} md={4}>
+              <div className={classes.featurethreecardinner}>
+                <Grid className={classes.card} container spacing={2}>
+                  <Grid item xs={2}>
+                    <img src="https://i.ibb.co/0B99wM0/Group-49.png" alt="Group-49" border="0" />
+                  </Grid>
+                  <Grid item xs={10}>
+                    <div className={classes.cardtext}>
+                      <p className={classes.cardtexthead}>
+                        Rated Excellent on Trustpilot
+                      </p>
+                      <p className={classes.cardtextbody}>
+                        A trusted brand with thousands
+                        of satisfied students
+                      </p>
+                    </div>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </div>
-          </Grid>
-          <Grid className={classes.featurethreecard} item xs={12} md={4}>
-            <div className={classes.featurethreecardinner}>
-              <Grid className={classes.card} container spacing={2}>
-                <Grid item xs={2}>
-                  <img src="https://i.ibb.co/0B99wM0/Group-49.png" alt="Group-49" border="0" />
+              </div>
+            </Grid>
+            <Grid className={classes.featurethreecard} item xs={12} md={4}>
+              <div className={classes.featurethreecardinner}>
+                <Grid className={classes.card} container spacing={2}>
+                  <Grid item xs={2}>
+                    <img src="https://i.ibb.co/0B99wM0/Group-49.png" alt="Group-49" border="0" />
+                  </Grid>
+                  <Grid item xs={10}>
+                    <div className={classes.cardtext}>
+                      <p className={classes.cardtexthead}>
+                        Learn Lifetime
+                      </p>
+                      <p className={classes.cardtextbody}>
+                        lifetime access on mobile
+                        and desktop
+                      </p>
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={10}>
-                  <div className={classes.cardtext}>
-                    <p className={classes.cardtexthead}>
-                      Rated Excellent on Trustpilot
-                    </p>
-                    <p className={classes.cardtextbody}>
-                      A trusted brand with thousands
-                      of satisfied students
-                    </p>
-                  </div>
-                </Grid>
-              </Grid>
-            </div>
-          </Grid>
-          <Grid className={classes.featurethreecard} item xs={12} md={4}>
-            <div className={classes.featurethreecardinner}>
-              <Grid className={classes.card} container spacing={2}>
-                <Grid item xs={2}>
-                  <img src="https://i.ibb.co/0B99wM0/Group-49.png" alt="Group-49" border="0" />
-                </Grid>
-                <Grid item xs={10}>
-                  <div className={classes.cardtext}>
-                    <p className={classes.cardtexthead}>
-                      Learn Lifetime
-                    </p>
-                    <p className={classes.cardtextbody}>
-                      lifetime access on mobile
-                      and desktop
-                    </p>
-                  </div>
-                </Grid>
-              </Grid>
-            </div>
-          </Grid>
+              </div>
+            </Grid>
 
-        </Grid>
-      </Container>
+          </Grid>
+        </Container>
+      </div>
     </div>
 
     {/* another card carousel  */}
-    <Container>
+    <Container className={classes.background}>
       <CarouselCards></CarouselCards>
     </Container>
 
@@ -114,11 +120,14 @@ const Home = () => {
             <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
           </Grid>
           <Grid item xs={12} md={6}>
-            <span><span className={classes.headertxt}>E earning</span>system</span>
-            <span className={classes.headerbodytxt}>Get unlimited access to 6,000+ of Udemy’s top courses for your team. Learn and improve skills across business, tech, design, and more.</span>
+            <span className={classes.headertxt}>E earning System</span>
+            <span className={classes.thbodytxt}>`Get unlimited access to 6,000+ of Udemys top courses for your team. Learn and improve skills across business, tech, design, and more.</span>
 
             <div className={classes.buttons}>
-              <Button> <span className={classes.buttontxt}> Start Udemy Business</span></Button>
+              <Button className={classes.clkbtn} sx={{
+                borderRadius: 28, backgroundColor: "#EA5252", width: "100%", padding: "5px 0 5px 0"
+              }}> <span className={classes.buttontxt}> Start Udemy Business</span></Button>
+              <br />
             </div>
           </Grid>
         </Grid>
@@ -129,14 +138,16 @@ const Home = () => {
     <div>
       <Container>
         <Grid className={classes.banner} container spacing={2}>
-
           <Grid item xs={12} md={6}>
-            <span><span className={classes.headertxt}>Become an instructor</span>.</span>
-            <span className={classes.headerbodytxt}>Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.</span>
+            <span className={classes.headertxt}>Become an instructor</span>.
+            <span className={classes.thbodytxt}>Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.</span>
 
             <div className={classes.buttons}>
-              <Button> <span className={classes.buttontxt}> Start Teaching Today</span></Button>
+              <Button className={classes.clkbtn} sx={{
+                borderRadius: 28, backgroundColor: "#EA5252", width: "100%", padding: "5px 0 5px 0"
+              }}> <span className={classes.buttontxt}> Start Teaching Today</span></Button>
             </div>
+
           </Grid>
           <Grid item xs={12} md={6}>
             <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
@@ -153,10 +164,12 @@ const Home = () => {
             <img className={classes.image} src="https://i.ibb.co/NsqrCQ9/Group-750.png" alt="Group-750" border="0" />
           </Grid>
           <Grid item xs={12} md={6}>
-            <span><span className={classes.headertxt}>Transform your life through education</span>.</span>
+            <span className={classes.headertxt}>Transform your life through education</span>.
             <span className={classes.headerbodytxt}>Learners around the world are launching new careers, advancing in their fields, and enriching their lives.</span>
             <div className={classes.buttons}>
-              <Button> <span className={classes.buttontxt}>Find Out How</span></Button>
+              <Button className={classes.clkbtn} sx={{
+                borderRadius: 28, backgroundColor: "#EA5252", width: "100%", padding: "5px 0 5px 0"
+              }}> <span className={classes.buttontxt}> Find Out How</span></Button>
             </div>
           </Grid>
         </Grid>

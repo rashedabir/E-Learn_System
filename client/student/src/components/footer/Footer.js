@@ -20,7 +20,7 @@ const Footer = () => {
                         <Grid className={classes.branding} item xs={12} md={5}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} >
-                                    <img src="https://i.ibb.co/ZWyrKZ3/image-2.png" alt="image-2" border="0" />
+                                    <img src="https://i.ibb.co/ZWyrKZ3/image-2.png" alt="" border="0" />
                                 </Grid>
                                 <Grid item xs={12}>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida viverra sodales nibh quisque tincidunt. Dolor elementum elementum non vitae turpis mauris adipiscing.
