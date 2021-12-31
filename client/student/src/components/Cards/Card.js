@@ -41,7 +41,7 @@ const Cards = () => {
             <PeopleOutlineIcon /> 1200+
           </Grid>
           <Grid className={classes.flexitem} item xs={6}>
-            <AttachMoneyIcon /> 58.60{" "}
+            <AttachMoneyIcon /> 58.60
             <span className={classes.linecut}>
               <AttachMoneyIcon /> 58.60
             </span>
