@@ -61,11 +61,10 @@ export const useStyle = makeStyles({
     lineHeight: "15px",
     fontWeight: 600,
   },
-
   background: {
     backgroundImage: "linear-gradient(white, #FFF1F1, white)"
   },
-  //three card
+  //three card here
   featurethree: {
     marginTop: "10px",
     marginBottom: "80px",
