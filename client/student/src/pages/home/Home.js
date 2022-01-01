@@ -1,4 +1,4 @@
-import { Container, Grid, InputBase, Button } from "@mui/material";
+import { Container, Grid, InputBase, Button, IconButton } from "@mui/material";
 import React from "react";
 import CarouselCards from "./CarouselCards/CarouselCards";
 import CoursesTab from "./CoursesTab/CoursesTab";
@@ -9,8 +9,8 @@ const Home = () => {
 
   return (
     <div className={classes.root}>
-      <Container>
-        <Grid className={classes.banner} container spacing={2}>
+      <Container maxWidth="xl">
+        <Grid className={classes.banner} container spacing={4}>
           <Grid item xs={12} md={6}>
             <div>
               <span className={classes.headertxt}>
@@ -26,12 +26,12 @@ const Home = () => {
                   className={classes.hints}
                   placeholder="What do you want to learn?"
                 />
-                <Button>
+                <IconButton>
                   <img
                     src="https://i.ibb.co/HHKCkRy/Group-751.png"
                     alt="Group-751"
                   />
-                </Button>
+                </IconButton>
               </div>
             </div>
           </Grid>
@@ -50,7 +50,7 @@ const Home = () => {
       <CoursesTab></CoursesTab>
 
       <div className={classes.featurethree}>
-        <Container>
+        <Container maxWidth="xl">
           <Grid container spacing={2}>
             <Grid className={classes.featurethreecard} item xs={12} md={4}>
               <div className={classes.featurethreecardinner}>
@@ -124,13 +124,13 @@ const Home = () => {
       </div>
 
       {/* another card carousel  */}
-      <Container>
+      <Container maxWidth="xl">
         <CarouselCards></CarouselCards>
       </Container>
 
       {/* first div */}
       <div>
-        <Container>
+        <Container maxWidth="xl">
           <Grid className={classes.banner} container spacing={2}>
             <Grid item xs={12} md={6}>
               <img
@@ -166,7 +166,7 @@ const Home = () => {
 
       {/* second div */}
       <div>
-        <Container>
+        <Container maxWidth="xl">
           <Grid className={classes.banner} container spacing={2}>
             <Grid item xs={12} md={6}>
               <span>
@@ -201,7 +201,7 @@ const Home = () => {
 
       {/* third div */}
       <div>
-        <Container>
+        <Container maxWidth="xl">
           <Grid className={classes.banner} container spacing={2}>
             <Grid item xs={12} md={6}>
               <img
@@ -237,7 +237,7 @@ const Home = () => {
 
       <h2 className={classes.expect}>What to expect from a Udemy course</h2>
 
-      <Container>
+      <Container maxWidth="xl">
         <Grid container spacing={2}>
           <Grid className={classes.featurethreecard} item xs={12} md={6}>
             <div className={classes.featurethreecardinner}>

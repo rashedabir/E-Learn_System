@@ -14,8 +14,9 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useStyle } from "./styles";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import { useStyle } from "./styles";
 
 const Navbar = () => {
   const classes = useStyle();
@@ -40,7 +41,7 @@ const Navbar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar color="inherit" position="static">
+      <AppBar elevation={0} color="inherit" position="static">
         <Container className={classes.root} maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -83,17 +84,24 @@ const Navbar = () => {
                 </MenuItem>
               </Menu>
             </Box>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <Button color="inherit" component={Link} to="/">
-                <img
-                  src="https://i.ibb.co/ZWyrKZ3/image-2.png"
-                  alt="image-2"
-                  border="0"
-                />
-              </Button>
-              <Button color="inherit" component={Link} to="/login">
-                All Category
-              </Button>
+            <Box
+              sx={{
+                flexGrow: 1,
+                alignItems: "center",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Link to="/">
+                <img src={logo} alt="logo" />
+              </Link>
+              <Typography
+                className={classes.menubutton}
+                color="inherit"
+                to="/courses"
+                component={Link}
+              >
+                All Courses
+              </Typography>
 
               <div className={classes.serach}>
                 <InputBase
@@ -101,12 +109,22 @@ const Navbar = () => {
                   placeholder="Search Here"
                 />
               </div>
-              <Button color="inherit" component={Link} to="/login">
+              <Typography
+                className={classes.menubutton}
+                color="inherit"
+                to="/login"
+                component={Link}
+              >
                 Udemy Business
-              </Button>
-              <Button color="inherit" component={Link} to="/login">
+              </Typography>
+              <Typography
+                // className={classes.menubutton}
+                color="inherit"
+                component={Link}
+                to="/login"
+              >
                 Tech on Udemy
-              </Button>
+              </Typography>
             </Box>
 
             <Box
@@ -116,7 +134,12 @@ const Navbar = () => {
               <Button color="inherit" component={Link} to="/login">
                 Sign In
               </Button>
-              <Button color="inherit" component={Link} to="/registration">
+              <Button
+                className={classes.signup}
+                color="inherit"
+                component={Link}
+                to="/registration"
+              >
                 Sign Up
               </Button>
             </Box>
