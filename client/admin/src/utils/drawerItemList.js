@@ -1,8 +1,6 @@
 import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
-import AddBoxIcon from "@mui/icons-material/AddBox";
 import CategoryIcon from "@mui/icons-material/Category";
-
 
 export const adminDrawerItemList = [
   {
@@ -23,16 +21,17 @@ export const adminDrawerItemList = [
     icon: <ListIcon />,
     path: "/course",
   },
+
   {
     id: 4,
-    title: "Add Blog",
-    icon: <AddBoxIcon />,
-    path: "/blog",
+    title: "Course Category",
+    icon: <CategoryIcon />,
+    path: "/courseCategory",
   },
   {
     id: 5,
-    title: "Add Category",
+    title: "Blog category",
     icon: <CategoryIcon />,
-    path: "/category",
+    path: "/blogCategory",
   },
 ];

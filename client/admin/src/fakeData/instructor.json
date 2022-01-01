@@ -1,0 +1,18 @@
+[
+    {
+        "name":"Tomal",
+        "status":"Available"
+    },
+    {
+        "name":"Rashed",
+        "status":"Available"
+    },
+    {
+        "name":"Sohag",
+        "status":"Available"
+    },
+    {
+        "name":"Tania",
+        "status":"Occupied"
+    }
+]

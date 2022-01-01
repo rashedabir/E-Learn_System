@@ -19,6 +19,9 @@ export const useStyle = makeStyles({
     borderRadius: "10px",
     background: "white",
   },
+  password: {
+    width: "100%",
+  },
   btn: {
     height: "50px",
   },

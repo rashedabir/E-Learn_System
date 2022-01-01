@@ -51,7 +51,7 @@ const Login = () => {
           autoFocus
           sx={{ pb: 2 }}
         />
-        <FormControl sx={{ width: "100%" }} variant="outlined">
+        <FormControl className={classes.password} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password" color="warning">
             Password
           </InputLabel>
