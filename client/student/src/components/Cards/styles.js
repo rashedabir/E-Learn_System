@@ -44,6 +44,11 @@ export const useStyle = makeStyles({
     display: "flex",
     alignItems: "center"
   },
+  flexitems: {
+    marginBottom: "12px",
+    display: "flex",
+    alignItems: "end"
+  },
   star: {
     color: "#FFA400",
     transform: "scale(0.6)",

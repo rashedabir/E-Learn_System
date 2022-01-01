@@ -22,18 +22,18 @@ const Cards = () => {
           <p className={classes.avatar}>Sohag Raha</p>
         </div>
         <Grid className={classes.gridcontainer} container spacing={2}>
-          <Grid className={classes.flexitem} item xs={2}>
+          <Grid className={classes.flexitem} item xs={3}>
             <StarRateIcon className={classes.star} /> <span className={classes.startext}>4.6</span>
           </Grid>
           <Grid className={classes.flexitem} item xs={3}>
             <PeopleOutlineIcon className={classes.enroll} /> <span className={classes.enrolltxt}>1200+</span>
           </Grid>
-          <Grid className={classes.flexitem} item xs={3}>
+          <Grid className={classes.flexitems} item xs={4}>
             <span className={classes.normal}><AttachMoneyIcon className={classes.dollar} /><span className={classes.pricetxt}>58.60</span></span>
           </Grid>
-          <Grid className={classes.flexitem} item xs={3}>
+          {/* <Grid className={classes.flexitem} item xs={3}>
             <span className={classes.linecut}><AttachMoneyIcon className={classes.dollarcut} /><span className={classes.pricetxt}>58.60</span></span>
-          </Grid>
+          </Grid> */}
 
         </Grid>
 

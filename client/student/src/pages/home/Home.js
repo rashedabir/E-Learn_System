@@ -20,7 +20,9 @@ const Home = () => {
               <InputBase className={classes.hints}
                 placeholder="What do you want to learn?"
               />
-              <Button sx={{ borderRadius: 28 }} className={classes.searchbtn}><img src="https://i.ibb.co/HHKCkRy/Group-751.png" alt="Group-751" /></Button>
+              <Link to="/">
+                <img className={classes.searchbtn} src="https://i.ibb.co/HHKCkRy/Group-751.png" alt="logo" />
+              </Link>
             </div>
           </div>
         </Grid>
@@ -124,7 +126,7 @@ const Home = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <span className={classes.headertxt}>E earning System</span>
-          <span className={classes.thbodytxt}>`Get unlimited access to 6,000+ of Udemys top courses for your team. Learn and improve skills across business, tech, design, and more.</span>
+          <span className={classes.thbodytxts}>Get unlimited access to 6,000+ of Udemys top courses for your team. Learn and improve skills across business, tech, design, and more.</span>
 
           <div className={classes.buttons}>
             <Button component={Link}

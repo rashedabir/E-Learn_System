@@ -18,6 +18,7 @@ export const useStyle = makeStyles({
     fontSize: "56px",
     fontWeight: 700,
     lineHeight: "84px",
+    marginBottom: "25px",
   },
   headerbodytxt: {
     marginTop: "20px",
@@ -41,6 +42,10 @@ export const useStyle = makeStyles({
   },
   hints: {
     width: "100%",
+  },
+  searchbtn: {
+    marginTop: "5px",
+    marginRight: "5px",
   },
   image: {
     width: "100%",
@@ -104,7 +109,7 @@ export const useStyle = makeStyles({
     width: "50%",
     borderRadius: "50px",
     paddingLeft: "5px",
-    margin: "10px",
+    marginTop: "25px",
 
   },
   buttontxt: {
@@ -115,8 +120,6 @@ export const useStyle = makeStyles({
     fontWeight: 400,
     fontSize: "18px",
     lineHeight: "30px",
-    marginTop: "16px",
-    marginBottom: "16px",
   },
 
   // What to expect from a Udemy course
