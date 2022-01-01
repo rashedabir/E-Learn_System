@@ -1,18 +1,19 @@
 import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
-  root: {},
+  root: {
+
+  },
   banner: {
     paddingTop: "40px",
     height: "100%",
     display: "flex",
     alignItems: "center",
-    alignContent: "right",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   headertxt: {
     color: "#3D3B37",
-    // maxWidth: "510px",
+    maxWidth: "510px",
     display: "flex",
     fontSize: "56px",
     fontWeight: 700,
@@ -32,11 +33,11 @@ export const useStyle = makeStyles({
     marginTop: "20px",
     borderRadius: "80px",
     backgroundColor: "#FFF1F1",
-    width: "365px",
+    width: "265px",
     height: "60px",
     paddingLeft: "30px",
     display: "flex",
-    justifyContent: "right",
+    justifyContent: "right"
   },
   hints: {
     width: "100%",
@@ -62,15 +63,15 @@ export const useStyle = makeStyles({
   },
 
   background: {
-    backgroundImage: "linear-gradient(white, #FFF1F1, white)",
+    backgroundImage: "linear-gradient(white, #FFF1F1, white)"
   },
   //three card
   featurethree: {
     marginTop: "10px",
-    marginBottom: "50px",
+    marginBottom: "80px",
   },
   featurethreecard: {
-    boxShadow: "rgba(0, 0, 0, 0.10) 0px 25px 20px -20px;",
+    boxShadow: "rgba(0, 0, 0, 0.10) 0px 25px 20px -20px;"
   },
   featurethreecardinner: {
     margin: "10px",
@@ -85,11 +86,15 @@ export const useStyle = makeStyles({
     alignItems: "center",
     alignContent: "center",
   },
+  cardicon: {
+    paddingLeft: "15px",
+  },
   cardtext: {
     paddingLeft: "15px",
   },
   cardtexthead: {
     fontWeight: 700,
+
   },
   cardtextbody: {
     fontWeight: 400,
@@ -101,6 +106,7 @@ export const useStyle = makeStyles({
     borderRadius: "50px",
     paddingLeft: "5px",
     margin: "10px",
+
   },
   buttontxt: {
     color: "white",
@@ -110,15 +116,52 @@ export const useStyle = makeStyles({
     fontWeight: 400,
     fontSize: "18px",
     lineHeight: "30px",
-    marginTop: "15px",
-    marginBottom: "15px",
+    marginTop: "16px",
+    marginBottom: "16px",
   },
 
   // What to expect from a Udemy course
+  expectcontainer: {
+    paddingTop: "56px",
+    paddingBottom: "80px"
+  },
   expect: {
     textAlign: "center",
     fontSize: "36px",
     fontWeight: "bold",
+    paddingBottom: "47px",
+  },
+  expectcardin: {
+    display: "flex",
+  },
+  expectcardinh: {
+    paddingLeft: "17px",
+    fontSize: "24px",
+    fontWeight: 500,
+    lineHeight: "36px",
+    color: "#2C3644",
+  },
+  expectcardinp: {
+    paddingLeft: "17px",
+    fontSize: "18px",
+    fontWeight: 400,
+    lineHeight: "27px",
+    color: "#5B6A72",
+  },
+
+  // Trusted Company 
+  trust: {
+    paddingBottom: "60px",
+    textAlign: "center",
+  },
+  trustedcompany: {
+    fontSize: "36px",
+    lineHeight: "54px",
+    fontWeight: "bold",
+  },
+  trustedcompanyimg: {
+    padding: "12px",
+    filter: "grayscale(100%)",
   },
   //footer
 });

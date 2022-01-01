@@ -5,11 +5,11 @@ export const useStyle = makeStyles({
     maxWidth: "100%",
     marginBottom: "50px",
     border: "none",
-    boxShadow:
-      "rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;",
+    boxShadow: "rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;",
   },
   cardimg: {
     height: "150px",
+
   },
   tag: {
     backgroundColor: "#FFA400",
@@ -17,7 +17,7 @@ export const useStyle = makeStyles({
     border: "none",
     borderRadius: "3px",
     padding: "5px",
-    marginLeft: "8px",
+    marginLeft: "8px"
   },
   heading: {
     fontSize: "15px",
@@ -27,11 +27,11 @@ export const useStyle = makeStyles({
     marginBottom: 0,
   },
   avatar: {
-    marginLeft: "2px",
+    marginLeft: "3px",
     color: "#5B6A72",
     fontWeight: 500,
     fontSize: "10px",
-    height: "15px",
+    height: "15px"
   },
   avatarimg: {
     marginLeft: "5px",
@@ -42,7 +42,7 @@ export const useStyle = makeStyles({
   flexitem: {
     marginBottom: "12px",
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
   star: {
     color: "#FFA400",
@@ -54,7 +54,7 @@ export const useStyle = makeStyles({
   },
   enroll: {
     color: "#BDBDBD",
-    transform: "scale(0.8)",
+    transform: "scale(0.7)",
   },
   enrolltxt: {
     color: "#5B6A72",
@@ -77,13 +77,13 @@ export const useStyle = makeStyles({
     alignItems: "center",
   },
   pricetxt: {
-    marginLeft: "-7px",
+    marginLeft: "-6px",
   },
   dollar: {
-    transform: "scale(0.9)",
+    transform: "scale(0.7)",
   },
   dollarcut: {
-    transform: "scale(0.7)",
+    transform: "scale(0.6)",
   },
   linecut: {
     color: "#5B6A72",
@@ -91,5 +91,6 @@ export const useStyle = makeStyles({
     display: "flex",
     alignItems: "center",
     textDecoration: "line-through",
+
   },
-});
+})
