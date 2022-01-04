@@ -1,15 +1,13 @@
 import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
-  root: {
-
-  },
+  root: {},
   banner: {
     paddingTop: "40px",
     height: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   headertxt: {
     color: "#3D3B37",
@@ -38,7 +36,7 @@ export const useStyle = makeStyles({
     height: "60px",
     paddingLeft: "30px",
     display: "flex",
-    justifyContent: "right"
+    justifyContent: "right",
   },
   hints: {
     width: "100%",
@@ -68,7 +66,7 @@ export const useStyle = makeStyles({
     fontWeight: 600,
   },
   background: {
-    backgroundImage: "linear-gradient(white, #FFF1F1, white)"
+    backgroundImage: "linear-gradient(white, #FFF1F1, white)",
   },
   //three card here
   featurethree: {
@@ -76,7 +74,7 @@ export const useStyle = makeStyles({
     marginBottom: "80px",
   },
   featurethreecard: {
-    boxShadow: "rgba(0, 0, 0, 0.10) 0px 25px 20px -20px;"
+    boxShadow: "rgba(0, 0, 0, 0.10) 0px 25px 20px -20px;",
   },
   featurethreecardinner: {
     margin: "10px",
@@ -99,7 +97,6 @@ export const useStyle = makeStyles({
   },
   cardtexthead: {
     fontWeight: 700,
-
   },
   cardtextbody: {
     fontWeight: 400,
@@ -111,10 +108,10 @@ export const useStyle = makeStyles({
     borderRadius: "50px",
     paddingLeft: "5px",
     marginTop: "25px",
-
   },
   buttontxt: {
     color: "white",
+    padding: "5px 0",
   },
 
   thbodytxt: {
@@ -126,7 +123,7 @@ export const useStyle = makeStyles({
   // What to expect from a Udemy course
   expectcontainer: {
     paddingTop: "56px",
-    paddingBottom: "80px"
+    paddingBottom: "80px",
   },
   expect: {
     textAlign: "center",
@@ -152,7 +149,7 @@ export const useStyle = makeStyles({
     color: "#5B6A72",
   },
 
-  // Trusted Company 
+  // Trusted Company
   trust: {
     paddingBottom: "60px",
     textAlign: "center",

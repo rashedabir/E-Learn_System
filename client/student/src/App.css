@@ -11,3 +11,8 @@ a {
 a:hover {
   color: #ea5252;
 }
+
+.css-cx0d29-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #ea5252 !important;
+  font-weight: 600;
+}
