@@ -4,10 +4,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { makeStyles } from "@mui/styles";
-import Instructor from "./Instructor";
-import BlogCatagory from "./BlogCatagory";
-const useStyles = makeStyles((theme) => ({}));
+import Instructor from "../Instructor/Instructor";
+import Navbar from "../navbar/Navbar";
+import { useStyles } from "./styles";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,28 +49,30 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box className={classes.root} sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          centered
-          indicatorColor="secondary"
-          textColor="secondary"
-          variant="fullWidth"
-          scrollButtons="auto"
-        >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-        </Tabs>
+    <Navbar>
+      <Box className={classes.root}>
+        <Box className={classes.root2}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            centered
+            indicatorColor="secondary"
+            textColor="secondary"
+            variant="fullWidth"
+            scrollButtons="auto"
+          >
+            <Tab label="Item One" {...a11yProps(0)} />
+            <Tab label="Item Two" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <TabPanel value={value} index={0}>
+          <Instructor title="Active" />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Instructor title="Inactive" />
+        </TabPanel>
       </Box>
-      <TabPanel value={value} index={0}>
-        <Instructor title="Active"/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Instructor title="Inactive" />
-      </TabPanel>
-    </Box>
+    </Navbar>
   );
 }

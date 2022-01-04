@@ -2,12 +2,11 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/login/Login";
-import Category from "./components/Category";
-import Navbar from "./components/navbar/Navbar";
-import { createTheme, ThemeProvider, Theme } from "@mui/material";
-import BasicTabs from "./components/Tabs";
-import BlogCatagory from "./components/BlogCatagory";
-import InstructorInfo from "./components/InstructorInfo";
+import CourseCategory from "./components/Category/CourseCategory";
+import { createTheme, ThemeProvider } from "@mui/material";
+import BasicTabs from "./components/Tabs/Tabs";
+import BlogCategory from "./components/Category/BlogCategory";
+import InstructorInfo from "./components/InstructorInfo/InstructorInfo";
 
 function App() {
   const theme = createTheme();
@@ -16,9 +15,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/courseCategory" element={<CourseCategory />} />
           <Route path="/instructor" element={<BasicTabs />} />
-          <Route path="/blog" element={<BlogCatagory />} />
+          <Route path="/blogCategory" element={<BlogCategory />} />
           <Route path="/instructorInfo" element={<InstructorInfo />} />
           <Route path="/" element={<Login />} />
         </Routes>

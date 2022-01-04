@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, TextField, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useStyle } from "./styles";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -51,7 +51,7 @@ const Login = () => {
           autoFocus
           sx={{ pb: 2 }}
         />
-        <FormControl sx={{ width: "100%" }} variant="outlined">
+        <FormControl className={classes.password} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password" color="warning">
             Password
           </InputLabel>
