@@ -7,16 +7,16 @@ export const useStyle = makeStyles({
     height: "100%",
     display: "flex",
     alignItems: "center",
-    alignContent: "right",
     justifyContent: "space-between",
   },
   headertxt: {
     color: "#3D3B37",
-    // maxWidth: "510px",
+    maxWidth: "510px",
     display: "flex",
     fontSize: "56px",
     fontWeight: 700,
     lineHeight: "84px",
+    marginBottom: "25px",
   },
   headerbodytxt: {
     marginTop: "20px",
@@ -32,7 +32,7 @@ export const useStyle = makeStyles({
     marginTop: "20px",
     borderRadius: "80px",
     backgroundColor: "#FFF1F1",
-    width: "365px",
+    width: "265px",
     height: "60px",
     paddingLeft: "30px",
     display: "flex",
@@ -40,6 +40,11 @@ export const useStyle = makeStyles({
   },
   hints: {
     width: "100%",
+  },
+
+  searchbtn: {
+    marginTop: "5px",
+    marginRight: "5px",
   },
   image: {
     width: "100%",
@@ -60,14 +65,13 @@ export const useStyle = makeStyles({
     lineHeight: "15px",
     fontWeight: 600,
   },
-
   background: {
     backgroundImage: "linear-gradient(white, #FFF1F1, white)",
   },
-  //three card
+  //three card here
   featurethree: {
     marginTop: "10px",
-    marginBottom: "50px",
+    marginBottom: "80px",
   },
   featurethreecard: {
     boxShadow: "rgba(0, 0, 0, 0.10) 0px 25px 20px -20px;",
@@ -85,6 +89,9 @@ export const useStyle = makeStyles({
     alignItems: "center",
     alignContent: "center",
   },
+  cardicon: {
+    paddingLeft: "15px",
+  },
   cardtext: {
     paddingLeft: "15px",
   },
@@ -100,25 +107,61 @@ export const useStyle = makeStyles({
     width: "50%",
     borderRadius: "50px",
     paddingLeft: "5px",
-    margin: "10px",
+    marginTop: "25px",
   },
   buttontxt: {
     color: "white",
+    padding: "5px 0",
   },
 
   thbodytxt: {
     fontWeight: 400,
     fontSize: "18px",
     lineHeight: "30px",
-    marginTop: "15px",
-    marginBottom: "15px",
   },
 
   // What to expect from a Udemy course
+  expectcontainer: {
+    paddingTop: "56px",
+    paddingBottom: "80px",
+  },
   expect: {
     textAlign: "center",
     fontSize: "36px",
     fontWeight: "bold",
+    paddingBottom: "47px",
+  },
+  expectcardin: {
+    display: "flex",
+  },
+  expectcardinh: {
+    paddingLeft: "17px",
+    fontSize: "24px",
+    fontWeight: 500,
+    lineHeight: "36px",
+    color: "#2C3644",
+  },
+  expectcardinp: {
+    paddingLeft: "17px",
+    fontSize: "18px",
+    fontWeight: 400,
+    lineHeight: "27px",
+    color: "#5B6A72",
+  },
+
+  // Trusted Company
+  trust: {
+    paddingBottom: "60px",
+    textAlign: "center",
+  },
+  trustedcompany: {
+    fontSize: "36px",
+    lineHeight: "54px",
+    fontWeight: "bold",
+  },
+  trustedcompanyimg: {
+    padding: "12px",
+    filter: "grayscale(100%)",
   },
   //footer
 });

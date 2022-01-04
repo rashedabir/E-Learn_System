@@ -16,4 +16,7 @@ export const useStyle = makeStyles({
   tabs: {
     color: "black",
   },
+  tab: {
+    color: "red",
+  },
 });
