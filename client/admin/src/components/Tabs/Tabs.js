@@ -4,9 +4,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Instructor from "../Instructor/Instructor";
 import Navbar from "../navbar/Navbar";
 import { useStyles } from "./styles";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -20,7 +20,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box >
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -67,10 +67,10 @@ export default function BasicTabs() {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-          <Instructor title="Active" />
+          item 1
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Instructor title="Inactive" />
+          item 2
         </TabPanel>
       </Box>
     </Navbar>
