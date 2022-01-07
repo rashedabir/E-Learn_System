@@ -50,6 +50,17 @@ export const useStyle = makeStyles({
     fontSize: "14px",
     justifyContent: "center",
   },
+  logout: {
+    width: "100px",
+    height: "30px",
+    borderRadius: "6px",
+    color: "#EA5252 !important",
+    display: "flex",
+    backgroundColor: "#FFF1F1 !important",
+    alignItems: "center",
+    fontSize: "14px",
+    justifyContent: "center",
+  },
   menubutton: {
     padding: "0 35px",
   },

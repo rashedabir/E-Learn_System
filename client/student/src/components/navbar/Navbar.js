@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AppBar,
   Avatar,
@@ -16,10 +16,15 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { GlobalState } from "../../GlobalState";
+
 import { useStyle } from "./styles";
+import axios from "axios";
 
 const Navbar = () => {
   const classes = useStyle();
+  const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.userAPI.isLogged;
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -37,6 +42,14 @@ const Navbar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const logOut = async () => {
+    await axios.get("/api/logout");
+    localStorage.clear();
+    setIsLogged(false);
+    window.location.href = "/";
+    // closeMobileMenu();
   };
 
   return (
@@ -127,22 +140,37 @@ const Navbar = () => {
               </Typography>
             </Box>
 
-            <Box
-              className={classes.signin}
-              sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-            >
-              <Button color="inherit" component={Link} to="/login">
-                Sign In
-              </Button>
-              <Button
-                className={classes.signup}
-                color="inherit"
-                component={Link}
-                to="/registration"
+            {isLogged ? (
+              <Box
+                className={classes.signin}
+                sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
               >
-                Sign Up
-              </Button>
-            </Box>
+                <Button
+                  className={classes.logout}
+                  color="inherit"
+                  onClick={logOut}
+                >
+                  Log out
+                </Button>
+              </Box>
+            ) : (
+              <Box
+                className={classes.signin}
+                sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+              >
+                <Button color="inherit" component={Link} to="/login">
+                  Sign In
+                </Button>
+                <Button
+                  className={classes.signup}
+                  color="inherit"
+                  component={Link}
+                  to="/registration"
+                >
+                  Sign Up
+                </Button>
+              </Box>
+            )}
             <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
