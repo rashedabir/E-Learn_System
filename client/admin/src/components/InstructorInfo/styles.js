@@ -6,28 +6,18 @@ export const useStyles = makeStyles((theme) => ({
   items: {
     width: "100%",
   },
-  icon: {
-    marginRight: "10px",
-    fontSize: "20px",
-  },
-  image: {
-    width: "100%",
-    maxWidth: "200px",
+  intro: {
+    margin: "16px",
   },
   form: {
-    height: "120px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
+    width: "100%",
   },
-  heading: {
-    color: "black",
+  avatar: {
+    marginLeft: "15px",
   },
 }));
 
 export const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
+  padding: theme.spacing(2),
 }));

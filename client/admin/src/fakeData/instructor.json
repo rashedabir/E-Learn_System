@@ -1,18 +1,52 @@
 [
     {
         "name":"Tomal",
-        "status":"Available"
+        "email":"tomal@gmail.com",
+        "status":"Active"
     },
     {
         "name":"Rashed",
-        "status":"Available"
+        "email":"rashed@gmail.com",
+        "status":"Pending"
     },
     {
         "name":"Sohag",
-        "status":"Available"
+        "email":"sohag@gmail.com",
+        "status":"Completed"
     },
     {
         "name":"Tania",
-        "status":"Occupied"
+        "email":"tania@gmail.com",
+        "status":"Cancel"
+    },
+    {
+        "name":"Tania",
+        "email":"tania@gmail.com",
+        "status":"Cancel"
+    },
+    {
+        "name":"Tomal",
+        "email":"tomal@gmail.com",
+        "status":"Active"
+    },
+    {
+        "name":"Rashed",
+        "email":"rashed@gmail.com",
+        "status":"Pending"
+    },
+    {
+        "name":"Sohag",
+        "email":"sohag@gmail.com",
+        "status":"Completed"
+    },
+    {
+        "name":"Tania",
+        "email":"tania@gmail.com",
+        "status":"Cancel"
+    },
+    {
+        "name":"Tania",
+        "email":"tania@gmail.com",
+        "status":"Cancel"
     }
 ]

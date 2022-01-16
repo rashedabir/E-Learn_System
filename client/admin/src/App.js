@@ -4,10 +4,9 @@ import Home from "./pages/home/Home";
 import Login from "./pages/auth/login/Login";
 import CourseCategory from "./components/Category/CourseCategory";
 import { createTheme, ThemeProvider } from "@mui/material";
-import BasicTabs from "./components/Tabs/Tabs";
 import BlogCategory from "./components/Category/BlogCategory";
+import Instructor from "./components/Instructor/Instructor";
 import InstructorInfo from "./components/InstructorInfo/InstructorInfo";
-
 function App() {
   const theme = createTheme();
   return (
@@ -16,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/courseCategory" element={<CourseCategory />} />
-          <Route path="/instructor" element={<BasicTabs />} />
+          <Route path="/instructor" element={<Instructor />} />
           <Route path="/blogCategory" element={<BlogCategory />} />
           <Route path="/instructorInfo" element={<InstructorInfo />} />
           <Route path="/" element={<Login />} />
