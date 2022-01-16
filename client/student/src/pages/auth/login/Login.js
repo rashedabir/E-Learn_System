@@ -26,23 +26,44 @@ const Login = () => {
     e.preventDefault();
     try {
       if (role === "student") {
-        await axios.post("/api/student/login", {
-          userName: userName,
-          password: password,
-        });
-        window.location.href = "/";
+        await axios
+          .post("/api/student/login", {
+            userName: userName,
+            password: password,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { data } = res;
+              window.location.href = "/";
+              localStorage.setItem("AUTH", JSON.stringify(data));
+            }
+          });
       } else if (role === "parent") {
-        await axios.post("/api/parent/login", {
-          mobile: mobile,
-          password: password,
-        });
-        window.location.href = "/";
+        await axios
+          .post("/api/parent/login", {
+            mobile: mobile,
+            password: password,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { data } = res;
+              window.location.href = "/";
+              localStorage.setItem("AUTH", JSON.stringify(data));
+            }
+          });
       } else if (role === "instructor") {
-        await axios.post("/api/instructor/login", {
-          userName: userName,
-          password: password,
-        });
-        window.location.href = "/";
+        await axios
+          .post("/api/instructor/login", {
+            userName: userName,
+            password: password,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { data } = res;
+              window.location.href = "/";
+              localStorage.setItem("AUTH", JSON.stringify(data));
+            }
+          });
       }
     } catch (error) {
       toast.error(error.response.data.msg);
