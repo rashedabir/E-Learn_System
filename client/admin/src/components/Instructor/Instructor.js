@@ -23,12 +23,12 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import mypic from "../../assets/images/mypic.jpg";
 import Avatar from "@mui/material/Avatar";
-import EditIcon from "@mui/icons-material/Edit";
-import rows from "../../fakeData/instructor.json";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import Navbar from "../navbar/Navbar";
 import Badge from "@mui/material/Badge";
-import { useNavigate } from "react-router-dom";
 import { useStyles } from "./styles";
+import { GlobalState } from "../../GlobalState";
+import { Link } from "react-router-dom";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -71,6 +71,7 @@ const headCells = [
   {
     id: "action",
     label: "Action",
+    align: "right",
   },
 ];
 
@@ -106,6 +107,7 @@ function EnhancedTableHead(props) {
           <TableCell
             key={headCell.id}
             sortDirection={orderBy === headCell.id ? order : false}
+            align={headCell.align}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -199,13 +201,12 @@ export default function Instructor() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const state = React.useContext(GlobalState);
+  const [rows] = state.instructorAPI.instructors;
 
   const classes = useStyles();
-  const navigate = useNavigate();
-  const handleEdit = () => {
-    navigate("/instructorInfo");
-  };
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -298,7 +299,7 @@ export default function Instructor() {
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row.name}
+                        key={row._id}
                         selected={isItemSelected}
                       >
                         <TableCell padding="checkbox">
@@ -318,24 +319,25 @@ export default function Instructor() {
                             <Grid item lg={10}>
                               <Typography>{row.name}</Typography>
                               <Typography color="textSecondary" variant="body2">
-                                {row.email}
+                                {row?.email}
                               </Typography>
                             </Grid>
                           </Grid>
                         </TableCell>
                         <TableCell className={classes.edit}>
                           <Badge color="secondary" variant="dot"></Badge>
-                          <Typography>{row.status} </Typography>
+                          <Typography>
+                            {row.status === true ? "Active" : "Pending"}{" "}
+                          </Typography>
                         </TableCell>
-                        <TableCell>
+                        <TableCell align="right">
                           <IconButton
                             variant="contained"
                             color="default"
-                            onClick={() => {
-                              handleEdit();
-                            }}
+                            component={Link}
+                            to={`/instructor/${row._id}`}
                           >
-                            <EditIcon />
+                            <VisibilityIcon />
                           </IconButton>{" "}
                         </TableCell>
                       </TableRow>

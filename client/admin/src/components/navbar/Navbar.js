@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,11 +16,17 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link } from "react-router-dom";
 import { adminDrawerItemList } from "../../utils/drawerItemList";
 import { Drawer, AppBar, DrawerHeader } from "./styles.js";
-import "./styles.js";
 import { useStyle } from "./styles.js";
+import AccountMenu from "../account_menu/AccountMenu";
+import { GlobalState } from "../../GlobalState";
+import axios from "axios";
 
 export default function Navbar(props) {
+  const classes = useStyle();
   const theme = useTheme();
+  const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.userAPI.isLogged;
+  console.log(state);
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -36,7 +42,14 @@ export default function Navbar(props) {
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
-  const classes = useStyle();
+
+  const logOut = async () => {
+    await axios.get("/api/logout");
+    localStorage.clear();
+    setIsLogged(false);
+    window.location.href = "/";
+    // closeMobileMenu();
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -55,8 +68,13 @@ export default function Navbar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            E-Learn Admin
           </Typography>
+          {isLogged ? (
+            <div style={{ marginLeft: "auto" }}>
+              <AccountMenu logOut={logOut} />
+            </div>
+          ) : null}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

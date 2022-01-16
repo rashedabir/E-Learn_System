@@ -1,12 +1,75 @@
-import * as React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import pic from "../../assets/images/mypic.jpg";
-import { Grid, Button, Typography, Avatar, TextField } from "@mui/material";
+import {
+  Grid,
+  Button,
+  Typography,
+  Avatar,
+  TextField,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import Navbar from "../navbar/Navbar";
 import { useStyles } from "./styles";
 import { Item } from "./styles";
+import { useParams } from "react-router-dom";
+import { GlobalState } from "../../GlobalState";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 export default function InstructorInfo() {
   const classes = useStyles();
+
+  const { id } = useParams();
+  const state = useContext(GlobalState);
+  const [token] = state.token;
+  const [instructors] = state.instructorAPI.instructors;
+  const [callback, setCallback] = state.instructorAPI.callback;
+  const [_id, setId] = useState("");
+  const [userName, setUserName] = useState("");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [address, setAddress] = useState("");
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    if (id) {
+      instructors.forEach((instructor) => {
+        if (instructor._id === id) {
+          setId(instructor._id);
+          setUserName(instructor.userName);
+          setName(instructor.name);
+          setMobile(instructor.mobile);
+          setAddress(instructor.address);
+          setStatus(instructor.status);
+        }
+      });
+    } else {
+      setId("");
+      setUserName("");
+      setName("");
+      setMobile("");
+      setAddress("");
+      setStatus("");
+    }
+  }, [id, instructors]);
+
+  const updateInstructor = async () => {
+    try {
+      if (window.confirm("Do you want to Approve this Instructor?")) {
+        await axios.put(
+          `/api/admin/instructor/${_id}`,
+          { status: status },
+          { headers: { Authorization: token } }
+        );
+      }
+      setCallback(!callback);
+      toast.info("Updated");
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
+
   return (
     <Navbar>
       <Grid container spacing={3} padding={5}>
@@ -19,15 +82,12 @@ export default function InstructorInfo() {
               className={classes.avatar}
             />
             <div className={classes.intro}>
-              <Typography variant="h4">Intesarul</Typography>
+              <Typography variant="h4">{name}</Typography>
               <Typography variant="body2">Full Stack Developer</Typography>
             </div>
             <div className={classes.intro}>
               <Typography variant="subtitle2">Address</Typography>
-              <Typography variant="body2">
-                F11, Avenue Ganesh, Near Osia plex, opposit Apex Tower, New
-                York, USA
-              </Typography>
+              <Typography variant="body2">{address}</Typography>
             </div>
             <Button
               variant="contained"
@@ -49,6 +109,11 @@ export default function InstructorInfo() {
                 label="Username"
                 variant="outlined"
                 margin="normal"
+                value={userName}
+                disabled
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                }}
               />
               <TextField
                 className={classes.form}
@@ -56,6 +121,11 @@ export default function InstructorInfo() {
                 label="Name"
                 variant="outlined"
                 margin="normal"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                disabled
               />
               <TextField
                 className={classes.form}
@@ -63,6 +133,11 @@ export default function InstructorInfo() {
                 label="Mobile"
                 variant="outlined"
                 margin="normal"
+                value={mobile}
+                onChange={(e) => {
+                  setMobile(e.target.value);
+                }}
+                disabled
               />
               <TextField
                 className={classes.form}
@@ -70,15 +145,31 @@ export default function InstructorInfo() {
                 label="Address"
                 variant="outlined"
                 margin="normal"
+                value={address}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                }}
+                disabled
               />
-              <TextField
+              <Select
+                sx={{ mt: 1 }}
                 className={classes.form}
-                id="outlined-basic"
-                label="Status"
-                variant="outlined"
-                margin="normal"
-              />
-              <Button variant="contained" color="secondary" sx={{ mt: 2 }}>
+                id="demo-simple-select-autowidth"
+                fullWidth
+                value={status}
+                onChange={(e) => {
+                  setStatus(e.target.value);
+                }}
+              >
+                <MenuItem value={true}>Active</MenuItem>
+                <MenuItem value={false}>Pending</MenuItem>
+              </Select>
+              <Button
+                onClick={updateInstructor}
+                variant="contained"
+                color="secondary"
+                sx={{ mt: 2 }}
+              >
                 Update
               </Button>
             </form>

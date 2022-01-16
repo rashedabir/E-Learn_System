@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { Button, TextField, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useStyle } from "./styles";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -12,10 +14,13 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
   const classes = useStyle();
+
+  const [userName, setUserName] = useState("");
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
   });
+
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -30,10 +35,21 @@ const Login = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/home");
+
+  // const navigate = useNavigate();
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("/api/admin/login", {
+        userName: userName,
+        password: values.password,
+      });
+      window.location.href = "/home";
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
   };
+
   return (
     <div className={classes.root}>
       <form className={classes.formWrapper}>
@@ -49,6 +65,9 @@ const Login = () => {
           color="warning"
           type="text"
           autoFocus
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
           sx={{ pb: 2 }}
         />
         <FormControl className={classes.password} variant="outlined">
@@ -84,9 +103,7 @@ const Login = () => {
           fullWidth
           variant="contained"
           sx={{ my: 3 }}
-          onClick={() => {
-            handleClick();
-          }}
+          onClick={handleClick}
         >
           sign in
         </Button>

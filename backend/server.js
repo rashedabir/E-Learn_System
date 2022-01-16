@@ -26,6 +26,7 @@ app.use("/api", require("./routes/courseRoute/lessonRoute"));
 app.use("/api/parent", require("./routes/parentRoute/authRouter"));
 app.use("/api/student", require("./routes/studentRoute/authRoute"));
 app.use("/api/instructor", require("./routes/instructorRoute/authRouter"));
+app.use("/api/admin", require("./routes/adminRoute/adminRoute"));
 
 const PORT = process.env.PORT;
 const URI = process.env.MONGO_URI;

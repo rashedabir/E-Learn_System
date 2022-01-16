@@ -17,7 +17,7 @@ function App() {
           <Route path="/courseCategory" element={<CourseCategory />} />
           <Route path="/instructor" element={<Instructor />} />
           <Route path="/blogCategory" element={<BlogCategory />} />
-          <Route path="/instructorInfo" element={<InstructorInfo />} />
+          <Route path="/instructor/:id" element={<InstructorInfo />} />
           <Route path="/" element={<Login />} />
         </Routes>
       </Router>
