@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import {
   AppBar,
   Avatar,
@@ -21,6 +21,7 @@ import { GlobalState } from "../../GlobalState";
 import { useStyle } from "./styles";
 import axios from "axios";
 import AccountMenu from "../account_menu/AccountMenu";
+import Sidebar from "../sidebar/Sidebar";
 
 const Navbar = () => {
   const classes = useStyle();
@@ -51,6 +52,21 @@ const Navbar = () => {
     setIsLogged(false);
     window.location.href = "/";
     // closeMobileMenu();
+  };
+
+  const [drawer, setDrawer] = useState({
+    left: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setDrawer({ ...drawer, [anchor]: open });
   };
 
   return (
@@ -142,7 +158,10 @@ const Navbar = () => {
             </Box>
 
             {isLogged ? (
-              <AccountMenu logOut={logOut} />
+              <Fragment>
+                <AccountMenu logOut={logOut} />
+                <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} />
+              </Fragment>
             ) : (
               <Box
                 className={classes.signin}
