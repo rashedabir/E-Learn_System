@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import UserAPI from "./api/UserAPI";
 import axios from "axios";
 import InstructorAPI from "./api/InstructorAPI";
+import CourseCategoryAPI from "./api/CourseCategoryAPI";
 
 export const GlobalState = createContext();
 
@@ -21,6 +22,7 @@ export const DataProvider = ({ children }) => {
     token: [token, setToken],
     userAPI: UserAPI(token),
     instructorAPI: InstructorAPI(token),
+    courseCategoryAPI: CourseCategoryAPI(token),
   };
 
   return <GlobalState.Provider value={state}>{children}</GlobalState.Provider>;
