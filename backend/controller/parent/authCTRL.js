@@ -47,7 +47,10 @@ const authCTRL = {
         // sameSite: "none",
       });
 
-      res.json({ accessToken });
+      res.json({
+        accessToken,
+        user: { name: newParent.name, type: newParent.type },
+      });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
@@ -90,7 +93,7 @@ const authCTRL = {
         // sameSite: "none",
       });
 
-      res.json({ accessToken });
+      res.json({ accessToken, user: { name: parent.name, type: parent.type } });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }

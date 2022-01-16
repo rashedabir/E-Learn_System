@@ -11,23 +11,62 @@ function UserAPI(token) {
 
   useEffect(() => {
     if (token) {
-      const getUser = async () => {
+      const getParent = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/api/profile", {
+          const res = await axios.get("/api/parent/profile", {
             headers: { Authorization: token },
           });
           setIsLogged(true);
           //   setList(res.data.user.list);
           //   res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
-          setUser(res.data.user);
+          setUser(res.data.parent);
           setLoading(false);
           toast.success("Wellcome");
         } catch (error) {
           toast.error(error.response.data.msg);
         }
       };
-      getUser();
+      const getStudent = async () => {
+        try {
+          setLoading(true);
+          const res = await axios.get("/api/student/profile", {
+            headers: { Authorization: token },
+          });
+          setIsLogged(true);
+          //   setList(res.data.user.list);
+          //   res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
+          setUser(res.data.student);
+          setLoading(false);
+          toast.success("Wellcome");
+        } catch (error) {
+          toast.error(error.response.data.msg);
+        }
+      };
+      const getInstructor = async () => {
+        try {
+          setLoading(true);
+          const res = await axios.get("/api/instructor/profile", {
+            headers: { Authorization: token },
+          });
+          setIsLogged(true);
+          //   setList(res.data.user.list);
+          //   res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
+          setUser(res.data.instructor);
+          setLoading(false);
+          toast.success("Wellcome");
+        } catch (error) {
+          toast.error(error.response.data.msg);
+        }
+      };
+      const { user } = JSON.parse(localStorage.getItem("AUTH"));
+      if (user.type === "parent") {
+        getParent();
+      } else if (user.type === "student") {
+        getStudent();
+      } else {
+        getInstructor();
+      }
     }
   }, [token]);
 

@@ -20,11 +20,13 @@ import { GlobalState } from "../../GlobalState";
 
 import { useStyle } from "./styles";
 import axios from "axios";
+import AccountMenu from "../account_menu/AccountMenu";
 
 const Navbar = () => {
   const classes = useStyle();
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state.userAPI.isLogged;
+  console.log(state);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -141,18 +143,7 @@ const Navbar = () => {
             </Box>
 
             {isLogged ? (
-              <Box
-                className={classes.signin}
-                sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-              >
-                <Button
-                  className={classes.logout}
-                  color="inherit"
-                  onClick={logOut}
-                >
-                  Log out
-                </Button>
-              </Box>
+              <AccountMenu logOut={logOut} />
             ) : (
               <Box
                 className={classes.signin}

@@ -25,39 +25,60 @@ const Registration = () => {
     e.preventDefault();
     try {
       if (role === "student") {
-        await axios.post("/api/student/register", {
-          userName: userName,
-          nid: nid,
-          name: `${firstName} ${lastName}`,
-          mobile: mobile,
-          password: password,
-          rePassword: rePassword,
-          address: `${region}, ${country}`,
-        });
-        window.location.href = "/";
-        toast.success("Registration Complete");
+        await axios
+          .post("/api/student/register", {
+            userName: userName,
+            nid: nid,
+            name: `${firstName} ${lastName}`,
+            mobile: mobile,
+            password: password,
+            rePassword: rePassword,
+            address: `${region}, ${country}`,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { data } = res;
+              window.location.href = "/";
+              localStorage.setItem("AUTH", JSON.stringify(data));
+              toast.success("Registration Complete");
+            }
+          });
       } else if (role === "parent") {
-        await axios.post("/api/parent/register", {
-          nid: nid,
-          name: `${firstName} ${lastName}`,
-          mobile: mobile,
-          password: password,
-          rePassword: rePassword,
-          address: `${region}, ${country}`,
-        });
-        window.location.href = "/";
-        toast.success("Registration Complete");
+        await axios
+          .post("/api/parent/register", {
+            nid: nid,
+            name: `${firstName} ${lastName}`,
+            mobile: mobile,
+            password: password,
+            rePassword: rePassword,
+            address: `${region}, ${country}`,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { data } = res;
+              window.location.href = "/";
+              localStorage.setItem("AUTH", JSON.stringify(data));
+              toast.success("Registration Complete");
+            }
+          });
       } else if (role === "instructor") {
-        await axios.post("/api/instructor/register", {
-          userName: userName,
-          name: `${firstName} ${lastName}`,
-          mobile: mobile,
-          password: password,
-          rePassword: rePassword,
-          address: `${region}, ${country}`,
-        });
-        window.location.href = "/";
-        toast.success("Registration Complete");
+        await axios
+          .post("/api/instructor/register", {
+            userName: userName,
+            name: `${firstName} ${lastName}`,
+            mobile: mobile,
+            password: password,
+            rePassword: rePassword,
+            address: `${region}, ${country}`,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { data } = res;
+              window.location.href = "/";
+              localStorage.setItem("AUTH", JSON.stringify(data));
+              toast.success("Registration Complete");
+            }
+          });
       }
     } catch (error) {
       toast.error(error.response.data.msg);

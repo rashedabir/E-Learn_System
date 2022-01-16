@@ -30,6 +30,10 @@ const parentSchema = new mongoose.Schema(
     image: {
       type: Object,
     },
+    type: {
+      type: String,
+      default: "parent",
+    },
   },
   {
     timestamps: true,

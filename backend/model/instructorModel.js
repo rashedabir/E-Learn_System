@@ -37,6 +37,10 @@ const instructorSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    type: {
+      type: String,
+      default: "instructor",
+    },
   },
   {
     timestamps: true,

@@ -50,7 +50,10 @@ const authCTRL = {
         // sameSite: "none",
       });
 
-      res.json({ accessToken });
+      res.json({
+        accessToken,
+        user: { name: newInstructor.name, type: newInstructor.type },
+      });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
@@ -97,7 +100,10 @@ const authCTRL = {
         // sameSite: "none",
       });
 
-      res.json({ accessToken });
+      res.json({
+        accessToken,
+        user: { name: instructor.name, type: instructor.type },
+      });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }

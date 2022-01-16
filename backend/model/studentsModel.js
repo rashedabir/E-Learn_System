@@ -36,6 +36,10 @@ const studentSchema = new mongoose.Schema(
     image: {
       type: Object,
     },
+    type: {
+      type: String,
+      default: "student",
+    },
   },
   {
     timestamps: true,

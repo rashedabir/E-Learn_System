@@ -1,6 +1,6 @@
 const Student = require("../model/studentsModel");
 
-const authParent = async (req, res, next) => {
+const authStudent = async (req, res, next) => {
   try {
     const student = await Student.findOne({
       _id: req.user.id,
@@ -14,4 +14,4 @@ const authParent = async (req, res, next) => {
   }
 };
 
-module.exports = authParent;
+module.exports = authStudent;
