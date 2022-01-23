@@ -1,7 +1,15 @@
+import { Container } from "@mui/material";
+import InstructionCourses from "./instructionCourses/InstructionCourses";
+import { useStyle } from "./styles";
 import React from "react";
 
 const InstructorDashboard = () => {
-  return <div>instructor dashboard</div>;
+  const classes = useStyle();
+  return <div className={classes.root}>
+    <Container maxWidth="xl">
+      <InstructionCourses></InstructionCourses>
+    </Container>
+  </div>;
 };
 
 export default InstructorDashboard;
