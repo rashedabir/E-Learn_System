@@ -6,6 +6,8 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { IconButton } from "@mui/material";
@@ -13,8 +15,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 
 const listBox = [
-  { name: "Dashboard", route: "/instructor_dashboard", icon: <InboxIcon /> },
-  { name: "Create Course", route: "/create_course", icon: <InboxIcon /> },
+  { name: "Dashboard", route: "/instructor_dashboard", icon: <DashboardIcon /> },
+  { name: "Create Course", route: "/create_course", icon: <AddBoxIcon /> },
 ];
 
 const Sidebar = ({ toggleDrawer, drawer }) => {

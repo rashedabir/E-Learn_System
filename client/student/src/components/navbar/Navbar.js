@@ -159,6 +159,7 @@ const Navbar = () => {
                 Tech on Udemy
               </Typography>
             </Box>
+            {/* <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} /> */}
 
             {isLogged ? (
               <Fragment>
