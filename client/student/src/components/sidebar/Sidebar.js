@@ -10,6 +10,12 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Link } from "react-router-dom";
+
+const listBox = [
+  { name: "Dashboard", route: "/instructor_dashboard", icon: <InboxIcon /> },
+  { name: "Create Course", route: "/create_course", icon: <InboxIcon /> },
+];
 
 const Sidebar = ({ toggleDrawer, drawer }) => {
   const list = (anchor) => (
@@ -20,12 +26,10 @@ const Sidebar = ({ toggleDrawer, drawer }) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+        {listBox.map((list, i) => (
+          <ListItem component={Link} to={list.route} button key={i}>
+            <ListItemIcon>{list.icon}</ListItemIcon>
+            <ListItemText primary={list.name} />
           </ListItem>
         ))}
       </List>
