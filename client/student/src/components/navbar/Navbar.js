@@ -27,6 +27,9 @@ const Navbar = () => {
   const classes = useStyle();
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state.userAPI.isLogged;
+  const [user] = state.userAPI.user;
+
+  console.log(user);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -156,11 +159,14 @@ const Navbar = () => {
                 Tech on Udemy
               </Typography>
             </Box>
+            {/* <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} /> */}
 
             {isLogged ? (
               <Fragment>
                 <AccountMenu logOut={logOut} />
-                <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} />
+                {user.type === "instructor" && user.status === true ? (
+                  <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} />
+                ) : null}
               </Fragment>
             ) : (
               <Box

@@ -6,7 +6,7 @@ const authAdmin = require("../../middleware/authAdmin");
 router
   .route("/course_cetegory")
   .post(auth, authAdmin, courseCategoryCtrl.createCategory)
-  .get(auth, authAdmin, courseCategoryCtrl.getCategory);
+  .get(courseCategoryCtrl.getCategory);
 
 router
   .route("/course_cetegory/:course_category_id")
