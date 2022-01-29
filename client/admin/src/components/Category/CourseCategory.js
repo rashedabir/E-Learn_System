@@ -76,6 +76,7 @@ function Category() {
         );
         setName("");
         setCallback(!callback);
+        handleClose();
         toast.warn("Category Updated");
       } catch (error) {
         toast.error(error.response.data.msg);
@@ -93,6 +94,7 @@ function Category() {
         );
         setName("");
         setCallback(!callback);
+        handleClose();
         toast.success("Category Added");
       } catch (error) {
         toast.error(error.response.data.msg);
