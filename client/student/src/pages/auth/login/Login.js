@@ -60,7 +60,7 @@ const Login = () => {
           .then((res) => {
             if (res.status === 200) {
               const { data } = res;
-              window.location.href = "/";
+              window.location.href = "/instructor_dashboard";
               localStorage.setItem("AUTH", JSON.stringify(data));
             }
           });

@@ -141,6 +141,14 @@ const courseCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  instructorCourse: async (req, res) => {
+    try {
+      const courses = await Course.find({ user: req.user.id });
+      res.json(courses);
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
   // createLessons: async (req, res) => {
   //   try {
   //     const { heading, videos } = req.body;
