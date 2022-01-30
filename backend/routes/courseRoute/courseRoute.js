@@ -7,7 +7,9 @@ const authStudent = require("../../middleware/authStudent");
 router
   .route("/course")
   .post(auth, authInstructor, courseCTRL.createCourse)
-  .get(courseCTRL.getCourse);
+  .get(auth, authInstructor, courseCTRL.instructorCourse);
+
+router.get("/all_course", courseCTRL.getCourse);
 
 router.route("/course_details/:course_id").get(courseCTRL.courseDetails);
 
