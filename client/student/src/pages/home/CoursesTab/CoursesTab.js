@@ -1,36 +1,59 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { useStyle } from "./styles";
-import { Container } from "@mui/material";
-import CarouselCards from "../CarouselCards/CarouselCards";
-
+import { Container, Grid } from "@mui/material";
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import Cards from "../../../components/Cards/Card";
 
-const tabList = [
-  "Python",
-  "Excel",
-  "Web Development",
-  "Web Design",
-  "JavaScript",
-  "Data Science",
-  "Machine Learning",
-  "Aws Certification",
-  "Python",
-  "Excel",
-  "Web Development",
-  "Web Design",
-  "JavaScript",
-  "Data Science",
-  "Machine Learning",
-  "Aws Certification",
-];
+// const tabList = [
+//   "Python",
+//   "Excel",
+//   "Web Development",
+//   "Web Design",
+//   "JavaScript",
+//   "Data Science",
+//   "Machine Learning",
+//   "Aws Certification",
+//   "Python",
+//   "Excel",
+//   "Web Development",
+//   "Web Design",
+//   "JavaScript",
+//   "Data Science",
+//   "Machine Learning",
+//   "Aws Certification",
+// ];
 
 const CoursesTab = () => {
   const classes = useStyle();
-  const [value, setValue] = React.useState("1");
+  const [tabList, setTabList] = useState([]);
+  const [courseList, setCourseList] = useState([]);
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    //course list
+    const getCourses = async () => {
+      await axios.get("/api/all_course").then((res) => {
+        if (res.status === 200) {
+          const { courses } = res.data;
+          setCourseList(courses);
+          let list = [...new Set(courses.map((item) => item.category))];
+          setTabList(list);
+        }
+      });
+    };
+    getCourses();
+  }, []);
+
+  // const getList = {
+  //   tabList.map((item) => {
+  //     return item[name]
+  //   })
+  // }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -53,37 +76,31 @@ const CoursesTab = () => {
                   <Tab
                     sx={{ textTransform: "none" }}
                     label={item}
-                    value={i.toString()}
+                    value={i}
                     key={i}
                     className={classes.tab}
                   />
                 ))}
             </TabList>
           </Box>
-          <TabPanel value="0">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
-          <TabPanel value="1">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
-          <TabPanel value="2">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
-          <TabPanel value="3">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
-          <TabPanel value="4">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
-          <TabPanel value="5">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
-          <TabPanel value="6">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
-          <TabPanel value="7">
-            <CarouselCards></CarouselCards>
-          </TabPanel>
+          {tabList &&
+            tabList.map((tab, index) => {
+              return (
+                <TabPanel value={index}>
+                  <Grid container spacing={4}>
+                    {courseList &&
+                      courseList
+                        .filter((item, i) => item.category === tab)
+                        .slice(0, 4)
+                        .map((item, i) => (
+                          <Grid item md={3}>
+                            <Cards key={i} item={item} />
+                          </Grid>
+                        ))}
+                  </Grid>
+                </TabPanel>
+              );
+            })}
         </TabContext>
       </Container>
     </div>

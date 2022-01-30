@@ -57,7 +57,7 @@ const Home = () => {
       </div>
       {/* Courses Tab  */}
       <div className={classes.background}>
-        <CoursesTab></CoursesTab>
+        <CoursesTab />
 
         {/* three feature added here  */}
         <div className={classes.featurethree}>
