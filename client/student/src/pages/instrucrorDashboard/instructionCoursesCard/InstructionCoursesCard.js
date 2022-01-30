@@ -17,7 +17,7 @@ const InstructionCoursesCard = ({ course }) => {
           />
           <button className={classes.tag}>{course?.category}</button>
           <h1 className={classes.heading}>
-            <Link to={`/course/${course?._id}`}>{course?.title}</Link>
+            <Link to={`/course_details/${course?._id}`}>{course?.title}</Link>
           </h1>
         </Card>
       </div>
