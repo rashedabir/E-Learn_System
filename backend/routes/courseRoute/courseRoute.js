@@ -11,7 +11,10 @@ router
 
 router.get("/all_course", courseCTRL.getCourse);
 
-router.route("/course_details/:course_id").get(courseCTRL.courseDetails);
+router
+  .route("/course_details/:course_id")
+  .get(courseCTRL.courseDetails)
+  .delete(auth, authInstructor, courseCTRL.deleteCourse);
 
 router
   .route("/course/review/:course_id")
