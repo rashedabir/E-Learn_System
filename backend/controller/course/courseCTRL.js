@@ -149,6 +149,14 @@ const courseCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  deleteCourse: async (req, res) => {
+    try {
+      await Course.findByIdAndDelete(req.params.course_id);
+      res.json({ msg: "Course is Deleted" });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
   // createLessons: async (req, res) => {
   //   try {
   //     const { heading, videos } = req.body;
