@@ -15,9 +15,16 @@ const SingleCourse = () => {
   const history = useNavigate();
 
   useEffect(() => {
-    fetch(`/api/course_details/${courseId}`)
-      .then((res) => res.json())
-      .then((data) => setCourse(data));
+    const getData = async () => {
+      if (courseId) {
+        await axios.get(`/api/course_details/${courseId}`).then((res) => {
+          if (res.status === 200) {
+            setCourse(res.data);
+          }
+        });
+      }
+    };
+    getData();
   }, [courseId]);
 
   const deleteCourse = async () => {
