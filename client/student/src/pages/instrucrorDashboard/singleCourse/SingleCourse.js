@@ -5,6 +5,7 @@ import { Button, Container, Grid } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { GlobalState } from "../../../GlobalState";
+import Lesson from "./lessons/Lesson";
 
 const SingleCourse = () => {
   const classes = useStyle();
@@ -12,6 +13,7 @@ const SingleCourse = () => {
   const [token] = state.token;
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
+  const [lessons, setLessons] = useState([]);
   const history = useNavigate();
 
   useEffect(() => {
@@ -20,6 +22,7 @@ const SingleCourse = () => {
         await axios.get(`/api/course_details/${courseId}`).then((res) => {
           if (res.status === 200) {
             setCourse(res.data);
+            setLessons(res.data.lessons);
           }
         });
       }
@@ -153,6 +156,13 @@ const SingleCourse = () => {
             </p>
           </div>
         </Grid>
+        {/* map lesson  */}
+
+        <div>
+          {
+            lessons.map(lesson => <Lesson lessons={lesson} key={lesson.id}></Lesson>)
+          }
+        </div>
       </Container>
     </div>
   );
