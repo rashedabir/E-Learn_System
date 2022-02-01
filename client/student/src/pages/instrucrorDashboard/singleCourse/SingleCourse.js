@@ -158,10 +158,10 @@ const SingleCourse = () => {
         </Grid>
         {/* map lesson  */}
 
-        <div>
-          {
-            lessons.map(lesson => <Lesson lessons={lesson} key={lesson.id}></Lesson>)
-          }
+        <div className={classes.lessonWrapper}>
+          {lessons.map((lesson) => (
+            <Lesson lessons={lesson} key={lesson.id}></Lesson>
+          ))}
         </div>
       </Container>
     </div>
