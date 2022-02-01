@@ -57,6 +57,7 @@ const AddLesson = () => {
       1
     );
     setVideos(values);
+    console.log(values);
   };
 
   const storeLessson = async () => {
@@ -103,7 +104,7 @@ const AddLesson = () => {
         </Grid>
 
         {videos.map((video, index) => (
-          <Grid container spacing={3} alignItems="center">
+          <Grid key={index} container spacing={3} alignItems="center">
             <Grid item xs={12} sm={12} lg={5} md={5}>
               <div style={{ display: "flex", alignItems: "center" }}>
                 <h1 style={{ marginRight: "10px" }}>{++index}.</h1>
@@ -137,7 +138,9 @@ const AddLesson = () => {
                 variant="contained"
                 color="error"
                 disabled={videos.length === 1}
-                onClick={handleRemoveVideos}
+                onClick={() => {
+                  handleRemoveVideos(video.id);
+                }}
               >
                 <DeleteOutlineIcon />
               </Button>
