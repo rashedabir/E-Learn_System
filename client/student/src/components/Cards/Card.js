@@ -7,7 +7,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
-const Cards = ({ item }) => {
+const Cards = ({ item,type }) => {
   const classes = useStyle();
   return (
     <div className={classes.root}>
@@ -20,7 +20,7 @@ const Cards = ({ item }) => {
         />
         <button className={classes.tag}>{item?.category}</button>
         <h1 className={classes.heading}>
-          <Link to={`/course_details/${item?._id}`}>{item?.title}</Link>
+          <Link to={`/${type}/${item?._id}`}>{item?.title}</Link>
         </h1>
         <div className={classes.flexitem}>
           <div className={classes.avatar}>

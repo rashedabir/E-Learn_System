@@ -94,7 +94,7 @@ const CoursesTab = () => {
                         .slice(0, 4)
                         .map((item, i) => (
                           <Grid item md={3}>
-                            <Cards key={i} item={item} />
+                            <Cards key={i} item={item} type="details"/>
                           </Grid>
                         ))}
                   </Grid>
