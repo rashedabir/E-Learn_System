@@ -33,11 +33,11 @@ const Cards = ({ item,type }) => {
           <p className={classes.avatar}>{item?.instructor?.name}</p>
         </div>
         <Grid className={classes.gridcontainer} container spacing={2}>
-          <Grid className={classes.flexitem} item xs={3}>
+          <Grid className={classes.flexitem} item xs={4}>
             <StarRateIcon className={classes.star} />{" "}
             <span className={classes.startext}>4.6</span>
           </Grid>
-          <Grid className={classes.flexitem} item xs={3}>
+          <Grid className={classes.flexitem} item xs={4}>
             <PeopleOutlineIcon className={classes.enroll} />{" "}
             <span className={classes.enrolltxt}>1200+</span>
           </Grid>
