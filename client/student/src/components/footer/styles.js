@@ -4,7 +4,6 @@ export const useStyle = makeStyles({
     root: {
         marginTop: "50px",
         flexGrow: 1,
-
     },
     footers: {
         paddingBottom: "10px",

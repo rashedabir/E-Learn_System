@@ -36,7 +36,7 @@ const Sidebar = ({ toggleDrawer, drawer }) => {
         ))}
       </List>
       <Divider />
-      <List>
+      {/* <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -45,7 +45,7 @@ const Sidebar = ({ toggleDrawer, drawer }) => {
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 
