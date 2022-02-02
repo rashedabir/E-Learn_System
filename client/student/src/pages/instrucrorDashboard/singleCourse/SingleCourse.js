@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useStyle } from "./styles";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button, Container, Grid } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
+import CheckIcon from '@mui/icons-material/Check';
+import CreateIcon from '@mui/icons-material/Create';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import Swal from "sweetalert2";
 import axios from "axios";
 import { GlobalState } from "../../../GlobalState";
@@ -14,6 +17,8 @@ const SingleCourse = () => {
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
   const [lessons, setLessons] = useState([]);
+  const [objective, setObjective] = useState([]);
+  const [req, setReq] = useState([]);
   const history = useNavigate();
 
   useEffect(() => {
@@ -23,6 +28,8 @@ const SingleCourse = () => {
           if (res.status === 200) {
             setCourse(res.data);
             setLessons(res.data.lessons);
+            setObjective(res.data.courseDetails.objective);
+            setReq(res.data.courseDetails.requirements);
           }
         });
       }
@@ -63,7 +70,7 @@ const SingleCourse = () => {
 
   return (
     <div className={classes.root}>
-      <Container maxWidth="xl">
+      <Container className={classes.contains} maxWidth="xl">
         {/* <h2>Course Name : {course?.courseDetails?.title}</h2> */}
         <div className={classes.top}>
           <span className={classes.link}>
@@ -100,61 +107,75 @@ const SingleCourse = () => {
           className={classes.banner}
           alt="..."
         />
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <h3>Course Name : {course?.courseDetails?.title}</h3>
-            <p>Cattegory : {course?.courseDetails?.title}</p>
+        <Grid className={classes.contains} container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <h2>Title : {course?.courseDetails?.title}</h2>
+            <h5 className={classes.pading}>Istructor : {course?.courseDetails?.instructor?.name}</h5>
           </Grid>
-          <Grid item xs={6}>
-            <h3>Istructor : {course?.courseDetails?.instructor?.name}</h3>
-            <p>Price : {course?.courseDetails?.price} Taka</p>
+          <Grid item xs={12} md={6}>
+            <Typography
+              component="p"
+              style={{ display: "flex", alignItems: "center", marginTop: "25px" }}
+            >
+              <GroupsOutlinedIcon className={classes.icon} /> Total enrolled : {course?.courseDetails?.enrolled}
+            </Typography>
           </Grid>
-          <div>
-            <p>
-              <b>About </b>: {course?.courseDetails?.about} --- Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit. Minima, laudantium
-              recusandae. Distinctio cum officia aperiam aliquam, quisquam
-              corporis aspernatur! Architecto excepturi ex explicabo sed
-              sapiente quidem dicta numquam ullam ipsa impedit voluptatem
-              inventore natus suscipit, eius repellat nostrum voluptatum
-              corporis rem illum. Officia illo atque nemo rem debitis error
-              saepe.
+          <Grid item xs={12}>
+            <h2 className={classes.pading}>About </h2>
+            <p className={classes.about}>
+              {course?.courseDetails?.about}
             </p>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <h2>What You’ll Learn</h2>
+            <Grid className={classes.container} container spacing={3}>
+              {objective.map((objective) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={6}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <Typography
+                    component="p"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <CheckIcon className={classes.icon} /> {objective.objective}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
 
+          <Grid item xs={6}>
+            <h2>Requirement</h2>
+            <Grid className={classes.container} container spacing={3}>
+              {req.map((req) => (
+                <Grid item xs={12}
+                  md={6}
+                  lg={6}
+                >
+                  <Typography
+                    component="p"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <CreateIcon className={classes.icon} />{" "}
+                    {req.requrement}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
+
+          </Grid>
+          <Grid item xs={12}>
+            <h2 className={classes.pading}>Description </h2>
             <p>
-              <b>Description </b>: {course?.courseDetails?.description} ---
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima,
-              laudantium recusandae. Distinctio cum officia aperiam aliquam,
-              quisquam corporis aspernatur! Architecto excepturi ex explicabo
-              sed sapiente quidem dicta numquam ullam ipsa impedit voluptatem
-              inventore natus suscipit, eius repellat nostrum voluptatum
-              corporis rem illum. Officia illo atque nemo rem debitis error
-              saepe. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Culpa architecto hic maxime itaque sint at numquam. Similique
-              harum fugiat corrupti. Molestias aspernatur dolorum dolorem sint
-              libero ab veniam voluptatem! Id quos, quo vel perferendis
-              molestiae voluptatibus quasi odio natus nihil sint fugit
-              perspiciatis magnam totam numquam eius ea quod. Aliquam delectus
-              debitis et quam. Inventore, sapiente dolore! Repudiandae quae fuga
-              fugit unde sapiente id dolorem, corrupti molestiae eum ducimus
-              dolorum cumque quasi doloribus aspernatur, incidunt nam maxime
-              pariatur? Ipsam quo inventore deserunt minus debitis libero minima
-              dolorum illum neque sapiente suscipit similique maiores, esse iste
-              nemo nisi rem quidem sint possimus? Ipsa deserunt odit incidunt
-              labore animi, recusandae, veritatis reiciendis cum non voluptas
-              quibusdam iusto aspernatur laboriosam sint magnam saepe ducimus
-              culpa quia! Sequi animi perspiciatis non beatae ad nulla illum at
-              laboriosam ipsum saepe ducimus dolores dolorum reprehenderit,
-              neque sapiente dolorem aliquam fugiat reiciendis quidem.
-              Molestias, sapiente dolores? Praesentium, vitae. Odit quisquam
-              alias voluptatem, quia tempora commodi ex sunt est veniam delectus
-              accusamus cumque quibusdam porro labore! Id omnis totam voluptates
-              quae unde esse dolorum minus molestiae. Optio, iusto sed nemo
-              explicabo recusandae fuga facilis accusantium laudantium cumque
-              repudiandae commodi voluptates at? Laudantium beatae atque soluta
-              consequatur laboriosam labore?
+              {course?.courseDetails?.description}
             </p>
-          </div>
+          </Grid>
+
         </Grid>
         {/* map lesson  */}
 

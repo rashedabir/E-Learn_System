@@ -6,9 +6,9 @@ const LessonVideo = (props) => {
   const { title, link } = props.videos;
   const classes = useStyle();
   return (
-    <div>
+    <div className={classes.root}>
       <div className={classes.title}>
-        <span>Tittle : {title}</span>
+        <span>Class : {title}</span>
       </div>
       <div className={classes.video}>
         <ReactPlayer url={link} />
