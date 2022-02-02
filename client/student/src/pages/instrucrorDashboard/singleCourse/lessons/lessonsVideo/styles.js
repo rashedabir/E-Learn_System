@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
     root: {
-
+        marginBottom: '5px',
     },
     title: {
         color: 'black',
