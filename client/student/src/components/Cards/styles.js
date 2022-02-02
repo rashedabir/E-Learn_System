@@ -51,19 +51,19 @@ export const useStyle = makeStyles({
   },
   star: {
     color: "#FFA400",
-    transform: "scale(0.6)",
+    transform: "scale(0.8)",
   },
   startext: {
     color: "#3D3B37",
-    fontSize: "10px",
+    fontSize: "12px",
   },
   enroll: {
     color: "#BDBDBD",
-    transform: "scale(0.7)",
+    transform: "scale(0.8)",
   },
   enrolltxt: {
     color: "#5B6A72",
-    fontSize: "10px",
+    fontSize: "12px",
   },
   gridcontainer: {
     borderTop: "0.356586px solid #E0E0E0",
@@ -80,12 +80,13 @@ export const useStyle = makeStyles({
     fontSize: "14.30px",
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
   },
   pricetxt: {
     marginLeft: "-6px",
   },
   dollar: {
-    transform: "scale(0.7)",
+    transform: "scale(0.8)",
   },
   dollarcut: {
     transform: "scale(0.6)",
