@@ -102,11 +102,11 @@ const Footer = () => {
                 London, United Kingdom
               </p>
               <div className={classes.icons}>
-                <FacebookIcon className={classes.icon}></FacebookIcon>
-                <TwitterIcon className={classes.icon}></TwitterIcon>
-                <InstagramIcon className={classes.icon}></InstagramIcon>
-                <YouTubeIcon className={classes.icon}></YouTubeIcon>
-                <PinterestIcon className={classes.icon}></PinterestIcon>
+                <FacebookIcon className={classes.icon} />
+                <TwitterIcon className={classes.icon} />
+                <InstagramIcon className={classes.icon} />
+                <YouTubeIcon className={classes.icon} />
+                <PinterestIcon className={classes.icon} />
               </div>
             </Grid>
           </Grid>
@@ -132,7 +132,7 @@ const Footer = () => {
               </Grid>
             </Grid>
             <Grid item xs={12} md={5}>
-              COPYRIGHT © udemy.com 2021
+              COPYRIGHT © elearn.com 2021
             </Grid>
           </Grid>
         </Container>

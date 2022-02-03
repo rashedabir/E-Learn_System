@@ -1,5 +1,6 @@
 import React from "react";
 import LessonVideo from "./lessonsVideo/LessonVideo";
+import PlayLessonOutlinedIcon from '@mui/icons-material/PlayLessonOutlined';
 import { useStyle } from "./styles";
 
 const Lesson = (props) => {
@@ -7,10 +8,12 @@ const Lesson = (props) => {
   const { title, videos } = props.lessons;
   return (
     <div className={classes.lessonWrapper}>
-      <h3 className={classes.lessonhead}>Heading : {title}</h3>
-      {videos.map((video) => (
-        <LessonVideo videos={video} key={video.id}></LessonVideo>
-      ))}
+      <h2 className={classes.lessonhead}> <PlayLessonOutlinedIcon /> {title}</h2>
+      <div className={classes.lessoncontent}>
+        {videos.map((video) => (
+          <LessonVideo videos={video} key={video.id}></LessonVideo>
+        ))}
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import InstructionCoursesCard from "../instructionCoursesCard/InstructionCourses
 import axios from "axios";
 import { useStyle } from "./styles";
 import { GlobalState } from "../../../GlobalState";
+import { Button, Link } from "@mui/material";
 
 const InstructionCourses = () => {
   const classes = useStyle();
@@ -32,7 +33,7 @@ const InstructionCourses = () => {
 
   return (
     <div className={classes.root}>
-      <h1 className={classes.dashboard}>Dashbaord</h1>
+      <h1>Dashbaord</h1>
       <Carousel cols={4} rows={1} gap={20} loop>
         {courseList?.length > 0 &&
           courseList?.map((course, i) => (
