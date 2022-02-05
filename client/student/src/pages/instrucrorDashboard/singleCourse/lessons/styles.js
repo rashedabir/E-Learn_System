@@ -3,14 +3,18 @@ import { makeStyles } from "@mui/styles";
 export const useStyle = makeStyles({
   root: {
     background: "#EEE",
-    color: '#645A53',
+    color: "#645A53",
   },
   lessonhead: {
-    color: '#645A53',
+    color: "#645A53",
     padding: "4px",
     marginBottom: "6px",
     marginTop: "6px",
-    borderBottom: "2px solid #EEE"
+  },
+  headingWrapper: {
+    borderBottom: "2px solid #EEE",
+    display: "flex",
+    justifyContent: "space-between",
   },
   lessoncontent: {
     paddingLeft: "8px",
@@ -19,6 +23,6 @@ export const useStyle = makeStyles({
     background: "white",
     margin: "20px 0",
     padding: "20px",
-    borderRadius: '8px',
+    borderRadius: "8px",
   },
 });

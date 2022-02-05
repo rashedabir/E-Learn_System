@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { GlobalState } from "../../GlobalState";
 import { v4 as uuidv4 } from "uuid";
@@ -19,11 +19,12 @@ import {
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddIcon from "@mui/icons-material/Add";
 import SaveIcon from "@mui/icons-material/Save";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CreateCourse = () => {
   const classes = useStyle();
   const history = useNavigate();
+  const { courseId } = useParams();
   const state = useContext(GlobalState);
   const [token] = state.token;
   const [categories] = state.courseCategoryAPI.category;
@@ -143,38 +144,110 @@ const CreateCourse = () => {
   };
 
   const handleSubmit = async () => {
-    await axios
-      .post(
-        "/api/course",
-        {
-          title: title,
-          price: price,
-          description: description,
-          about: about,
-          banner: image,
-          category: category,
-          objective: objectives,
-          requirements: requirements,
-        },
-        {
-          headers: { Authorization: token },
-        }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          Swal.fire("Good job!", "You Created a Course!", "success");
-          history("/instructor_dashboard");
-        }
-      })
-      .catch((error) => {
-        toast.error(error.response.data.msg);
-      });
+    if (courseId) {
+      await axios
+        .put(
+          `/api/course_details/${courseId}`,
+          {
+            title: title,
+            price: price,
+            description: description,
+            about: about,
+            objective: objectives,
+            requirements: requirements,
+            banner: image,
+            category: category,
+          },
+          {
+            headers: { Authorization: token },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire("Good job!", "You Updated this Course!", "success");
+            history(`/course_details/${courseId}`);
+          }
+        })
+        .catch((error) => {
+          toast.error(error.response.data.msg);
+        });
+    } else {
+      await axios
+        .post(
+          "/api/course",
+          {
+            title: title,
+            price: price,
+            description: description,
+            about: about,
+            banner: image,
+            category: category,
+            objective: objectives,
+            requirements: requirements,
+          },
+          {
+            headers: { Authorization: token },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire("Good job!", "You Created a Course!", "success");
+            history("/instructor_dashboard");
+          }
+        })
+        .catch((error) => {
+          toast.error(error.response.data.msg);
+        });
+    }
   };
+
+  useEffect(() => {
+    if (courseId) {
+      // get course details
+      const getCourseDetails = async () => {
+        if (courseId) {
+          await axios.get(`/api/course_details/${courseId}`).then((res) => {
+            if (res.status === 200) {
+              const { courseDetails } = res.data;
+              setImage(courseDetails?.banner);
+              setTitle(courseDetails?.title);
+              setPrice(courseDetails?.price);
+              setCategory(courseDetails?.category);
+              setDescription(courseDetails?.description);
+              setAbout(courseDetails?.about);
+              setObjectives(courseDetails?.objective);
+              setRequirements(courseDetails?.requirements);
+            }
+          });
+        } else {
+          setImage(false);
+          setTitle("");
+          setPrice(0);
+          setCategory("");
+          setDescription("");
+          setAbout("");
+          setObjectives([
+            {
+              id: uuidv4(),
+              objective: "",
+            },
+          ]);
+          setRequirements([
+            {
+              id: uuidv4(),
+              requrement: "",
+            },
+          ]);
+        }
+      };
+      getCourseDetails();
+    }
+  }, [courseId]);
 
   return (
     <div className={classes.root}>
       <Container maxWidth="xl">
-        <h2>Create Course</h2>
+        <h2>{courseId ? "Update" : "Create"} Course</h2>
         <Grid className={classes.page} container spacing={4}>
           <Grid item xs={12} sm={12} lg={12} md={12}>
             <div className="upload">
@@ -365,7 +438,7 @@ const CreateCourse = () => {
           color="warning"
           sx={{ mt: 5 }}
         >
-          <SaveIcon /> save
+          <SaveIcon /> {courseId ? "update" : "save"}
         </Button>
       </Container>
     </div>

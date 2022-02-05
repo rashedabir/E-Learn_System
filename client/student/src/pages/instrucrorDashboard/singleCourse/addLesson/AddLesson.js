@@ -2,7 +2,7 @@ import { Button, Container, Grid, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { v4 as uuidv4 } from "uuid";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalState } from "../../../../GlobalState";
@@ -13,7 +13,7 @@ const AddLesson = () => {
   const [heading, setHeading] = useState("");
   const state = useContext(GlobalState);
   const [token] = state.token;
-  const { courseId } = useParams();
+  const { courseId, lessonId } = useParams();
   const history = useNavigate();
 
   /*-------------------------videos-----------------------*/
@@ -83,10 +83,39 @@ const AddLesson = () => {
       });
   };
 
+  useEffect(() => {
+    const getLesson = async () => {
+      if (lessonId) {
+        await axios
+          .get(`/api/lesson_details/${lessonId}`, {
+            headers: { Authorization: token },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { lesson } = res.data;
+              setVideos(lesson.videos);
+              setHeading(lesson?.title);
+            }
+          });
+      } else {
+        setHeading("");
+        setVideos([
+          {
+            id: uuidv4(),
+            title: "",
+            link: "",
+            status: false,
+          },
+        ]);
+      }
+    };
+    getLesson();
+  }, [lessonId, token]);
+
   return (
     <div>
       <Container maxWidth="xl">
-        <h1>Add Lesson</h1>
+        <h1>{lessonId ? "Update" : "Add"} Lesson</h1>
         <Grid container spacing={4} alignItems="center">
           <Grid item md={12}>
             <TextField
@@ -162,7 +191,7 @@ const AddLesson = () => {
           variant="contained"
           color="warning"
         >
-          Save
+          {lessonId ? "Update" : "Add"}
         </Button>
       </Container>
     </div>

@@ -16,6 +16,15 @@ const taskCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  getSingleLesson: async (req, res) => {
+    try {
+      const lesson_id = req.params.lesson_id;
+      const lesson = await Lessons.findOne({ _id: lesson_id });
+      res.json({ lesson });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
   createLesson: async (req, res) => {
     try {
       const { title, videos } = req.body;
@@ -49,6 +58,14 @@ const taskCTRL = {
         { title, videos }
       );
       res.json({ msg: "Lesson Updated." });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
+  deleteLesson: async (req, res) => {
+    try {
+      await Lessons.findByIdAndDelete({ _id: req.params.lesson_id });
+      res.json({ msg: "Lesson is Deleted" });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
