@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useStyle } from "./styles";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Container, Grid, Typography } from "@mui/material";
-import CheckIcon from '@mui/icons-material/Check';
-import CreateIcon from '@mui/icons-material/Create';
-import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import CheckIcon from "@mui/icons-material/Check";
+import CreateIcon from "@mui/icons-material/Create";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { GlobalState } from "../../../GlobalState";
@@ -110,21 +110,26 @@ const SingleCourse = () => {
         <Grid className={classes.contains} container spacing={2}>
           <Grid item xs={12} md={6}>
             <h2>Title : {course?.courseDetails?.title}</h2>
-            <h5 className={classes.pading}>Istructor : {course?.courseDetails?.instructor?.name}</h5>
+            <h5 className={classes.pading}>
+              Istructor : {course?.courseDetails?.instructor?.name}
+            </h5>
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography
               component="p"
-              style={{ display: "flex", alignItems: "center", marginTop: "25px" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: "25px",
+              }}
             >
-              <GroupsOutlinedIcon className={classes.icon} /> Total enrolled : {course?.courseDetails?.enrolled}
+              <GroupsOutlinedIcon className={classes.icon} /> Total enrolled :{" "}
+              {course?.courseDetails?.enrolled}
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <h2 className={classes.pading}>About </h2>
-            <p className={classes.about}>
-              {course?.courseDetails?.about}
-            </p>
+            <p className={classes.about}>{course?.courseDetails?.about}</p>
           </Grid>
           <Grid item xs={12} sm={6}>
             <h2>What You’ll Learn</h2>
@@ -153,35 +158,27 @@ const SingleCourse = () => {
             <h2>Requirement</h2>
             <Grid className={classes.container} container spacing={3}>
               {req.map((req) => (
-                <Grid item xs={12}
-                  md={6}
-                  lg={6}
-                >
+                <Grid item xs={12} md={6} lg={6}>
                   <Typography
                     component="p"
                     style={{ display: "flex", alignItems: "center" }}
                   >
-                    <CreateIcon className={classes.icon} />{" "}
-                    {req.requrement}
+                    <CreateIcon className={classes.icon} /> {req?.requrement}
                   </Typography>
                 </Grid>
               ))}
             </Grid>
-
           </Grid>
           <Grid item xs={12}>
             <h2 className={classes.pading}>Description </h2>
-            <p>
-              {course?.courseDetails?.description}
-            </p>
+            <p>{course?.courseDetails?.description}</p>
           </Grid>
-
         </Grid>
         {/* map lesson  */}
 
         <div className={classes.lessonWrapper}>
           {lessons.map((lesson) => (
-            <Lesson lessons={lesson} key={lesson.id}></Lesson>
+            <Lesson lessons={lesson} key={lesson._id} />
           ))}
         </div>
       </Container>

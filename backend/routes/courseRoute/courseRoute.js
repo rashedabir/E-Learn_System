@@ -14,7 +14,8 @@ router.get("/all_course", courseCTRL.getCourse);
 router
   .route("/course_details/:course_id")
   .get(courseCTRL.courseDetails)
-  .delete(auth, authInstructor, courseCTRL.deleteCourse);
+  .delete(auth, authInstructor, courseCTRL.deleteCourse)
+  .put(auth, authInstructor, courseCTRL.updateCourse);
 
 router
   .route("/course/review/:course_id")

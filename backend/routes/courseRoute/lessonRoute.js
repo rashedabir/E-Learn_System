@@ -10,4 +10,9 @@ router
 
 router.route("/lesson/:lesson_id").put(auth, lessonCTRL.updateLesson);
 
+router
+  .route("/lesson_details/:lesson_id")
+  .get(auth, authInstructor, lessonCTRL.getSingleLesson)
+  .delete(auth, authInstructor, lessonCTRL.deleteLesson);
+
 module.exports = router;

@@ -10,7 +10,7 @@ import CreateCourse from "./pages/createCourse/CreateCourse";
 import SingleCourse from "./pages/instrucrorDashboard/singleCourse/SingleCourse";
 import AddTask from "./pages/instrucrorDashboard/singleCourse/addTask/AddTask";
 import AddLesson from "./pages/instrucrorDashboard/singleCourse/addLesson/AddLesson";
-import CourseDetails from "./pages/home/CourseDetails/CourseDetails"
+import CourseDetails from "./pages/home/CourseDetails/CourseDetails";
 function App() {
   //test
   return (
@@ -26,7 +26,8 @@ function App() {
         <Route path="/course_edit/:courseId" element={<CreateCourse />} />
         <Route path="/course_task/:courseId" element={<AddTask />} />
         <Route path="/create_lesson/:courseId" element={<AddLesson />} />
-        <Route path="/details/:courseId" element={< CourseDetails/>} />
+        <Route path="/update_lesson/:lessonId" element={<AddLesson />} />
+        <Route path="/details/:courseId" element={<CourseDetails />} />
       </Routes>
       <Footer />
     </Router>

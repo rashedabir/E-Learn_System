@@ -11,7 +11,7 @@ const LessonVideo = (props) => {
         <span>Class : {title}</span>
       </div>
       <div className={classes.video}>
-        <ReactPlayer url={link} />
+        <ReactPlayer controls url={link} />
       </div>
       {/* <ReactPlayer url={link} /> */}
     </div>

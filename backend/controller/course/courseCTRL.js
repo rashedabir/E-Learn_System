@@ -100,6 +100,50 @@ const courseCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  updateCourse: async (req, res) => {
+    try {
+      const {
+        title,
+        price,
+        description,
+        about,
+        objective,
+        requirements,
+        banner,
+        category,
+      } = req.body;
+      if (
+        !title ||
+        !price ||
+        !description ||
+        !category ||
+        !about ||
+        !requirements ||
+        !objective
+      ) {
+        return res.status(400).json({ msg: "Inavild Course Details" });
+      }
+      if (!banner) {
+        return res.status(400).json({ msg: "No Image is Selected" });
+      }
+      await Course.findOneAndUpdate(
+        { _id: req.params.course_id },
+        {
+          title,
+          price,
+          description,
+          about,
+          objective,
+          requirements,
+          banner,
+          category,
+        }
+      );
+      res.json({ msg: "Course is Updated." });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
   reviewCourse: async (req, res) => {
     try {
       const { rating, comment } = req.body;
