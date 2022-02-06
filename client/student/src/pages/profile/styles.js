@@ -10,6 +10,9 @@ export const useStyle = makeStyles({
         backgroundColor: "white",
         borderRadius: "15px",
         textAlign: 'center',
+        padding: "5px",
+        paddingTop: "10px",
+        paddingBottom: "10px",
     },
     imag: {
         width: "100%",
@@ -18,5 +21,6 @@ export const useStyle = makeStyles({
     profileright: {
         backgroundColor: "white",
         borderRadius: "15px",
-    }
+        paddingBottom: "20px",
+    },
 });

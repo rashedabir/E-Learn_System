@@ -1,4 +1,5 @@
 import { Button, Container, Grid, TextField } from "@mui/material";
+import { useStyle } from "./styles";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { v4 as uuidv4 } from "uuid";
@@ -10,6 +11,7 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 
 const AddLesson = () => {
+  const classes = useStyle();
   const [heading, setHeading] = useState("");
   const state = useContext(GlobalState);
   const [token] = state.token;
@@ -113,8 +115,8 @@ const AddLesson = () => {
   }, [lessonId, token]);
 
   return (
-    <div>
-      <Container maxWidth="xl">
+    <div className={classes.root} >
+      <Container maxWidth="xl" className={classes.containers}>
         <h1>{lessonId ? "Update" : "Add"} Lesson</h1>
         <Grid container spacing={4} alignItems="center">
           <Grid item md={12}>

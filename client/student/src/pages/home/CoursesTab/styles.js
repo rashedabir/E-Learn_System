@@ -6,10 +6,10 @@ export const useStyle = makeStyles({
   },
   tabcontainer: {
     display: "flex",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
     color: "black",
-    fontWeight: 700,
+    fontWeight: 800,
     textAlign: "center",
     margin: "auto",
   },

@@ -1,7 +1,6 @@
 import React, { Fragment, useContext, useState } from "react";
 import {
   AppBar,
-  Avatar,
   Box,
   Button,
   Container,
@@ -10,7 +9,6 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -32,22 +30,22 @@ const Navbar = () => {
   console.log(user);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  // const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   const logOut = async () => {
     await axios.get("/api/logout");
@@ -186,7 +184,7 @@ const Navbar = () => {
                 </Button>
               </Box>
             )}
-            <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
+            {/* <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -221,7 +219,7 @@ const Navbar = () => {
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
               </Menu>
-            </Box>
+            </Box> */}
           </Toolbar>
         </Container>
       </AppBar>

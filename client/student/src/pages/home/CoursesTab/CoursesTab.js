@@ -74,7 +74,7 @@ const CoursesTab = () => {
               {tabList &&
                 tabList.map((item, i) => (
                   <Tab
-                    sx={{ textTransform: "none" }}
+                    sx={{ textTransform: "uppercase" }}
                     label={item}
                     value={i}
                     key={i}
@@ -94,7 +94,7 @@ const CoursesTab = () => {
                         .slice(0, 4)
                         .map((item, i) => (
                           <Grid item md={3}>
-                            <Cards key={i} item={item} type="details"/>
+                            <Cards key={i} item={item} type="details" />
                           </Grid>
                         ))}
                   </Grid>

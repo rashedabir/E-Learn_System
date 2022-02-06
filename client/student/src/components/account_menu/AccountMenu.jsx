@@ -86,7 +86,12 @@ const AccountMenu = ({ logOut }) => {
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Settings
+          <Typography
+            component={Link}
+            to={`/setting`}
+          >
+            Settings
+          </Typography>
         </MenuItem>
         <MenuItem
           onClick={() => {
