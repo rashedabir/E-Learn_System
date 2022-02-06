@@ -7,6 +7,9 @@ export const useStyle = makeStyles({
     border: "none",
     boxShadow: "rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;",
   },
+  cardmain: {
+    height: '100%',
+  },
   cardimg: {
     height: "150px",
 

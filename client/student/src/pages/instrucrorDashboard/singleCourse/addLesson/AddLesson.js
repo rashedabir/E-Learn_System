@@ -189,7 +189,10 @@ const AddLesson = () => {
           sx={{ my: 5 }}
           fullWidth
           variant="contained"
-          color="warning"
+          style={{
+            backgroundColor: "#EA5252",
+            textTransform: "none",
+          }}
         >
           {lessonId ? "Update" : "Add"}
         </Button>

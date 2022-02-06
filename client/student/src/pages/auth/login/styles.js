@@ -20,6 +20,7 @@ export const useStyle = makeStyles({
   },
   btn: {
     height: "40px",
+    backgroundColor: "#EA5252"
   },
   msg: {
     textAlign: "center",

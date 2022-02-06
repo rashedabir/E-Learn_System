@@ -131,10 +131,15 @@ const CourseDetails = () => {
               </CardContent>
               <CardActions>
                 <Button
-                  color="secondary"
+                  style={{
+                    backgroundColor: "#EA5252",
+                    padding: "18px 36px",
+                    fontSize: "18px",
+                    textTransform: "none"
+                  }}
                   className={classes.button}
                   variant="contained"
-                  onClick={() => {}}
+                  onClick={() => { }}
                 >
                   Enroll
                 </Button>

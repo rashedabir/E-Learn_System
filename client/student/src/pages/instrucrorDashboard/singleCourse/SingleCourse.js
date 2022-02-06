@@ -75,7 +75,11 @@ const SingleCourse = () => {
         <div className={classes.top}>
           <span className={classes.link}>
             <h3 className={classes.linktxt}>
-              <Button onClick={deleteCourse} color="error">
+              <Button
+                style={{
+                  textTransform: "none"
+                }}
+                onClick={deleteCourse} color="error">
                 Delete Course
               </Button>
             </h3>
@@ -83,21 +87,37 @@ const SingleCourse = () => {
           <span className={classes.link}>
             <Link to={`/course_edit/${courseId}`}>
               <h3 className={classes.linktxt}>
-                <Button color="secondary">Edit Course</Button>
+                <Button
+                  style={{
+                    textTransform: "none"
+                  }}
+                  color="secondary">Edit Course</Button>
               </h3>
             </Link>
           </span>
           <span className={classes.link}>
             <Link to={`/course_task/${courseId}`}>
               <h3 className={classes.linktxt}>
-                <Button color="secondary">Add Task</Button>
+                <Button
+                  style={{
+                    textTransform: "none"
+                  }}
+                  color="secondary">
+                  Add Task
+                </Button>
               </h3>
             </Link>
           </span>
           <span className={classes.link}>
             <Link to={`/create_lesson/${courseId}`}>
               <h3 className={classes.linktxt}>
-                <Button color="secondary">Add Lesson</Button>
+                <Button
+                  style={{
+                    textTransform: "none"
+                  }}
+                  color="secondary">
+                  Add Lesson
+                </Button>
               </h3>
             </Link>
           </span>

@@ -1,4 +1,4 @@
-import { Card } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useStyle } from "./styles";
@@ -17,8 +17,14 @@ const InstructionCoursesCard = ({ course }) => {
           />
           <button className={classes.tag}>{course?.category}</button>
           <h1 className={classes.heading}>
-            <Link to={`/course_details/${course?._id}`}>{course?.title}</Link>
+            <Typography
+              component={Link}
+              to={`/course_details/${course?._id}`}
+            >
+              {course?.title}
+            </Typography>
           </h1>
+
         </Card>
       </div>
     </div>

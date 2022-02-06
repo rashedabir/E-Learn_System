@@ -386,7 +386,9 @@ const CreateCourse = () => {
             ))}
             <Button
               variant="contained"
-              color="warning"
+              style={{
+                backgroundColor: "#EA5252",
+              }}
               onClick={handleAddObjective}
             >
               <AddIcon />
@@ -424,7 +426,9 @@ const CreateCourse = () => {
             ))}
             <Button
               variant="contained"
-              color="warning"
+              style={{
+                backgroundColor: "#EA5252",
+              }}
               onClick={handleAddRequirement}
             >
               <AddIcon />
@@ -435,10 +439,13 @@ const CreateCourse = () => {
           onClick={handleSubmit}
           fullWidth
           variant="contained"
-          color="warning"
+          style={{
+            backgroundColor: "#EA5252",
+            textTransform: "none",
+          }}
           sx={{ mt: 5 }}
         >
-          <SaveIcon /> {courseId ? "update" : "save"}
+          <SaveIcon /> {courseId ? "Update" : " Save"}
         </Button>
       </Container>
     </div>
