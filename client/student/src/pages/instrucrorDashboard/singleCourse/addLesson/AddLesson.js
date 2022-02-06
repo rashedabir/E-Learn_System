@@ -59,7 +59,6 @@ const AddLesson = () => {
       1
     );
     setVideos(values);
-    console.log(values);
   };
 
   const storeLessson = async () => {
@@ -115,7 +114,7 @@ const AddLesson = () => {
   }, [lessonId, token]);
 
   return (
-    <div className={classes.root} >
+    <div className={classes.root}>
       <Container maxWidth="xl" className={classes.containers}>
         <h1>{lessonId ? "Update" : "Add"} Lesson</h1>
         <Grid container spacing={4} alignItems="center">

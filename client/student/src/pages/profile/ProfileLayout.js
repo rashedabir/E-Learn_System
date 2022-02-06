@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useStyle } from "./styles";
@@ -17,39 +17,31 @@ const ProfileLayout = ({ children }) => {
                 alt=""
               />
               <Button
-                sx={{ my: 1 }}
+                sx={{ my: 1, color: "#000" }}
                 fullWidth
                 variant="contained"
                 color="primary"
+                component={Link}
+                to={`/profile`}
                 style={{
                   backgroundColor: "#EEE",
                   textTransform: "none",
                 }}
               >
-                <Typography classes={{ hover: classes.hover }}
-                  component={Link}
-                  color='black'
-                  to={`/profile`}
-                >
-                  Profile
-                </Typography>
+                General Information
               </Button>
               <Button
-                sx={{ my: 1 }}
+                sx={{ my: 1, color: "#000" }}
                 fullWidth
+                component={Link}
+                to={`/setting`}
                 variant="contained"
                 style={{
                   backgroundColor: "#Eee",
                   textTransform: "none",
                 }}
               >
-                <Typography
-                  component={Link}
-                  color='black'
-                  to={`/setting`}
-                >
-                  Setting
-                </Typography>
+                Setting
               </Button>
             </div>
           </Grid>
