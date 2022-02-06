@@ -12,7 +12,6 @@ import AddTask from "./pages/instrucrorDashboard/singleCourse/addTask/AddTask";
 import AddLesson from "./pages/instrucrorDashboard/singleCourse/addLesson/AddLesson";
 import CourseDetails from "./pages/home/CourseDetails/CourseDetails";
 function App() {
-  //test
   return (
     <Router>
       <Navbar />
