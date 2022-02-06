@@ -22,8 +22,12 @@ import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import CreateIcon from "@mui/icons-material/Create";
 
 const CourseDetails = () => {
+  const classes = useStyle();
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
+  const [requirrements, setRequirrements] = useState([]);
+
+  console.log(requirrements);
 
   useEffect(() => {
     const getData = async () => {
@@ -32,6 +36,9 @@ const CourseDetails = () => {
           .get(`/api/course_details/${courseId}`)
           .then((res) => {
             if (res.status === 200) {
+              console.log("*****", res.data);
+              const { courseDetails } = res.data;
+              setRequirrements(courseDetails?.requirements);
               setCourse(res.data);
             }
           })
@@ -43,7 +50,6 @@ const CourseDetails = () => {
     getData();
   }, [courseId]);
 
-  const classes = useStyle();
   return (
     <div>
       <Container maxWidth="xl" className={classes.root}>
@@ -93,27 +99,16 @@ const CourseDetails = () => {
               </Typography>
               <h2>Requirements</h2>
               <Grid container className={classes.require} spacing={3}>
-                <Grid item md={6} xs={12}>
-                  <Typography className={classes.require2}>
-                    {" "}
-                    <CreateIcon className={classes.icon2} />
-                    HTML
-                  </Typography>
-                </Grid>
-                <Grid item md={6} xs={12}>
-                  <Typography className={classes.require2}>
-                    {" "}
-                    <CreateIcon className={classes.icon2} />
-                    CSS
-                  </Typography>
-                </Grid>
-                <Grid item md={6} xs={12}>
-                  <Typography className={classes.require2}>
-                    {" "}
-                    <CreateIcon className={classes.icon2} />
-                    JS
-                  </Typography>
-                </Grid>
+                {requirrements &&
+                  requirrements?.length > 0 &&
+                  requirrements?.map((item, i) => (
+                    <Grid item md={6} xs={12} key={i}>
+                      <Typography className={classes.require2}>
+                        <CreateIcon className={classes.icon2} />
+                        {item?.requrement}
+                      </Typography>
+                    </Grid>
+                  ))}
               </Grid>
             </Paper>
           </Grid>
@@ -122,7 +117,7 @@ const CourseDetails = () => {
               <img
                 src={course?.courseDetails?.banner?.url}
                 className={classes.banner}
-                alt=""
+                alt="banner"
               />
               <CardContent>
                 <Typography align="center" variant="h5">
