@@ -139,7 +139,11 @@ const Login = () => {
           sx={{ pb: 2 }}
         />
         <Button
-          color="warning"
+          style={{
+            backgroundColor: "#EA5252",
+            padding: "18px 36px",
+            fontSize: "18px"
+          }}
           className={classes.btn}
           fullWidth
           onClick={handleSubmit}

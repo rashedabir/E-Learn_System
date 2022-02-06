@@ -1,17 +1,17 @@
 import React from "react";
 import Card from "@mui/material/Card";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useStyle } from "./styles";
 import { Link } from "react-router-dom";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
-const Cards = ({ item,type }) => {
+const Cards = ({ item, type }) => {
   const classes = useStyle();
   return (
     <div className={classes.root}>
-      <Card sx={{ border: "none", boxShadow: "none" }}>
+      <Card className={classes.cardmain} sx={{ border: "none", boxShadow: "none", height: "10%" }}>
         <img
           className={classes.cardimg}
           width="100%"
@@ -20,7 +20,12 @@ const Cards = ({ item,type }) => {
         />
         <button className={classes.tag}>{item?.category}</button>
         <h1 className={classes.heading}>
-          <Link to={`/${type}/${item?._id}`}>{item?.title}</Link>
+          <Typography
+            component={Link}
+            to={`/${type}/${item?._id}`}
+          >
+            {item?.title}
+          </Typography>
         </h1>
         <div className={classes.flexitem}>
           <div className={classes.avatar}>
@@ -49,7 +54,7 @@ const Cards = ({ item,type }) => {
           </Grid>
         </Grid>
       </Card>
-    </div>
+    </div >
   );
 };
 
