@@ -11,7 +11,7 @@ import SingleCourse from "./pages/instrucrorDashboard/singleCourse/SingleCourse"
 import AddTask from "./pages/instrucrorDashboard/singleCourse/addTask/AddTask";
 import AddLesson from "./pages/instrucrorDashboard/singleCourse/addLesson/AddLesson";
 import CourseDetails from "./pages/home/CourseDetails/CourseDetails";
-import Profile from "./pages/profile/Profile";
+import GeneralInformation from "./pages/profile/generalInformation/GeneralInformation";
 function App() {
   return (
     <Router>
@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<GeneralInformation />} />
         <Route path="/instructor_dashboard" element={<InstructorDashboard />} />
         <Route path="/create_course" element={<CreateCourse />} />
         <Route path="/course_details/:courseId" element={<SingleCourse />} />
