@@ -13,6 +13,7 @@ import AddLesson from "./pages/instrucrorDashboard/singleCourse/addLesson/AddLes
 import CourseDetails from "./pages/home/CourseDetails/CourseDetails";
 import GeneralInformation from "./pages/profile/generalInformation/GeneralInformation";
 import GeneralSetting from "./pages/profile/generalSetting/GeneralSetting";
+import AllSubmission from "./pages/instrucrorDashboard/singleCourse/tasks/allSubmission/AllSubmission";
 function App() {
   return (
     <Router>
@@ -31,6 +32,7 @@ function App() {
         <Route path="/create_lesson/:courseId" element={<AddLesson />} />
         <Route path="/update_lesson/:lessonId" element={<AddLesson />} />
         <Route path="/details/:courseId" element={<CourseDetails />} />
+        <Route path="/all_submission/:taskId" element={<AllSubmission />} />
       </Routes>
       <Footer />
     </Router>
