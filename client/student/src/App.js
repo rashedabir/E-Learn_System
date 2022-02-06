@@ -28,10 +28,11 @@ function App() {
         <Route path="/create_course" element={<CreateCourse />} />
         <Route path="/course_details/:courseId" element={<SingleCourse />} />
         <Route path="/course_edit/:courseId" element={<CreateCourse />} />
-        <Route path="/course_task/:courseId" element={<AddTask />} />
         <Route path="/create_lesson/:courseId" element={<AddLesson />} />
         <Route path="/update_lesson/:lessonId" element={<AddLesson />} />
         <Route path="/details/:courseId" element={<CourseDetails />} />
+        <Route path="/course_task/:courseId" element={<AddTask />} />
+        <Route path="/update_task/:taskId/" element={<AddTask />} />
         <Route path="/all_submission/:taskId" element={<AllSubmission />} />
       </Routes>
       <Footer />
