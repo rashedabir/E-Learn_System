@@ -27,8 +27,11 @@ export const useStyle = makeStyles({
         alignItems: "center",
     },
     taskcontent: {
-        paddingTop: "3px",
+        paddingTop: "8px",
         paddingLeft: "8px",
+    },
+    taskcontenttxt: {
+        marginBottom: "8px",
     },
     footer: {
         display: "flex",
@@ -42,7 +45,7 @@ export const useStyle = makeStyles({
     end: {
         borderLeft: "3px solid red",
         paddingLeft: "2px",
-        marginTop: "5px",
+        marginTop: "8px",
     }
 
 });

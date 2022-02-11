@@ -63,7 +63,7 @@ const Task = (props) => {
         </div>
         <div className={classes.taskcontent}>
           <div>
-            {description}
+            <div className={classes.taskcontenttxt}>{description}</div>
             <div className={classes.footer}>
               <div>
                 <div className={classes.start}>Starts : {start}</div>
