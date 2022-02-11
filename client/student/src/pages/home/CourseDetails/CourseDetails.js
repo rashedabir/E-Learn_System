@@ -9,7 +9,7 @@ import {
   CardContent,
   Button,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useStyle } from "./styles";
 
 import axios from "axios";
@@ -26,7 +26,7 @@ const CourseDetails = () => {
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
   const [requirrements, setRequirrements] = useState([]);
-
+  const [objective, setObjective] = useState([]); 
   console.log(requirrements);
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const CourseDetails = () => {
               console.log("*****", res.data);
               const { courseDetails } = res.data;
               setRequirrements(courseDetails?.requirements);
+              setObjective(courseDetails?.objective);
               setCourse(res.data);
             }
           })
@@ -62,11 +63,11 @@ const CourseDetails = () => {
                     <h2>Course Name : {course?.courseDetails?.title}</h2>
                   </Typography>
                   <Typography component="p">
-                    Category : {course?.courseDetails?.title}
+                    Category : {course?.courseDetails?.category}
                   </Typography>
                   <br></br>
                   <p>
-                    <b>1000</b> People Enrolled This Course
+                    <b>{course?.courseDetails?.enrolled}+</b>  People Enrolled This Course
                   </p>
                 </Grid>
                 <Grid item xs={6}>
@@ -110,6 +111,19 @@ const CourseDetails = () => {
                     </Grid>
                   ))}
               </Grid>
+              <h2>Objective</h2>
+              <Grid container className={classes.require} spacing={3}>
+                {objective &&
+                  objective?.length > 0 &&
+                  objective?.map((item, i) => (
+                    <Grid item md={6} xs={12} key={i}>
+                      <Typography className={classes.require2}>
+                        <CreateIcon className={classes.icon2} />
+                        {item?.objective}
+                      </Typography>
+                    </Grid>
+                  ))}
+              </Grid>
             </Paper>
           </Grid>
           <Grid item md={3} xs={12}>
@@ -121,7 +135,7 @@ const CourseDetails = () => {
               />
               <CardContent>
                 <Typography align="center" variant="h5">
-                  Price : {course?.courseDetails?.price} Taka
+                  Price : {course?.courseDetails?.price} $
                 </Typography>
               </CardContent>
               <CardActions>
@@ -132,6 +146,8 @@ const CourseDetails = () => {
                     fontSize: "18px",
                     textTransform: "none"
                   }}
+                  component={Link}
+                  to={`/enroll_page_student/${courseId}`}
                   className={classes.button}
                   variant="contained"
                   onClick={() => { }}

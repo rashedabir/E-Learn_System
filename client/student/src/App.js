@@ -13,6 +13,13 @@ import AddLesson from "./pages/instrucrorDashboard/singleCourse/addLesson/AddLes
 import CourseDetails from "./pages/home/CourseDetails/CourseDetails";
 import GeneralInformation from "./pages/profile/generalInformation/GeneralInformation";
 import GeneralSetting from "./pages/profile/generalSetting/GeneralSetting";
+//import CourseSkeleton from "./components/skeleton/CourseDetails_Skeleton";
+import StudentDashboard from './pages/StudentDashboard/StudentDashboard';
+import SingleCourseDetails from './pages/StudentDashboard/SingleCourseDetails/SinglecourseDetails';
+import StudentLesson from './pages/StudentDashboard/SingleCourseDetails/lesson/lesson';
+import LessonVideo from './pages/instrucrorDashboard/singleCourse/lessons/lessonsVideo/LessonVideo';
+import EnrollStudent from './pages/home/enroll/enroll';
+
 function App() {
   return (
     <Router>
@@ -31,6 +38,9 @@ function App() {
         <Route path="/create_lesson/:courseId" element={<AddLesson />} />
         <Route path="/update_lesson/:lessonId" element={<AddLesson />} />
         <Route path="/details/:courseId" element={<CourseDetails />} />
+        <Route path="/student_dashboard" element={<StudentDashboard />} />
+        <Route path="/enroll_page_student/:courseId" element={<EnrollStudent />} />
+        <Route path="/singleCourse_details/" element={<SingleCourseDetails />} />
       </Routes>
       <Footer />
     </Router>
