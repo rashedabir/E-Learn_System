@@ -69,12 +69,12 @@ const CoursesTab = () => {
               className={classes.tabcontainer}
               onChange={handleChange}
               indicatorColor={false}
-              textColor="secondary"
+              // textColor="secondary"
             >
               {tabList &&
                 tabList.map((item, i) => (
                   <Tab
-                    sx={{ textTransform: "uppercase" }}
+                    sx={{ textTransform: "capitalize" }}
                     label={item}
                     value={i}
                     key={i}

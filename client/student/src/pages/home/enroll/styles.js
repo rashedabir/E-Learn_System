@@ -6,7 +6,7 @@ export const useStyles = makeStyles({
     margin: "80px auto",
   },
   formWrapper: {
-    maxWidth: "400px",
+    maxWidth: "800px",
     margin: "0px auto",
     border: "1px solid #e6e6e6",
     padding: "20px",
@@ -30,7 +30,7 @@ export const useStyles = makeStyles({
   },
   button: {
     height: "40px",
-    cursor:"pointer",
+    cursor: "pointer",
   },
   category: {
     color: "#757575",

@@ -32,6 +32,7 @@ const EnrollStudent = () => {
     };
     getData();
   }, [courseId]);
+
   return (
     <div className={classes.root}>
       <form className={classes.formWrapper}>
@@ -52,7 +53,9 @@ const EnrollStudent = () => {
               {course?.courseDetails?.category}
             </Typography>
             <br></br>
-            <Typography variant="h5">{course?.courseDetails?.price} $</Typography>
+            <Typography variant="h5">
+              {course?.courseDetails?.price} $
+            </Typography>
           </div>
         </div>
 
