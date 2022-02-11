@@ -13,7 +13,9 @@ router.route("/task/:task_id").put(auth, authStudent, taskCTRL.submitTask);
 
 router
   .route("/task_update/:task_id")
-  .put(auth, authInstructor, taskCTRL.updateTask);
+  .put(auth, authInstructor, taskCTRL.updateTask)
+  .get(auth, authInstructor, taskCTRL.getSingleTask)
+  .delete(auth, authInstructor, taskCTRL.deleteSingleTask);
 
 router
   .route("/mark_upload/:submission_id")

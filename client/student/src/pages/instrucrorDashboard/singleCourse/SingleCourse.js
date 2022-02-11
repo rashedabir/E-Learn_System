@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useStyle } from "./styles";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 import CheckIcon from "@mui/icons-material/Check";
 import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
@@ -9,6 +13,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { GlobalState } from "../../../GlobalState";
 import Lesson from "./lessons/Lesson";
+import Task from "./tasks/Task";
 
 const SingleCourse = () => {
   const classes = useStyle();
@@ -19,6 +24,7 @@ const SingleCourse = () => {
   const [lessons, setLessons] = useState([]);
   const [objective, setObjective] = useState([]);
   const [req, setReq] = useState([]);
+  const [task, setTask] = useState([]);
   const history = useNavigate();
 
   useEffect(() => {
@@ -30,6 +36,7 @@ const SingleCourse = () => {
             setLessons(res.data.lessons);
             setObjective(res.data.courseDetails.objective);
             setReq(res.data.courseDetails.requirements);
+            setTask(res.data.tasks);
           }
         });
       }
@@ -66,6 +73,11 @@ const SingleCourse = () => {
           });
       }
     });
+  };
+  const [value, setValue] = React.useState('lesson');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -194,13 +206,33 @@ const SingleCourse = () => {
             <p>{course?.courseDetails?.description}</p>
           </Grid>
         </Grid>
-        {/* map lesson  */}
 
-        <div className={classes.lessonWrapper}>
-          {lessons.map((lesson) => (
-            <Lesson lessons={lesson} key={lesson._id} />
-          ))}
-        </div>
+        {/* tab  */}
+        <Box sx={{ width: '100%', typography: 'body1' }}>
+          <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <TabList onChange={handleChange}>
+                <Tab label="Lessons" value="lesson" style={{ minWidth: "50%" }} />
+                <Tab label="Task" value="task" style={{ minWidth: "50%" }} />
+              </TabList>
+            </Box>
+            <TabPanel value="lesson">
+              {/* map lesson  */}
+              <div className={classes.lessonWrapper}>
+                {lessons.map((lesson) => (
+                  <Lesson lessons={lesson} key={lesson._id} />
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel value="task">
+              {/* all task  */}
+              {task.map((task) => (
+                <Task tasks={task} key={task._id} />
+              ))}
+            </TabPanel>
+          </TabContext>
+        </Box>
+
       </Container>
     </div>
   );

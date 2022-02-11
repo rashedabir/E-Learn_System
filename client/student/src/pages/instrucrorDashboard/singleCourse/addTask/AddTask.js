@@ -3,8 +3,9 @@ import DatePicker from "@mui/lab/DatePicker";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { Button, Container, Grid, TextField } from "@mui/material";
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { GlobalState } from "../../../../GlobalState";
 import { useStyle } from "./styles";
@@ -17,17 +18,20 @@ const AddTask = () => {
   const [description, setDescription] = useState("");
   const [startvalue, setStartValue] = useState(new Date().toLocaleDateString());
   const [endvalue, setEndValue] = useState(new Date().toLocaleDateString());
-  const { courseId } = useParams();
+  const { courseId, taskId } = useParams();
   const history = useNavigate();
 
+  console.log(taskId);
+
+  // task add
   const handleSubmit = async () => {
+    const payload = {
+      title: title,
+      description: description,
+      start: new Date(startvalue).toLocaleDateString(),
+      end: new Date(endvalue).toLocaleDateString(),
+    };
     if (courseId) {
-      const payload = {
-        title: title,
-        description: description,
-        start: new Date(startvalue).toLocaleDateString(),
-        end: new Date(endvalue).toLocaleDateString(),
-      };
       await axios
         .post(`/api/task/${courseId}`, payload, {
           headers: { Authorization: token },
@@ -37,15 +41,53 @@ const AddTask = () => {
             Swal.fire("Good job!", "You Created a Task!", "success");
             history(`/course_details/${courseId}`);
           }
+        })
+        .catch((error) => {
+          toast.error(error.response.data.msg);
+        });
+    } else if (taskId) {
+      await axios
+        .put(`/api/task_update/${taskId}`, payload, {
+          headers: { Authorization: token },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire("Good job!", "You updated this Task!", "success");
+          }
+        })
+        .catch((error) => {
+          toast.error(error.response.data.msg);
         });
     }
   };
+
+  useEffect(() => {
+    // task update
+    if (taskId) {
+      const getSingleTask = async () => {
+        await axios
+          .get(`/api/task_update/${taskId}`, {
+            headers: { Authorization: token },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              const { task } = res.data;
+              setTitle(task?.title);
+              setDescription(task?.description);
+              setStartValue(task?.start);
+              setEndValue(task?.end);
+            }
+          });
+      };
+      getSingleTask();
+    }
+  }, [taskId, token]);
 
   return (
     <div className={classes.root}>
       <Container maxWidth="xl">
         <div className={classes.containers}>
-          <h1>Create Task</h1>
+          <h1>{taskId ? "Update" : "Create"} Task</h1>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} sx={{ marginBottom: "12px" }}>
               <TextField
@@ -118,7 +160,7 @@ const AddTask = () => {
               textTransform: "none",
             }}
           >
-            Add Task
+            {taskId ? "Update" : "Create"} Task
           </Button>
         </div>
       </Container>

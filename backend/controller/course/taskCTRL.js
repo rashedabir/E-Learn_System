@@ -16,6 +16,27 @@ const taskCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  getSingleTask: async (req, res) => {
+    try {
+      const task_id = req.params.task_id;
+      const task = await Task.findOne({ _id: task_id });
+      if (!task) {
+        return res.status(400).json({ msg: "Task not Found." });
+      }
+      res.json({ task });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
+  deleteSingleTask: async (req, res) => {
+    try {
+      const task_id = req.params.task_id;
+      const task = await Task.findByIdAndDelete({ _id: task_id });
+      res.json({ msg: "Delete Successfully." });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
   createTask: async (req, res) => {
     try {
       const { title, description, start, end } = req.body;
