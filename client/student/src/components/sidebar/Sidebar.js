@@ -1,19 +1,23 @@
 import React from "react";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import { IconButton } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 
 const listBox = [
-  { name: "Dashboard", route: "/instructor_dashboard", icon: <DashboardIcon /> },
+  {
+    name: "Dashboard",
+    route: "/instructor_dashboard",
+    icon: <DashboardIcon />,
+  },
   { name: "Create Course", route: "/create_course", icon: <AddBoxIcon /> },
 ];
 
@@ -34,16 +38,6 @@ const Sidebar = ({ toggleDrawer, drawer }) => {
         ))}
       </List>
       <Divider />
-      {/* <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
     </Box>
   );
 

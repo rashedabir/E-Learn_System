@@ -7,7 +7,7 @@ function UserAPI(token) {
   const [callback, setCallback] = useState(false);
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(false);
-  //   const [list, setList] = useState([]);
+  const [list, setList] = useState([]);
 
   useEffect(() => {
     if (token) {
@@ -34,7 +34,7 @@ function UserAPI(token) {
             headers: { Authorization: token },
           });
           setIsLogged(true);
-          //   setList(res.data.user.list);
+          setList(res.data.student.enrolled);
           //   res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
           setUser(res.data.student);
           setLoading(false);
@@ -70,38 +70,38 @@ function UserAPI(token) {
     }
   }, [token]);
 
-  //   const addList = async (course) => {
-  //     if (!isLogged) {
-  //       return alert("Please Login or Registration to Continue Buying");
-  //     }
+  const addList = async (course) => {
+    if (!isLogged) {
+      return alert("Please Login or Registration to Continue Buying");
+    }
 
-  //     const check = list.every((item) => {
-  //       return item._id !== course._id;
-  //     });
+    const check = list.every((item) => {
+      return item.courseDetails._id !== course.courseDetails._id;
+    });
 
-  //     if (check) {
-  //       setList([...list, { ...course }]);
+    if (check) {
+      setList([...list, { ...course }]);
 
-  //       await axios.patch(
-  //         "https://course-hub-backend.herokuapp.com/user/addlist",
-  //         { list: [...list, { ...course }] },
-  //         {
-  //           headers: { Authorization: token },
-  //         }
-  //       );
-  //       toast.success("Successfully Enrolled");
-  //     } else {
-  //       toast.warn("Already Enrolled in This Course");
-  //     }
-  //   };
+      await axios.patch(
+        "/api/course/enroll",
+        { enrolled: [...list, { ...course }] },
+        {
+          headers: { Authorization: token },
+        }
+      );
+      toast.success("Successfully Enrolled");
+    } else {
+      toast.warn("Already Enrolled in This Course");
+    }
+  };
 
   return {
     isLogged: [isLogged, setIsLogged],
     callback: [callback, setCallback],
     user: [user, setUser],
     loading: [loading, setLoading],
-    // addList: addList,
-    // list: [list, setList],
+    addList: addList,
+    list: [list, setList],
   };
 }
 

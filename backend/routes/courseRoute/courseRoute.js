@@ -21,4 +21,8 @@ router
   .route("/course/review/:course_id")
   .put(auth, authStudent, courseCTRL.reviewCourse);
 
+router
+  .route("/course/enroll")
+  .patch(auth, authStudent, courseCTRL.enrollCourse);
+
 module.exports = router;

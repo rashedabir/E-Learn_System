@@ -33,6 +33,10 @@ const studentSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
+    enrolled: {
+      type: Array,
+      default: [],
+    },
     image: {
       type: Object,
     },

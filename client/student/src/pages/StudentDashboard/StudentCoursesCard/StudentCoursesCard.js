@@ -1,8 +1,9 @@
 import { Card, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import { useStyle } from "./styles";
 
-const StudentCoursesCard = () => {
+const StudentCoursesCard = ({ course }) => {
   const classes = useStyle();
   return (
     <div>
@@ -11,16 +12,13 @@ const StudentCoursesCard = () => {
           <img
             className={classes.cardimg}
             width="100%"
-            src="https://picsum.photos/seed/picsum/200/300"
-            alt="course"
+            src={course?.banner?.url}
+            alt={course?.title}
           />
-          <button className={classes.tag}>React</button>
+          <button className={classes.tag}>{course?.category}</button>
           <h1 className={classes.heading}>
-            <Typography
-            // component={Link}
-            // to={`/course_details/${course?._id}`}
-            >
-              React JS
+            <Typography component={Link} to={`/course_details/${course?._id}`}>
+              {course?.title}
             </Typography>
           </h1>
         </Card>

@@ -201,6 +201,30 @@ const courseCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  enrollCourse: async (req, res) => {
+    try {
+      const user = await Student.findById(req.user.id);
+      if (!user) return res.status(400).json({ msg: "User does not exist." });
+
+      await Student.findOneAndUpdate(
+        { _id: req.user.id },
+        {
+          enrolled: req.body.enrolled,
+        }
+      );
+
+      user.enrolled.filter((item) => {
+        return totalEnrolled(
+          item.courseDetails._id,
+          item.courseDetails.enrolled
+        );
+      });
+
+      return res.json({ msg: "Enrolled" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
   // createLessons: async (req, res) => {
   //   try {
   //     const { heading, videos } = req.body;
@@ -221,6 +245,15 @@ const courseCTRL = {
   //     return res.status(500).json({ msg: error.message });
   //   }
   // },
+};
+
+const totalEnrolled = async (id, oldEnrolled) => {
+  await Course.findOneAndUpdate(
+    { _id: id },
+    {
+      enrolled: 1 + oldEnrolled,
+    }
+  );
 };
 
 module.exports = courseCTRL;
