@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  } from "react";
 import Carousel from "react-grid-carousel";
 import StudentCoursesCard from "../StudentCoursesCard/StudentCoursesCard";
-import axios from "axios";
 import { useStyle } from "./styles";
-import { GlobalState } from "../../../GlobalState";
+
 
 const StudentCourses = () => {
   const classes = useStyle();

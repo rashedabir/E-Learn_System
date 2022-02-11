@@ -9,7 +9,7 @@ import {
   CardContent,
   Button,
 } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useStyle } from "./styles";
 
 import axios from "axios";
@@ -26,9 +26,9 @@ const CourseDetails = () => {
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
   const [requirrements, setRequirrements] = useState([]);
-  const [objective, setObjective] = useState([]); 
+  const [objective, setObjective] = useState([]);
   console.log(requirrements);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
@@ -67,7 +67,8 @@ const CourseDetails = () => {
                   </Typography>
                   <br></br>
                   <p>
-                    <b>{course?.courseDetails?.enrolled}+</b>  People Enrolled This Course
+                    <b>{course?.courseDetails?.enrolled}+</b> People Enrolled
+                    This Course
                   </p>
                 </Grid>
                 <Grid item xs={6}>
@@ -144,13 +145,13 @@ const CourseDetails = () => {
                     backgroundColor: "#EA5252",
                     padding: "18px 36px",
                     fontSize: "18px",
-                    textTransform: "none"
+                    textTransform: "none",
                   }}
-                  component={Link}
-                  to={`/enroll_page_student/${courseId}`}
                   className={classes.button}
                   variant="contained"
-                  onClick={() => { }}
+                  onClick={() => {
+                    navigate(`/enroll_page_student/${courseId}`);
+                  }}
                 >
                   Enroll
                 </Button>

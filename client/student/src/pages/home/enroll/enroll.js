@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Button, Card, CardHeader, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useStyles } from "./styles";
 const EnrollStudent = () => {
   const classes = useStyles();

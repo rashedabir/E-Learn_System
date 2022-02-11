@@ -15,8 +15,6 @@ import GeneralInformation from "./pages/profile/generalInformation/GeneralInform
 import GeneralSetting from "./pages/profile/generalSetting/GeneralSetting";
 import StudentDashboard from './pages/StudentDashboard/StudentDashboard';
 import SingleCourseDetails from './pages/StudentDashboard/SingleCourseDetails/SinglecourseDetails';
-import StudentLesson from './pages/StudentDashboard/SingleCourseDetails/lesson/lesson';
-import LessonVideo from './pages/instrucrorDashboard/singleCourse/lessons/lessonsVideo/LessonVideo';
 import EnrollStudent from './pages/home/enroll/enroll';
 
 import AllSubmission from "./pages/instrucrorDashboard/singleCourse/tasks/allSubmission/AllSubmission";

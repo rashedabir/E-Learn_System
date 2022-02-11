@@ -1,14 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { } from "react";
 import { useStyle } from "./styles";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button, Container, Grid, Typography } from "@mui/material";
+import {  Container, Grid, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import Swal from "sweetalert2";
-import axios from "axios";
-import { GlobalState } from "../../../GlobalState";
-import StudentLesson from "../SingleCourseDetails/lesson/lesson";
+
 
 const SingleCourseDetails = () => {
   const classes = useStyle();
