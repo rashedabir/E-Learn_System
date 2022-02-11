@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -11,9 +11,13 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import { GlobalState } from "../../GlobalState";
 
 const AccountMenu = ({ logOut }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const state = useContext(GlobalState);
+  const [user] = state.userAPI.user;
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -73,11 +77,21 @@ const AccountMenu = ({ logOut }) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
+        {user && user.type === "student" && (
+          <MenuItem>
+            <ListItemIcon>
+              <DashboardIcon fontSize="small" />
+            </ListItemIcon>
+            <Typography component={Link} to={`/student_dashboard`}>
+              Dashboard
+            </Typography>
+          </MenuItem>
+        )}
         <MenuItem>
-          <Avatar /> <Typography
-            component={Link}
-            to={`/profile`}
-          >
+          <ListItemIcon>
+            <Avatar fontSize="small" />
+          </ListItemIcon>
+          <Typography component={Link} to={`/profile`}>
             Profile
           </Typography>
         </MenuItem>
@@ -86,10 +100,7 @@ const AccountMenu = ({ logOut }) => {
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          <Typography
-            component={Link}
-            to={`/setting`}
-          >
+          <Typography component={Link} to={`/setting`}>
             Settings
           </Typography>
         </MenuItem>
