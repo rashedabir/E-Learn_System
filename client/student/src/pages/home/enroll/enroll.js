@@ -1,15 +1,20 @@
+import { Button, Typography } from "@mui/material";
 import axios from "axios";
-import { Button, Card, CardHeader, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { GlobalState } from "../../../GlobalState";
 import { useStyles } from "./styles";
+
 const EnrollStudent = () => {
   const classes = useStyles();
+  const state = useContext(GlobalState);
+  const addList = state.userAPI.addList;
+  const [list] = state.userAPI.list;
   const { courseId } = useParams();
-  const [course, setCourse] = useState([]);
-  // const [requirrements, setRequirrements] = useState([]);
-  // const [objective, setObjective] = useState([]);
-  //console.log(requirrements);
+  const [course, setCourse] = useState({});
+  const [enrolled, setEnrolled] = useState(false);
+
+  console.log(list);
 
   useEffect(() => {
     const getData = async () => {
@@ -18,10 +23,6 @@ const EnrollStudent = () => {
           .get(`/api/course_details/${courseId}`)
           .then((res) => {
             if (res.status === 200) {
-              console.log("*****", res.data);
-              // const { courseDetails } = res.data;
-              // setRequirrements(courseDetails?.requirements);
-              // setObjective(courseDetails?.objective);
               setCourse(res.data);
             }
           })
@@ -30,8 +31,18 @@ const EnrollStudent = () => {
           });
       }
     };
+    const checkEnroll = async () => {
+      list.filter((item) => {
+        if (item.courseDetails._id === course?.courseDetails?._id) {
+          setEnrolled(true);
+        } else {
+          setEnrolled(false);
+        }
+      });
+    };
     getData();
-  }, [courseId]);
+    checkEnroll();
+  }, [courseId, list, course?.courseDetails?._id]);
 
   return (
     <div className={classes.root}>
@@ -76,9 +87,11 @@ const EnrollStudent = () => {
           }}
           className={classes.button}
           variant="contained"
-          onClick={() => {}}
+          onClick={() => {
+            addList(course);
+          }}
         >
-          Enroll
+          {enrolled ? "Enrolled" : "Enroll"}
         </Button>
       </form>
     </div>
