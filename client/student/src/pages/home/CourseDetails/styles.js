@@ -29,7 +29,7 @@ export const useStyle = makeStyles(() => ({
   require: {
     width: "100%",
     padding: "10px 5%",
-    paddingBottom:"30px"
+    paddingBottom: "30px",
   },
   require2: {
     display: "flex",
@@ -40,4 +40,14 @@ export const useStyle = makeStyles(() => ({
     width: "100%",
     height: "170px",
   },
+  img: {
+    width: "100%",
+  },
+  tab2:{
+    padding:"50px 20px"
+  },
+  tab2grid2:{
+    
+  }
+
 }));

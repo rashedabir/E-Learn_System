@@ -34,7 +34,7 @@ function App() {
         <Route path="/course_edit/:courseId" element={<CreateCourse />} />
         <Route path="/create_lesson/:courseId" element={<AddLesson />} />
         <Route path="/update_lesson/:lessonId" element={<AddLesson />} />
-        <Route path="/details/:courseId" element={<CourseDetails />} />
+        <Route path="/details/:courseId" element={<CourseDetails/>} />
         <Route path="/student_dashboard" element={<StudentDashboard />} />
         <Route path="/enroll_page_student/:courseId" element={<EnrollStudent />} />
         <Route path="/singleCourse_details/" element={<SingleCourseDetails />} />
