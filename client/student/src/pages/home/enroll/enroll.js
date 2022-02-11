@@ -1,4 +1,4 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Divider, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -47,11 +47,10 @@ const EnrollStudent = () => {
   return (
     <div className={classes.root}>
       <form className={classes.formWrapper}>
-        <Typography variant="h5" className={classes.title}>
-          Enrollment
-          <br></br>
-          <br></br>
-        </Typography>
+        <Typography variant="h4">Checkout</Typography>
+        <br></br>
+        <Divider />
+        <br></br>
         <div className={classes.section}>
           <img
             src={course?.courseDetails?.banner?.url}
@@ -59,31 +58,37 @@ const EnrollStudent = () => {
             alt="banner"
           />
           <div className={classes.section2}>
-            <Typography variant="h4">{course?.courseDetails?.title}</Typography>
-            <Typography variant="h6" className={classes.category}>
+            <Typography variant="h6" className={classes.title}>
+              {course?.courseDetails?.title}
+            </Typography>
+            <Typography variant="subtitle2" className={classes.category}>
               {course?.courseDetails?.category}
             </Typography>
-            <br></br>
-            <Typography variant="h5">
-              {course?.courseDetails?.price} $
+
+            <Typography variant="h6" className={classes.price}>
+              ${course?.courseDetails?.price}
             </Typography>
           </div>
         </div>
 
-        <br></br>
-        <br></br>
-        <Typography variant="h6">
+        <Typography variant="subtitle2" className={classes.heading}>
+          Instructor Info
+        </Typography>
+
+        <Typography variant="h6" className={classes.title}>
           {course?.courseDetails?.instructor?.name}
         </Typography>
-        <Typography>{course?.courseDetails?.instructor?.mobile}</Typography>
+
         <Typography>{course?.courseDetails?.instructor?.address}</Typography>
+        <Typography>{course?.courseDetails?.instructor?.mobile}</Typography>
+
         <Button
           style={{
             backgroundColor: "#EA5252",
-            padding: "18px 36px",
-            fontSize: "18px",
+            padding: "18px 25px",
+            fontSize: "17px",
             textTransform: "none",
-            marginTop: "20px",
+            marginTop: "25px",
           }}
           className={classes.button}
           variant="contained"
@@ -91,7 +96,7 @@ const EnrollStudent = () => {
             addList(course);
           }}
         >
-          {enrolled ? "Enrolled" : "Enroll"}
+          {enrolled ? "Enrolled" : "Confirm Enroll"}
         </Button>
       </form>
     </div>
