@@ -22,7 +22,7 @@ export const useStyles = makeStyles({
   },
   section: {
     display: "flex",
-    paddingBottom: "35px",
+    paddingBottom: "30px",
   },
   section2: {
     marginLeft: "30px",

@@ -115,7 +115,7 @@ const CourseDetails = () => {
                   <Tab label="Overview" {...a11yProps(0)} />
                   <Tab label="Instructor" {...a11yProps(1)} />
                   <Tab label="Resources" {...a11yProps(2)} />
-                  <Tab label="Commment" {...a11yProps(3)} />
+                  <Tab label="Comment" {...a11yProps(3)} />
                 </Tabs>
               </Box>
               <TabPanel value={value} index={0}>
@@ -185,38 +185,36 @@ const CourseDetails = () => {
                 </Paper>
               </TabPanel>
               <TabPanel value={value} index={1}>
-                <Grid container spacing={4} className={classes.tab2}>
-                  <Grid item md={3} xs={12}>
-                    <img src={image} alt="" className={classes.img} />
+                <Paper className={classes.paper}>
+                  <Grid container spacing={4} className={classes.tab2}>
+                    <Grid item md={3} xs={12}>
+                      <img src={image} alt="" className={classes.img} />
+                    </Grid>
+                    <Grid item md={9} xs={12} className={classes.tab2grid2}>
+                      <b className={classes.instructor}>Name:</b>
+                      <Typography variant="h6">
+                        {course?.courseDetails?.instructor?.name}
+                      </Typography>
+                      <br />
+                      <b className={classes.instructor}>Mobile:</b>{" "}
+                      <Typography variant="h6">
+                        {course?.courseDetails?.instructor?.mobile}
+                      </Typography>
+                      <br />
+                      <b className={classes.instructor}>Address:</b>{" "}
+                      <Typography variant="h6">
+                        {course?.courseDetails?.instructor?.address}
+                      </Typography>
+                      <br />
+                    </Grid>
                   </Grid>
-                  <Grid item md={9} xs={12} className={classes.tab2grid2}>
-                    <Typography variant="h5">
-                      Username: {course?.courseDetails?.instructor?.userName}
-                    </Typography>
-                    <Typography variant="h5">
-                      Name: {course?.courseDetails?.instructor?.name}
-                    </Typography>
-
-                    <Typography variant="h5">
-                      Mobile: {course?.courseDetails?.instructor?.mobile}
-                    </Typography>
-                    <Typography variant="h5">
-                      Address: {course?.courseDetails?.instructor?.address}
-                    </Typography>
-                    <Typography variant="h5">
-                      Status: {course?.courseDetails?.instructor?.status}
-                    </Typography>
-                    <Typography variant="h5">
-                      Type: {course?.courseDetails?.instructor?.type}
-                    </Typography>
-                  </Grid>
-                </Grid>
+                </Paper>
               </TabPanel>
               <TabPanel value={value} index={2}>
-                This is Resource
+                <Paper className={classes.paper}>This is Resource</Paper>
               </TabPanel>
               <TabPanel value={value} index={3}>
-                This is comment
+                <Paper className={classes.paper}>This is comment</Paper>
               </TabPanel>
             </Box>
           </Grid>
@@ -230,7 +228,7 @@ const CourseDetails = () => {
               />
               <CardContent>
                 <Typography align="center" variant="h5">
-                  Price : ${course?.courseDetails?.price} 
+                  Price : ${course?.courseDetails?.price}
                 </Typography>
               </CardContent>
               <CardActions>

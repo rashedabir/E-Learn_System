@@ -17,7 +17,7 @@ const StudentCoursesCard = ({ course }) => {
           />
           <button className={classes.tag}>{course?.category}</button>
           <h1 className={classes.heading}>
-            <Typography component={Link} to={`/course_details/${course?._id}`}>
+            <Typography component={Link} to={`/single_course_details/${course?._id}`}>
               {course?.title}
             </Typography>
           </h1>
