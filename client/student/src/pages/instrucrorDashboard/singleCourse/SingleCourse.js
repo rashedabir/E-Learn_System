@@ -208,11 +208,17 @@ const SingleCourse = () => {
         </Grid>
 
         {/* tab  */}
-        <Box sx={{ width: '100%', typography: 'body1' }}>
+        {(task.length != 0) ? <Box sx={{ width: '100%', typography: 'body1' }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <TabList onChange={handleChange}>
-                <Tab label="Lessons" value="lesson" style={{ minWidth: "50%" }} />
+              <TabList onChange={handleChange}
+                TabIndicatorProps={{
+                  style: { background: "red" }
+                }}
+              >
+                <Tab
+
+                  label="Lessons" value="lesson" style={{ minWidth: "50%" }} />
                 <Tab label="Task" value="task" style={{ minWidth: "50%" }} />
               </TabList>
             </Box>
@@ -231,7 +237,12 @@ const SingleCourse = () => {
               ))}
             </TabPanel>
           </TabContext>
-        </Box>
+        </Box> : <div className={classes.lessonWrapper}>
+          {lessons.map((lesson) => (
+            <Lesson lessons={lesson} key={lesson._id} />
+          ))}
+        </div>}
+
 
       </Container>
     </div>

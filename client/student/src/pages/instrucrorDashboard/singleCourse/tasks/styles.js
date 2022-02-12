@@ -16,11 +16,16 @@ export const useStyle = makeStyles({
         display: "flex",
         justifyContent: "space-between",
     },
+    selected: {
+        color: "red",
+    },
     taskhead: {
         color: "#645A53",
         padding: "4px",
         marginBottom: "6px",
         marginTop: "6px",
+        display: "flex",
+        alignItems: "center"
     },
     heading: {
         display: 'flex',
