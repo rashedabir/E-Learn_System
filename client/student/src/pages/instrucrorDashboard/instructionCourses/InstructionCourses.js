@@ -4,6 +4,8 @@ import InstructionCoursesCard from "../instructionCoursesCard/InstructionCourses
 import axios from "axios";
 import { useStyle } from "./styles";
 import { GlobalState } from "../../../GlobalState";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const InstructionCourses = () => {
   const classes = useStyle();
@@ -33,14 +35,32 @@ const InstructionCourses = () => {
   return (
     <div className={classes.root}>
       <h1>Dashbaord</h1>
-      <Carousel cols={4} rows={1} gap={20} loop>
-        {courseList?.length > 0 &&
-          courseList?.map((course, i) => (
-            <Carousel.Item key={i}>
-              <InstructionCoursesCard course={course} />
-            </Carousel.Item>
-          ))}
-      </Carousel>
+      {courseList?.length > 0 ?
+        <Carousel cols={4} rows={1} gap={20} loop>
+          {courseList?.length > 0 &&
+            courseList?.map((course, i) => (
+              <Carousel.Item key={i}>
+                <InstructionCoursesCard course={course} />
+              </Carousel.Item>
+            ))}
+        </Carousel> :
+        <div className={classes.nocourse}>
+          <h2>No course Found !!!</h2>
+          <Button
+            sx={{ my: 1, color: "#000", border: "2px solid red" }}
+            variant="contained"
+            color="primary"
+            component={Link}
+            to={`/create_course`}
+            style={{
+              backgroundColor: "#EEE",
+              textTransform: "none",
+            }}
+          >
+            Create Your First Course
+          </Button>
+        </div>
+      }
     </div>
   );
 };

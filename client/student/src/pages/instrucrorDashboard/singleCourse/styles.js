@@ -32,7 +32,7 @@ export const useStyle = makeStyles({
     margin: "0px",
   },
   container: {
-    padding: "10px 5%",
+    padding: "10px 10px",
     width: "100%",
     margin: 0,
     paddingBottom: "15px",

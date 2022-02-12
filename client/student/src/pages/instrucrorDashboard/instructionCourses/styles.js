@@ -11,5 +11,11 @@ export const useStyle = makeStyles({
     dashboard: {
         paddingBottom: "20px",
         textAlign: "center",
+    },
+    nocourse: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
     }
 })
