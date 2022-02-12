@@ -14,8 +14,6 @@ const EnrollStudent = () => {
   const [course, setCourse] = useState({});
   const [enrolled, setEnrolled] = useState(false);
 
-  console.log(list);
-
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
@@ -34,9 +32,9 @@ const EnrollStudent = () => {
     const checkEnroll = async () => {
       list.filter((item) => {
         if (item.courseDetails._id === course?.courseDetails?._id) {
-          setEnrolled(true);
+          return setEnrolled(true);
         } else {
-          setEnrolled(false);
+          return setEnrolled(false);
         }
       });
     };
