@@ -7,7 +7,7 @@ export const adminDrawerItemList = [
     id: 1,
     title: "Dashboard",
     icon: <HomeIcon />,
-    path: "/",
+    path: "/dashboard",
   },
   {
     id: 2,

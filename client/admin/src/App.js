@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import BlogCategory from "./components/Category/BlogCategory";
 import Instructor from "./components/Instructor/Instructor";
 import InstructorInfo from "./components/InstructorInfo/InstructorInfo";
+import Dashboard from './components/Dashboard/Dashboard';
 function App() {
   const theme = createTheme();
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/blogCategory" element={<BlogCategory />} />
           <Route path="/instructor/:id" element={<InstructorInfo />} />
           <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
     </ThemeProvider>
