@@ -6,6 +6,10 @@ export const useStyles = makeStyles({
   },
 
   card: {
-    padding: "40px 20px",
+    padding: "35px 20px",
   },
+  
 });
+export const icon={
+    fontSize:"40px"
+ }

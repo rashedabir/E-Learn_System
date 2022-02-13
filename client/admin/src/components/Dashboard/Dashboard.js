@@ -4,6 +4,7 @@ import Navbar from "../navbar/Navbar";
 import { useStyles } from "./styles.js";
 import PersonIcon from "@mui/icons-material/Person";
 import BookIcon from "@mui/icons-material/Book";
+import { icon } from "./styles.js";
 const Dashboard = () => {
   const classes = useStyles();
   return (
@@ -18,9 +19,9 @@ const Dashboard = () => {
             <Grid item md={3} sm={6} xs={12}>
               <Card
                 className={classes.card}
-                style={{ background: "#1e88e5", color: "white" }}
+                style={{ background: "#2196f3", color: "white" }}
               >
-                <PersonIcon />
+                <PersonIcon style={icon} />
                 <Typography variant="h4">150</Typography>{" "}
                 <Typography variant="h6">Total Student</Typography>{" "}
               </Card>
@@ -28,10 +29,10 @@ const Dashboard = () => {
             <Grid item md={3} sm={6} xs={12}>
               <Card
                 className={classes.card}
-                style={{ background: "#fb8c00", color: "white" }}
+                style={{ background: "#ff9800", color: "white" }}
               >
                 {" "}
-                <BookIcon />
+                <BookIcon style={icon} />
                 <Typography variant="h4">15</Typography>{" "}
                 <Typography variant="h6">Total Course</Typography>{" "}
               </Card>
@@ -42,7 +43,7 @@ const Dashboard = () => {
                 style={{ background: "#f44336", color: "white" }}
               >
                 {" "}
-                <PersonIcon />
+                <PersonIcon style={icon} />
                 <Typography variant="h4">20</Typography>{" "}
                 <Typography variant="h6">Total Instructor</Typography>{" "}
               </Card>
@@ -50,10 +51,10 @@ const Dashboard = () => {
             <Grid item md={3} sm={6} xs={12}>
               <Card
                 className={classes.card}
-                style={{ background: "#8e24aa", color: "white" }}
+                style={{ background: "#9c27b0", color: "white" }}
               >
                 {" "}
-                <PersonIcon />
+                <PersonIcon style={icon} />
                 <Typography variant="h4">30</Typography>{" "}
                 <Typography variant="h6">Total Parent</Typography>{" "}
               </Card>

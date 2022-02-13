@@ -19,7 +19,7 @@ export const adminDrawerItemList = [
     id: 3,
     title: "Course List",
     icon: <ListIcon />,
-    path: "/course",
+    path: "/courseList",
   },
 
   {
