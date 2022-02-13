@@ -121,12 +121,12 @@ const CourseDetails = () => {
               <TabPanel value={value} index={0}>
                 <Paper className={classes.paper}>
                   <Grid container>
-                    <Grid item xs={6}>
-                      <Typography>
-                        <h2>Course Name : {course?.courseDetails?.title}</h2>
+                    <Grid item xs={12}>
+                      <Typography variant="h4">
+                        {course?.courseDetails?.title}
                       </Typography>
-                      <Typography component="p">
-                        Category : {course?.courseDetails?.category}
+                      <Typography variant="h6">
+                        {course?.courseDetails?.category}
                       </Typography>
                       <br></br>
                       <p>
@@ -191,17 +191,17 @@ const CourseDetails = () => {
                       <img src={image} alt="" className={classes.img} />
                     </Grid>
                     <Grid item md={9} xs={12} className={classes.tab2grid2}>
-                      <b className={classes.instructor}>Name:</b>
+                      <b className={classes.instructor}>Name</b>
                       <Typography variant="h6">
                         {course?.courseDetails?.instructor?.name}
                       </Typography>
                       <br />
-                      <b className={classes.instructor}>Mobile:</b>{" "}
+                      <b className={classes.instructor}>Mobile</b>{" "}
                       <Typography variant="h6">
                         {course?.courseDetails?.instructor?.mobile}
                       </Typography>
                       <br />
-                      <b className={classes.instructor}>Address:</b>{" "}
+                      <b className={classes.instructor}>Address</b>{" "}
                       <Typography variant="h6">
                         {course?.courseDetails?.instructor?.address}
                       </Typography>

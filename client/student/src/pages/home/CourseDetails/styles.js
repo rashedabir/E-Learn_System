@@ -6,7 +6,7 @@ export const useStyle = makeStyles(() => ({
     marginBottom: "100px",
   },
   paper: {
-    padding: "20px 20px 60px",
+    padding: "30px 30px 60px",
     minHeight: "90vh",
   },
   icon2: {
