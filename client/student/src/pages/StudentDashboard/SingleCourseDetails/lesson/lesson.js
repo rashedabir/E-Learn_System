@@ -1,21 +1,14 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import PlayLessonOutlinedIcon from "@mui/icons-material/PlayLessonOutlined";
-import { IconButton } from "@mui/material";
-import axios from "axios";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import { GlobalState } from "../../../../GlobalState";
+
+import React from "react";
+
 import { useStyle } from "./styles";
 import LessonVideo from "./../../../instrucrorDashboard/singleCourse/lessons/lessonsVideo/LessonVideo";
 
 const StudentLesson = (props) => {
   const classes = useStyle();
-  const { title, videos, _id } = props.lessons;
+  const { title, videos } = props.lessons;
   // const getData = props.getData()
-  const state = useContext(GlobalState);
-  const [token] = state.token;
 
   return (
     <div className={classes.lessonWrapper}>

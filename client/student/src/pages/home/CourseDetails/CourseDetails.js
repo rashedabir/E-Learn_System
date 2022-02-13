@@ -262,8 +262,7 @@ const CourseDetails = () => {
                   mobile and TV
                 </p>
                 <p className={classes.section2}>
-                  <BuildIcon className={classes.icon2} /> SkillsFuture Credit
-                  eligible
+                  <BuildIcon className={classes.icon2} /> Assignment
                 </p>
                 <p className={classes.section2}>
                   <VerifiedUserIcon className={classes.icon2} /> Certificate of

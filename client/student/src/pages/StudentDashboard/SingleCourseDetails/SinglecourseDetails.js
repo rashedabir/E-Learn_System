@@ -1,28 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useStyle } from "./styles";
 import { Container, Grid, Typography, Tab, Box } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import { GlobalState } from "./../../../GlobalState";
-import { useParams, Link, useNavigate } from "react-router-dom";
+
+import { useParams } from "react-router-dom";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import axios from "axios";
 import StudentLesson from "./lesson/lesson";
+import StudentTask from "./task/task";
 
 const SingleCourseDetails = () => {
   const classes = useStyle();
-  const state = useContext(GlobalState);
-  const [token] = state.token;
+
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
   const [lessons, setLessons] = useState([]);
   const [objective, setObjective] = useState([]);
   const [requirrements, setRequirrements] = useState([]);
   const [task, setTask] = useState([]);
-  const history = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -35,7 +34,6 @@ const SingleCourseDetails = () => {
             setRequirrements(courseDetails?.requirements);
             setObjective(courseDetails?.objective);
             setTask(res.data.tasks);
-            console.log(res.data);
           }
         });
       }
@@ -176,9 +174,9 @@ const SingleCourseDetails = () => {
             </TabPanel>
             <TabPanel value="task">
               {/* all task  */}
-              {/* {task.map((task) => (
-                <Task tasks={task} key={task._id} />
-              ))} */}
+              {task.map((task) => (
+                <StudentTask tasks={task} key={task._id} />
+              ))}
             </TabPanel>
           </TabContext>
         </Box>

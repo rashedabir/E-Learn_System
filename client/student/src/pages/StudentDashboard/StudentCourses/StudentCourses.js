@@ -3,7 +3,7 @@ import Carousel from "react-grid-carousel";
 import { GlobalState } from "../../../GlobalState";
 import StudentCoursesCard from "../StudentCoursesCard/StudentCoursesCard";
 import { useStyle } from "./styles";
-
+import { Typography } from "@mui/material";
 const StudentCourses = () => {
   const classes = useStyle();
   const state = useContext(GlobalState);
@@ -11,7 +11,9 @@ const StudentCourses = () => {
 
   return (
     <div className={classes.root}>
-      <h1>Dashbaord</h1>
+      <Typography variant="h3" className={classes.dashboard}>
+        Dashboard
+      </Typography>
       <Carousel cols={4} rows={1} gap={20} loop>
         {list &&
           list?.length > 0 &&

@@ -6,7 +6,7 @@ export const useStyle = makeStyles(() => ({
     marginBottom: "100px",
   },
   paper: {
-    padding: "20px",
+    padding: "20px 20px 60px",
     minHeight: "90vh",
   },
   icon2: {
@@ -50,7 +50,4 @@ export const useStyle = makeStyles(() => ({
   instructor: {
     fontSize: "20px",
   },
-  tab2grid2:{
-    //textAlign:"center"
-  }
 }));
