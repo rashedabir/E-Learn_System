@@ -33,21 +33,24 @@ const CourseList = () => {
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">
+                  <TableCell align="center">
                     <Typography variant="h6">Banner</Typography>
                   </TableCell>
                   <TableCell align="center">
                     <Typography variant="h6">Course Name</Typography>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                     <Typography variant="h6">Category</Typography>
                   </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {courses.map((course) => (
-                  <TableRow key={course._id}>
-                    <TableCell align="left">
+                  <TableRow
+                    key={course._id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell align="center">
                       <img
                         src={course.banner.url}
                         alt=""
@@ -57,7 +60,7 @@ const CourseList = () => {
                     <TableCell align="center">
                       <Typography component="p">{course.title}</Typography>
                     </TableCell>
-                    <TableCell align="right">
+                    <TableCell align="center">
                       <Typography component="p">{course.category}</Typography>
                     </TableCell>
                   </TableRow>

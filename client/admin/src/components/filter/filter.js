@@ -21,8 +21,8 @@ const Filter = () => {
     setSearch("");
   };
   return (
-    <Container maxWidth="lg">
-      <Grid container spacing={4} sx={{ my: 1, px: 4 }}>
+    <Container maxWidth="xl">
+      <Grid container spacing={3} sx={{ mt: 1, px: 5 }}>
         <Grid item md={3} xs={12} sm={12}>
           <FormControl fullWidth>
             <InputLabel color="warning" id="demo-simple-select-label">
@@ -53,7 +53,7 @@ const Filter = () => {
           <TextField
             id="outlined-basic"
             label="Search"
-            variant="outlined"
+            variant="filled"
             type="text"
             fullWidth
             color="warning"

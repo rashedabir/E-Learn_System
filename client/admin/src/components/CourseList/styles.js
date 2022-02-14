@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   table: {
-    width: "100%",
+    textTransform: "capitalize",
   },
   image: {
     width: "80px",

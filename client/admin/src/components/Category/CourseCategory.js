@@ -105,7 +105,7 @@ function Category() {
   return (
     <>
       <Navbar>
-        <div className={classes.root}>
+        <div className={classes.root} style={{ width: 950, margin: "auto" }}>
           <div className={classes.top}>
             <div>
               <h2>Course Category</h2>
@@ -138,7 +138,10 @@ function Category() {
                 </TableHead>
                 <TableBody>
                   {rows.map((row) => (
-                    <TableRow key={row._id}>
+                    <TableRow
+                      key={row._id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
                       <TableCell align="left">
                         <Typography>{row.name}</Typography>
                       </TableCell>
