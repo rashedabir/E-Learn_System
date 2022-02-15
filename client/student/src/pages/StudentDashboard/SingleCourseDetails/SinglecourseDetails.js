@@ -52,7 +52,7 @@ const SingleCourseDetails = () => {
       <Container className={classes.contains} maxWidth="xl">
         <Grid container>
           <img
-            src="https://picsum.photos/seed/picsum/900"
+            src={course?.courseDetails?.banner.url}
             className={classes.banner}
             alt="..."
           />
