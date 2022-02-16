@@ -13,7 +13,7 @@ export const useStyle = makeStyles({
   formWrapper: {
     maxWidth: "400px",
     margin: "0px auto",
-    border: "1px solid #e6e6e6",
+    border: "2px solid #e6e6e6",
     padding: "20px",
     borderRadius: "10px",
     background: "white",
