@@ -17,7 +17,7 @@ export const useStyle = makeStyles({
   },
   contains: {
     backgroundColor: "#EEE",
-    padding:"10px"
+    padding: "10px",
   },
   banner: {
     objectFit: "cover",
@@ -41,5 +41,11 @@ export const useStyle = makeStyles({
 
   instructor: {
     paddingBottom: "100px",
+  },
+  actionBar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "end",
+    padding: "20px 0",
   },
 });

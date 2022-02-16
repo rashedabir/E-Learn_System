@@ -1,27 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { useStyle } from "./styles";
-import { Container, Grid, Typography, Tab, Box } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-
-import { useParams } from "react-router-dom";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import { Box, Button, Container, Grid, Tab, Typography } from "@mui/material";
 import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import { GlobalState } from "../../../GlobalState";
 import StudentLesson from "./lesson/lesson";
+import { useStyle } from "./styles";
 import StudentTask from "./task/task";
 
 const SingleCourseDetails = () => {
   const classes = useStyle();
-
+  const state = useContext(GlobalState);
+  const [token] = state.token;
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
   const [lessons, setLessons] = useState([]);
   const [objective, setObjective] = useState([]);
   const [requirrements, setRequirrements] = useState([]);
   const [task, setTask] = useState([]);
+  const [list, setList] = state.userAPI.list;
+  const history = useNavigate();
+
+  const fetchList = async (list) => {
+    await axios.patch(
+      "/api/course/enroll",
+      { enrolled: list },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -47,9 +61,38 @@ const SingleCourseDetails = () => {
     setValue(newValue);
   };
 
+  const removeCourse = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "to unenroll this course",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, unenroll it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        list.forEach((item, index) => {
+          if (item.courseDetails._id === courseId) {
+            list.splice(index, 1);
+          }
+        });
+        setList([...list]);
+        await fetchList(list);
+        Swal.fire("Unenrolled!", "You unenroll in this course.", "success");
+        history("/student_dashboard");
+      }
+    });
+  };
+
   return (
     <div className={classes.root}>
       <Container className={classes.contains} maxWidth="xl">
+        <div className={classes.actionBar}>
+          <Button onClick={removeCourse} color="error">
+            unenroll
+          </Button>
+        </div>
         <Grid container>
           <img
             src={course?.courseDetails?.banner.url}
