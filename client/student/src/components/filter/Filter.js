@@ -32,6 +32,7 @@ const Filter = () => {
             value={category}
             label="Category"
             color="warning"
+            sx={{ bgcolor: "white" }}
             onChange={handleCategory}
           >
             <MenuItem value="">None</MenuItem>
@@ -56,6 +57,7 @@ const Filter = () => {
           fullWidth
           color="warning"
           value={search}
+          sx={{ bgcolor: "white" }}
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
         />
       </Grid>

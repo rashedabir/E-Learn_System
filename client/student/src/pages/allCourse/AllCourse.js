@@ -12,7 +12,7 @@ const AllCourse = () => {
   const [page, setPage] = state.courseAPI.page;
   const [result] = state.courseAPI.result;
   return (
-    <div>
+    <div style={{ background: "#fff9f9", marginTop: "35px" }}>
       <Container maxWidth="xl">
         <Filter />
         <Grow in>
@@ -29,7 +29,7 @@ const AllCourse = () => {
           {result < page * 8 ? (
             ""
           ) : (
-            <Button color="primary" onClick={() => setPage(page + 1)}>
+            <Button color="error" onClick={() => setPage(page + 1)}>
               Load more
             </Button>
           )}

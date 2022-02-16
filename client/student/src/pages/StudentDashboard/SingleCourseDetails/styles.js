@@ -3,6 +3,7 @@ import { makeStyles } from "@mui/styles";
 export const useStyle = makeStyles({
   root: {
     color: "#645A53",
+    backgroundColor: "#fff5f6",
   },
   top: {
     display: "flex",
@@ -16,7 +17,6 @@ export const useStyle = makeStyles({
     textTransform: "none",
   },
   contains: {
-    backgroundColor: "#EEE",
     padding: "10px",
   },
   banner: {

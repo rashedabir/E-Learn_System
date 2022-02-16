@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
   root: {
-    background: "#FDFDFD",
+    backgroundColor: "#fff5f6",
     minHeight: "90vh",
     padding: "50px 20px",
   },
@@ -20,7 +20,7 @@ export const useStyle = makeStyles({
   },
   btn: {
     height: "40px",
-    backgroundColor: "#EA5252"
+    backgroundColor: "#EA5252",
   },
   msg: {
     textAlign: "center",

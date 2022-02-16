@@ -7,9 +7,9 @@ import StudentCourses from "./StudentCourses/StudentCourses";
 const StudentDashboard = () => {
   const classes = useStyle();
   return (
-    <div >
-      <Container maxWidth="xl" className={classes.root}>
-      <StudentCourses />
+    <div className={classes.root}>
+      <Container maxWidth="xl">
+        <StudentCourses />
       </Container>
     </div>
   );
