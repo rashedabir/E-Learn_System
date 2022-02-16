@@ -35,11 +35,14 @@ const InstructionCourses = () => {
       <h1>Dashbaord</h1>
       <Carousel cols={4} rows={1} gap={20} loop>
         {courseList?.length > 0 &&
-          courseList?.map((course, i) => (
-            <Carousel.Item key={i}>
-              <InstructionCoursesCard course={course} />
-            </Carousel.Item>
-          ))}
+          courseList
+            ?.slice(0)
+            .reverse()
+            ?.map((course, i) => (
+              <Carousel.Item key={i}>
+                <InstructionCoursesCard course={course} />
+              </Carousel.Item>
+            ))}
       </Carousel>
     </div>
   );

@@ -21,8 +21,6 @@ const AddTask = () => {
   const { courseId, taskId } = useParams();
   const history = useNavigate();
 
-  console.log(taskId);
-
   // task add
   const handleSubmit = async () => {
     const payload = {

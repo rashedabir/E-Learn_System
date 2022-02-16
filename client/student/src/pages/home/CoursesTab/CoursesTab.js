@@ -9,25 +9,6 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Cards from "../../../components/Cards/Card";
 
-// const tabList = [
-//   "Python",
-//   "Excel",
-//   "Web Development",
-//   "Web Design",
-//   "JavaScript",
-//   "Data Science",
-//   "Machine Learning",
-//   "Aws Certification",
-//   "Python",
-//   "Excel",
-//   "Web Development",
-//   "Web Design",
-//   "JavaScript",
-//   "Data Science",
-//   "Machine Learning",
-//   "Aws Certification",
-// ];
-
 const CoursesTab = () => {
   const classes = useStyle();
   const [tabList, setTabList] = useState([]);
@@ -48,12 +29,6 @@ const CoursesTab = () => {
     };
     getCourses();
   }, []);
-
-  // const getList = {
-  //   tabList.map((item) => {
-  //     return item[name]
-  //   })
-  // }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -86,14 +61,14 @@ const CoursesTab = () => {
           {tabList &&
             tabList.map((tab, index) => {
               return (
-                <TabPanel value={index}>
+                <TabPanel key={`tab${index}`} value={index}>
                   <Grid container spacing={4}>
                     {courseList &&
                       courseList
                         .filter((item, i) => item.category === tab)
                         .slice(0, 4)
                         .map((item, i) => (
-                          <Grid item md={3}>
+                          <Grid key={`course${i}`} item md={3}>
                             <Cards key={i} item={item} type="details" />
                           </Grid>
                         ))}

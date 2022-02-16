@@ -19,6 +19,7 @@ const Filter = () => {
     setCategory(e.target.value);
     setSearch("");
   };
+
   return (
     <Grid container spacing={4} sx={{ mb: 6 }}>
       <Grid item md={3} xs={12} sm={12}>
@@ -58,7 +59,7 @@ const Filter = () => {
           color="warning"
           value={search}
           sx={{ bgcolor: "white" }}
-          onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </Grid>
     </Grid>

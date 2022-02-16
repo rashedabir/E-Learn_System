@@ -32,7 +32,7 @@ export const useStyle = makeStyles({
     marginTop: "20px",
     borderRadius: "80px",
     backgroundColor: "#FFF1F1",
-    width: "265px",
+    width: "275px",
     height: "60px",
     paddingLeft: "30px",
     display: "flex",

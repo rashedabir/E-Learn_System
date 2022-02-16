@@ -1,12 +1,28 @@
-import { Container, Grid, InputBase, Button } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Container, Grid, InputBase, Button, IconButton } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { GlobalState } from "../../GlobalState";
 import CarouselCards from "./CarouselCards/CarouselCards";
 import CoursesTab from "./CoursesTab/CoursesTab";
 import { useStyle } from "./styles";
 
 const Home = () => {
   const classes = useStyle();
+  const state = useContext(GlobalState);
+  const [find, setFind] = useState("");
+  const [search, setSearch] = state.courseAPI.search;
+  const history = useNavigate();
+
+  const handleSearch = () => {
+    history("/courses");
+    setSearch(find);
+    console.log(search);
+  };
+
+  useEffect(() => {
+    setSearch("");
+  }, [setSearch]);
+
   return (
     <div className={classes.root}>
       {/* Main Banner  */}
@@ -26,14 +42,18 @@ const Home = () => {
                 <InputBase
                   className={classes.hints}
                   placeholder="What do you want to learn?"
+                  value={find}
+                  onChange={(e) => {
+                    setFind(e.target.value);
+                  }}
                 />
-                <Link to="/">
+                <IconButton onClick={handleSearch}>
                   <img
                     className={classes.searchbtn}
                     src="https://i.ibb.co/HHKCkRy/Group-751.png"
                     alt="logo"
                   />
-                </Link>
+                </IconButton>
               </div>
             </div>
           </Grid>

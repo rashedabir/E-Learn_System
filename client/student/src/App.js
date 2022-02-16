@@ -26,7 +26,6 @@ function App() {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
   const [user] = state.userAPI.user;
-  console.log(user);
 
   return (
     <Router>

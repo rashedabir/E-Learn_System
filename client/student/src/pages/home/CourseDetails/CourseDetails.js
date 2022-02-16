@@ -79,7 +79,6 @@ const CourseDetails = () => {
           .get(`/api/course_details/${courseId}`)
           .then((res) => {
             if (res.status === 200) {
-              console.log("*****", res.data);
               const { courseDetails } = res.data;
               setRequirrements(courseDetails?.requirements);
               setObjective(courseDetails?.objective);

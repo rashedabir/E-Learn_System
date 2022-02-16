@@ -26,7 +26,6 @@ export default function Navbar(props) {
   const theme = useTheme();
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state.userAPI.isLogged;
-  console.log(state);
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {

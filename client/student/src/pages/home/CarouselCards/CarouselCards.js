@@ -9,8 +9,6 @@ const CarouselCards = ({ courseList }) => {
   const state = useContext(GlobalState);
   const [courses] = state.courseAPI.courses;
 
-  console.log(courses);
-
   return (
     <div className={classes.root}>
       <Carousel cols={4} rows={1} gap={20} loop>
@@ -19,7 +17,7 @@ const CarouselCards = ({ courseList }) => {
           courses
             .filter((item, i) => item?.enrolled > 0)
             .map((item, i) => (
-              <Carousel.Item>
+              <Carousel.Item key={`favourite${i}`}>
                 <Card item={item} />
               </Carousel.Item>
             ))}

@@ -11,6 +11,7 @@ const AllCourse = () => {
   const [loading] = state.courseAPI.loading;
   const [page, setPage] = state.courseAPI.page;
   const [result] = state.courseAPI.result;
+
   return (
     <div style={{ background: "#fff9f9", marginTop: "35px" }}>
       <Container maxWidth="xl">
@@ -18,8 +19,8 @@ const AllCourse = () => {
         <Grow in>
           <Grid container spacing={3} alignContent="stretch">
             {courses.map((course, i) => (
-              <Grid item xs={12} sm={6} md={4} lg={3}>
-                <Cards key={i} item={course} type="details" />
+              <Grid key={i} item xs={12} sm={6} md={4} lg={3}>
+                <Cards item={course} type="details" />
               </Grid>
             ))}
           </Grid>
