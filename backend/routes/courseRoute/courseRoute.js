@@ -10,6 +10,7 @@ router
   .get(auth, authInstructor, courseCTRL.instructorCourse);
 
 router.get("/all_course", courseCTRL.getCourse);
+router.get("/all/course", courseCTRL.getAllCourse);
 
 router
   .route("/course_details/:course_id")

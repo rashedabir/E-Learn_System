@@ -37,7 +37,7 @@ const CoursesTab = () => {
   useEffect(() => {
     //course list
     const getCourses = async () => {
-      await axios.get("/api/all_course").then((res) => {
+      await axios.get("/api/all/course").then((res) => {
         if (res.status === 200) {
           const { courses } = res.data;
           setCourseList(courses);

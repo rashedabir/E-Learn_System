@@ -52,6 +52,18 @@ const courseCTRL = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  getAllCourse: async (req, res) => {
+    try {
+      const course = await Course.find({});
+      res.json({
+        status: "success",
+        result: course.length,
+        courses: course,
+      });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
   createCourse: async (req, res) => {
     try {
       const {

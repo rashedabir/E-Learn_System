@@ -105,10 +105,10 @@ const Navbar = () => {
                   <Typography textAlign="center">All Category</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Udemy Business</Typography>
+                  <Typography textAlign="center">Udemy Blogs</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Tech on Udemy</Typography>
+                  <Typography textAlign="center">Jobs on Udemy</Typography>
                 </MenuItem>
               </Menu>
             </Box>
@@ -143,7 +143,7 @@ const Navbar = () => {
                 to="/login"
                 component={Link}
               >
-                Udemy Business
+                Udemy Blogs
               </Typography>
               <Typography
                 // className={classes.menubutton}
@@ -151,7 +151,7 @@ const Navbar = () => {
                 component={Link}
                 to="/login"
               >
-                Tech on Udemy
+                Jobs on Udemy
               </Typography>
             </Box>
             {/* <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} /> */}
