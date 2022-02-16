@@ -10,6 +10,8 @@ export const useStyle = makeStyles({
     padding: "4px",
     marginBottom: "6px",
     marginTop: "6px",
+    display: "flex",
+    alignItems: "center",
   },
   headingWrapper: {
     borderBottom: "2px solid #EEE",

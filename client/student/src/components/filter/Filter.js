@@ -23,7 +23,7 @@ const Filter = () => {
   return (
     <Grid container spacing={4} sx={{ mb: 6 }}>
       <Grid item md={3} xs={12} sm={12}>
-        <FormControl fullWidth>
+        <FormControl fullWidth size="small" sx={{ backgroundColor: "white" }}>
           <InputLabel color="warning" id="demo-simple-select-label">
             Category
           </InputLabel>
@@ -51,11 +51,13 @@ const Filter = () => {
       </Grid>
       <Grid item md={9} xs={12} sm={12}>
         <TextField
+          sx={{ backgroundColor: "white" }}
           id="outlined-basic"
           label="Search"
           variant="outlined"
           type="text"
           fullWidth
+          size="small"
           color="warning"
           value={search}
           sx={{ bgcolor: "white" }}

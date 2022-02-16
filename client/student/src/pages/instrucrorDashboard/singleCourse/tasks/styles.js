@@ -16,19 +16,27 @@ export const useStyle = makeStyles({
         display: "flex",
         justifyContent: "space-between",
     },
+    selected: {
+        color: "red",
+    },
     taskhead: {
         color: "#645A53",
         padding: "4px",
         marginBottom: "6px",
         marginTop: "6px",
+        display: "flex",
+        alignItems: "center"
     },
     heading: {
         display: 'flex',
         alignItems: "center",
     },
     taskcontent: {
-        paddingTop: "3px",
+        paddingTop: "8px",
         paddingLeft: "8px",
+    },
+    taskcontenttxt: {
+        marginBottom: "8px",
     },
     footer: {
         display: "flex",
@@ -42,7 +50,7 @@ export const useStyle = makeStyles({
     end: {
         borderLeft: "3px solid red",
         paddingLeft: "2px",
-        marginTop: "5px",
+        marginTop: "8px",
     }
 
 });
