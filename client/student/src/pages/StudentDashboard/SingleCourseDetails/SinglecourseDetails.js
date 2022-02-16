@@ -187,7 +187,7 @@ const SingleCourseDetails = () => {
           </Grid>
         </Grid>
         {/* map lesson  */}
-        {(task.length != 0) ?
+        {task.length !== 0 ? (
           <Box sx={{ width: "100%", typography: "body1" }}>
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -222,12 +222,14 @@ const SingleCourseDetails = () => {
                 ))}
               </TabPanel>
             </TabContext>
-          </Box> :
+          </Box>
+        ) : (
           <div className={classes.lessonWrapper}>
             {lessons.map((lesson) => (
               <StudentLesson lessons={lesson} key={lesson._id} />
             ))}
-          </div>}
+          </div>
+        )}
       </Container>
     </div>
   );

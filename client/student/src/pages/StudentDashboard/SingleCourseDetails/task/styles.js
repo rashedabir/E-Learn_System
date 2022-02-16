@@ -30,10 +30,6 @@ export const useStyle = makeStyles({
     display: "flex",
     alignItems: "center",
   },
-  taskcontent: {
-    paddingTop: "5px",
-    paddingLeft: "8px",
-  },
   footer: {
     display: "flex",
     justifyContent: "space-between",

@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import React, { Fragment, useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { GlobalState } from "../../GlobalState";
 import AccountMenu from "../account_menu/AccountMenu";
@@ -24,7 +24,9 @@ const Navbar = () => {
   const classes = useStyle();
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state.userAPI.isLogged;
+  const [search, setSearch] = state.courseAPI.search;
   const [user] = state.userAPI.user;
+  const history = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   // const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -65,6 +67,12 @@ const Navbar = () => {
     }
 
     setDrawer({ ...drawer, [anchor]: open });
+  };
+
+  const handleChange = (e) => {
+    history("/courses");
+    setSearch(e.target.value);
+    console.log(search);
   };
 
   return (
@@ -135,6 +143,7 @@ const Navbar = () => {
                 <InputBase
                   className={classes.hints}
                   placeholder="Search Here"
+                  onChange={handleChange}
                 />
               </div>
               <Typography

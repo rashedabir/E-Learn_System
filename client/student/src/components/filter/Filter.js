@@ -60,7 +60,6 @@ const Filter = () => {
           size="small"
           color="warning"
           value={search}
-          sx={{ bgcolor: "white" }}
           onChange={(e) => setSearch(e.target.value)}
         />
       </Grid>
