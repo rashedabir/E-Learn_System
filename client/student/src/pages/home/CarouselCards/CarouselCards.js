@@ -20,7 +20,7 @@ const CarouselCards = ({ courseList }) => {
             .filter((item, i) => item?.enrolled > 0)
             .map((item, i) => (
               <Carousel.Item>
-                <Card />
+                <Card item={item} />
               </Carousel.Item>
             ))}
       </Carousel>
