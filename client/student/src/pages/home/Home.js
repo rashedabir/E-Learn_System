@@ -141,7 +141,7 @@ const Home = () => {
       {/* another card carousel  */}
       <div className={classes.background}>
         <Container maxWidth="xl">
-          <CarouselCards></CarouselCards>
+          <CarouselCards />
         </Container>
       </div>
 
