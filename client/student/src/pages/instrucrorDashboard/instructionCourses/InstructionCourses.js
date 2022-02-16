@@ -1,11 +1,9 @@
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import Carousel from "react-grid-carousel";
-import InstructionCoursesCard from "../instructionCoursesCard/InstructionCoursesCard";
-import axios from "axios";
-import { useStyle } from "./styles";
 import { GlobalState } from "../../../GlobalState";
-import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import InstructionCoursesCard from "../instructionCoursesCard/InstructionCoursesCard";
+import { useStyle } from "./styles";
 
 const InstructionCourses = () => {
   const classes = useStyle();
