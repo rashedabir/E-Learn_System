@@ -6,7 +6,8 @@ export const useStyle = makeStyles(() => ({
     marginBottom: "100px",
   },
   paper: {
-    padding: "20px",
+    padding: "30px 30px 60px",
+    minHeight: "90vh",
   },
   icon2: {
     marginRight: "10px",
@@ -29,7 +30,7 @@ export const useStyle = makeStyles(() => ({
   require: {
     width: "100%",
     padding: "10px 5%",
-    paddingBottom:"30px"
+    paddingBottom: "30px",
   },
   require2: {
     display: "flex",
@@ -39,5 +40,14 @@ export const useStyle = makeStyles(() => ({
     objectFit: "cover",
     width: "100%",
     height: "170px",
+  },
+  img: {
+    width: "100%",
+  },
+  tab2: {
+    padding: "50px 20px",
+  },
+  instructor: {
+    fontSize: "20px",
   },
 }));

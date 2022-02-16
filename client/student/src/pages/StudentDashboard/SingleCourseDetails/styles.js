@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
   root: {
-    color: '#645A53',
+    color: "#645A53",
   },
   top: {
     display: "flex",
@@ -16,21 +16,19 @@ export const useStyle = makeStyles({
     textTransform: "none",
   },
   contains: {
-    backgroundColor: '#EEE',
+    backgroundColor: "#EEE",
+    padding:"10px"
   },
   banner: {
-    objectFit:"cover",
+    objectFit: "cover",
     width: "100%",
     height: "305px",
-    marginBottom: "5px",
-    padding: '10px',
-    backgroundColor: '#fff',
+    marginBottom: "25px",
+    padding: "10px",
+    backgroundColor: "#fff",
     borderRadius: "10px",
   },
-  pading: {
-    padding: "0px",
-    margin: "0px",
-  },
+
   container: {
     padding: "10px 5%",
     width: "100%",
@@ -39,12 +37,9 @@ export const useStyle = makeStyles({
   },
   icon: {
     marginRight: "20px",
+  },
 
+  instructor: {
+    paddingBottom: "100px",
   },
-  about: {
-    backgroundColor: '#EEE',
-  },
-  obj: {
-    paddingBottom: '200px',
-  }
 });

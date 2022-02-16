@@ -13,13 +13,12 @@ import AddLesson from "./pages/instrucrorDashboard/singleCourse/addLesson/AddLes
 import CourseDetails from "./pages/home/CourseDetails/CourseDetails";
 import GeneralInformation from "./pages/profile/generalInformation/GeneralInformation";
 import GeneralSetting from "./pages/profile/generalSetting/GeneralSetting";
-import StudentDashboard from './pages/StudentDashboard/StudentDashboard';
-import SingleCourseDetails from './pages/StudentDashboard/SingleCourseDetails/SinglecourseDetails';
-import StudentLesson from './pages/StudentDashboard/SingleCourseDetails/lesson/lesson';
-import LessonVideo from './pages/instrucrorDashboard/singleCourse/lessons/lessonsVideo/LessonVideo';
-import EnrollStudent from './pages/home/enroll/enroll';
-
+import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
+import SingleCourseDetails from "./pages/StudentDashboard/SingleCourseDetails/SinglecourseDetails";
+import EnrollStudent from "./pages/home/enroll/enroll";
 import AllSubmission from "./pages/instrucrorDashboard/singleCourse/tasks/allSubmission/AllSubmission";
+import AllCourse from "./pages/allCourse/AllCourse";
+
 function App() {
   return (
     <Router>
@@ -30,6 +29,7 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<GeneralInformation />} />
         <Route path="/setting" element={<GeneralSetting />} />
+        <Route path="/courses" element={<AllCourse />} />
         <Route path="/instructor_dashboard" element={<InstructorDashboard />} />
         <Route path="/create_course" element={<CreateCourse />} />
         <Route path="/course_details/:courseId" element={<SingleCourse />} />
@@ -38,8 +38,14 @@ function App() {
         <Route path="/update_lesson/:lessonId" element={<AddLesson />} />
         <Route path="/details/:courseId" element={<CourseDetails />} />
         <Route path="/student_dashboard" element={<StudentDashboard />} />
-        <Route path="/enroll_page_student/:courseId" element={<EnrollStudent />} />
-        <Route path="/singleCourse_details/" element={<SingleCourseDetails />} />
+        <Route
+          path="/enroll_page_student/:courseId"
+          element={<EnrollStudent />}
+        />
+        <Route
+          path="/single_course_details/:courseId"
+          element={<SingleCourseDetails />}
+        />
         <Route path="/course_task/:courseId" element={<AddTask />} />
         <Route path="/update_task/:taskId/" element={<AddTask />} />
         <Route path="/all_submission/:taskId" element={<AllSubmission />} />

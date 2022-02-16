@@ -44,7 +44,7 @@ const Login = () => {
         userName: userName,
         password: values.password,
       });
-      window.location.href = "/home";
+      window.location.href = "/dashboard";
     } catch (error) {
       toast.error(error.response.data.msg);
     }

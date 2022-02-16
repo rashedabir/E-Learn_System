@@ -32,7 +32,7 @@ function BlogCatagory() {
 
   return (
     <Navbar>
-      <div className={classes.root}>
+      <div className={classes.root} style={{ width: 950, margin: "auto" }}>
         <div className={classes.top}>
           <div>
             <h2>Blog Category</h2>
@@ -84,7 +84,10 @@ function BlogCatagory() {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow key={row._id}>
+                  <TableRow
+                    key={row._id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
                     <TableCell align="left">
                       <Typography>{row.name}</Typography>
                     </TableCell>

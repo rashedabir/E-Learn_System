@@ -2,8 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100vh",
-    padding: "40px 150px",
+    padding: "40px",
   },
   top: {
     display: "flex",
@@ -11,12 +10,9 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
+    padding: theme.spacing(1),
   },
   table: {
-    width: "100%",
     textTransform: "capitalize",
   },
   iconButton: {
@@ -25,11 +21,6 @@ export const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: "10px",
     fontSize: "20px",
-  },
-  title: {
-    color: "black",
-    display: "flex",
-    justifyContent: "center",
   },
 }));
 
