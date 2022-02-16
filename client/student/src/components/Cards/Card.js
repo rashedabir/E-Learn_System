@@ -44,7 +44,7 @@ const Cards = ({ item, type }) => {
           </Grid>
           <Grid className={classes.flexitem} item xs={4}>
             <PeopleOutlineIcon className={classes.enroll} />{" "}
-            <span className={classes.enrolltxt}>1200+</span>
+            <span className={classes.enrolltxt}>{item?.enrolled}+</span>
           </Grid>
           <Grid className={classes.flexitems} item xs={4}>
             <span className={classes.normal}>

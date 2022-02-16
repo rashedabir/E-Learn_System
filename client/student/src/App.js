@@ -18,6 +18,7 @@ import SingleCourseDetails from "./pages/StudentDashboard/SingleCourseDetails/Si
 import EnrollStudent from "./pages/home/enroll/enroll";
 import AllSubmission from "./pages/instrucrorDashboard/singleCourse/tasks/allSubmission/AllSubmission";
 import AllCourse from "./pages/allCourse/AllCourse";
+import SubmitTask from "./pages/StudentDashboard/SingleCourseDetails/task/submitTask/SubmitTask";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/course_task/:courseId" element={<AddTask />} />
         <Route path="/update_task/:taskId/" element={<AddTask />} />
         <Route path="/all_submission/:taskId" element={<AllSubmission />} />
+        <Route path="/task_submission/:taskId" element={<SubmitTask />} />
       </Routes>
       <Footer />
     </Router>

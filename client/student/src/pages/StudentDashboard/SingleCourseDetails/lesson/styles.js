@@ -5,14 +5,14 @@ export const useStyle = makeStyles({
     background: "#EEE",
     color: "#645A53",
   },
-  lessonhead: {
+  lessonHead: {
     color: "#645A53",
-    padding: "4px",
-    marginBottom: "6px",
-    marginTop: "6px",
+    marginBottom: "0px",
+    marginTop: "0px",
+    display: "flex",
+    alignItems: "center",
   },
   headingWrapper: {
-    borderBottom: "2px solid #EEE",
     display: "flex",
     justifyContent: "space-between",
   },

@@ -4,17 +4,20 @@ import Filter from "../../components/filter/Filter";
 import { GlobalState } from "../../GlobalState";
 import Cards from "../../components/Cards/Card";
 import CourseCard from "../../components/skeleton/CourseCard";
+import { useStyle } from "./styles";
+
 
 const AllCourse = () => {
+  const classes = useStyle();
   const state = useContext(GlobalState);
   const [courses] = state.courseAPI.courses;
   const [loading] = state.courseAPI.loading;
   const [page, setPage] = state.courseAPI.page;
   const [result] = state.courseAPI.result;
   return (
-    <div>
+    <div className={classes.root}>
       <Container maxWidth="xl">
-        <Filter />
+        <Filter className={classes.search} />
         <Grow in>
           <Grid container spacing={3} alignContent="stretch">
             {courses.map((course, i) => (

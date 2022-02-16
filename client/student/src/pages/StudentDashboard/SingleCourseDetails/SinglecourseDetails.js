@@ -144,42 +144,47 @@ const SingleCourseDetails = () => {
           </Grid>
         </Grid>
         {/* map lesson  */}
-
-        <Box sx={{ width: "100%", typography: "body1" }}>
-          <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <TabList
-                onChange={handleChange}
-                TabIndicatorProps={{
-                  style: {
-                    backgroundColor: "#EA5252",
-                  },
-                }}
-              >
-                <Tab
-                  label="Lessons"
-                  value="lesson"
-                  style={{ minWidth: "50%" }}
-                />
-                <Tab label="Task" value="task" style={{ minWidth: "50%" }} />
-              </TabList>
-            </Box>
-            <TabPanel value="lesson">
-              {/* map lesson  */}
-              <div className={classes.lessonWrapper}>
-                {lessons.map((lesson) => (
-                  <StudentLesson lessons={lesson} key={lesson._id} />
+        {(task.length != 0) ?
+          <Box sx={{ width: "100%", typography: "body1" }}>
+            <TabContext value={value}>
+              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <TabList
+                  onChange={handleChange}
+                  TabIndicatorProps={{
+                    style: {
+                      backgroundColor: "#EA5252",
+                    },
+                  }}
+                >
+                  <Tab
+                    label="Lessons"
+                    value="lesson"
+                    style={{ minWidth: "50%" }}
+                  />
+                  <Tab label="Task" value="task" style={{ minWidth: "50%" }} />
+                </TabList>
+              </Box>
+              <TabPanel value="lesson">
+                {/* map lesson  */}
+                <div className={classes.lessonWrapper}>
+                  {lessons.map((lesson) => (
+                    <StudentLesson lessons={lesson} key={lesson._id} />
+                  ))}
+                </div>
+              </TabPanel>
+              <TabPanel value="task">
+                {/* all task  */}
+                {task.map((task) => (
+                  <StudentTask tasks={task} key={task._id} />
                 ))}
-              </div>
-            </TabPanel>
-            <TabPanel value="task">
-              {/* all task  */}
-              {task.map((task) => (
-                <StudentTask tasks={task} key={task._id} />
-              ))}
-            </TabPanel>
-          </TabContext>
-        </Box>
+              </TabPanel>
+            </TabContext>
+          </Box> :
+          <div className={classes.lessonWrapper}>
+            {lessons.map((lesson) => (
+              <StudentLesson lessons={lesson} key={lesson._id} />
+            ))}
+          </div>}
       </Container>
     </div>
   );
