@@ -2,12 +2,12 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
   root: {
-    backgroundColor: "#eee",
+    background: "#fff5f6",
     padding: "40px 0",
   },
   containers: {
     backgroundColor: "white",
-    borderRadius: "12px",
+    borderRadius: "6px",
     padding: "50px",
   },
 });

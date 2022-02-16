@@ -2,21 +2,13 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
   root: {
-    background: "#FDFDFD",
-    minHeight: "90vh",
+    background: "#fff5f6",
     padding: "50px 20px",
   },
-  paper: {
-    padding: "20px",
-    // textAlign: "center",
-  },
-  page: {
+  wrapper: {
     background: "white",
-  },
-  page1: {
-    background: "white",
-    padding: "0 15px",
-    border: "1px solid #eee",
+    padding: "30px",
+    borderRadius: "6px",
   },
   fullWidth: {
     width: "100%",

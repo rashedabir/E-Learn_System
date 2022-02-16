@@ -247,206 +247,208 @@ const CreateCourse = () => {
   return (
     <div className={classes.root}>
       <Container maxWidth="xl">
-        <h2>{courseId ? "Update" : "Create"} Course</h2>
-        <Grid className={classes.page} container spacing={4}>
-          <Grid item xs={12} sm={12} lg={12} md={12}>
-            <div className="upload">
-              <input
-                type="file"
-                name="file"
-                id="file_up"
-                onChange={handleUpload}
-              />
-              {loading ? (
-                // <LoadingScreen
-                //   loading={loading}
-                //   bgColor="#f1f1f1"
-                //   spinnerColor="#9ee5f8"
-                //   textColor="#676767"
-                //   logoSrc="/logo.png"
-                // />
-                "loading"
-              ) : (
-                <div id="file_img" style={styleUpload}>
-                  <img src={image ? image.url : ""} alt="" />
-                  <span onClick={handleDestroy}>X</span>
-                </div>
-              )}
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={4} md={4}>
-            <TextField
-              id="outlined-basic"
-              fullWidth
-              label="Course Title"
-              variant="outlined"
-              color="warning"
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-              value={title}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} lg={4} md={4}>
-            <TextField
-              id="outlined-basic"
-              fullWidth
-              label="Price"
-              type="number"
-              variant="outlined"
-              color="warning"
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
-              value={price}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} lg={4} md={4}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label" color="warning">
-                Category
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Category"
+        <div className={classes.wrapper}>
+          <h2>{courseId ? "Update" : "Create"} Course</h2>
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12} lg={12} md={12}>
+              <div className="upload">
+                <input
+                  type="file"
+                  name="file"
+                  id="file_up"
+                  onChange={handleUpload}
+                />
+                {loading ? (
+                  // <LoadingScreen
+                  //   loading={loading}
+                  //   bgColor="#f1f1f1"
+                  //   spinnerColor="#9ee5f8"
+                  //   textColor="#676767"
+                  //   logoSrc="/logo.png"
+                  // />
+                  "loading"
+                ) : (
+                  <div id="file_img" style={styleUpload}>
+                    <img src={image ? image.url : ""} alt="" />
+                    <span onClick={handleDestroy}>X</span>
+                  </div>
+                )}
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} lg={4} md={4}>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                label="Course Title"
+                variant="outlined"
                 color="warning"
                 onChange={(e) => {
-                  setCategory(e.target.value);
+                  setTitle(e.target.value);
                 }}
-                value={category}
-              >
-                {categories.map((item, i) => (
-                  <MenuItem key={i} value={item.name}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6} md={6}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Course Description"
-              multiline
-              rows={4}
-              variant="outlined"
-              fullWidth
-              color="warning"
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-              value={description}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6} md={6}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Course About"
-              multiline
-              rows={4}
-              color="warning"
-              variant="outlined"
-              fullWidth
-              onChange={(e) => {
-                setAbout(e.target.value);
-              }}
-              value={about}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6} md={6}>
-            {objectives.map((objective, index) => (
-              <div
-                key={objective.id}
-                className={classes.fullWidth}
-                style={{ display: "flex" }}
-              >
-                <TextField
-                  id="outlined-basic"
-                  label="Objective"
-                  name="objective"
-                  variant="outlined"
+                value={title}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} lg={4} md={4}>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                label="Price"
+                type="number"
+                variant="outlined"
+                color="warning"
+                onChange={(e) => {
+                  setPrice(e.target.value);
+                }}
+                value={price}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} lg={4} md={4}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label" color="warning">
+                  Category
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  label="Category"
                   color="warning"
-                  style={{ width: "100%" }}
-                  value={objective.objective}
-                  onChange={(event) =>
-                    handleChangeObjective(objective.id, event)
-                  }
-                />
-                <IconButton
-                  style={{ marginLeft: "15px" }}
-                  variant="contained"
-                  color="error"
-                  disabled={objectives.length === 1}
-                  onClick={() => handleRemoveObjective(objective.id)}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                  }}
+                  value={category}
                 >
-                  <DeleteOutlineIcon />
-                </IconButton>
-              </div>
-            ))}
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#EA5252",
-              }}
-              onClick={handleAddObjective}
-            >
-              <AddIcon />
-            </Button>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6} md={6}>
-            {requirements.map((requirement, index) => (
-              <div
-                key={requirement.id}
-                className={classes.fullWidth}
-                style={{ display: "flex" }}
+                  {categories.map((item, i) => (
+                    <MenuItem key={i} value={item.name}>
+                      {item.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={12} lg={6} md={6}>
+              <TextField
+                id="outlined-multiline-static"
+                label="Course Description"
+                multiline
+                rows={4}
+                variant="outlined"
+                fullWidth
+                color="warning"
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+                value={description}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} lg={6} md={6}>
+              <TextField
+                id="outlined-multiline-static"
+                label="Course About"
+                multiline
+                rows={4}
+                color="warning"
+                variant="outlined"
+                fullWidth
+                onChange={(e) => {
+                  setAbout(e.target.value);
+                }}
+                value={about}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} lg={6} md={6}>
+              {objectives.map((objective, index) => (
+                <div
+                  key={objective.id}
+                  className={classes.fullWidth}
+                  style={{ display: "flex" }}
+                >
+                  <TextField
+                    id="outlined-basic"
+                    label="Objective"
+                    name="objective"
+                    variant="outlined"
+                    color="warning"
+                    style={{ width: "100%" }}
+                    value={objective.objective}
+                    onChange={(event) =>
+                      handleChangeObjective(objective.id, event)
+                    }
+                  />
+                  <IconButton
+                    style={{ marginLeft: "15px" }}
+                    variant="contained"
+                    color="error"
+                    disabled={objectives.length === 1}
+                    onClick={() => handleRemoveObjective(objective.id)}
+                  >
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </div>
+              ))}
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#EA5252",
+                }}
+                onClick={handleAddObjective}
               >
-                <TextField
-                  id="outlined-basic"
-                  label="Requirement"
-                  name="requrement"
-                  variant="outlined"
-                  color="warning"
-                  style={{ width: "100%" }}
-                  value={requirement.requrement}
-                  onChange={(event) =>
-                    handleChangeRequirement(requirement.id, event)
-                  }
-                />
-                <IconButton
-                  style={{ marginLeft: "15px" }}
-                  variant="contained"
-                  color="error"
-                  disabled={requirements.length === 1}
-                  onClick={() => handleRemoveRequirements(requirement.id)}
+                <AddIcon />
+              </Button>
+            </Grid>
+            <Grid item xs={12} sm={12} lg={6} md={6}>
+              {requirements.map((requirement, index) => (
+                <div
+                  key={requirement.id}
+                  className={classes.fullWidth}
+                  style={{ display: "flex" }}
                 >
-                  <DeleteOutlineIcon />
-                </IconButton>
-              </div>
-            ))}
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#EA5252",
-              }}
-              onClick={handleAddRequirement}
-            >
-              <AddIcon />
-            </Button>
+                  <TextField
+                    id="outlined-basic"
+                    label="Requirement"
+                    name="requrement"
+                    variant="outlined"
+                    color="warning"
+                    style={{ width: "100%" }}
+                    value={requirement.requrement}
+                    onChange={(event) =>
+                      handleChangeRequirement(requirement.id, event)
+                    }
+                  />
+                  <IconButton
+                    style={{ marginLeft: "15px" }}
+                    variant="contained"
+                    color="error"
+                    disabled={requirements.length === 1}
+                    onClick={() => handleRemoveRequirements(requirement.id)}
+                  >
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </div>
+              ))}
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#EA5252",
+                }}
+                onClick={handleAddRequirement}
+              >
+                <AddIcon />
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-        <Button
-          onClick={handleSubmit}
-          fullWidth
-          variant="contained"
-          style={{
-            backgroundColor: "#EA5252",
-            textTransform: "none",
-          }}
-          sx={{ mt: 5 }}
-        >
-          <SaveIcon /> {courseId ? "Update" : " Save"}
-        </Button>
+          <Button
+            onClick={handleSubmit}
+            fullWidth
+            variant="contained"
+            style={{
+              backgroundColor: "#EA5252",
+              textTransform: "none",
+            }}
+            sx={{ mt: 5 }}
+          >
+            <SaveIcon /> {courseId ? "Update" : " Save"}
+          </Button>
+        </div>
       </Container>
     </div>
   );
