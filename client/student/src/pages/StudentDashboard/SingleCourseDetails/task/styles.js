@@ -22,6 +22,10 @@ export const useStyle = makeStyles({
     marginBottom: "6px",
     marginTop: "6px",
   },
+  taskcontent: {
+    paddingTop: "8px",
+    paddingLeft: "8px",
+  },
   heading: {
     display: "flex",
     alignItems: "center",
