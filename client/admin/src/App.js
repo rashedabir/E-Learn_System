@@ -8,6 +8,7 @@ import Instructor from "./components/Instructor/Instructor";
 import InstructorInfo from "./components/InstructorInfo/InstructorInfo";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CourseList from "./components/CourseList/CourseList";
+import AddBlogs from "./pages/blogs/AddBlogs";
 function App() {
   const theme = createTheme();
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/courseList" element={<CourseList />} />
+          <Route path="/add_blogs" element={<AddBlogs />} />
         </Routes>
       </Router>
     </ThemeProvider>
