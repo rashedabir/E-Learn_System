@@ -9,9 +9,8 @@ export const useStyle = makeStyles({
         textDecoration: 'none',
     },
     dashboard: {
-        paddingBottom: "20px",
-        textAlign: "center",
-    },
+        padding: "0px 20px 15px",
+      },
     nocourse: {
         display: "flex",
         justifyContent: "center",

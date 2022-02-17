@@ -141,17 +141,19 @@ const SingleCourse = () => {
             </Link>
           </span>
         </div>
-        <img
-          src={course?.courseDetails?.banner?.url}
-          className={classes.banner}
-          alt="..."
-        />
+        <Grid container>
+          <img
+            src={course?.courseDetails?.banner.url}
+            className={classes.banner}
+            alt="..."
+          />
+        </Grid>
         <Grid className={classes.contains} container spacing={2}>
           <Grid item xs={12} md={6}>
-            <h2>Title : {course?.courseDetails?.title}</h2>
-            <h5 className={classes.pading}>
-              Istructor : {course?.courseDetails?.instructor?.name}
-            </h5>
+            <h2> {course?.courseDetails?.title}</h2>
+            <Typography variant="h6" className={classes.pading}>
+              Instructor : {course?.courseDetails?.instructor?.name}
+            </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography

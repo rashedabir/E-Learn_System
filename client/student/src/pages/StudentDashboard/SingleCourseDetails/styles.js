@@ -22,8 +22,8 @@ export const useStyle = makeStyles({
   banner: {
     objectFit: "cover",
     width: "100%",
-    height: "305px",
-    marginBottom: "25px",
+    height: "350px",
+    marginBottom: "15px",
     padding: "10px",
     backgroundColor: "#fff",
     borderRadius: "10px",

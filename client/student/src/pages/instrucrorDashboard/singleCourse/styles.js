@@ -16,7 +16,7 @@ export const useStyle = makeStyles({
     fontFamily: "Poppins",
     textTransform: "none",
   },
-  contains: {},
+  contains: {padding:"10px"},
   banner: {
     objectFit: "cover",
     width: "100%",
@@ -26,10 +26,7 @@ export const useStyle = makeStyles({
     backgroundColor: "#fff",
     borderRadius: "10px",
   },
-  pading: {
-    padding: "0px",
-    margin: "0px",
-  },
+  
   container: {
     padding: "10px 10px",
     width: "100%",

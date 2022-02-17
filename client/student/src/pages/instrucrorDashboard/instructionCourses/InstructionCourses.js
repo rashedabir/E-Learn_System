@@ -32,7 +32,7 @@ const InstructionCourses = () => {
 
   return (
     <div className={classes.root}>
-      <h1>Dashbaord</h1>
+      <h1 className={classes.dashboard}>Dashboard</h1>
       <Carousel cols={4} rows={1} gap={20} loop>
         {courseList?.length > 0 &&
           courseList
