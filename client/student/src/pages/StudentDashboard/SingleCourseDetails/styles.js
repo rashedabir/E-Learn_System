@@ -51,9 +51,12 @@ export const useStyle = makeStyles({
   rightSide: {
     height: "400px",
     overflow: "auto",
+    background: "#fff",
+    padding: "10px",
+    border: "10px",
   },
   acTitle: {
-    backgroundColor: "red"
+    backgroundColor: "red",
   },
   roots: {
     flexGrow: 1,

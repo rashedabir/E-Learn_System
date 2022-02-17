@@ -4,7 +4,19 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { Box, Button, Container, Grid, List, ListItem, ListItemIcon, ListItemText, Tab, Typography, Paper } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Tab,
+  Typography,
+  Paper,
+} from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
@@ -13,13 +25,13 @@ import Swal from "sweetalert2";
 import { GlobalState } from "../../../GlobalState";
 import { useStyle } from "./styles";
 import StudentTask from "./task/task";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
-import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
+import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
+import PauseCircleOutlineRoundedIcon from "@mui/icons-material/PauseCircleOutlineRounded";
 
 const SingleCourseDetails = () => {
   const classes = useStyle();
@@ -228,7 +240,7 @@ const SingleCourseDetails = () => {
                 {/* map lesson  */}
                 <Container maxWidth="xl">
                   <div className={classes.roots}>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={4}>
                       <Grid item xs={12} lg={6}>
                         <ReactPlayer url={link} width="100%" controls playing />
                         {selectedIndex === 0 ? (
@@ -238,24 +250,26 @@ const SingleCourseDetails = () => {
                         ) : (
                           <Typography variant="h5" className={classes.title}>
                             <i className="far fa-play-circle"></i> Now Playing:{" "}
-                            <strong>
-                              {title}
-                            </strong>
+                            <strong>{title}</strong>
                           </Typography>
                         )}
                       </Grid>
-                      <Grid sx={{
-                        backgroundColor: "transparent",
-                        border: "none",
-                      }}
-                        item xs={12} lg={6} component={Paper}>
+                      <Grid
+                        sx={{
+                          backgroundColor: "transparent",
+                          border: "none",
+                        }}
+                        item
+                        xs={12}
+                        lg={6}
+                      >
                         <div className={classes.rightSide}>
                           {lessons.map((data) => (
-                            // accordion here 
+                            // accordion here
                             <Accordion>
                               <AccordionSummary
                                 sx={{
-                                  backgroundColor: "#eee"
+                                  backgroundColor: "#eee",
                                 }}
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -273,19 +287,26 @@ const SingleCourseDetails = () => {
                                       button
                                       selected={selectedIndex === item.title}
                                       onClick={(event) =>
-                                        handleListItemClick(event, item.link, item.link, item.title)
+                                        handleListItemClick(
+                                          event,
+                                          item.link,
+                                          item.link,
+                                          item.title
+                                        )
                                       }
                                     >
                                       <ListItemIcon>
                                         {selectedIndex === item.link ? (
-                                          <PauseCircleOutlineRoundedIcon className={classes.bgIcon} />
+                                          <PauseCircleOutlineRoundedIcon
+                                            className={classes.bgIcon}
+                                          />
                                         ) : (
-                                          <PlayCircleOutlineRoundedIcon className={classes.bgIcon} />
+                                          <PlayCircleOutlineRoundedIcon
+                                            className={classes.bgIcon}
+                                          />
                                         )}
                                       </ListItemIcon>
-                                      <ListItemText>
-                                        {item.title}
-                                      </ListItemText>
+                                      <ListItemText>{item.title}</ListItemText>
                                     </ListItem>
                                   ))}
                                 </List>
@@ -306,85 +327,91 @@ const SingleCourseDetails = () => {
               </TabPanel>
             </TabContext>
           </Box>
-        )
-          :
-
-          (
-            <div className={classes.lessonWrapper}>
-              <Container maxWidth="xl">
-                <div className={classes.roots}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} lg={6}>
-                      <ReactPlayer url={link} width="100%" controls playing />
-                      {selectedIndex === 0 ? (
-                        <Typography variant="h5" className={classes.title}>
-                          Select a Item to begin the Playlist
-                        </Typography>
-                      ) : (
-                        <Typography variant="h5" className={classes.title}>
-                          <i className="far fa-play-circle"></i> Now Playing:{" "}
-                          <strong>
-                            {title}
-                          </strong>
-                        </Typography>
-                      )}
-                    </Grid>
-                    <Grid sx={{
+        ) : (
+          <div className={classes.lessonWrapper}>
+            <Container maxWidth="xl">
+              <div className={classes.roots}>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} lg={6}>
+                    <ReactPlayer url={link} width="100%" controls playing />
+                    {selectedIndex === 0 ? (
+                      <Typography variant="h5" className={classes.title}>
+                        Select a Item to begin the Playlist
+                      </Typography>
+                    ) : (
+                      <Typography variant="h5" className={classes.title}>
+                        <i className="far fa-play-circle"></i> Now Playing:{" "}
+                        <strong>{title}</strong>
+                      </Typography>
+                    )}
+                  </Grid>
+                  <Grid
+                    sx={{
                       backgroundColor: "transparent",
                       border: "none",
                     }}
-                      item xs={12} lg={6} component={Paper}>
-                      <div className={classes.rightSide}>
-                        {lessons.map((data) => (
-                          // accordion here 
-                          <Accordion>
-                            <AccordionSummary
-                              sx={{
-                                backgroundColor: "#eee"
-                              }}
-                              expandIcon={<ExpandMoreIcon />}
-                              aria-controls="panel1a-content"
-                              id="panel1a-header"
+                    item
+                    xs={12}
+                    lg={6}
+                    component={Paper}
+                  >
+                    <div className={classes.rightSide}>
+                      {lessons.map((data) => (
+                        // accordion here
+                        <Accordion>
+                          <AccordionSummary
+                            sx={{
+                              backgroundColor: "#eee",
+                            }}
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                          >
+                            <Typography>{data.title}</Typography>
+                          </AccordionSummary>
+                          <AccordionDetails sx={{ padding: "0px" }}>
+                            <List
+                              aria-label="main mailbox folders"
+                              className={classes.songList}
                             >
-                              <Typography>{data.title}</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails sx={{ padding: "0px" }}>
-                              <List
-                                aria-label="main mailbox folders"
-                                className={classes.songList}
-                              >
-                                {data.videos.map((item) => (
-                                  <ListItem
-                                    button
-                                    selected={selectedIndex === item.title}
-                                    onClick={(event) =>
-                                      handleListItemClick(event, item.link, item.link, item.title)
-                                    }
-                                  >
-                                    <ListItemIcon>
-                                      {selectedIndex === item.link ? (
-                                        <PauseCircleOutlineRoundedIcon className={classes.bgIcon} />
-                                      ) : (
-                                        <PlayCircleOutlineRoundedIcon className={classes.bgIcon} />
-                                      )}
-                                    </ListItemIcon>
-                                    <ListItemText>
-                                      {item.title}
-                                    </ListItemText>
-                                  </ListItem>
-                                ))}
-                              </List>
-                            </AccordionDetails>
-                          </Accordion>
-
-                        ))}
-                      </div>
-                    </Grid>
+                              {data.videos.map((item) => (
+                                <ListItem
+                                  button
+                                  selected={selectedIndex === item.title}
+                                  onClick={(event) =>
+                                    handleListItemClick(
+                                      event,
+                                      item.link,
+                                      item.link,
+                                      item.title
+                                    )
+                                  }
+                                >
+                                  <ListItemIcon>
+                                    {selectedIndex === item.link ? (
+                                      <PauseCircleOutlineRoundedIcon
+                                        className={classes.bgIcon}
+                                      />
+                                    ) : (
+                                      <PlayCircleOutlineRoundedIcon
+                                        className={classes.bgIcon}
+                                      />
+                                    )}
+                                  </ListItemIcon>
+                                  <ListItemText>{item.title}</ListItemText>
+                                </ListItem>
+                              ))}
+                            </List>
+                          </AccordionDetails>
+                        </Accordion>
+                      ))}
+                    </div>
                   </Grid>
-                </div>
-              </Container>
-            </div>
-          )}
+                </Grid>
+              </div>
+            </Container>
+          </div>
+        )}
       </Container>
     </div>
   );
