@@ -18,6 +18,9 @@ const AddLesson = () => {
   const { courseId, lessonId } = useParams();
   const history = useNavigate();
 
+  console.log(courseId);
+  console.log(lessonId);
+
   /*-------------------------videos-----------------------*/
 
   const [videos, setVideos] = useState([
@@ -62,26 +65,48 @@ const AddLesson = () => {
   };
 
   const storeLessson = async () => {
-    await axios
-      .post(
-        `/api/lesson/${courseId}`,
-        {
-          title: heading,
-          videos: videos,
-        },
-        {
-          headers: { Authorization: token },
-        }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          Swal.fire("Good job!", "You Created a Lesson!", "success");
-          history(`/course_details/${courseId}`);
-        }
-      })
-      .catch((error) => {
-        toast.error(error.response.data.msg);
-      });
+    if (lessonId) {
+      await axios
+        .put(
+          `/api/lesson/${lessonId}`,
+          {
+            title: heading,
+            videos: videos,
+          },
+          {
+            headers: { Authorization: token },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire("Good job!", "You updated this Lesson!", "success");
+          }
+        })
+        .catch((error) => {
+          toast.error(error.response.data.msg);
+        });
+    } else if (courseId) {
+      await axios
+        .post(
+          `/api/lesson/${courseId}`,
+          {
+            title: heading,
+            videos: videos,
+          },
+          {
+            headers: { Authorization: token },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire("Good job!", "You Created a Lesson!", "success");
+            history(`/course_details/${courseId}`);
+          }
+        })
+        .catch((error) => {
+          toast.error(error.response.data.msg);
+        });
+    }
   };
 
   useEffect(() => {
