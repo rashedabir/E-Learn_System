@@ -79,7 +79,7 @@ const AddBlogs = () => {
 
   return (
     <Navbar>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ py: 7 }}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} lg={12} md={12}>
             <div className="upload">
@@ -143,7 +143,12 @@ const AddBlogs = () => {
             />
           </Grid>
         </Grid>
-        <Button onClick={handleSubmit} fullWidth variant="contained">
+        <Button
+          sx={{ mt: 4, py: 1 }}
+          onClick={handleSubmit}
+          fullWidth
+          variant="contained"
+        >
           save
         </Button>
       </Container>
