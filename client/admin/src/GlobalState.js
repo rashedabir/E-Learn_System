@@ -3,8 +3,8 @@ import UserAPI from "./api/UserAPI";
 import axios from "axios";
 import InstructorAPI from "./api/InstructorAPI";
 import CourseCategoryAPI from "./api/CourseCategoryAPI";
-import CourseAPI from './api/CourseAPI';
-import BlogCategoryAPI from "./api/BlogAPI";
+import CourseAPI from "./api/CourseAPI";
+import BlogCategoryAPI from "./api/BlogCategoryAPI";
 export const GlobalState = createContext();
 
 export const DataProvider = ({ children }) => {
