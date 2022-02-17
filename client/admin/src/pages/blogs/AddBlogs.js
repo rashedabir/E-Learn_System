@@ -1,15 +1,40 @@
-import { Container, Grid } from "@mui/material";
+import {
+  Button,
+  Container,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import Editor from "../../components/editor/Editor";
 import Navbar from "../../components/navbar/Navbar";
 import { GlobalState } from "../../GlobalState";
 
 const AddBlogs = () => {
-  const state = useContext(GlobalState);
-  const [token] = state.token;
+  const global = useContext(GlobalState);
+  const [token] = global.token;
   const [image, setImage] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleSubmit = () => {
+    const payload = {
+      title: title,
+      category: category,
+      images: image,
+      description: description,
+    };
+
+    console.log(payload);
+  };
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -55,7 +80,7 @@ const AddBlogs = () => {
   return (
     <Navbar>
       <Container maxWidth="xl">
-        <Grid container spacing={4}>
+        <Grid container spacing={3}>
           <Grid item xs={12} sm={12} lg={12} md={12}>
             <div className="upload">
               <input
@@ -81,7 +106,46 @@ const AddBlogs = () => {
               )}
             </div>
           </Grid>
+          <Grid item md={6} sm={12}>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Title"
+              variant="outlined"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+          </Grid>
+          <Grid item md={6} sm={12}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                alue={category}
+                label="Category"
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item md={12}>
+            <Editor
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            />
+          </Grid>
         </Grid>
+        <Button onClick={handleSubmit} fullWidth variant="contained">
+          save
+        </Button>
       </Container>
     </Navbar>
   );
