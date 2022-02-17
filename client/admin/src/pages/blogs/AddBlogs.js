@@ -149,7 +149,7 @@ const AddBlogs = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                alue={category}
+                value={category}
                 label="Category"
                 onChange={(e) => {
                   setCategory(e.target.value);
