@@ -20,20 +20,46 @@ const AddBlogs = () => {
   const [token] = global.token;
   const [image, setImage] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [blogCategory] = global.blogCategoryAPI.blogCategory;
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleSubmit = () => {
-    const payload = {
-      title: title,
-      category: category,
-      images: image,
-      description: description,
-    };
+  const [onEdit, setOnEdit] = useState(false);
+  const [id, setId] = useState("");
 
-    console.log(payload);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (onEdit) {
+        await axios.put(
+          `/api/admin/blog/${id}`,
+          {
+            title: title,
+            category: category,
+            images: image,
+            description: description,
+          },
+          { headers: { Authorization: token } }
+        );
+        toast.warn("Post Updated");
+      } else {
+        await axios.post(
+          "/api/admin/blog",
+          {
+            title: title,
+            category: category,
+            images: image,
+            description: description,
+          },
+          { headers: { Authorization: token } }
+        );
+        toast.success("Blog Posted");
+      }
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
   };
 
   const handleUpload = async (e) => {
@@ -129,9 +155,12 @@ const AddBlogs = () => {
                   setCategory(e.target.value);
                 }}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {blogCategory &&
+                  blogCategory.map((item, i) => (
+                    <MenuItem key={i} value={item.name}>
+                      {item.name}
+                    </MenuItem>
+                  ))}
               </Select>
             </FormControl>
           </Grid>
