@@ -19,7 +19,7 @@ const blogCategoryCTRL = {
       if (existingCategory) {
         return res.status(400).json({ msg: "This Category Already Exists" });
       }
-      const newCategory = new Category({ name });
+      const newCategory = new BlogCategory({ name });
       await newCategory.save();
       res.json({ newCategory });
     } catch (error) {

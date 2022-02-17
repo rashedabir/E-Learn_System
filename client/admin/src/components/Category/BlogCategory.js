@@ -84,7 +84,7 @@ function BlogCatagory() {
     } else {
       try {
         await axios.post(
-          "/api/admin/blog_cetegory/",
+          "/api/admin/blog_cetegory",
           {
             name: name,
           },
@@ -129,12 +129,16 @@ function BlogCatagory() {
         >
           <Box sx={modal}>
             <h2 className={classes.title}>
-              {onEdit ? "Update Course Category" : "Add Course Category"}
+              {onEdit ? "Update Blog Category" : "Add Blog Category"}
             </h2>
             <TextField
               id="outlined-basic"
               label="Category Name"
               variant="outlined"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
             />
             <Button
               variant="contained"

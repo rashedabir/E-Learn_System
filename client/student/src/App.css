@@ -102,3 +102,7 @@ a:hover {
   margin: auto;
   padding-bottom: 50px;
 }
+
+.editor_wrapper {
+  border: 1px solid black !important;
+}
