@@ -62,7 +62,12 @@ const SubmitTask = () => {
             height="200"
           />
           <Button
-            sx={{ my: 3, py: 1, background: "#eb5252" }}
+            sx={{
+              my: 3, py: 1, background: "#eb5252",
+              '& .MuiButton-root': {
+                background: "#eb5252",
+              },
+            }}
             fullWidth
             variant="contained"
             onClick={submitTask}

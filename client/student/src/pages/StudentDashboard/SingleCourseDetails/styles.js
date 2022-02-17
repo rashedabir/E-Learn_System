@@ -48,4 +48,31 @@ export const useStyle = makeStyles({
     justifyContent: "end",
     padding: "20px 0",
   },
+  rightSide: {
+    height: "400px",
+    overflow: "auto",
+  },
+  acTitle: {
+    backgroundColor: "red"
+  },
+  roots: {
+    flexGrow: 1,
+    padding: "40px 0",
+  },
+  songList: {
+    maxHeight: "47.5vh",
+    overflowX: "auto",
+  },
+  title: {
+    margin: "15px 0",
+    color: "black",
+  },
+  heading: {
+    textAlign: "center",
+    color: "black",
+    paddingTop: "20px",
+  },
+  bgIcon: {
+    color: "crimson",
+  },
 });
