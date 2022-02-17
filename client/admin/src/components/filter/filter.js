@@ -58,7 +58,7 @@ const Filter = () => {
             fullWidth
             color="warning"
             value={search}
-            onChange={(e) => setSearch(e.target.value.toLowerCase())}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </Grid>
       </Grid>
