@@ -23,6 +23,7 @@ export const useStyle = makeStyles({
     marginLeft: "8px"
   },
   heading: {
+    whiteSpace: "nowrap",
     fontSize: "15px",
     marginLeft: "15px",
     fontWeight: 500,
