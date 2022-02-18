@@ -46,7 +46,7 @@ const SingleCourseDetails = () => {
   const [list, setList] = state.userAPI.list;
   const history = useNavigate();
 
-  const [selectedIndex, setSelectedIndex] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState("0");
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
 
@@ -238,86 +238,87 @@ const SingleCourseDetails = () => {
               </Box>
               <TabPanel value="lesson">
                 {/* map lesson  */}
-                <Container maxWidth="xl">
-                  <div className={classes.roots}>
-                    <Grid container spacing={4}>
-                      <Grid item xs={12} lg={6}>
-                        <ReactPlayer url={link} width="100%" controls playing />
-                        {selectedIndex === 0 ? (
-                          <Typography variant="h5" className={classes.title}>
-                            Select a Item to begin the Playlist
-                          </Typography>
-                        ) : (
-                          <Typography variant="h5" className={classes.title}>
-                            <i className="far fa-play-circle"></i> Now Playing:{" "}
-                            <strong>{title}</strong>
-                          </Typography>
-                        )}
-                      </Grid>
-                      <Grid
-                        sx={{
-                          backgroundColor: "transparent",
-                          border: "none",
-                        }}
-                        item
-                        xs={12}
-                        lg={6}
-                      >
-                        <div className={classes.rightSide}>
-                          {lessons.map((data) => (
-                            // accordion here
-                            <Accordion>
-                              <AccordionSummary
-                                sx={{
-                                  backgroundColor: "#eee",
-                                }}
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                              >
-                                <Typography>{data.title}</Typography>
-                              </AccordionSummary>
-                              <AccordionDetails sx={{ padding: "0px" }}>
-                                <List
-                                  aria-label="main mailbox folders"
-                                  className={classes.songList}
+                {lessons.length !== 0 ? (
+                  <Container maxWidth="xl">
+                    <div className={classes.roots}>
+                      <Grid container spacing={4}>
+                        <Grid item xs={12} lg={6}>
+                          <ReactPlayer url={link} width="100%" controls playing />
+                          {selectedIndex === " " ? (
+                            <Typography variant="h5" className={classes.title}>
+                              Select a Item to begin the Playlist
+                            </Typography>
+                          ) : (
+                            <Typography variant="h5" className={classes.title}>
+                              <i className="far fa-play-circle"></i> Now Playing:{" "}
+                              <strong>{title}</strong>
+                            </Typography>
+                          )}
+                        </Grid>
+                        <Grid
+                          sx={{
+                            backgroundColor: "transparent",
+                            border: "none",
+                          }}
+                          item
+                          xs={12}
+                          lg={6}
+                        >
+                          <div className={classes.rightSide}>
+                            {lessons.map((data) => (
+                              // accordion here
+                              <Accordion>
+                                <AccordionSummary
+                                  sx={{
+                                    backgroundColor: "#eee",
+                                  }}
+                                  expandIcon={<ExpandMoreIcon />}
+                                  aria-controls="panel1a-content"
+                                  id="panel1a-header"
                                 >
-                                  {data.videos.map((item) => (
-                                    <ListItem
-                                      button
-                                      selected={selectedIndex === item.title}
-                                      onClick={(event) =>
-                                        handleListItemClick(
-                                          event,
-                                          item.link,
-                                          item.link,
-                                          item.title
-                                        )
-                                      }
-                                    >
-                                      <ListItemIcon>
-                                        {selectedIndex === item.link ? (
-                                          <PauseCircleOutlineRoundedIcon
-                                            className={classes.bgIcon}
-                                          />
-                                        ) : (
-                                          <PlayCircleOutlineRoundedIcon
-                                            className={classes.bgIcon}
-                                          />
-                                        )}
-                                      </ListItemIcon>
-                                      <ListItemText>{item.title}</ListItemText>
-                                    </ListItem>
-                                  ))}
-                                </List>
-                              </AccordionDetails>
-                            </Accordion>
-                          ))}
-                        </div>
+                                  <Typography>{data.title}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails sx={{ padding: "0px" }}>
+                                  <List
+                                    aria-label="main mailbox folders"
+                                    className={classes.songList}
+                                  >
+                                    {data.videos.map((item) => (
+                                      <ListItem
+                                        button
+                                        selected={selectedIndex === item.title}
+                                        onClick={(event) =>
+                                          handleListItemClick(
+                                            event,
+                                            item.link,
+                                            item.link,
+                                            item.title
+                                          )
+                                        }
+                                      >
+                                        <ListItemIcon>
+                                          {selectedIndex === item.link ? (
+                                            <PauseCircleOutlineRoundedIcon
+                                              className={classes.bgIcon}
+                                            />
+                                          ) : (
+                                            <PlayCircleOutlineRoundedIcon
+                                              className={classes.bgIcon}
+                                            />
+                                          )}
+                                        </ListItemIcon>
+                                        <ListItemText>{item.title}</ListItemText>
+                                      </ListItem>
+                                    ))}
+                                  </List>
+                                </AccordionDetails>
+                              </Accordion>
+                            ))}
+                          </div>
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </div>
-                </Container>
+                    </div>
+                  </Container>) : (<></>)}
               </TabPanel>
               <TabPanel value="task">
                 {/* all task  */}
@@ -328,92 +329,100 @@ const SingleCourseDetails = () => {
             </TabContext>
           </Box>
         ) : (
-          <div className={classes.lessonWrapper}>
-            <Container maxWidth="xl">
-              <div className={classes.roots}>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} lg={6}>
-                    <ReactPlayer url={link} width="100%" controls playing />
-                    {selectedIndex === 0 ? (
-                      <Typography variant="h5" className={classes.title}>
-                        Select a Item to begin the Playlist
-                      </Typography>
-                    ) : (
-                      <Typography variant="h5" className={classes.title}>
-                        <i className="far fa-play-circle"></i> Now Playing:{" "}
-                        <strong>{title}</strong>
-                      </Typography>
-                    )}
-                  </Grid>
-                  <Grid
-                    sx={{
-                      backgroundColor: "transparent",
-                      border: "none",
-                    }}
-                    item
-                    xs={12}
-                    lg={6}
-                    component={Paper}
-                  >
-                    <div className={classes.rightSide}>
-                      {lessons.map((data) => (
-                        // accordion here
-                        <Accordion>
-                          <AccordionSummary
-                            sx={{
-                              backgroundColor: "#eee",
-                            }}
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                          >
-                            <Typography>{data.title}</Typography>
-                          </AccordionSummary>
-                          <AccordionDetails sx={{ padding: "0px" }}>
-                            <List
-                              aria-label="main mailbox folders"
-                              className={classes.songList}
-                            >
-                              {data.videos.map((item) => (
-                                <ListItem
-                                  button
-                                  selected={selectedIndex === item.title}
-                                  onClick={(event) =>
-                                    handleListItemClick(
-                                      event,
-                                      item.link,
-                                      item.link,
-                                      item.title
-                                    )
-                                  }
+          <>
+            {
+              lessons.length !== 0 ? (
+                <div div className={classes.lessonWrapper}>
+                  <Container maxWidth="xl">
+                    <div className={classes.roots}>
+                      <Grid container spacing={3}>
+                        <Grid item xs={12} lg={6}>
+                          <ReactPlayer url={link} width="100%" controls playing />
+                          {selectedIndex === "0" ? (
+                            <Typography variant="h5" className={classes.title}>
+                              Select a Item to begin the Playlist
+                            </Typography>
+                          ) : (
+                            <Typography variant="h5" className={classes.title}>
+                              <i className="far fa-play-circle"></i> Now Playing:{" "}
+                              <strong>{title}</strong>
+                            </Typography>
+                          )}
+                        </Grid>
+                        <Grid
+                          sx={{
+                            backgroundColor: "transparent",
+                            border: "none",
+                          }}
+                          item
+                          xs={12}
+                          lg={6}
+                          component={Paper}
+                        >
+                          <div className={classes.rightSide}>
+                            {lessons.map((data) => (
+                              // accordion here
+                              <Accordion>
+                                <AccordionSummary
+                                  sx={{
+                                    backgroundColor: "#eee",
+                                  }}
+                                  expandIcon={<ExpandMoreIcon />}
+                                  aria-controls="panel1a-content"
+                                  id="panel1a-header"
                                 >
-                                  <ListItemIcon>
-                                    {selectedIndex === item.link ? (
-                                      <PauseCircleOutlineRoundedIcon
-                                        className={classes.bgIcon}
-                                      />
-                                    ) : (
-                                      <PlayCircleOutlineRoundedIcon
-                                        className={classes.bgIcon}
-                                      />
-                                    )}
-                                  </ListItemIcon>
-                                  <ListItemText>{item.title}</ListItemText>
-                                </ListItem>
-                              ))}
-                            </List>
-                          </AccordionDetails>
-                        </Accordion>
-                      ))}
+                                  <Typography>{data.title}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails sx={{ padding: "0px" }}>
+                                  <List
+                                    aria-label="main mailbox folders"
+                                    className={classes.songList}
+                                  >
+                                    {data.videos.map((item) => (
+                                      <ListItem
+                                        button
+                                        selected={selectedIndex === item.title}
+                                        onClick={(event) =>
+                                          handleListItemClick(
+                                            event,
+                                            item.link,
+                                            item.link,
+                                            item.title
+                                          )
+                                        }
+                                      >
+                                        <ListItemIcon>
+                                          {selectedIndex === item.link ? (
+                                            <PauseCircleOutlineRoundedIcon
+                                              className={classes.bgIcon}
+                                            />
+                                          ) : (
+                                            <PlayCircleOutlineRoundedIcon
+                                              className={classes.bgIcon}
+                                            />
+                                          )}
+                                        </ListItemIcon>
+                                        <ListItemText>{item.title}</ListItemText>
+                                      </ListItem>
+                                    ))}
+                                  </List>
+                                </AccordionDetails>
+                              </Accordion>
+                            ))}
+                          </div>
+                        </Grid>
+                      </Grid>
                     </div>
-                  </Grid>
-                </Grid>
-              </div>
-            </Container>
-          </div>
-        )}
-      </Container>
-    </div>
+                  </Container>
+                </div>)
+                :
+                (<></>)
+            }
+          </>
+        )
+        }
+      </Container >
+    </div >
   );
 };
 
