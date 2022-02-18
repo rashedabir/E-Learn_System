@@ -126,6 +126,7 @@ const AddTask = () => {
                   )}
                   label="Start Date"
                   value={startvalue}
+                  minDate={new Date()}
                   onChange={(newStartValue) => {
                     setStartValue(newStartValue);
                   }}
@@ -140,6 +141,7 @@ const AddTask = () => {
                     <TextField fullWidth color="warning" {...props} />
                   )}
                   label="End Date"
+                  minDate={new Date()}
                   value={endvalue}
                   onChange={(newEndValue) => {
                     setEndValue(newEndValue);
