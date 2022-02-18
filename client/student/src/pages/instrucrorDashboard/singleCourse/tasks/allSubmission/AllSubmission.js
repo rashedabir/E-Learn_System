@@ -106,7 +106,6 @@ const AllSubmission = () => {
                       size="small"
                       id="outlined-basic"
                       label="Mark"
-                      value={mark}
                       variant="outlined"
                       color="warning"
                       type="number"

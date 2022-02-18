@@ -63,8 +63,13 @@ const SubmitTask = () => {
           />
           <Button
             sx={{
-              my: 3, py: 1, background: "#eb5252",
-              '& .MuiButton-root': {
+              my: 3,
+              py: 1,
+              background: "#eb5252",
+              "& .MuiButton-root": {
+                background: "#eb5252",
+              },
+              ":hover": {
                 background: "#eb5252",
               },
             }}
