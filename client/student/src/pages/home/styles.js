@@ -75,6 +75,7 @@ export const useStyle = makeStyles({
   },
   featurethreecard: {
     boxShadow: "rgba(0, 0, 0, 0.10) 0px 25px 20px -20px;",
+
   },
   featurethreecardinner: {
     margin: "10px",

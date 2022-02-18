@@ -80,16 +80,33 @@ const taskCTRL = {
     try {
       const { answer } = req.body;
       const user = req.user.id;
-      const student = await Student.findOne({ _id: user }).select("-password");
+      const student = await Student.findOne({ _id: user })
+        .select("-password")
+        .select("-enrolled");
       if (!answer) {
         return res.status(400).json({ msg: "Invalid Answer." });
       }
-      const submittedStudent = await Task.findOne({
-        "submissions.student._id": student._id,
+      const submission = await Task.findOne({ _id: req.params.task_id }).select(
+        "submissions"
+      );
+      const { submissions } = submission;
+
+      const found = submissions.filter((item) => {
+        if (item.student.userName == student.userName) {
+          return item;
+        }
       });
-      if (submittedStudent) {
+
+      if (found.length > 0) {
         return res.status(400).json({ msg: "You Allready Submitted." });
       }
+      // const submittedStudent = await Task.findOne({
+      //   "submissions.student._id": ç._id,
+      // });
+      // if (submissions) {
+      //   return res.status(400).json({ msg: submissions });
+      // }
+
       const task = await Task.findOne({ _id: req.params.task_id });
       task.submissions.push({
         answer,

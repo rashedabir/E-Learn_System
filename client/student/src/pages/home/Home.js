@@ -109,7 +109,7 @@ const Home = () => {
               </Grid>
               <Grid className={classes.featurethreecard} item xs={12} md={4}>
                 <div className={classes.featurethreecardinner}>
-                  <Grid className={classes.card} container spacing={5}>
+                  <Grid className={classes.card} container spacing={2}>
                     <Grid item xs={2}>
                       <img
                         className={classes.cardicon}
