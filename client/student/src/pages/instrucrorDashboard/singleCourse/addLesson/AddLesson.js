@@ -80,6 +80,7 @@ const AddLesson = () => {
         .then((res) => {
           if (res.status === 200) {
             Swal.fire("Good job!", "You updated this Lesson!", "success");
+            history(-1);
           }
         })
         .catch((error) => {

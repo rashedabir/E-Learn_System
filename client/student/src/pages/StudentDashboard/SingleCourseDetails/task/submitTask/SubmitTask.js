@@ -5,6 +5,7 @@ import { GlobalState } from "../../../../../GlobalState";
 import axios from "axios";
 import Editor from "../../../../../components/editor/Editor";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SubmitTask = () => {
   const state = useContext(GlobalState);
@@ -12,6 +13,7 @@ const SubmitTask = () => {
   const [task, setTask] = useState({});
   const { taskId } = useParams();
   const [answer, setAnswer] = useState("");
+  const history = useNavigate();
 
   useEffect(() => {
     if (taskId) {
@@ -42,6 +44,7 @@ const SubmitTask = () => {
         }
       );
       toast.success("Task Submitted");
+      history(-1);
     } catch (error) {
       toast.error(error.response.data.msg);
     }
