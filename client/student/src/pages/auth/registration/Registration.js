@@ -26,7 +26,7 @@ const Registration = () => {
     try {
       if (role === "student") {
         await axios
-          .post("/api/student/register", {
+          .post("https://e-learn-bd.herokuapp.com/api/student/register", {
             userName: userName,
             nid: nid,
             name: `${firstName} ${lastName}`,
@@ -45,7 +45,7 @@ const Registration = () => {
           });
       } else if (role === "parent") {
         await axios
-          .post("/api/parent/register", {
+          .post("https://e-learn-bd.herokuapp.com/api/parent/register", {
             nid: nid,
             name: `${firstName} ${lastName}`,
             mobile: mobile,
@@ -63,7 +63,7 @@ const Registration = () => {
           });
       } else if (role === "instructor") {
         await axios
-          .post("/api/instructor/register", {
+          .post("https://e-learn-bd.herokuapp.com/api/instructor/register", {
             userName: userName,
             name: `${firstName} ${lastName}`,
             mobile: mobile,

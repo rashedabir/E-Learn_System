@@ -50,4 +50,10 @@ export const useStyle = makeStyles(() => ({
   instructor: {
     fontSize: "20px",
   },
+  tabcontainer: {
+    "& .Mui-selected": {
+      color: "#ea5252 !important",
+      fontWeight: "600 !important",
+    },
+  },
 }));

@@ -78,4 +78,10 @@ export const useStyle = makeStyles({
   bgIcon: {
     color: "crimson",
   },
+  tabcontainer: {
+    "& .Mui-selected": {
+      color: "#ea5252 !important",
+      fontWeight: "600 !important",
+    },
+  },
 });

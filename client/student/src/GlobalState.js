@@ -10,7 +10,9 @@ export const DataProvider = ({ children }) => {
   const [token, setToken] = useState(false);
 
   const refreshToken = async () => {
-    const res = await axios.get("/api/refresh_token");
+    const res = await axios.get(
+      "https://e-learn-bd.herokuapp.com/api/refresh_token"
+    );
     setToken(res.data.accessToken);
   };
 

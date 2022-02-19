@@ -18,14 +18,16 @@ const CoursesTab = () => {
   useEffect(() => {
     //course list
     const getCourses = async () => {
-      await axios.get("/api/all/course").then((res) => {
-        if (res.status === 200) {
-          const { courses } = res.data;
-          setCourseList(courses);
-          let list = [...new Set(courses.map((item) => item.category))];
-          setTabList(list);
-        }
-      });
+      await axios
+        .get("https://e-learn-bd.herokuapp.com/api/all/course")
+        .then((res) => {
+          if (res.status === 200) {
+            const { courses } = res.data;
+            setCourseList(courses);
+            let list = [...new Set(courses.map((item) => item.category))];
+            setTabList(list);
+          }
+        });
     };
     getCourses();
   }, []);
@@ -51,9 +53,9 @@ const CoursesTab = () => {
                   <Tab
                     sx={{ textTransform: "capitalize" }}
                     label={item}
-                    value={i}
                     key={i}
-                    className={classes.tab}
+                    value={i}
+                    className={`${classes.tab}`}
                   />
                 ))}
             </TabList>

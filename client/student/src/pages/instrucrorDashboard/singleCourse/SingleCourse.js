@@ -30,15 +30,19 @@ const SingleCourse = () => {
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
-        await axios.get(`/api/course_details/${courseId}`).then((res) => {
-          if (res.status === 200) {
-            setCourse(res.data);
-            setLessons(res.data.lessons);
-            setObjective(res.data.courseDetails.objective);
-            setReq(res.data.courseDetails.requirements);
-            setTask(res.data.tasks);
-          }
-        });
+        await axios
+          .get(
+            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
+          )
+          .then((res) => {
+            if (res.status === 200) {
+              setCourse(res.data);
+              setLessons(res.data.lessons);
+              setObjective(res.data.courseDetails.objective);
+              setReq(res.data.courseDetails.requirements);
+              setTask(res.data.tasks);
+            }
+          });
       }
     };
     getData();
@@ -56,9 +60,12 @@ const SingleCourse = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`/api/course_details/${courseId}`, {
-            headers: { Authorization: token },
-          })
+          .delete(
+            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`,
+            {
+              headers: { Authorization: token },
+            }
+          )
           .then((res) => {
             if (res.status === 200) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -223,6 +230,7 @@ const SingleCourse = () => {
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList
                   onChange={handleChange}
+                  className={classes.tabcontainer}
                   TabIndicatorProps={{
                     style: { background: "red" },
                   }}

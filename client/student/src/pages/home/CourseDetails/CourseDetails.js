@@ -69,14 +69,15 @@ const CourseDetails = () => {
   const [course, setCourse] = useState([]);
   const [requirrements, setRequirrements] = useState([]);
   const [objective, setObjective] = useState([]);
-  console.log(requirrements);
 
   const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
         await axios
-          .get(`/api/course_details/${courseId}`)
+          .get(
+            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
+          )
           .then((res) => {
             if (res.status === 200) {
               const { courseDetails } = res.data;
@@ -104,6 +105,7 @@ const CourseDetails = () => {
                   value={value}
                   onChange={handleChange}
                   variant="fullWidth"
+                  className={classes.tabcontainer}
                   TabIndicatorProps={{
                     style: {
                       backgroundColor: "#EA5252",
