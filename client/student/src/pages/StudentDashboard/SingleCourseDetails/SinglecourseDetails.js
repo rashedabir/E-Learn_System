@@ -244,7 +244,7 @@ const SingleCourseDetails = () => {
                       <Grid container spacing={4}>
                         <Grid item xs={12} lg={6}>
                           <ReactPlayer url={link} width="100%" controls playing />
-                          {selectedIndex === " " ? (
+                          {selectedIndex === "0" ? (
                             <Typography variant="h5" className={classes.title}>
                               Select a Item to begin the Playlist
                             </Typography>
