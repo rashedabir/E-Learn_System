@@ -18,7 +18,7 @@ const CarouselCards = ({ courseList }) => {
             .filter((item, i) => item?.enrolled > 0)
             .map((item, i) => (
               <Carousel.Item key={`favourite${i}`}>
-                <Card item={item} />
+                <Card type={"details"} item={item} />
               </Carousel.Item>
             ))}
       </Carousel>
