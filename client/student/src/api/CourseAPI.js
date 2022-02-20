@@ -14,7 +14,9 @@ function CourseAPI() {
     const getCourses = async () => {
       setLoading(true);
       const res = await axios.get(
-        `/api/all_course?limit=${page * 8}&${category}&title[regex]=${search}`
+        `https://e-learn-bd.herokuapp.com/api/all_course?limit=${
+          page * 8
+        }&${category}&title[regex]=${search}`
       );
       setCourses(res.data.courses);
       setResult(res.data.result);

@@ -27,7 +27,7 @@ const Task = (props) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`/api/task_update/${_id}`, {
+          .delete(`https://e-learn-bd.herokuapp.com/api/task_update/${_id}`, {
             headers: { Authorization: token },
           })
           .then((res) => {

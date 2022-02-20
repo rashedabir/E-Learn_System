@@ -16,7 +16,7 @@ export const useStyle = makeStyles({
     fontFamily: "Poppins",
     textTransform: "none",
   },
-  contains: {padding:"10px"},
+  contains: { padding: "10px" },
   banner: {
     objectFit: "cover",
     width: "100%",
@@ -26,7 +26,7 @@ export const useStyle = makeStyles({
     backgroundColor: "#fff",
     borderRadius: "10px",
   },
-  
+
   container: {
     padding: "10px 10px",
     width: "100%",
@@ -39,5 +39,11 @@ export const useStyle = makeStyles({
 
   obj: {
     paddingBottom: "200px",
+  },
+  tabcontainer: {
+    "& .Mui-selected": {
+      color: "#ea5252 !important",
+      fontWeight: "600 !important",
+    },
   },
 });

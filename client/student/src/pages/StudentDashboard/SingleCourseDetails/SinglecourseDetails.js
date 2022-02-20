@@ -58,7 +58,7 @@ const SingleCourseDetails = () => {
 
   const fetchList = async (list) => {
     await axios.patch(
-      "/api/course/enroll",
+      "https://e-learn-bd.herokuapp.com/api/course/enroll",
       { enrolled: list },
       {
         headers: { Authorization: token },
@@ -69,16 +69,20 @@ const SingleCourseDetails = () => {
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
-        await axios.get(`/api/course_details/${courseId}`).then((res) => {
-          if (res.status === 200) {
-            setCourse(res.data);
-            setLessons(res.data.lessons);
-            const { courseDetails } = res.data;
-            setRequirrements(courseDetails?.requirements);
-            setObjective(courseDetails?.objective);
-            setTask(res.data.tasks);
-          }
-        });
+        await axios
+          .get(
+            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
+          )
+          .then((res) => {
+            if (res.status === 200) {
+              setCourse(res.data);
+              setLessons(res.data.lessons);
+              const { courseDetails } = res.data;
+              setRequirrements(courseDetails?.requirements);
+              setObjective(courseDetails?.objective);
+              setTask(res.data.tasks);
+            }
+          });
       }
     };
     getData();
@@ -222,6 +226,7 @@ const SingleCourseDetails = () => {
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList
                   onChange={handleChange}
+                  className={classes.tabcontainer}
                   TabIndicatorProps={{
                     style: {
                       backgroundColor: "#EA5252",
@@ -243,15 +248,25 @@ const SingleCourseDetails = () => {
                     <div className={classes.roots}>
                       <Grid container spacing={4}>
                         <Grid item xs={12} lg={6}>
+<<<<<<< HEAD
                           <ReactPlayer url={link} width="100%" controls playing />
                           {selectedIndex === "0" ? (
+=======
+                          <ReactPlayer
+                            url={link}
+                            width="100%"
+                            controls
+                            playing
+                          />
+                          {selectedIndex === " " ? (
+>>>>>>> main
                             <Typography variant="h5" className={classes.title}>
                               Select a Item to begin the Playlist
                             </Typography>
                           ) : (
                             <Typography variant="h5" className={classes.title}>
-                              <i className="far fa-play-circle"></i> Now Playing:{" "}
-                              <strong>{title}</strong>
+                              <i className="far fa-play-circle"></i> Now
+                              Playing: <strong>{title}</strong>
                             </Typography>
                           )}
                         </Grid>
@@ -307,102 +322,9 @@ const SingleCourseDetails = () => {
                                             />
                                           )}
                                         </ListItemIcon>
-                                        <ListItemText>{item.title}</ListItemText>
-                                      </ListItem>
-                                    ))}
-                                  </List>
-                                </AccordionDetails>
-                              </Accordion>
-                            ))}
-                          </div>
-                        </Grid>
-                      </Grid>
-                    </div>
-                  </Container>) : (<></>)}
-              </TabPanel>
-              <TabPanel value="task">
-                {/* all task  */}
-                {task.map((task) => (
-                  <StudentTask tasks={task} key={task._id} />
-                ))}
-              </TabPanel>
-            </TabContext>
-          </Box>
-        ) : (
-          <>
-            {
-              lessons.length !== 0 ? (
-                <div div className={classes.lessonWrapper}>
-                  <Container maxWidth="xl">
-                    <div className={classes.roots}>
-                      <Grid container spacing={3}>
-                        <Grid item xs={12} lg={6}>
-                          <ReactPlayer url={link} width="100%" controls playing />
-                          {selectedIndex === "0" ? (
-                            <Typography variant="h5" className={classes.title}>
-                              Select a Item to begin the Playlist
-                            </Typography>
-                          ) : (
-                            <Typography variant="h5" className={classes.title}>
-                              <i className="far fa-play-circle"></i> Now Playing:{" "}
-                              <strong>{title}</strong>
-                            </Typography>
-                          )}
-                        </Grid>
-                        <Grid
-                          sx={{
-                            backgroundColor: "transparent",
-                            border: "none",
-                          }}
-                          item
-                          xs={12}
-                          lg={6}
-                          component={Paper}
-                        >
-                          <div className={classes.rightSide}>
-                            {lessons.map((data) => (
-                              // accordion here
-                              <Accordion>
-                                <AccordionSummary
-                                  sx={{
-                                    backgroundColor: "#eee",
-                                  }}
-                                  expandIcon={<ExpandMoreIcon />}
-                                  aria-controls="panel1a-content"
-                                  id="panel1a-header"
-                                >
-                                  <Typography>{data.title}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails sx={{ padding: "0px" }}>
-                                  <List
-                                    aria-label="main mailbox folders"
-                                    className={classes.songList}
-                                  >
-                                    {data.videos.map((item) => (
-                                      <ListItem
-                                        button
-                                        selected={selectedIndex === item.title}
-                                        onClick={(event) =>
-                                          handleListItemClick(
-                                            event,
-                                            item.link,
-                                            item.link,
-                                            item.title
-                                          )
-                                        }
-                                      >
-                                        <ListItemIcon>
-                                          {selectedIndex === item.link ? (
-                                            <PauseCircleOutlineRoundedIcon
-                                              className={classes.bgIcon}
-                                            />
-                                          ) : (
-                                            <PlayCircleOutlineRoundedIcon
-                                              className={classes.bgIcon}
-                                            />
-                                          )}
-                                        </ListItemIcon>
-                                        <ListItemText>{item.title}</ListItemText>
+                                        <ListItemText>
+                                          {item.title}
+                                        </ListItemText>
                                       </ListItem>
                                     ))}
                                   </List>
@@ -414,15 +336,111 @@ const SingleCourseDetails = () => {
                       </Grid>
                     </div>
                   </Container>
-                </div>)
-                :
-                (<></>)
-            }
+                ) : (
+                  <></>
+                )}
+              </TabPanel>
+              <TabPanel value="task">
+                {/* all task  */}
+                {task.map((task) => (
+                  <StudentTask tasks={task} key={task._id} />
+                ))}
+              </TabPanel>
+            </TabContext>
+          </Box>
+        ) : (
+          <>
+            {lessons.length !== 0 ? (
+              <div div className={classes.lessonWrapper}>
+                <Container maxWidth="xl">
+                  <div className={classes.roots}>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12} lg={6}>
+                        <ReactPlayer url={link} width="100%" controls playing />
+                        {selectedIndex === "0" ? (
+                          <Typography variant="h5" className={classes.title}>
+                            Select a Item to begin the Playlist
+                          </Typography>
+                        ) : (
+                          <Typography variant="h5" className={classes.title}>
+                            <i className="far fa-play-circle"></i> Now Playing:{" "}
+                            <strong>{title}</strong>
+                          </Typography>
+                        )}
+                      </Grid>
+                      <Grid
+                        sx={{
+                          backgroundColor: "transparent",
+                          border: "none",
+                        }}
+                        item
+                        xs={12}
+                        lg={6}
+                        component={Paper}
+                      >
+                        <div className={classes.rightSide}>
+                          {lessons.map((data) => (
+                            // accordion here
+                            <Accordion>
+                              <AccordionSummary
+                                sx={{
+                                  backgroundColor: "#eee",
+                                }}
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                              >
+                                <Typography>{data.title}</Typography>
+                              </AccordionSummary>
+                              <AccordionDetails sx={{ padding: "0px" }}>
+                                <List
+                                  aria-label="main mailbox folders"
+                                  className={classes.songList}
+                                >
+                                  {data.videos.map((item) => (
+                                    <ListItem
+                                      button
+                                      selected={selectedIndex === item.title}
+                                      onClick={(event) =>
+                                        handleListItemClick(
+                                          event,
+                                          item.link,
+                                          item.link,
+                                          item.title
+                                        )
+                                      }
+                                    >
+                                      <ListItemIcon>
+                                        {selectedIndex === item.link ? (
+                                          <PauseCircleOutlineRoundedIcon
+                                            className={classes.bgIcon}
+                                          />
+                                        ) : (
+                                          <PlayCircleOutlineRoundedIcon
+                                            className={classes.bgIcon}
+                                          />
+                                        )}
+                                      </ListItemIcon>
+                                      <ListItemText>{item.title}</ListItemText>
+                                    </ListItem>
+                                  ))}
+                                </List>
+                              </AccordionDetails>
+                            </Accordion>
+                          ))}
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </div>
+                </Container>
+              </div>
+            ) : (
+              <></>
+            )}
           </>
-        )
-        }
-      </Container >
-    </div >
+        )}
+      </Container>
+    </div>
   );
 };
 

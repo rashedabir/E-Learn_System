@@ -68,7 +68,7 @@ const AddLesson = () => {
     if (lessonId) {
       await axios
         .put(
-          `/api/lesson/${lessonId}`,
+          `https://e-learn-bd.herokuapp.com/api/lesson/${lessonId}`,
           {
             title: heading,
             videos: videos,
@@ -89,7 +89,7 @@ const AddLesson = () => {
     } else if (courseId) {
       await axios
         .post(
-          `/api/lesson/${courseId}`,
+          `https://e-learn-bd.herokuapp.com/api/lesson/${courseId}`,
           {
             title: heading,
             videos: videos,
@@ -114,9 +114,12 @@ const AddLesson = () => {
     const getLesson = async () => {
       if (lessonId) {
         await axios
-          .get(`/api/lesson_details/${lessonId}`, {
-            headers: { Authorization: token },
-          })
+          .get(
+            `https://e-learn-bd.herokuapp.com/api/lesson_details/${lessonId}`,
+            {
+              headers: { Authorization: token },
+            }
+          )
           .then((res) => {
             if (res.status === 200) {
               const { lesson } = res.data;

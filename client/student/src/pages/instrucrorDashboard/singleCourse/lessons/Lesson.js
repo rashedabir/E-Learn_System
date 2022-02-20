@@ -29,9 +29,12 @@ const Lesson = (props) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`/api/lesson_details/${_id}`, {
-            headers: { Authorization: token },
-          })
+          .delete(
+            `https://e-learn-bd.herokuapp.com/api/lesson_details/${_id}`,
+            {
+              headers: { Authorization: token },
+            }
+          )
           .then(async (res) => {
             if (res.status === 200) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
