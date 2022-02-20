@@ -8,6 +8,7 @@ import { GlobalState } from "./GlobalState";
 import AllCourse from "./pages/allCourse/AllCourse";
 import Login from "./pages/auth/login/Login";
 import Registration from "./pages/auth/registration/Registration";
+import Blogs from "./pages/blogs/allBlogs/Blogs";
 import CreateCourse from "./pages/createCourse/CreateCourse";
 import CourseDetails from "./pages/home/CourseDetails/CourseDetails";
 import EnrollStudent from "./pages/home/enroll/enroll";
@@ -91,6 +92,7 @@ function App() {
         <Route path="/update_task/:taskId/" element={<AddTask />} />
         <Route path="/all_submission/:taskId" element={<AllSubmission />} />
         <Route path="/task_submission/:taskId" element={<SubmitTask />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
       <Footer />
     </Router>

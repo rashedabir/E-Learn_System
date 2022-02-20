@@ -149,7 +149,7 @@ const Navbar = () => {
               <Typography
                 className={classes.menubutton}
                 color="inherit"
-                to="/login"
+                to="/blogs"
                 component={Link}
               >
                 Udemy Blogs

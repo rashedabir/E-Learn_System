@@ -3,6 +3,8 @@ import axios from "axios";
 import UserAPI from "./api/UserAPI";
 import CourseCategoriesAPI from "./api/CourseCategoryAPI";
 import CourseAPI from "./api/CourseAPI";
+import BlogCategoryAPI from "./api/BlogCategoryAPI";
+import BlogAPI from "./api/BlogAPI";
 
 export const GlobalState = createContext();
 
@@ -24,7 +26,9 @@ export const DataProvider = ({ children }) => {
     token: [token, setToken],
     userAPI: UserAPI(token),
     courseCategoryAPI: CourseCategoriesAPI(),
+    blogCategoryAPI: BlogCategoryAPI(),
     courseAPI: CourseAPI(),
+    blogAPI: BlogAPI(),
   };
   return <GlobalState.Provider value={state}>{children}</GlobalState.Provider>;
 };

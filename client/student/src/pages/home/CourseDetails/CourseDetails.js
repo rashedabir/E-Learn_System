@@ -98,7 +98,7 @@ const CourseDetails = () => {
     <div>
       <Container maxWidth="xl" className={classes.root}>
         <Grid container spacing={3}>
-          <Grid item md={9}>
+          <Grid item md={9} sm={12} xs={12}>
             <Box sx={{ width: "100%" }}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs
@@ -220,7 +220,7 @@ const CourseDetails = () => {
             </Box>
           </Grid>
 
-          <Grid item md={3} xs={12}>
+          <Grid item md={3} xs={12} sm={12}>
             <Card>
               <img
                 src={course?.courseDetails?.banner?.url}
