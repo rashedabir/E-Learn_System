@@ -16,8 +16,8 @@ const BlogDetails = () => {
     }, [])
     return (
         <div>
-            <Container className={classes.root}>
-                {/* maxWidth="xl" */}
+            <Container className={classes.root} maxWidth="xl" >
+                {/* */}
                 <h1 className={classes.title}>{blog.title}</h1>
                 <p className={classes.cardTxt}>
                     <small className={classes.titleFooter}>

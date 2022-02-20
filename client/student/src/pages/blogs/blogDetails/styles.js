@@ -8,6 +8,7 @@ export const useStyle = makeStyles({
     },
     title: {
         paddingTop: "12px",
+        marginBottom: "0px",
         color: "#645A53",
     },
     image: {
