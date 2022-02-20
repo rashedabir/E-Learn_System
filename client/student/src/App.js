@@ -80,7 +80,16 @@ function App() {
           }
         />
         <Route path="/details/:courseId" element={<CourseDetails />} />
-        <Route path="/student_dashboard" element={<StudentDashboard />} />
+        <Route
+          path="/student_dashboard"
+          element={
+            isLogged && user.type === "student" ? (
+              <StudentDashboard />
+            ) : (
+              <NotFound />
+            )
+          }
+        />
         <Route
           path="/enroll_page_student/:courseId"
           element={<EnrollStudent />}
@@ -89,10 +98,42 @@ function App() {
           path="/single_course_details/:courseId"
           element={<SingleCourseDetails />}
         />
-        <Route path="/course_task/:courseId" element={<AddTask />} />
-        <Route path="/update_task/:taskId/" element={<AddTask />} />
-        <Route path="/all_submission/:taskId" element={<AllSubmission />} />
-        <Route path="/task_submission/:taskId" element={<SubmitTask />} />
+        <Route
+          path="/course_task/:courseId"
+          element={
+            isLogged && user.type === "instructor" && user?.status ? (
+              <AddTask />
+            ) : (
+              <NotFound />
+            )
+          }
+        />
+        <Route
+          path="/update_task/:taskId/"
+          element={
+            isLogged && user.type === "instructor" && user?.status ? (
+              <AddTask />
+            ) : (
+              <NotFound />
+            )
+          }
+        />
+        <Route
+          path="/all_submission/:taskId"
+          element={
+            isLogged && user.type === "instructor" && user?.status ? (
+              <AllSubmission />
+            ) : (
+              <NotFound />
+            )
+          }
+        />
+        <Route
+          path="/task_submission/:taskId"
+          element={
+            isLogged && user.type === "student" ? <SubmitTask /> : <NotFound />
+          }
+        />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blog_details/:blogId" element={<BlogDetails />} />
       </Routes>
