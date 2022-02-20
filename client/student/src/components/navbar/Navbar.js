@@ -110,10 +110,25 @@ const Navbar = () => {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">All Category</Typography>
+                  <Typography
+                    className={classes.menubutton}
+                    color="inherit"
+                    to="/courses"
+                    component={Link}
+                  >
+                    All Courses
+                  </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Udemy Blogs</Typography>
+                  <Typography
+                    textAlign="start"
+                    className={classes.menubutton}
+                    color="inherit"
+                    to="/blogs"
+                    component={Link}
+                  >
+                    Blogs
+                  </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Jobs on Udemy</Typography>
@@ -127,9 +142,20 @@ const Navbar = () => {
                 display: { xs: "none", md: "flex" },
               }}
             >
-              <Link to="/">
+              {/* <Link to="/">
                 <img src={logo} alt="logo" />
-              </Link>
+              </Link> */}
+              <Typography
+                className={classes.menubutton}
+                color="red"
+                fontWeight="700"
+                fontSize="25px"
+                fontFamily="URW Chancery L, cursive"
+                to="/"
+                component={Link}
+              >
+                E-Learn
+              </Typography>
               <Typography
                 className={classes.menubutton}
                 color="inherit"
@@ -152,7 +178,7 @@ const Navbar = () => {
                 to="/blogs"
                 component={Link}
               >
-                Udemy Blogs
+                Blogs
               </Typography>
               <Typography
                 // className={classes.menubutton}
@@ -160,7 +186,7 @@ const Navbar = () => {
                 component={Link}
                 to="/login"
               >
-                Jobs on Udemy
+                Jobs
               </Typography>
             </Box>
             {/* <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} /> */}
