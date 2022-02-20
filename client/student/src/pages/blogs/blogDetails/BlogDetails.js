@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import { Container } from '@mui/material';
 import { useStyle } from "./styles";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
 
 const BlogDetails = () => {
@@ -21,7 +22,7 @@ const BlogDetails = () => {
                 <h1 className={classes.title}>{blog.title}</h1>
                 <p className={classes.cardTxt}>
                     <small className={classes.titleFooter}>
-                        <i className="far fa-user me-2"></i>Elearning •{" "}
+                        <PersonOutlineIcon /> Elearning •{" "}
                         {new Date(blog.createdAt).toDateString()}
                     </small>
                 </p>

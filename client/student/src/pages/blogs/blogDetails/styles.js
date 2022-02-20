@@ -25,5 +25,7 @@ export const useStyle = makeStyles({
         text: "muted",
         textTransform: "uppercase",
         fontWeight: "500",
+        display: "flex",
+        alignItems: "center",
     },
 });
