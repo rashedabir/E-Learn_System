@@ -23,6 +23,10 @@ export const useStyle = makeStyles({
     marginLeft: "8px",
   },
   heading: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "280px",
     fontSize: "16px",
     marginLeft: "15px",
     fontWeight: 500,

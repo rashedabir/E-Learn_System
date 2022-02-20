@@ -31,9 +31,13 @@ const AddTask = () => {
     };
     if (courseId) {
       await axios
-        .post(`/api/task/${courseId}`, payload, {
-          headers: { Authorization: token },
-        })
+        .post(
+          `https://e-learn-bd.herokuapp.com/api/task/${courseId}`,
+          payload,
+          {
+            headers: { Authorization: token },
+          }
+        )
         .then((res) => {
           if (res.status === 200) {
             Swal.fire("Good job!", "You Created a Task!", "success");
@@ -45,9 +49,13 @@ const AddTask = () => {
         });
     } else if (taskId) {
       await axios
-        .put(`/api/task_update/${taskId}`, payload, {
-          headers: { Authorization: token },
-        })
+        .put(
+          `https://e-learn-bd.herokuapp.com/api/task_update/${taskId}`,
+          payload,
+          {
+            headers: { Authorization: token },
+          }
+        )
         .then((res) => {
           if (res.status === 200) {
             Swal.fire("Good job!", "You updated this Task!", "success");
@@ -64,7 +72,7 @@ const AddTask = () => {
     if (taskId) {
       const getSingleTask = async () => {
         await axios
-          .get(`/api/task_update/${taskId}`, {
+          .get(`https://e-learn-bd.herokuapp.com/api/task_update/${taskId}`, {
             headers: { Authorization: token },
           })
           .then((res) => {

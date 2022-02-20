@@ -22,12 +22,9 @@ const AllSubmission = () => {
   const { taskId } = useParams();
   const [submissions, setSubmissions] = useState([]);
 
-  console.log(task);
-  console.log(submissions);
-
   const getTask = async () => {
     await axios
-      .get(`/api/task_update/${taskId}`, {
+      .get(`https://e-learn-bd.herokuapp.com/api/task_update/${taskId}`, {
         headers: { Authorization: token },
       })
       .then((res) => {
@@ -41,7 +38,7 @@ const AllSubmission = () => {
   const handleMarking = async (id) => {
     try {
       await axios.put(
-        `/api/mark_upload/${id}`,
+        `https://e-learn-bd.herokuapp.com/api/mark_upload/${id}`,
         {
           marks: mark,
         },
@@ -60,7 +57,7 @@ const AllSubmission = () => {
     if (taskId) {
       const getTask = async () => {
         await axios
-          .get(`/api/task_update/${taskId}`, {
+          .get(`https://e-learn-bd.herokuapp.com/api/task_update/${taskId}`, {
             headers: { Authorization: token },
           })
           .then((res) => {

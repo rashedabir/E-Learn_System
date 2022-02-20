@@ -12,6 +12,7 @@ const StudentTask = (props) => {
   const [user] = state.userAPI.user;
   const { _id, title, description, start, end, submissions } = props.tasks;
   const [submitted, setSubmitted] = useState(false);
+  const [mark, setMark] = useState("");
 
   useEffect(() => {
     const found = submissions.filter((item, i) => {
@@ -19,6 +20,8 @@ const StudentTask = (props) => {
     });
     if (found.length > 0) {
       setSubmitted(true);
+      const marks = found[0].marks;
+      setMark(marks);
     }
   }, [submissions, user._id]);
 
@@ -29,6 +32,7 @@ const StudentTask = (props) => {
           <h2 className={classes.taskhead}>
             <AssignmentIcon /> {title}
           </h2>
+          {mark && <p>Mark: {mark}</p>}
         </div>
         <div className={classes.taskcontent}>
           <div>

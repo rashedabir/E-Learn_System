@@ -6,7 +6,9 @@ function CourseCategoriesAPI() {
   const [callback, setCallback] = useState(false);
 
   const getCategory = async () => {
-    const res = await axios.get("/api/admin/course_cetegory/");
+    const res = await axios.get(
+      "https://e-learn-bd.herokuapp.com/api/admin/course_cetegory/"
+    );
     setCategory(res.data.categories);
   };
 

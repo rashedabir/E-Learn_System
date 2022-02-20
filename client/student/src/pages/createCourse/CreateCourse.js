@@ -109,12 +109,16 @@ const CreateCourse = () => {
       let formData = new FormData();
       formData.append("file", file);
       setLoading(true);
-      const res = await axios.post("/api/upload", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://e-learn-bd.herokuapp.com/api/upload",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       setLoading(false);
       setImage(res.data);
     } catch (error) {
@@ -126,7 +130,7 @@ const CreateCourse = () => {
     try {
       setLoading(true);
       await axios.post(
-        "/api/destroy",
+        "https://e-learn-bd.herokuapp.com/api/destroy",
         { public_id: image.public_id },
         {
           headers: { Authorization: token },
@@ -147,7 +151,7 @@ const CreateCourse = () => {
     if (courseId) {
       await axios
         .put(
-          `/api/course_details/${courseId}`,
+          `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`,
           {
             title: title,
             price: price,
@@ -174,7 +178,7 @@ const CreateCourse = () => {
     } else {
       await axios
         .post(
-          "/api/course",
+          "https://e-learn-bd.herokuapp.com/api/course",
           {
             title: title,
             price: price,
@@ -206,19 +210,23 @@ const CreateCourse = () => {
       // get course details
       const getCourseDetails = async () => {
         if (courseId) {
-          await axios.get(`/api/course_details/${courseId}`).then((res) => {
-            if (res.status === 200) {
-              const { courseDetails } = res.data;
-              setImage(courseDetails?.banner);
-              setTitle(courseDetails?.title);
-              setPrice(courseDetails?.price);
-              setCategory(courseDetails?.category);
-              setDescription(courseDetails?.description);
-              setAbout(courseDetails?.about);
-              setObjectives(courseDetails?.objective);
-              setRequirements(courseDetails?.requirements);
-            }
-          });
+          await axios
+            .get(
+              `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
+            )
+            .then((res) => {
+              if (res.status === 200) {
+                const { courseDetails } = res.data;
+                setImage(courseDetails?.banner);
+                setTitle(courseDetails?.title);
+                setPrice(courseDetails?.price);
+                setCategory(courseDetails?.category);
+                setDescription(courseDetails?.description);
+                setAbout(courseDetails?.about);
+                setObjectives(courseDetails?.objective);
+                setRequirements(courseDetails?.requirements);
+              }
+            });
         } else {
           setImage(false);
           setTitle("");

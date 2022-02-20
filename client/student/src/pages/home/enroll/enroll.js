@@ -18,7 +18,9 @@ const EnrollStudent = () => {
     const getData = async () => {
       if (courseId) {
         await axios
-          .get(`/api/course_details/${courseId}`)
+          .get(
+            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
+          )
           .then((res) => {
             if (res.status === 200) {
               setCourse(res.data);

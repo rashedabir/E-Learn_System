@@ -14,9 +14,12 @@ function UserAPI(token) {
       const getParent = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/api/parent/profile", {
-            headers: { Authorization: token },
-          });
+          const res = await axios.get(
+            "https://e-learn-bd.herokuapp.com/api/parent/profile",
+            {
+              headers: { Authorization: token },
+            }
+          );
           setIsLogged(true);
           //   setList(res.data.user.list);
           //   res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
@@ -30,9 +33,12 @@ function UserAPI(token) {
       const getStudent = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/api/student/profile", {
-            headers: { Authorization: token },
-          });
+          const res = await axios.get(
+            "https://e-learn-bd.herokuapp.com/api/student/profile",
+            {
+              headers: { Authorization: token },
+            }
+          );
           setIsLogged(true);
           setList(res.data.student.enrolled);
           //   res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
@@ -46,9 +52,12 @@ function UserAPI(token) {
       const getInstructor = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/api/instructor/profile", {
-            headers: { Authorization: token },
-          });
+          const res = await axios.get(
+            "https://e-learn-bd.herokuapp.com/api/instructor/profile",
+            {
+              headers: { Authorization: token },
+            }
+          );
           setIsLogged(true);
           //   setList(res.data.user.list);
           //   res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
@@ -83,7 +92,7 @@ function UserAPI(token) {
       setList([...list, { ...course }]);
 
       await axios.patch(
-        "/api/course/enroll",
+        "https://e-learn-bd.herokuapp.com/api/course/enroll",
         { enrolled: [...list, { ...course }] },
         {
           headers: { Authorization: token },

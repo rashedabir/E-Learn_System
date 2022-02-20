@@ -5,18 +5,9 @@ export const useStyle = makeStyles({
     maxWidth: "100%",
   },
   tabcontainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "black",
-    fontWeight: 800,
-    textAlign: "center",
-    margin: "auto",
-  },
-  tabs: {
-    color: "black",
-  },
-  tab: {
-    color: "red",
+    "& .Mui-selected": {
+      color: "#ea5252 !important",
+      fontWeight: "600 !important",
+    },
   },
 });

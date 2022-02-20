@@ -27,7 +27,7 @@ const Login = () => {
     try {
       if (role === "student") {
         await axios
-          .post("/api/student/login", {
+          .post("https://e-learn-bd.herokuapp.com/api/student/login", {
             userName: userName,
             password: password,
           })
@@ -40,7 +40,7 @@ const Login = () => {
           });
       } else if (role === "parent") {
         await axios
-          .post("/api/parent/login", {
+          .post("https://e-learn-bd.herokuapp.com/api/parent/login", {
             mobile: mobile,
             password: password,
           })
@@ -53,7 +53,7 @@ const Login = () => {
           });
       } else if (role === "instructor") {
         await axios
-          .post("/api/instructor/login", {
+          .post("https://e-learn-bd.herokuapp.com/api/instructor/login", {
             userName: userName,
             password: password,
           })
@@ -142,7 +142,7 @@ const Login = () => {
           style={{
             backgroundColor: "#EA5252",
             padding: "18px 36px",
-            fontSize: "18px"
+            fontSize: "18px",
           }}
           className={classes.btn}
           fullWidth

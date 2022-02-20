@@ -15,7 +15,7 @@ const InstructionCourses = () => {
     //get course list
     const getCourse = async () => {
       await axios
-        .get("/api/course", {
+        .get("https://e-learn-bd.herokuapp.com/api/course", {
           headers: { Authorization: token },
         })
         .then((res) => {

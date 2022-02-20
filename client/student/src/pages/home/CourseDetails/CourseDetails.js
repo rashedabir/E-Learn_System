@@ -69,14 +69,15 @@ const CourseDetails = () => {
   const [course, setCourse] = useState([]);
   const [requirrements, setRequirrements] = useState([]);
   const [objective, setObjective] = useState([]);
-  console.log(requirrements);
 
   const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
         await axios
-          .get(`/api/course_details/${courseId}`)
+          .get(
+            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
+          )
           .then((res) => {
             if (res.status === 200) {
               const { courseDetails } = res.data;
@@ -97,13 +98,14 @@ const CourseDetails = () => {
     <div>
       <Container maxWidth="xl" className={classes.root}>
         <Grid container spacing={3}>
-          <Grid item md={9}>
+          <Grid item md={9} sm={12} xs={12}>
             <Box sx={{ width: "100%" }}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs
                   value={value}
                   onChange={handleChange}
                   variant="fullWidth"
+                  className={classes.tabcontainer}
                   TabIndicatorProps={{
                     style: {
                       backgroundColor: "#EA5252",
@@ -218,7 +220,7 @@ const CourseDetails = () => {
             </Box>
           </Grid>
 
-          <Grid item md={3} xs={12}>
+          <Grid item md={3} xs={12} sm={12}>
             <Card>
               <img
                 src={course?.courseDetails?.banner?.url}

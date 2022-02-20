@@ -19,7 +19,7 @@ const SubmitTask = () => {
     if (taskId) {
       const getTask = async () => {
         await axios
-          .get(`/api/task_update/${taskId}`, {
+          .get(`https://e-learn-bd.herokuapp.com/api/task_update/${taskId}`, {
             headers: { Authorization: token },
           })
           .then((res) => {
@@ -35,7 +35,7 @@ const SubmitTask = () => {
   const submitTask = async () => {
     try {
       await axios.put(
-        `/api/task/${taskId}`,
+        `https://e-learn-bd.herokuapp.com/api/task/${taskId}`,
         {
           answer: answer,
         },
