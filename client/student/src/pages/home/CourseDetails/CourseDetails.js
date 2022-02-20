@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Container,
   Grid,
@@ -9,6 +9,10 @@ import {
   CardContent,
   Button,
   Box,
+  Rating,
+  FormLabel,
+  TextareaAutosize,
+  Avatar,
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useStyle } from "./styles";
@@ -24,6 +28,8 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import image from "../../../assets/react.png";
+import { GlobalState } from "../../../GlobalState";
+import { toast } from "react-toastify";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -66,11 +72,38 @@ const CourseDetails = () => {
 
   const classes = useStyle();
   const { courseId } = useParams();
+  const state = useContext(GlobalState);
+  const [token] = state.token;
   const [course, setCourse] = useState([]);
   const [requirrements, setRequirrements] = useState([]);
   const [objective, setObjective] = useState([]);
+  const [isLogging] = state.userAPI.isLogged;
+
+  const [rating, setRating] = useState(0);
+  const [review, setReview] = useState("");
 
   const navigate = useNavigate();
+
+  const submitReview = async () => {
+    try {
+      await axios.put(
+        `https://e-learn-bd.herokuapp.com/api/course/review/${courseId}`,
+        {
+          rating: rating,
+          comment: review,
+        },
+        {
+          headers: { Authorization: token },
+        }
+      );
+      toast.success("Successfully Comment");
+      setRating(0);
+      setReview("");
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
+
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
@@ -115,8 +148,7 @@ const CourseDetails = () => {
                 >
                   <Tab label="Overview" {...a11yProps(0)} />
                   <Tab label="Instructor" {...a11yProps(1)} />
-                  <Tab label="Resources" {...a11yProps(2)} />
-                  <Tab label="Comment" {...a11yProps(3)} />
+                  <Tab label="Comment" {...a11yProps(2)} />
                 </Tabs>
               </Box>
               <TabPanel value={value} index={0}>
@@ -212,10 +244,77 @@ const CourseDetails = () => {
                 </Paper>
               </TabPanel>
               <TabPanel value={value} index={2}>
-                <Paper className={classes.paper}>This is Resource</Paper>
-              </TabPanel>
-              <TabPanel value={value} index={3}>
-                <Paper className={classes.paper}>This is comment</Paper>
+                <Paper className={classes.paper}>
+                  {isLogging && (
+                    <Box>
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", mb: 3 }}
+                      >
+                        <FormLabel sx={{ mr: 5 }}>Give Rating: </FormLabel>
+                        <Rating
+                          name="simple-controlled"
+                          value={rating}
+                          onChange={(event, newValue) => {
+                            setRating(newValue);
+                          }}
+                        />
+                      </Box>
+                      <FormLabel>Give Review:</FormLabel>
+                      <TextareaAutosize
+                        color="warning"
+                        minRows={4}
+                        aria-label="maximum height"
+                        placeholder="Give Review"
+                        value={review}
+                        style={{ width: "100%", marginTop: "10px" }}
+                        onChange={(e) => {
+                          setReview(e.target.value);
+                        }}
+                      />
+                      <Button
+                        sx={{
+                          background: "#eb5252",
+                          ":hover": {
+                            background: "#eb5252",
+                          },
+                        }}
+                        variant="contained"
+                        onClick={submitReview}
+                      >
+                        Submit
+                      </Button>
+                    </Box>
+                  )}
+                  <Box>
+                    {course?.courseDetails?.comments &&
+                      course?.courseDetails?.comments?.length > 0 &&
+                      course?.courseDetails?.comments?.map((item, i) => (
+                        <Box
+                          key={item?._id}
+                          sx={{
+                            border: "1px solid #eee",
+                            padding: "10px",
+                            margin: "15px 0",
+                          }}
+                        >
+                          <Box sx={{ display: "flex" }}>
+                            <Avatar src="/broken-image.jpg" sx={{ mr: 3 }} />
+                            <Typography sx={{ fontSize: "20px", mr: 3 }}>
+                              {item?.author}
+                            </Typography>
+                            <Rating
+                              name="read-only"
+                              value={item?.rating}
+                              readOnly
+                            />
+                          </Box>
+                          <Typography sx={{ pl: 8 }}>
+                            {item?.comment}
+                          </Typography>
+                        </Box>
+                      ))}
+                  </Box>
+                </Paper>
               </TabPanel>
             </Box>
           </Grid>
