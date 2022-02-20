@@ -248,10 +248,6 @@ const SingleCourseDetails = () => {
                     <div className={classes.roots}>
                       <Grid container spacing={4}>
                         <Grid item xs={12} lg={6}>
-<<<<<<< HEAD
-                          <ReactPlayer url={link} width="100%" controls playing />
-                          {selectedIndex === "0" ? (
-=======
                           <ReactPlayer
                             url={link}
                             width="100%"
@@ -259,7 +255,6 @@ const SingleCourseDetails = () => {
                             playing
                           />
                           {selectedIndex === " " ? (
->>>>>>> main
                             <Typography variant="h5" className={classes.title}>
                               Select a Item to begin the Playlist
                             </Typography>
