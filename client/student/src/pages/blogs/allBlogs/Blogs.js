@@ -7,8 +7,6 @@ const Blogs = () => {
   const state = useContext(GlobalState);
   const [blogs] = state.blogAPI.blogs;
 
-  console.log(blogs);
-
   return (
     <div style={{ background: "#fff9f9", marginTop: "35px" }}>
       <Container maxWidth="xl">
