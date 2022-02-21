@@ -12,10 +12,12 @@ const ParentCourseShow = ({ course }) => {
   const [token] = state.token;
   const { studentId } = useParams();
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (studentId) {
       const getCourses = async () => {
+        setLoading(true);
         axios
           .get(
             `https://e-learn-bd.herokuapp.com/api/parent/child/${studentId}`,
@@ -27,6 +29,7 @@ const ParentCourseShow = ({ course }) => {
             if (res.status === 200) {
               const { enrolled } = res?.data;
               setCourses(enrolled);
+              setLoading(false);
             }
           });
       };
@@ -34,28 +37,30 @@ const ParentCourseShow = ({ course }) => {
     }
   }, [studentId, token]);
 
-  console.log(courses);
-
   return (
     <div style={{ background: "#fff5f6" }}>
-      <Container maxWidth="xl" className={classes.root}>
-        <Typography variant="h4" className={classes.title}>
-          Enrolled Courses
-        </Typography>
+      {loading ? (
+        <div className="loading">Loading&#8230;</div>
+      ) : (
+        <Container maxWidth="xl" className={classes.root}>
+          <Typography variant="h4" className={classes.title}>
+            Enrolled Courses
+          </Typography>
 
-        <Grid container spacing={4}>
-          {courses &&
-            courses?.length > 0 &&
-            courses?.map((item, i) => (
-              <Grid item md={3} sm={12} xs={12}>
-                <Cards
-                  item={item?.courseDetails}
-                  type="parent_course_details"
-                />
-              </Grid>
-            ))}
-        </Grid>
-      </Container>
+          <Grid container spacing={4}>
+            {courses &&
+              courses?.length > 0 &&
+              courses?.map((item, i) => (
+                <Grid key={i} item md={3} sm={12} xs={12}>
+                  <Cards
+                    item={item?.courseDetails}
+                    type="parent_course_details"
+                  />
+                </Grid>
+              ))}
+          </Grid>
+        </Container>
+      )}
     </div>
   );
 };

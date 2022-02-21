@@ -87,6 +87,16 @@ const AccountMenu = ({ logOut }) => {
             </Typography>
           </MenuItem>
         )}
+        {user && user.type === "parent" && (
+          <MenuItem>
+            <ListItemIcon>
+              <DashboardIcon fontSize="small" />
+            </ListItemIcon>
+            <Typography component={Link} to={`/parent_dashboard`}>
+              Dashboard
+            </Typography>
+          </MenuItem>
+        )}
         <MenuItem>
           <ListItemIcon>
             <Avatar fontSize="small" />

@@ -49,6 +49,7 @@ const SingleCourseDetails = () => {
   const [selectedIndex, setSelectedIndex] = useState("0");
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleListItemClick = (event, index, src, name) => {
     setSelectedIndex(index);
@@ -69,6 +70,7 @@ const SingleCourseDetails = () => {
   useEffect(() => {
     const getData = async () => {
       if (courseId) {
+        setLoading(true);
         await axios
           .get(
             `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
@@ -81,6 +83,7 @@ const SingleCourseDetails = () => {
               setRequirrements(courseDetails?.requirements);
               setObjective(courseDetails?.objective);
               setTask(res.data.tasks);
+              setLoading(false);
             }
           });
       }
@@ -120,133 +123,252 @@ const SingleCourseDetails = () => {
 
   return (
     <div className={classes.root}>
-      <Container className={classes.contains} maxWidth="xl">
-        <div className={classes.actionBar}>
-          <Button onClick={removeCourse} color="error">
-            unenroll
-          </Button>
-        </div>
-        <Grid container>
-          <img
-            src={course?.courseDetails?.banner.url}
-            className={classes.banner}
-            alt="..."
-          />
-        </Grid>
+      {loading ? (
+        <div className="loading">Loading&#8230;</div>
+      ) : (
+        <Container className={classes.contains} maxWidth="xl">
+          <div className={classes.actionBar}>
+            <Button onClick={removeCourse} color="error">
+              unenroll
+            </Button>
+          </div>
+          <Grid container>
+            <img
+              src={course?.courseDetails?.banner.url}
+              className={classes.banner}
+              alt="..."
+            />
+          </Grid>
 
-        <Grid className={classes.contains} container spacing={2}>
-          <Grid item xs={12} md={7}>
-            <Typography variant="h4">
-              {" "}
-              {course?.courseDetails?.title}
-            </Typography>
-            <Typography variant="h6">
-              {course?.courseDetails?.category}
-            </Typography>
+          <Grid className={classes.contains} container spacing={2}>
+            <Grid item xs={12} md={7}>
+              <Typography variant="h4">
+                {" "}
+                {course?.courseDetails?.title}
+              </Typography>
+              <Typography variant="h6">
+                {course?.courseDetails?.category}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <Typography
+                component="p"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "15px",
+                }}
+              >
+                <GroupsOutlinedIcon className={classes.icon} /> Total enrolled :{" "}
+                {course?.courseDetails?.enrolled}+
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <h2>About </h2>
+              <Typography component="p">
+                {course?.courseDetails?.about}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <h2>What You’ll Learn</h2>
+              <Grid className={classes.container} container spacing={3}>
+                {objective &&
+                  objective?.length > 0 &&
+                  objective?.map((objective, i) => (
+                    <Grid
+                      item
+                      xs={12}
+                      md={6}
+                      lg={6}
+                      key={i}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <Typography
+                        component="p"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <CheckIcon className={classes.icon} />{" "}
+                        {objective?.objective}
+                      </Typography>
+                    </Grid>
+                  ))}
+              </Grid>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <h2>Requirement</h2>
+              <Grid className={classes.container} container spacing={3}>
+                {requirrements &&
+                  requirrements?.length > 0 &&
+                  requirrements?.map((req, i) => (
+                    <Grid item xs={12} md={6} lg={6} key={i}>
+                      <Typography
+                        component="p"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <CreateIcon className={classes.icon} />{" "}
+                        {req?.requrement}
+                      </Typography>
+                    </Grid>
+                  ))}
+              </Grid>
+            </Grid>
+            <Grid item xs={12}>
+              <h2>Description</h2>
+              <Typography component="p">
+                {course?.courseDetails?.description}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} className={classes.instructor}>
+              <h2>Instructor</h2>
+              <Typography variant="h6">
+                {course?.courseDetails?.instructor?.name}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={5}>
-            <Typography
-              component="p"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginTop: "15px",
-              }}
-            >
-              <GroupsOutlinedIcon className={classes.icon} /> Total enrolled :{" "}
-              {course?.courseDetails?.enrolled}+
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <h2>About </h2>
-            <Typography component="p">
-              {course?.courseDetails?.about}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <h2>What You’ll Learn</h2>
-            <Grid className={classes.container} container spacing={3}>
-              {objective &&
-                objective?.length > 0 &&
-                objective?.map((objective, i) => (
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                    lg={6}
-                    key={i}
-                    style={{ display: "flex", alignItems: "center" }}
+          {/* map lesson  */}
+          {task.length !== 0 ? (
+            <Box sx={{ width: "100%", typography: "body1" }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                  <TabList
+                    onChange={handleChange}
+                    className={classes.tabcontainer}
+                    TabIndicatorProps={{
+                      style: {
+                        backgroundColor: "#EA5252",
+                      },
+                    }}
                   >
-                    <Typography
-                      component="p"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <CheckIcon className={classes.icon} />{" "}
-                      {objective?.objective}
-                    </Typography>
-                  </Grid>
-                ))}
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <h2>Requirement</h2>
-            <Grid className={classes.container} container spacing={3}>
-              {requirrements &&
-                requirrements?.length > 0 &&
-                requirrements?.map((req, i) => (
-                  <Grid item xs={12} md={6} lg={6} key={i}>
-                    <Typography
-                      component="p"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <CreateIcon className={classes.icon} /> {req?.requrement}
-                    </Typography>
-                  </Grid>
-                ))}
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <h2>Description</h2>
-            <Typography component="p">
-              {course?.courseDetails?.description}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} className={classes.instructor}>
-            <h2>Instructor</h2>
-            <Typography variant="h6">
-              {course?.courseDetails?.instructor?.name}
-            </Typography>
-          </Grid>
-        </Grid>
-        {/* map lesson  */}
-        {task.length !== 0 ? (
-          <Box sx={{ width: "100%", typography: "body1" }}>
-            <TabContext value={value}>
-              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                <TabList
-                  onChange={handleChange}
-                  className={classes.tabcontainer}
-                  TabIndicatorProps={{
-                    style: {
-                      backgroundColor: "#EA5252",
-                    },
-                  }}
-                >
-                  <Tab
-                    label="Lessons"
-                    value="lesson"
-                    style={{ minWidth: "50%" }}
-                  />
-                  <Tab label="Task" value="task" style={{ minWidth: "50%" }} />
-                </TabList>
-              </Box>
-              <TabPanel value="lesson">
-                {/* map lesson  */}
-                {lessons.length !== 0 ? (
+                    <Tab
+                      label="Lessons"
+                      value="lesson"
+                      style={{ minWidth: "50%" }}
+                    />
+                    <Tab
+                      label="Task"
+                      value="task"
+                      style={{ minWidth: "50%" }}
+                    />
+                  </TabList>
+                </Box>
+                <TabPanel value="lesson">
+                  {/* map lesson  */}
+                  {lessons.length !== 0 ? (
+                    <Container maxWidth="xl">
+                      <div className={classes.roots}>
+                        <Grid container spacing={4}>
+                          <Grid item xs={12} lg={6}>
+                            <ReactPlayer
+                              url={link}
+                              width="100%"
+                              controls
+                              playing
+                            />
+                            {selectedIndex === "0" ? (
+                              <Typography
+                                variant="h5"
+                                className={classes.title}
+                              >
+                                Select a Item to begin the Playlist
+                              </Typography>
+                            ) : (
+                              <Typography
+                                variant="h5"
+                                className={classes.title}
+                              >
+                                <i className="far fa-play-circle"></i> Now
+                                Playing: <strong>{title}</strong>
+                              </Typography>
+                            )}
+                          </Grid>
+                          <Grid
+                            sx={{
+                              backgroundColor: "transparent",
+                              border: "none",
+                            }}
+                            item
+                            xs={12}
+                            lg={6}
+                          >
+                            <div className={classes.rightSide}>
+                              {lessons.map((data) => (
+                                // accordion here
+                                <Accordion>
+                                  <AccordionSummary
+                                    sx={{
+                                      backgroundColor: "#eee",
+                                    }}
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                  >
+                                    <Typography>{data.title}</Typography>
+                                  </AccordionSummary>
+                                  <AccordionDetails sx={{ padding: "0px" }}>
+                                    <List
+                                      aria-label="main mailbox folders"
+                                      className={classes.songList}
+                                    >
+                                      {data.videos.map((item) => (
+                                        <ListItem
+                                          button
+                                          selected={
+                                            selectedIndex === item.title
+                                          }
+                                          onClick={(event) =>
+                                            handleListItemClick(
+                                              event,
+                                              item.link,
+                                              item.link,
+                                              item.title
+                                            )
+                                          }
+                                        >
+                                          <ListItemIcon>
+                                            {selectedIndex === item.link ? (
+                                              <PauseCircleOutlineRoundedIcon
+                                                className={classes.bgIcon}
+                                              />
+                                            ) : (
+                                              <PlayCircleOutlineRoundedIcon
+                                                className={classes.bgIcon}
+                                              />
+                                            )}
+                                          </ListItemIcon>
+                                          <ListItemText>
+                                            {item.title}
+                                          </ListItemText>
+                                        </ListItem>
+                                      ))}
+                                    </List>
+                                  </AccordionDetails>
+                                </Accordion>
+                              ))}
+                            </div>
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </Container>
+                  ) : (
+                    <></>
+                  )}
+                </TabPanel>
+                <TabPanel value="task">
+                  {/* all task  */}
+                  {task.map((task) => (
+                    <StudentTask tasks={task} key={task._id} />
+                  ))}
+                </TabPanel>
+              </TabContext>
+            </Box>
+          ) : (
+            <>
+              {lessons.length !== 0 ? (
+                <div div className={classes.lessonWrapper}>
                   <Container maxWidth="xl">
                     <div className={classes.roots}>
-                      <Grid container spacing={4}>
+                      <Grid container spacing={3}>
                         <Grid item xs={12} lg={6}>
                           <ReactPlayer
                             url={link}
@@ -273,6 +395,7 @@ const SingleCourseDetails = () => {
                           item
                           xs={12}
                           lg={6}
+                          component={Paper}
                         >
                           <div className={classes.rightSide}>
                             {lessons.map((data) => (
@@ -331,110 +454,14 @@ const SingleCourseDetails = () => {
                       </Grid>
                     </div>
                   </Container>
-                ) : (
-                  <></>
-                )}
-              </TabPanel>
-              <TabPanel value="task">
-                {/* all task  */}
-                {task.map((task) => (
-                  <StudentTask tasks={task} key={task._id} />
-                ))}
-              </TabPanel>
-            </TabContext>
-          </Box>
-        ) : (
-          <>
-            {lessons.length !== 0 ? (
-              <div div className={classes.lessonWrapper}>
-                <Container maxWidth="xl">
-                  <div className={classes.roots}>
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} lg={6}>
-                        <ReactPlayer url={link} width="100%" controls playing />
-                        {selectedIndex === "0" ? (
-                          <Typography variant="h5" className={classes.title}>
-                            Select a Item to begin the Playlist
-                          </Typography>
-                        ) : (
-                          <Typography variant="h5" className={classes.title}>
-                            <i className="far fa-play-circle"></i> Now Playing:{" "}
-                            <strong>{title}</strong>
-                          </Typography>
-                        )}
-                      </Grid>
-                      <Grid
-                        sx={{
-                          backgroundColor: "transparent",
-                          border: "none",
-                        }}
-                        item
-                        xs={12}
-                        lg={6}
-                        component={Paper}
-                      >
-                        <div className={classes.rightSide}>
-                          {lessons.map((data) => (
-                            // accordion here
-                            <Accordion>
-                              <AccordionSummary
-                                sx={{
-                                  backgroundColor: "#eee",
-                                }}
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                              >
-                                <Typography>{data.title}</Typography>
-                              </AccordionSummary>
-                              <AccordionDetails sx={{ padding: "0px" }}>
-                                <List
-                                  aria-label="main mailbox folders"
-                                  className={classes.songList}
-                                >
-                                  {data.videos.map((item) => (
-                                    <ListItem
-                                      button
-                                      selected={selectedIndex === item.title}
-                                      onClick={(event) =>
-                                        handleListItemClick(
-                                          event,
-                                          item.link,
-                                          item.link,
-                                          item.title
-                                        )
-                                      }
-                                    >
-                                      <ListItemIcon>
-                                        {selectedIndex === item.link ? (
-                                          <PauseCircleOutlineRoundedIcon
-                                            className={classes.bgIcon}
-                                          />
-                                        ) : (
-                                          <PlayCircleOutlineRoundedIcon
-                                            className={classes.bgIcon}
-                                          />
-                                        )}
-                                      </ListItemIcon>
-                                      <ListItemText>{item.title}</ListItemText>
-                                    </ListItem>
-                                  ))}
-                                </List>
-                              </AccordionDetails>
-                            </Accordion>
-                          ))}
-                        </div>
-                      </Grid>
-                    </Grid>
-                  </div>
-                </Container>
-              </div>
-            ) : (
-              <></>
-            )}
-          </>
-        )}
-      </Container>
+                </div>
+              ) : (
+                <></>
+              )}
+            </>
+          )}
+        </Container>
+      )}
     </div>
   );
 };

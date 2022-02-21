@@ -17,6 +17,7 @@ const AddLesson = () => {
   const [token] = state.token;
   const { courseId, lessonId } = useParams();
   const history = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   console.log(courseId);
   console.log(lessonId);
@@ -113,6 +114,7 @@ const AddLesson = () => {
   useEffect(() => {
     const getLesson = async () => {
       if (lessonId) {
+        setLoading(true);
         await axios
           .get(
             `https://e-learn-bd.herokuapp.com/api/lesson_details/${lessonId}`,
@@ -125,6 +127,7 @@ const AddLesson = () => {
               const { lesson } = res.data;
               setVideos(lesson.videos);
               setHeading(lesson?.title);
+              setLoading(false);
             }
           });
       } else {
@@ -144,91 +147,95 @@ const AddLesson = () => {
 
   return (
     <div className={classes.root}>
-      <Container maxWidth="xl">
-        <div className={classes.containers}>
-          <h1>{lessonId ? "Update" : "Add"} Lesson</h1>
-          <Grid container spacing={4} alignItems="center">
-            <Grid item md={12}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Heading"
-                variant="outlined"
-                color="secondary"
-                value={heading}
-                onChange={(e) => {
-                  setHeading(e.target.value);
-                }}
-              />
-            </Grid>
-          </Grid>
-
-          {videos.map((video, index) => (
-            <Grid key={index} container spacing={3} alignItems="center">
-              <Grid item xs={12} sm={12} lg={5} md={5}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <h1 style={{ marginRight: "10px" }}>{++index}.</h1>
-                  <TextField
-                    id="outlined-basic"
-                    label="Video Name"
-                    name="title"
-                    fullWidth
-                    variant="outlined"
-                    color="secondary"
-                    value={video.title}
-                    onChange={(event) => handleChangeVideos(video.id, event)}
-                  />
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={12} lg={5} md={5}>
+      {loading ? (
+        <div className="loading">Loading&#8230;</div>
+      ) : (
+        <Container maxWidth="xl">
+          <div className={classes.containers}>
+            <h1>{lessonId ? "Update" : "Add"} Lesson</h1>
+            <Grid container spacing={4} alignItems="center">
+              <Grid item md={12}>
                 <TextField
-                  id="outlined-basic"
-                  label="Video Link"
-                  name="link"
-                  variant="outlined"
                   fullWidth
+                  id="outlined-basic"
+                  label="Heading"
+                  variant="outlined"
                   color="secondary"
-                  value={video.link}
-                  onChange={(event) => handleChangeVideos(video.id, event)}
+                  value={heading}
+                  onChange={(e) => {
+                    setHeading(e.target.value);
+                  }}
                 />
               </Grid>
-              <Grid item md={2}>
-                <Button
-                  style={{ marginLeft: "15px" }}
-                  variant="contained"
-                  color="error"
-                  disabled={videos.length === 1}
-                  onClick={() => {
-                    handleRemoveVideos(video.id);
-                  }}
-                >
-                  <DeleteOutlineIcon />
-                </Button>
-                <Button
-                  style={{ marginLeft: "15px" }}
-                  variant="contained"
-                  color="secondary"
-                  onClick={handleAddVideos}
-                >
-                  <AddIcon />
-                </Button>
-              </Grid>
             </Grid>
-          ))}
-          <Button
-            onClick={storeLessson}
-            sx={{ my: 5 }}
-            fullWidth
-            variant="contained"
-            style={{
-              backgroundColor: "#EA5252",
-              textTransform: "none",
-            }}
-          >
-            {lessonId ? "Update" : "Add"}
-          </Button>
-        </div>
-      </Container>
+
+            {videos.map((video, index) => (
+              <Grid key={index} container spacing={3} alignItems="center">
+                <Grid item xs={12} sm={12} lg={5} md={5}>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <h1 style={{ marginRight: "10px" }}>{++index}.</h1>
+                    <TextField
+                      id="outlined-basic"
+                      label="Video Name"
+                      name="title"
+                      fullWidth
+                      variant="outlined"
+                      color="secondary"
+                      value={video.title}
+                      onChange={(event) => handleChangeVideos(video.id, event)}
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={12} sm={12} lg={5} md={5}>
+                  <TextField
+                    id="outlined-basic"
+                    label="Video Link"
+                    name="link"
+                    variant="outlined"
+                    fullWidth
+                    color="secondary"
+                    value={video.link}
+                    onChange={(event) => handleChangeVideos(video.id, event)}
+                  />
+                </Grid>
+                <Grid item md={2}>
+                  <Button
+                    style={{ marginLeft: "15px" }}
+                    variant="contained"
+                    color="error"
+                    disabled={videos.length === 1}
+                    onClick={() => {
+                      handleRemoveVideos(video.id);
+                    }}
+                  >
+                    <DeleteOutlineIcon />
+                  </Button>
+                  <Button
+                    style={{ marginLeft: "15px" }}
+                    variant="contained"
+                    color="secondary"
+                    onClick={handleAddVideos}
+                  >
+                    <AddIcon />
+                  </Button>
+                </Grid>
+              </Grid>
+            ))}
+            <Button
+              onClick={storeLessson}
+              sx={{ my: 5 }}
+              fullWidth
+              variant="contained"
+              style={{
+                backgroundColor: "#EA5252",
+                textTransform: "none",
+              }}
+            >
+              {lessonId ? "Update" : "Add"}
+            </Button>
+          </div>
+        </Container>
+      )}
     </div>
   );
 };
