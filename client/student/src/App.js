@@ -25,6 +25,10 @@ import GeneralSetting from "./pages/profile/generalSetting/GeneralSetting";
 import SingleCourseDetails from "./pages/StudentDashboard/SingleCourseDetails/SinglecourseDetails";
 import SubmitTask from "./pages/StudentDashboard/SingleCourseDetails/task/submitTask/SubmitTask";
 import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
+import ParentDashboard from "./pages/parentDashboard/parentDashboard";
+import ParentCourseShow from './pages/parentDashboard/parentCourseShow/parentCourseShow';
+import ParentcourseDetails from './pages/parentDashboard/parentCourseDetails/parentcourseDetails';
+
 
 axios.defaults.withCredentials = true;
 
@@ -95,6 +99,19 @@ function App() {
         <Route path="/task_submission/:taskId" element={<SubmitTask />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blog_details/:blogId" element={<BlogDetails />} />
+        <Route
+          path="/parent_dashboard"
+          element={isLogged ? <ParentDashboard /> : <NotFound />}
+        />
+        <Route
+          path="/parent_course"
+          element={ <ParentCourseShow />}
+        />
+         <Route
+          path="/parent_course_details"
+          element={ <ParentcourseDetails/>}
+        />
+       
       </Routes>
       <Footer />
     </Router>
