@@ -33,6 +33,7 @@ const BlogCard = ({ item }) => {
               background: "#ffa400",
               padding: "5px 10px",
               borderRadius: "10px",
+              color: "#fff",
             }}
           >
             {item?.category}
