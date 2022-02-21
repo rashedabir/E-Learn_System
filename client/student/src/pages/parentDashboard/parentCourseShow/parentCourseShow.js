@@ -6,11 +6,10 @@ import {
   Typography,
   CardContent,
   CardActionArea,
-  Grid,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ParentCourseShow = () => {
+const ParentCourseShow = ({course}) => {
   const classes = useStyle();
 
   return (
@@ -19,24 +18,29 @@ const ParentCourseShow = () => {
         <Typography variant="h4" className={classes.title}>
           Courses
         </Typography>
-        <Link to="/parent_course_details">
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardContent>
-                <img
-                  className={classes.cardimg}
-                  width="100%"
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt="im"
-                />
-                <button className={classes.tag}>Category</button>
-                <h1 className={classes.heading}>
-                  <Typography>title</Typography>
-                </h1>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Link>
+
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardContent>
+              <img
+                className={classes.cardimg}
+                width="100%"
+                src="https://picsum.photos/seed/picsum/200/300"
+                alt="im"
+              />
+              <button className={classes.tag}>Category</button>
+              <h1 className={classes.heading}>
+                <Typography
+                  component={Link}
+                  to={`/parent_course_details/${course?._id}`}
+                >
+                  {" "}
+                  title
+                </Typography>
+              </h1>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </Container>
     </div>
   );

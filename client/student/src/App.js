@@ -27,7 +27,7 @@ import SubmitTask from "./pages/StudentDashboard/SingleCourseDetails/task/submit
 import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
 import ParentDashboard from "./pages/parentDashboard/parentDashboard";
 import ParentCourseShow from './pages/parentDashboard/parentCourseShow/parentCourseShow';
-import ParentcourseDetails from './pages/parentDashboard/parentCourseDetails/parentcourseDetails';
+import ParentCourseDetails from './pages/parentDashboard/parentCourseDetails/parentcourseDetails';
 
 
 axios.defaults.withCredentials = true;
@@ -149,8 +149,8 @@ function App() {
           element={ <ParentCourseShow />}
         />
          <Route
-          path="/parent_course_details"
-          element={ <ParentcourseDetails/>}
+          path="/parent_course_details/:courseId"
+          element={ <ParentCourseDetails/>}
         />
        
       </Routes>
