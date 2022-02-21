@@ -16,14 +16,14 @@ const BlogCard = ({ item }) => {
       }}
     >
       <Grid container spacing={4} sx={{ background: "#fff" }}>
-        <Grid item xs={4} sx={{ pb: 4 }}>
+        <Grid item sm={12} md={4} sx={{ pb: 4 }}>
           <img
             style={{ width: "100%", minHeight: "250px", objectFit: "cover" }}
             src={item?.images?.url}
             alt="logo"
           />
         </Grid>
-        <Grid item xs={8} sx={{ padding: 2 }}>
+        <Grid item sm={12} md={8} sx={{ padding: 2 }}>
           <Typography sx={{ mb: 3 }} component="h3" variant="h6">
             {item?.title}
           </Typography>
@@ -52,7 +52,7 @@ const BlogCard = ({ item }) => {
           >
             {item?.description && parse(item?.description)}
           </Typography>
-          <Typography component={Link} to={`/blog_details/${item?._id}`}>
+          <Typography sx={{ border: "1px solid red", padding: "5px 12px", borderRadius: '8px' }} component={Link} to={`/blog_details/${item?._id}`}>
             Read More
           </Typography>
         </Grid>

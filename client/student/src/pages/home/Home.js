@@ -187,7 +187,7 @@ const Home = () => {
             <div className={classes.buttons}>
               <Button
                 component={Link}
-                to="/"
+                to="/courses"
                 className={classes.clkbtn}
                 sx={{
                   borderRadius: 28,
@@ -197,7 +197,8 @@ const Home = () => {
                 }}
               >
                 {" "}
-                <span className={classes.buttontxt}> Start Udemy Business</span>
+                {/* <span className={classes.buttontxt}> Start Udemy Business</span> */}
+                <span className={classes.buttontxt}> Start Learning</span>
               </Button>
               <br />
             </div>

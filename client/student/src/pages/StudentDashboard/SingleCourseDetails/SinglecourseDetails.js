@@ -254,7 +254,7 @@ const SingleCourseDetails = () => {
                             controls
                             playing
                           />
-                          {selectedIndex === " " ? (
+                          {selectedIndex === "0" ? (
                             <Typography variant="h5" className={classes.title}>
                               Select a Item to begin the Playlist
                             </Typography>
