@@ -14,7 +14,6 @@ import {
 import axios from "axios";
 import React, { Fragment, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
 import { GlobalState } from "../../GlobalState";
 import AccountMenu from "../account_menu/AccountMenu";
 import Sidebar from "../sidebar/Sidebar";

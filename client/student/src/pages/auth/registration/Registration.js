@@ -56,7 +56,7 @@ const Registration = () => {
           .then((res) => {
             if (res.status === 200) {
               const { data } = res;
-              window.location.href = "/";
+              window.location.href = "/parent_dashboard";
               localStorage.setItem("AUTH", JSON.stringify(data));
               toast.success("Registration Complete");
             }
