@@ -1,4 +1,4 @@
-import { Container, Grid, Link } from "@mui/material";
+import { Container, Grid, Link, Typography } from "@mui/material";
 import React from "react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -20,11 +20,18 @@ const Footer = () => {
             <Grid className={classes.branding} item xs={12} md={5}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <img
-                    src="https://i.ibb.co/ZWyrKZ3/image-2.png"
-                    alt=""
-                    border="0"
-                  />
+                  <Typography
+                    className={classes.menubutton}
+                    color="red"
+                    style={{ textDecoration: 'none' }}
+                    fontWeight="700"
+                    fontSize="25px"
+                    fontFamily="URW Chancery L, cursive"
+                    to="/"
+                    component={Link}
+                  >
+                    E-Learn
+                  </Typography>
                 </Grid>
                 <Grid item xs={12}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -95,7 +102,7 @@ const Footer = () => {
                 <LocalPhoneIcon className={classes.ico} /> +00 123 456 789
               </p>
               <p className={classes.contact}>
-                <MailOutlineIcon className={classes.ico} /> info@udemy.inc
+                <MailOutlineIcon className={classes.ico} /> info@elearn.inc
               </p>
               <p className={classes.contact}>
                 <AddLocationIcon className={classes.ico} /> lorem ipsum Road,

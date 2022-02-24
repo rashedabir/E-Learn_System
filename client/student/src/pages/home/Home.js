@@ -171,7 +171,7 @@ const Home = () => {
           <Grid item xs={12} md={6}>
             <img
               className={classes.image}
-              src="https://i.ibb.co/Zmqt28T/Group-777.png"
+              src="https://i.ibb.co/VpbLtjx/Group-781.png"
               alt="Group-750"
               border="0"
             />
@@ -179,7 +179,7 @@ const Home = () => {
           <Grid item xs={12} md={6}>
             <span className={classes.headertxt}>E earning System</span>
             <span className={classes.thbodytxts}>
-              Get unlimited access to 6,000+ of Udemys top courses for your
+              Get unlimited access to 6,000+ of Elearns top courses for your
               team. Learn and improve skills across business, tech, design, and
               more.
             </span>
@@ -197,7 +197,7 @@ const Home = () => {
                 }}
               >
                 {" "}
-                {/* <span className={classes.buttontxt}> Start Udemy Business</span> */}
+                {/* <span className={classes.buttontxt}> Start Elearn Business</span> */}
                 <span className={classes.buttontxt}> Start Learning</span>
               </Button>
               <br />
@@ -213,7 +213,7 @@ const Home = () => {
             <span className={classes.headertxt}>Become an instructor</span>
             <span className={classes.thbodytxt}>
               Instructors from around the world teach millions of students on
-              Udemy. We provide the tools and skills to teach what you love.
+              Elearn. We provide the tools and skills to teach what you love.
             </span>
             <div className={classes.buttons}>
               <Button
@@ -249,7 +249,7 @@ const Home = () => {
           <Grid item xs={12} md={6}>
             <img
               className={classes.image}
-              src="https://i.ibb.co/VpbLtjx/Group-781.png"
+              src="https://i.ibb.co/Zmqt28T/Group-777.png"
               alt="Group-750"
               border="0"
             />
@@ -275,17 +275,17 @@ const Home = () => {
                 }}
               >
                 {" "}
-                <span className={classes.buttontxt}> Start Udemy Business</span>
+                <span className={classes.buttontxt}> Start Elearn Business</span>
               </Button>
               <br />
             </div>
           </Grid>
         </Grid>
       </Container>
-      {/* What to expect from a Udemy course */}
+      {/* What to expect from a Elearn course */}
 
       <div className={classes.expectcontainer}>
-        <h2 className={classes.expect}>What to expect from a Udemy course</h2>
+        <h2 className={classes.expect}>What to expect from a Elearn course</h2>
 
         <Container maxWidth="xl">
           <Grid container spacing={2}>

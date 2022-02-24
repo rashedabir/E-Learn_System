@@ -16,14 +16,16 @@ const BlogCard = ({ item }) => {
       }}
     >
       <Grid container spacing={4} sx={{ background: "#fff" }}>
-        <Grid item sm={12} md={4} sx={{ pb: 4 }}>
-          <img
-            style={{ width: "100%", minHeight: "250px", objectFit: "cover" }}
-            src={item?.images?.url}
-            alt="logo"
-          />
+        <Grid item sm={4} md={4} sx={{ pb: 4 }}>
+          <div>
+            <img
+              style={{ width: "100%", minHeight: "250px", objectFit: "cover" }}
+              src={item?.images?.url}
+              alt="logo"
+            />
+          </div>
         </Grid>
-        <Grid item sm={12} md={8} sx={{ padding: 2 }}>
+        <Grid item sm={8} md={8} sx={{ padding: 2 }}>
           <Typography sx={{ mb: 3 }} component="h3" variant="h6">
             {item?.title}
           </Typography>
