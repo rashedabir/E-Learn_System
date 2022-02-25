@@ -8,6 +8,10 @@ const studentSchema = new mongoose.Schema(
       trim: true,
       unique: true,
     },
+    parent: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
     nid: {
       type: String,
       require: true,

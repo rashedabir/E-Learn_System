@@ -43,6 +43,7 @@ const authCTRL = {
       const hashPass = await bcrypt.hash(password, 10);
       const newStudent = new Student({
         userName,
+        parent: parent._id,
         nid,
         name,
         mobile,

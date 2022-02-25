@@ -40,4 +40,10 @@ export const adminDrawerItemList = [
     icon: <CategoryIcon />,
     path: "/add_blogs",
   },
+  {
+    id: 6,
+    title: "Blogs",
+    icon: <CategoryIcon />,
+    path: "/blogs",
+  },
 ];

@@ -1,17 +1,40 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import { Grid, Typography } from "@mui/material";
-import { useStyle } from "./styles";
-import { Link } from "react-router-dom";
-import StarRateIcon from "@mui/icons-material/StarRate";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import StarRateIcon from "@mui/icons-material/StarRate";
+import { Grid, Typography } from "@mui/material";
+import Card from "@mui/material/Card";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useStyle } from "./styles";
 
 const Cards = ({ item, type }) => {
   const classes = useStyle();
+  const [rating, setRating] = useState(0);
+
+  useEffect(() => {
+    if (item?.comments?.length > 0) {
+      const getRating = () => {
+        const ratings = item?.comments.map((rating) => rating.rating);
+        const total = ratings
+          .reduce((acc, item) => (acc += item), 0)
+          .toFixed(1);
+        const rating = total / ratings.length;
+        if (rating > 0) {
+          setRating(rating);
+        } else {
+          setRating(0);
+        }
+      };
+      getRating();
+    }
+  }, [item]);
+
   return (
     <div className={classes.root}>
-      <Card className={classes.cardmain} sx={{ border: "none", boxShadow: "none", height: "10%" }}>
+      <Card
+        className={classes.cardmain}
+        sx={{ border: "none", boxShadow: "none", height: "10%" }}
+      >
         <img
           className={classes.cardimg}
           width="100%"
@@ -20,10 +43,7 @@ const Cards = ({ item, type }) => {
         />
         <button className={classes.tag}>{item?.category}</button>
         <h1 className={classes.heading}>
-          <Typography
-            component={Link}
-            to={`/${type}/${item?._id}`}
-          >
+          <Typography component={Link} to={`/${type}/${item?._id}`}>
             {item?.title}
           </Typography>
         </h1>
@@ -40,7 +60,7 @@ const Cards = ({ item, type }) => {
         <Grid className={classes.gridcontainer} container spacing={2}>
           <Grid className={classes.flexitem} item xs={4}>
             <StarRateIcon className={classes.star} />{" "}
-            <span className={classes.startext}>4.6</span>
+            <span className={classes.startext}>{rating ? rating : "0"}+</span>
           </Grid>
           <Grid className={classes.flexitem} item xs={4}>
             <PeopleOutlineIcon className={classes.enroll} />{" "}
@@ -54,7 +74,7 @@ const Cards = ({ item, type }) => {
           </Grid>
         </Grid>
       </Card>
-    </div >
+    </div>
   );
 };
 

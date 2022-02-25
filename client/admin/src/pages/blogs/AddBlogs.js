@@ -9,7 +9,8 @@ import {
   TextField,
 } from "@mui/material";
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Editor from "../../components/editor/Editor";
 import Navbar from "../../components/navbar/Navbar";
@@ -26,15 +27,38 @@ const AddBlogs = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
-  const [onEdit, setOnEdit] = useState(false);
-  const [id, setId] = useState("");
+  const { blogId } = useParams();
+  const history = useNavigate();
+
+  useEffect(() => {
+    if (blogId) {
+      const getSingleBlog = async () => {
+        await axios.get(`/api/admin/blog/${blogId}`).then((res) => {
+          if (res.status === 200) {
+            const { blog } = res.data;
+            console.log(blog);
+            setTitle(blog.title);
+            setCategory(blog.category);
+            setDescription(blog.description);
+            setImage(blog.images);
+          } else {
+            setTitle("");
+            setDescription("");
+            setCategory("");
+            setImage(false);
+          }
+        });
+      };
+      getSingleBlog();
+    }
+  }, [blogId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (onEdit) {
+      if (blogId) {
         await axios.put(
-          `/api/admin/blog/${id}`,
+          `/api/admin/blog/${blogId}`,
           {
             title: title,
             category: category,
@@ -44,6 +68,7 @@ const AddBlogs = () => {
           { headers: { Authorization: token } }
         );
         toast.warn("Post Updated");
+        history(-1);
       } else {
         await axios.post(
           "/api/admin/blog",
@@ -138,6 +163,7 @@ const AddBlogs = () => {
               id="outlined-basic"
               label="Title"
               variant="outlined"
+              value={title}
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
@@ -166,6 +192,7 @@ const AddBlogs = () => {
           </Grid>
           <Grid item md={12}>
             <Editor
+              contents={description}
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
@@ -178,7 +205,7 @@ const AddBlogs = () => {
           fullWidth
           variant="contained"
         >
-          save
+          {blogId ? "update" : "save"}
         </Button>
       </Container>
     </Navbar>
