@@ -79,15 +79,9 @@ export const useStyle = makeStyles({
     color: "crimson",
   },
   tabcontainer: {
-    background: "#fff",
-    color: "#000",
     "& .Mui-selected": {
       color: "#ea5252 !important",
       fontWeight: "600 !important",
-    },
-    "& .MuiTabs-indicator": {
-      // display: "none",
-      backgroundColor: "#eb5252 !important",
     },
   },
 });

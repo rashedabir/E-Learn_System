@@ -28,6 +28,7 @@ import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
 import ParentDashboard from "./pages/parentDashboard/parentDashboard";
 import ParentCourseShow from "./pages/parentDashboard/parentCourseShow/parentCourseShow";
 import ParentCourseDetails from "./pages/parentDashboard/parentCourseDetails/parentcourseDetails";
+import CourseDiscussion from "./pages/courseDiscussion/CourseDiscussion";
 
 axios.defaults.withCredentials = true;
 
@@ -148,6 +149,12 @@ function App() {
           path="/parent_course_details/:courseId"
           element={<ParentCourseDetails />}
         />
+        <Route
+          path="/course_discussion/:discussionId"
+          element={<CourseDiscussion />}
+        />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
