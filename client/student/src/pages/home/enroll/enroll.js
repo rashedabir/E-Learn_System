@@ -4,6 +4,21 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
 import { useStyles } from "./styles";
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #EA5252',
+  boxShadow: 24,
+  p: 4,
+};
+
 
 const EnrollStudent = () => {
   const classes = useStyles();
@@ -14,6 +29,10 @@ const EnrollStudent = () => {
   const [course, setCourse] = useState({});
   const [enrolled, setEnrolled] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => { setOpen(true) };
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -104,6 +123,36 @@ const EnrollStudent = () => {
           >
             {enrolled ? "Enrolled" : "Confirm Enroll"}
           </Button>
+
+          <Button
+            style={{
+              backgroundColor: "#EA5252",
+              padding: "18px 25px",
+              fontSize: "17px",
+              textTransform: "none",
+              marginTop: "25px",
+            }}
+            className={classes.button}
+            variant="contained"
+            onClick={handleOpen}
+          >
+            pay
+          </Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Text in a modal
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              </Typography>
+            </Box>
+          </Modal>
         </form>
       )}
     </div>
