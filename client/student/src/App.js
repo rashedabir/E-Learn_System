@@ -29,6 +29,7 @@ import ParentDashboard from "./pages/parentDashboard/parentDashboard";
 import ParentCourseShow from "./pages/parentDashboard/parentCourseShow/parentCourseShow";
 import ParentCourseDetails from "./pages/parentDashboard/parentCourseDetails/parentcourseDetails";
 import CourseDiscussion from "./pages/courseDiscussion/CourseDiscussion";
+import JobView from './pages/job/jobView/JobView';
 
 axios.defaults.withCredentials = true;
 
@@ -152,6 +153,13 @@ function App() {
         <Route
           path="/course_discussion/:discussionId"
           element={<CourseDiscussion />}
+        />
+
+        <Route path="*" element={<NotFound />} />
+
+        <Route
+          path="/job_view"
+          element={<JobView />}
         />
 
         <Route path="*" element={<NotFound />} />
