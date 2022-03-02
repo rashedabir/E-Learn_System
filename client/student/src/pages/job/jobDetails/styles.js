@@ -55,4 +55,10 @@ export const useStyle = makeStyles({
       cursor: "pointer",
     },
   },
+  info: {
+    paddingBottom: "20px",
+  },
+  file: {
+    paddingRight: "20px",
+  },
 });
