@@ -24,4 +24,17 @@ export const useStyle = makeStyles({
   heading: {
     padding: "20px",
   },
+  questionHead: {
+    display: "flex",
+    alignItems: "center",
+    textColor: "#212121",
+  },
+  discription: {
+    background: "#fff",
+    borderRadius: "10px",
+    padding: "10px",
+  },
+  answerField: {
+    paddingTop: "20px",
+  }
 });
