@@ -1,8 +1,10 @@
-import React, { useContext, useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import StarBorder from "@mui/icons-material/StarBorder";
 import {
   Box,
   Button,
   Collapse,
+  IconButton,
   List,
   ListItemButton,
   ListItemIcon,
@@ -11,10 +13,11 @@ import {
   TextareaAutosize,
   Typography,
 } from "@mui/material";
-import StarBorder from "@mui/icons-material/StarBorder";
-import { Link, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import axios from "axios";
+import React, { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import { GlobalState } from "../../../../GlobalState";
 
 const CourseDiscussion = ({ discussion }) => {
@@ -22,6 +25,7 @@ const CourseDiscussion = ({ discussion }) => {
   const [token] = state.token;
   const [user] = state.userAPI.user;
   const [value, setValue] = useState(false);
+  const history = useNavigate();
 
   const { courseId } = useParams();
   const [question, setQuestion] = useState("");
@@ -39,6 +43,44 @@ const CourseDiscussion = ({ discussion }) => {
         }
       );
       toast.success("Submitted");
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
+
+  const deleteDiscussion = async (id) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "to delete this lesson",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await axios
+            .delete(
+              `https://e-learn-bd.herokuapp.com/api/discussion/single/${id}`,
+              {
+                headers: { Authorization: token },
+              }
+            )
+            .then(async (res) => {
+              if (res.status === 200) {
+                Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                // await getData()
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Something went wrong!",
+                });
+              }
+            });
+        }
+      });
     } catch (error) {
       toast.error(error.response.data.msg);
     }
@@ -101,15 +143,14 @@ const CourseDiscussion = ({ discussion }) => {
             {discussion &&
               discussion?.length > 0 &&
               discussion?.map((item) => (
-                <ListItemButton
-                  component={Link}
-                  to={`/course_discussion/${item?._id}`}
-                  key={item._id}
-                >
+                <ListItemButton key={item._id}>
                   <ListItemIcon>
                     <StarBorder />
                   </ListItemIcon>
                   <ListItemText
+                    onClick={() => {
+                      history(`/course_discussion/${item?._id}`);
+                    }}
                     primary={item?.question}
                     secondary={`${item?.user?.name}(${
                       item?.user?.type
@@ -122,6 +163,15 @@ const CourseDiscussion = ({ discussion }) => {
                     }}
                     primary={`${item?.submissions?.length} Reply`}
                   />
+                  <IconButton
+                    onClick={() => {
+                      deleteDiscussion(item?._id);
+                    }}
+                    sx={{ ml: 2 }}
+                    color="error"
+                  >
+                    <DeleteIcon />
+                  </IconButton>
                 </ListItemButton>
               ))}
           </List>

@@ -32,9 +32,9 @@ export const useStyle = makeStyles({
   discription: {
     background: "#fff",
     borderRadius: "10px",
-    padding: "10px",
+    padding: "30px",
   },
   answerField: {
     paddingTop: "20px",
-  }
+  },
 });

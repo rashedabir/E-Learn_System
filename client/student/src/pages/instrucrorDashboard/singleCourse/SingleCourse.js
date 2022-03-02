@@ -14,6 +14,7 @@ import axios from "axios";
 import { GlobalState } from "../../../GlobalState";
 import Lesson from "./lessons/Lesson";
 import Task from "./tasks/Task";
+import CourseDiscussion from "./discussion/CourseDiscussion";
 
 const SingleCourse = () => {
   const classes = useStyle();
@@ -25,6 +26,7 @@ const SingleCourse = () => {
   const [objective, setObjective] = useState([]);
   const [req, setReq] = useState([]);
   const [task, setTask] = useState([]);
+  const [discussion, setDiscussion] = useState([]);
   const [loading, setLoading] = useState(false);
   const history = useNavigate();
 
@@ -43,6 +45,7 @@ const SingleCourse = () => {
               setObjective(res.data.courseDetails.objective);
               setReq(res.data.courseDetails.requirements);
               setTask(res.data.tasks);
+              setDiscussion(res.data.discussion);
               setLoading(false);
             }
           });
@@ -245,12 +248,17 @@ const SingleCourse = () => {
                     <Tab
                       label="Lessons"
                       value="lesson"
-                      style={{ minWidth: "50%" }}
+                      style={{ minWidth: "33%" }}
                     />
                     <Tab
                       label="Task"
                       value="task"
-                      style={{ minWidth: "50%" }}
+                      style={{ minWidth: "34%" }}
+                    />
+                    <Tab
+                      label="Discussion"
+                      value="discussion"
+                      style={{ minWidth: "33%" }}
                     />
                   </TabList>
                 </Box>
@@ -267,6 +275,10 @@ const SingleCourse = () => {
                   {task.map((task) => (
                     <Task tasks={task} key={task._id} />
                   ))}
+                </TabPanel>
+                <TabPanel value="discussion">
+                  {/* discussion lesson  */}
+                  <CourseDiscussion discussion={discussion} />
                 </TabPanel>
               </TabContext>
             </Box>

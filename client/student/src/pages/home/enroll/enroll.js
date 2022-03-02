@@ -7,12 +7,7 @@ import {
   Modal,
   Typography,
 } from "@mui/material";
-import {
-  CardElement,
-  Elements,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { CardElement, Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
@@ -37,21 +32,21 @@ const stripePromise = loadStripe(
   "pk_test_51JIDmDAcmD9cnihVfUC3Z06F9HJyqVKaUIl6UhDBF5HcbgR8T5PKLnPiDhjJf6wz4H1Lk7ZMiAWAW50Th3VwA6Q600zZG1YIim"
 );
 
-const handleSubmit = (stripe, elements) => async () => {
-  const cardElement = elements.getElement(CardElement);
+// const handleSubmit = (stripe, elements) => async () => {
+//   const cardElement = elements.getElement(CardElement);
 
-  const { error, paymentMethod } = await stripe.createPaymentMethod({
-    type: "card",
-    card: cardElement,
-  });
+//   const { error, paymentMethod } = await stripe.createPaymentMethod({
+//     type: "card",
+//     card: cardElement,
+//   });
 
-  if (error) {
-    console.log("[error]", error);
-  } else {
-    console.log("[PaymentMethod]", paymentMethod);
-    // ... SEND to your API server to process payment intent
-  }
-};
+//   if (error) {
+//     console.log("[error]", error);
+//   } else {
+//     console.log("[PaymentMethod]", paymentMethod);
+//     // ... SEND to your API server to process payment intent
+//   }
+// };
 
 const EnrollStudent = () => {
   const classes = useStyles();
@@ -68,8 +63,8 @@ const EnrollStudent = () => {
   const handleClose = () => setOpen(false);
 
   const PaymentForm = () => {
-    const stripe = useStripe();
-    const elements = useElements();
+    // const stripe = useStripe();
+    // const elements = useElements();
     return (
       <>
         <CardElement />
