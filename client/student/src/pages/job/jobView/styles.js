@@ -3,21 +3,22 @@ import { makeStyles } from "@mui/styles";
 export const useStyle = makeStyles({
   root: {
     paddingBottom: "200px",
+    background: "#fafafa",
   },
 
   heading: {
     display: "flex",
     justifyContent: "center",
     color: "#37474f",
-    marginTop: "40px",
+    paddingTop: "40px",
     fontSize: "35px",
   },
   card: {
-    padding: "15px",
+    padding: "10px",
   },
   section: {
     display: "flex",
-    marginBottom: "5px",
+    padding: "15px 10px",
   },
   title: {
     margin: "3px 17px",
@@ -30,7 +31,6 @@ export const useStyle = makeStyles({
   },
   icon2: {
     color: "#757575",
-    marginLeft: "550px",
     cursor: "pointer",
   },
   items: {

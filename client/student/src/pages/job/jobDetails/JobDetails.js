@@ -22,40 +22,44 @@ const JobDetails = () => {
   return (
     <div className={classes.root}>
       <h1 className={classes.heading}>Web Developer</h1>
-      <div className={classes.section}>
-        <BusinessCenterIcon className={classes.icon} fontSize="small" />
-        <Typography className={classes.items} component="p">
-          {" "}
-          Category1
-        </Typography>
-        <PersonIcon className={classes.icon} fontSize="small" />{" "}
-        <Typography className={classes.items} component="p">
-          {" "}
-          2
-        </Typography>
-        <LocationOnIcon className={classes.icon} fontSize="small" />
-        <Typography className={classes.items} component="p">
-          {" "}
-          Bangladesh
-        </Typography>
-        <AttachMoneyIcon className={classes.icon} fontSize="small" />
-        <Typography className={classes.items} component="p">
-          {" "}
-          2k-5k/monthly
-        </Typography>
-      </div>
-
+      <Grid container className={classes.subHeading}>
+        <Grid item md={12} xs={12}>
+          <div className={classes.section}>
+            <BusinessCenterIcon className={classes.icon} fontSize="small" />
+            <Typography className={classes.items} component="p">
+              {" "}
+              Category1
+            </Typography>
+            <PersonIcon className={classes.icon} fontSize="small" />{" "}
+            <Typography className={classes.items} component="p">
+              {" "}
+              2
+            </Typography>
+            <LocationOnIcon className={classes.icon} fontSize="small" />
+            <Typography className={classes.items} component="p">
+              {" "}
+              Bangladesh
+            </Typography>
+            <AttachMoneyIcon className={classes.icon} fontSize="small" />
+            <Typography className={classes.items} component="p">
+              {" "}
+              2k-5k/monthly
+            </Typography>
+          </div>
+        </Grid>
+      </Grid>
       <Container className={classes.contain}>
         <Card className={classes.card} sx={{ borderRadius: "15px" }}>
           <Grid container spacing={2}>
             <Grid item md={9} xs={12} className={classes.section1}>
-              <h3
+              <h4
+                className={classes.view}
                 onClick={() => {
                   handleClick();
                 }}
               >
                 View All Jobs
-              </h3>
+              </h4>
               <Typography className="section" component="p">
                 React is a free and open-source front-end JavaScript library for
                 building user interfaces based on UI components. It is

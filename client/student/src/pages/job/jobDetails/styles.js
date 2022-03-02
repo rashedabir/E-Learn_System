@@ -15,6 +15,9 @@ export const useStyle = makeStyles({
     paddingTop: "60px",
     fontSize: "35px",
   },
+  subHeading: {
+    margin: "0px 15px",
+  },
   icon: {
     marginRight: "10px",
     color: "#ea5252",
@@ -44,5 +47,12 @@ export const useStyle = makeStyles({
   sideHeading: {
     paddingLeft: "15px",
     fontSize: "22px",
+  },
+  view: {
+    color: "#2196f3",
+    "&:hover": {
+      textDecoration: "underline #2196f3",
+      cursor: "pointer",
+    },
   },
 });
