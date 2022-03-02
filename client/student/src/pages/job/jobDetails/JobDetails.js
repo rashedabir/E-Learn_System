@@ -5,7 +5,17 @@ import PersonIcon from "@mui/icons-material/Person";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Typography from "@mui/material/Typography";
-import { Card, Container, Grid, Button, CardHeader } from "@mui/material";
+import {
+  Card,
+  Container,
+  Grid,
+  Button,
+  CardHeader,
+  Modal,
+  Box,
+  Divider,
+  TextField,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import FlagIcon from "@mui/icons-material/Flag";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
@@ -13,12 +23,31 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import SchoolIcon from "@mui/icons-material/School";
 import ExplicitIcon from "@mui/icons-material/Explicit";
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "60%",
+  bgcolor: "background.paper",
+  border: "1px solid #000",
+  boxShadow: 24,
+  p: 4,
+  overflow: "scroll",
+  height: "70%",
+  display: "block",
+};
+
 const JobDetails = () => {
   const classes = useStyle();
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/job_view");
   };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div className={classes.root}>
       <h1 className={classes.heading}>Web Developer</h1>
@@ -72,12 +101,15 @@ const JobDetails = () => {
                 className={classes.button}
                 sx={{
                   background: "#1a237e",
-                  marginTop: "20px",
+                  marginTop: "25px",
                   padding: "15px",
+                  fontSize: "15px",
                   "&:hover": {
                     backgroundColor: "#ea5252",
                   },
+                  textTransform: "none",
                 }}
+                onClick={handleOpen}
               >
                 Apply for this Position
               </Button>
@@ -130,6 +162,99 @@ const JobDetails = () => {
           </Grid>
         </Card>
       </Container>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h5" component="h2">
+            Apply for Job
+          </Typography>
+          <br></br>
+          <Divider></Divider>
+          <br></br>
+          <Grid container spacing={5}>
+            <Grid item md={6} xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="FirstName"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="LastName"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Phone Number"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+
+            <Grid item md={6} xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Country"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="City"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+
+            <Grid item xs={12} md={12} className={classes.file}>
+              <div className="upload">
+                <input type="file" name="file" id="file_up" />
+              </div>
+            </Grid>
+          </Grid>
+
+          <h4 className={classes.info}>
+            ** Upload your CV
+          </h4>
+          <Button
+            variant="contained"
+            fullWidth
+            sx={{
+              marginBottom: "30px",
+              padding: "12px",
+              fontSize: "18px",
+              background: "#ea5252",
+              "&:hover": {
+                backgroundColor: "#1a237e",
+              },
+              textTransform: "none",
+            }}
+          >
+            Submit Your Application
+          </Button>
+        </Box>
+      </Modal>
     </div>
   );
 };
