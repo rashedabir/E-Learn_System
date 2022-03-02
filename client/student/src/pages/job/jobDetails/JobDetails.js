@@ -235,7 +235,7 @@ const JobDetails = () => {
           </Grid>
 
           <h4 className={classes.info}>
-            ** you must attached your photo with CV
+            ** Upload your CV
           </h4>
           <Button
             variant="contained"

@@ -183,7 +183,7 @@ const Navbar = () => {
                 // className={classes.menubutton}
                 color="inherit"
                 component={Link}
-                to="/login"
+                to="/job_view"
               >
                 Jobs
               </Typography>
