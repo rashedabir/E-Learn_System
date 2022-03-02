@@ -21,7 +21,7 @@ import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
-import mypic from "../../assets/images/mypic.jpg";
+import user from "../../assets/images/user.jpg";
 import Avatar from "@mui/material/Avatar";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Navbar from "../navbar/Navbar";
@@ -314,7 +314,7 @@ export default function Instructor() {
                         <TableCell>
                           <Grid container>
                             <Grid item lg={2}>
-                              <Avatar src={mypic} />
+                              <Avatar src={user} />
                             </Grid>
                             <Grid item lg={10}>
                               <Typography>{row.name}</Typography>

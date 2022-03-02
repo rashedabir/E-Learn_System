@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import pic from "../../assets/images/mypic.jpg";
+import user from "../../assets/images/user.jpg";
 import {
   Grid,
   Button,
@@ -76,7 +76,7 @@ export default function InstructorInfo() {
         <Grid item sm={12} md={4} className={classes.items}>
           <Item>
             <Avatar
-              src={pic}
+              src={user}
               alt=""
               sx={{ width: 120, height: 120 }}
               className={classes.avatar}
