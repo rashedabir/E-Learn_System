@@ -22,6 +22,7 @@ export const useStyle = makeStyles({
   title: {
     margin: "3px 17px",
     color: "#37474f",
+    cursor: "pointer",
   },
   icon: {
     marginRight: "8px",
@@ -30,6 +31,7 @@ export const useStyle = makeStyles({
   icon2: {
     color: "#757575",
     marginLeft: "550px",
+    cursor: "pointer",
   },
   items: {
     paddingRight: "20px",
@@ -42,5 +44,6 @@ export const useStyle = makeStyles({
     padding: "8px",
     borderRadius: "15px",
     fontSize: "10px",
+    fontFamily: "verdana",
   },
 });
