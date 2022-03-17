@@ -179,14 +179,14 @@ const Navbar = () => {
               >
                 Blogs
               </Typography>
-              <Typography
+              {/*<Typography
                 // className={classes.menubutton}
                 color="inherit"
                 component={Link}
                 to="/job_view"
               >
                 Jobs
-              </Typography>
+              </Typography>*/}
             </Box>
             {/* <Sidebar drawer={drawer} toggleDrawer={toggleDrawer} /> */}
 
