@@ -48,6 +48,34 @@ const stripePromise = loadStripe(
 //   }
 // };
 
+const PaymentForm = ({ addList, classes, course, enrolled }) => {
+  // const stripe = useStripe();
+  // const elements = useElements();
+  return (
+    <>
+      <CardElement />
+      {/*<button onClick={handleSubmit(stripe, elements)}>Buy</button>*/}
+      <Button
+        style={{
+          backgroundColor: "#EA5252",
+          padding: "18px 25px",
+          fontSize: "17px",
+          textTransform: "none",
+          marginTop: "55px",
+        }}
+        className={classes.button}
+        variant="contained"
+        fullWidth
+        onClick={() => {
+          addList(course);
+        }}
+      >
+        {enrolled ? "Enrolled" : "Confirm Enroll"}
+      </Button>
+    </>
+  );
+};
+
 const EnrollStudent = () => {
   const classes = useStyles();
   const state = useContext(GlobalState);
@@ -58,37 +86,14 @@ const EnrollStudent = () => {
   const [enrolled, setEnrolled] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const courses = {
+    courseDetails: course?.courseDetails,
+    tasks: course?.tasks,
+  };
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const PaymentForm = () => {
-    // const stripe = useStripe();
-    // const elements = useElements();
-    return (
-      <>
-        <CardElement />
-        {/*<button onClick={handleSubmit(stripe, elements)}>Buy</button>*/}
-        <Button
-          style={{
-            backgroundColor: "#EA5252",
-            padding: "18px 25px",
-            fontSize: "17px",
-            textTransform: "none",
-            marginTop: "55px",
-          }}
-          className={classes.button}
-          variant="contained"
-          fullWidth
-          onClick={() => {
-            addList(course);
-          }}
-        >
-          {enrolled ? "Enrolled" : "Confirm Enroll"}
-        </Button>
-      </>
-    );
-  };
 
   useEffect(() => {
     const getData = async () => {
@@ -213,7 +218,12 @@ const EnrollStudent = () => {
               </Typography>
             </Box>
             <Elements stripe={stripePromise}>
-              <PaymentForm />
+              <PaymentForm
+                addList={addList}
+                course={courses}
+                classes={classes}
+                enrolled={enrolled}
+              />
             </Elements>
           </Box>
         </Fade>

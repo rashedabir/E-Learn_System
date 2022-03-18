@@ -19,6 +19,8 @@ const listBox = [
     icon: <DashboardIcon />,
   },
   { name: "Create Course", route: "/create_course", icon: <AddBoxIcon /> },
+  { name: "Create Blog", route: "/create_blog", icon: <AddBoxIcon /> },
+  { name: "Blogs", route: "/blog", icon: <AddBoxIcon /> },
 ];
 
 const Sidebar = ({ toggleDrawer, drawer }) => {

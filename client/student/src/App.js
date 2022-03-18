@@ -29,8 +29,10 @@ import ParentDashboard from "./pages/parentDashboard/parentDashboard";
 import ParentCourseShow from "./pages/parentDashboard/parentCourseShow/parentCourseShow";
 import ParentCourseDetails from "./pages/parentDashboard/parentCourseDetails/parentcourseDetails";
 import CourseDiscussion from "./pages/courseDiscussion/CourseDiscussion";
-import JobView from './pages/job/jobView/JobView';
-import JobDetails from './pages/job/jobDetails/JobDetails';
+import JobView from "./pages/job/jobView/JobView";
+import JobDetails from "./pages/job/jobDetails/JobDetails";
+import CreateBlog from "./pages/blogs/createBlog/CreateBlog";
+import BlogList from "./pages/blogs/BlogList";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -124,6 +126,36 @@ function App() {
           }
         />
         <Route
+          path="/create_blog"
+          element={
+            isLogged && user.type === "instructor" && user?.status ? (
+              <CreateBlog />
+            ) : (
+              <NotFound />
+            )
+          }
+        />
+        <Route
+          path="/edit_blogs/:blogId"
+          element={
+            isLogged && user.type === "instructor" && user?.status ? (
+              <CreateBlog />
+            ) : (
+              <NotFound />
+            )
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            isLogged && user.type === "instructor" && user?.status ? (
+              <BlogList />
+            ) : (
+              <NotFound />
+            )
+          }
+        />
+        <Route
           path="/all_submission/:taskId"
           element={
             isLogged && user.type === "instructor" && user?.status ? (
@@ -157,16 +189,10 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
 
-        <Route
-          path="/job_view"
-          element={<JobView />}
-        />
+        <Route path="/job_view" element={<JobView />} />
 
         <Route path="*" element={<NotFound />} />
-        <Route
-          path="/job_details"
-          element={<JobDetails />}
-        />
+        <Route path="/job_details" element={<JobDetails />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
