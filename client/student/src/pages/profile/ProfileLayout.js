@@ -3,7 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useStyle } from "./styles";
 
-const ProfileLayout = ({ children }) => {
+const ProfileLayout = ({
+  children,
+  handleUpload,
+  loading,
+  image,
+  styleUpload,
+  handleDestroy,
+}) => {
   const classes = useStyle();
   return (
     <div className={classes.root}>
@@ -11,11 +18,31 @@ const ProfileLayout = ({ children }) => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={3}>
             <div className={classes.profileleft}>
-              <img
-                className={classes.imag}
-                src="https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo="
-                alt=""
-              />
+              <div>
+                <div className="user_profile_upload">
+                  <input
+                    type="file"
+                    name="file"
+                    id="user_file_up"
+                    onChange={handleUpload}
+                  />
+                  {loading ? (
+                    // <LoadingScreen
+                    //   loading={loading}
+                    //   bgColor="#f1f1f1"
+                    //   spinnerColor="#9ee5f8"
+                    //   textColor="#676767"
+                    //   logoSrc="/logo.png"
+                    // />
+                    "loading"
+                  ) : (
+                    <div id="user_file_img" style={styleUpload}>
+                      <img src={image ? image.url : ""} alt="" />
+                      <span onClick={handleDestroy}>X</span>
+                    </div>
+                  )}
+                </div>
+              </div>
               <Button
                 sx={{ my: 1, color: "#000" }}
                 fullWidth
