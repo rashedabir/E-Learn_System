@@ -130,7 +130,24 @@ const Navbar = () => {
                   </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Jobs on Udemy</Typography>
+                  <Typography
+                    textAlign="center"
+                    className={classes.menubutton}
+                    color="inherit"
+                  >
+                    Jobs
+                  </Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography
+                    textAlign="center"
+                    className={classes.menubutton}
+                    color="inherit"
+                    to="/quiz"
+                    component={Link}
+                  >
+                    Quiz
+                  </Typography>
                 </MenuItem>
               </Menu>
             </Box>
@@ -178,6 +195,14 @@ const Navbar = () => {
                 component={Link}
               >
                 Blogs
+              </Typography>
+              <Typography
+                className={classes.menubutton}
+                color="inherit"
+                to="/quiz"
+                component={Link}
+              >
+                Quiz
               </Typography>
               {/*<Typography
                 // className={classes.menubutton}
