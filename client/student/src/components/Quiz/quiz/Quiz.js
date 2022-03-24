@@ -5,7 +5,7 @@ import he from "he";
 
 import Countdown from "../countdown/Countdown";
 import getLetter from "../../../utils/getLetter";
-import AcUnitIcon from "@mui/icons-material/AcUnit";
+
 
 const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -65,10 +65,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
           marginTop: "40px",
         }}
       >
-        <h2>
-          <AcUnitIcon style={{ marginRight: "20px" }} />
-          {`Question No.${questionIndex + 1} of ${data.length}`}
-        </h2>
+        <h3>{`Question No.${questionIndex + 1} of ${data.length}`}</h3>
 
         <Countdown
           countdownTime={countdownTime}
@@ -84,7 +81,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
 
       <br />
 
-      <h3>Please choose one of the following answers:</h3>
+      <h4>Please choose one of the following answers:</h4>
 
       <Divider />
 
@@ -118,6 +115,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
           backgroundColor: "#EA5252",
           color: "white",
           margin: "30px 0px",
+          textTransform: "none",
         }}
       >
         Next

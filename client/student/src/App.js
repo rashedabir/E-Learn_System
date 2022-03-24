@@ -34,7 +34,7 @@ import JobDetails from "./pages/job/jobDetails/JobDetails";
 import CreateBlog from "./pages/blogs/createBlog/CreateBlog";
 import BlogList from "./pages/blogs/BlogList";
 
-import Head from './components/Quiz/head/Head';
+import Head from "./components/Quiz/head/Head";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -198,16 +198,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
 
-        <Route
-          path="/quiz"
-          element={
-            isLogged && user.type === "student" ? (
-              <Head />
-            ) : (
-              <NotFound />
-            )
-          }
-        />
+        <Route path="/quiz" element={<Head />} />
       </Routes>
       <Footer />
     </Router>

@@ -108,7 +108,7 @@ const Main = ({ startQuiz }) => {
 
   return (
     <Container>
-      <h1 style={{ textAlign: "center" }}>Self Assesment Quiz</h1>
+      <h1 style={{ textAlign: "center" }}>Self Assessment Quiz</h1>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
@@ -187,7 +187,7 @@ const Main = ({ startQuiz }) => {
         </Select>
         <br></br>
       </FormControl>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", gap: "1.5rem" }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Hours</InputLabel>
           <Select
@@ -253,7 +253,12 @@ const Main = ({ startQuiz }) => {
         variant="contained"
         onClick={fetchData}
         disabled={!allFieldsSelected || processing}
-        sx={{ backgroundColor: "#EA5252", mb: 5 }}
+        sx={{
+          backgroundColor: "#EA5252",
+          mb: 5,
+          textTransform: "none",
+          ":hover": { backgroundColor: "#EA5252" },
+        }}
       >
         Start
       </Button>

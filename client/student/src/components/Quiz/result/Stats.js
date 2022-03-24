@@ -25,13 +25,17 @@ const Stats = ({
 
   return (
     <>
-      <h1>Stats</h1>
+      <h1 style={{ marginTop: "50px" }}>Stats</h1>
       <h3> {remarks}</h3>
       <h3>Grade: {grade}</h3>
       <h3> Total Questions: {totalQuestions}</h3>
       <h3>Correct Answers: {correctAnswers}</h3>
-      <h3> Your Score: {score}% Passing Score: 60% Time Taken: </h3>
-      <h3> {`${Number(hours)}h ${Number(minutes)}m ${Number(seconds)}s`}</h3>
+      <h3> Your Score: {score}% Passing Score: 60% </h3>
+      <h3>
+        {" "}
+        Time Taken:{" "}
+        {`${Number(hours)}h ${Number(minutes)}m ${Number(seconds)}s`}
+      </h3>
       {/* QNA */}
       <h1 style={{ marginTop: "50px" }}>QNA</h1>
       <TableContainer>
@@ -68,6 +72,7 @@ const Stats = ({
             backgroundColor: "#EA5252",
             marginRight: 15,
             marginBottom: 8,
+            textTransform: "none",
           }}
         >
           Play again
@@ -76,7 +81,7 @@ const Stats = ({
           color="secondary"
           variant="contained"
           onClick={resetQuiz}
-          style={{ marginBottom: 8 }}
+          style={{ marginBottom: 8, textTransform: "none" }}
         >
           Back
         </Button>
