@@ -1,5 +1,5 @@
 import { Button, Container, Grid, TextField } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProfileLayout from "../ProfileLayout";
 import SaveIcon from "@mui/icons-material/Save";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -14,11 +14,53 @@ const GeneralSetting = () => {
   const [user] = state.userAPI.user;
   const userName = user.userName;
 
-  console.log(user);
-
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+
+  const [image, setImage] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    try {
+      const file = e.target.files[0];
+      let formData = new FormData();
+      formData.append("file", file);
+      setLoading(true);
+      const res = await axios.post(
+        "https://e-learn-bd.herokuapp.com/api/upload",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
+      setLoading(false);
+      setImage(res.data);
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
+
+  const handleDestroy = async () => {
+    try {
+      setLoading(true);
+      await axios.post(
+        "https://e-learn-bd.herokuapp.com/api/destroy",
+        { public_id: image.public_id },
+        {
+          headers: { Authorization: token },
+        }
+      );
+      setLoading(false);
+      setImage(false);
+    } catch (err) {
+      toast.error(err.response.data.msg);
+    }
+  };
 
   const handleSubmit = async () => {
     if (user.type === "student") {
@@ -91,8 +133,26 @@ const GeneralSetting = () => {
     }
   };
 
+  const styleUpload = {
+    display: image ? "block" : "none",
+  };
+
+  useEffect(() => {
+    if (user.image) {
+      setImage(user.image);
+    } else {
+      setImage(false);
+    }
+  }, [user.image]);
+
   return (
-    <ProfileLayout>
+    <ProfileLayout
+      handleUpload={handleUpload}
+      loading={loading}
+      image={image}
+      styleUpload={styleUpload}
+      handleDestroy={handleDestroy}
+    >
       <Container>
         <div
           style={{ color: "#645A53", display: "flex", alignItems: "center" }}
