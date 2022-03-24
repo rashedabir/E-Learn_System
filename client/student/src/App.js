@@ -34,7 +34,8 @@ import JobDetails from "./pages/job/jobDetails/JobDetails";
 import CreateBlog from "./pages/blogs/createBlog/CreateBlog";
 import BlogList from "./pages/blogs/BlogList";
 
-import Head from './components/Quiz/head/Head';
+import Head from "./components/Quiz/head/Head";
+import VideoStream from "./pages/videoStraming/VideoStream";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -190,22 +191,15 @@ function App() {
         />
 
         <Route path="*" element={<NotFound />} />
+        <Route path="/video-stream/:streamId" element={<VideoStream />} />
 
         <Route path="/job_view" element={<JobView />} />
-
-        <Route path="*" element={<NotFound />} />
         <Route path="/job_details" element={<JobDetails />} />
-
-        <Route path="*" element={<NotFound />} />
 
         <Route
           path="/quiz"
           element={
-            isLogged && user.type === "student" ? (
-              <Head />
-            ) : (
-              <NotFound />
-            )
+            isLogged && user.type === "student" ? <Head /> : <NotFound />
           }
         />
       </Routes>

@@ -16,13 +16,14 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { GlobalState } from "../../../GlobalState";
 import CourseLesson from "./lesson/CourseLesson";
 import { useStyle } from "./styles";
 import StudentTask from "./task/task";
 import CourseDiscussion from "./discussion/CourseDiscussion";
+import { v4 as uuidv4 } from "uuid";
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -126,6 +127,14 @@ const SingleCourseDetails = () => {
           <div className={classes.actionBar}>
             <Button onClick={removeCourse} color="error">
               unenroll
+            </Button>
+            <Button
+              component={Link}
+              to={`/video-stream/${courseId}`}
+              target="_blank"
+              color="secondary"
+            >
+              join meet
             </Button>
           </div>
           <Grid container>

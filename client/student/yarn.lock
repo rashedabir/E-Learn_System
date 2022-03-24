@@ -1522,6 +1522,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@jitsi/react-sdk@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jitsi/react-sdk/-/react-sdk-1.0.0.tgz#3c534caf2083ae5dc68d77fe986f15c2e0398d9b"
+  integrity sha512-ioD16WVSfvP+FBfL5CCcmXWQfzfr/CHUhH8aYmXjEjLFpSqFGJbu4C6ndtpc1SV6/JTCeaRGZB2nNJExFy/VOA==
+
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.0.5.tgz#68eb521368db76d040a6315cdb24bf2483037b9c"
@@ -9703,6 +9708,11 @@ react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-jitsi@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-jitsi/-/react-jitsi-1.0.4.tgz#2aa4a0010a07818808eea357bb2ac66cfd38aa77"
+  integrity sha512-7Q4cmjxNNvoPOuTWT/AcDhHRr+K74BqYitiNcKo2D3nQH9ozDIec+yT7KiPlAPR/U2XW5tD/nc9L3uZMkZXTFA==
 
 react-player@^2.9.0:
   version "2.9.0"

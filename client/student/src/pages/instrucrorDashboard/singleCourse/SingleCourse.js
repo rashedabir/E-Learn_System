@@ -15,6 +15,7 @@ import { GlobalState } from "../../../GlobalState";
 import Lesson from "./lessons/Lesson";
 import Task from "./tasks/Task";
 import CourseDiscussion from "./discussion/CourseDiscussion";
+import { v4 as uuidv4 } from "uuid";
 
 const SingleCourse = () => {
   const classes = useStyle();
@@ -114,6 +115,7 @@ const SingleCourse = () => {
                 </Button>
               </h3>
             </span>
+
             <span className={classes.link}>
               <Link to={`/course_edit/${courseId}`}>
                 <h3 className={classes.linktxt}>
@@ -152,6 +154,20 @@ const SingleCourse = () => {
                     color="secondary"
                   >
                     Add Lesson
+                  </Button>
+                </h3>
+              </Link>
+            </span>
+            <span className={classes.link}>
+              <Link target="_blank" to={`/video-stream/${courseId}`}>
+                <h3 className={classes.linktxt}>
+                  <Button
+                    style={{
+                      textTransform: "none",
+                    }}
+                    color="secondary"
+                  >
+                    Start Meet
                   </Button>
                 </h3>
               </Link>
