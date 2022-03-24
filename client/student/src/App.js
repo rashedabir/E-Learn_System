@@ -34,7 +34,6 @@ import JobDetails from "./pages/job/jobDetails/JobDetails";
 import CreateBlog from "./pages/blogs/createBlog/CreateBlog";
 import BlogList from "./pages/blogs/BlogList";
 
-import Head from "./components/Quiz/head/Head";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -197,8 +196,6 @@ function App() {
         <Route path="/job_details" element={<JobDetails />} />
 
         <Route path="*" element={<NotFound />} />
-
-        <Route path="/quiz" element={<Head />} />
       </Routes>
       <Footer />
     </Router>
