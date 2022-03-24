@@ -191,7 +191,10 @@ function App() {
         />
 
         <Route path="*" element={<NotFound />} />
-        <Route path="/video-stream/:streamId" element={<VideoStream />} />
+        <Route
+          path="/video-stream/:streamId"
+          element={isLogged ? <VideoStream /> : <NotFound />}
+        />
 
         <Route path="/job_view" element={<JobView />} />
         <Route path="/job_details" element={<JobDetails />} />
