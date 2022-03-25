@@ -33,9 +33,8 @@ import JobView from "./pages/job/jobView/JobView";
 import JobDetails from "./pages/job/jobDetails/JobDetails";
 import CreateBlog from "./pages/blogs/createBlog/CreateBlog";
 import BlogList from "./pages/blogs/BlogList";
-
-import Head from "./components/Quiz/head/Head";
 import VideoStream from "./pages/videoStraming/VideoStream";
+
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -198,13 +197,6 @@ function App() {
 
         <Route path="/job_view" element={<JobView />} />
         <Route path="/job_details" element={<JobDetails />} />
-
-        <Route
-          path="/quiz"
-          element={
-            isLogged && user.type === "student" ? <Head /> : <NotFound />
-          }
-        />
       </Routes>
       <Footer />
     </Router>
