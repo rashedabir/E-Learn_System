@@ -3,7 +3,6 @@ import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
-import PropTypes from "prop-types";
 import {
   AppBar,
   Box,
@@ -15,15 +14,15 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
+import PropTypes from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { GlobalState } from "../../../GlobalState";
+import CourseDiscussion from "./discussion/CourseDiscussion";
 import CourseLesson from "./lesson/CourseLesson";
 import { useStyle } from "./styles";
 import StudentTask from "./task/task";
-import CourseDiscussion from "./discussion/CourseDiscussion";
-import { v4 as uuidv4 } from "uuid";
 
 TabPanel.propTypes = {
   children: PropTypes.node,

@@ -1,21 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useStyle } from "./styles";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
 import CheckIcon from "@mui/icons-material/Check";
 import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import Swal from "sweetalert2";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import Tab from "@mui/material/Tab";
 import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import { GlobalState } from "../../../GlobalState";
-import Lesson from "./lessons/Lesson";
-import Task from "./tasks/Task";
 import CourseDiscussion from "./discussion/CourseDiscussion";
-import { v4 as uuidv4 } from "uuid";
+import Lesson from "./lessons/Lesson";
+import { useStyle } from "./styles";
+import Task from "./tasks/Task";
 
 const SingleCourse = () => {
   const classes = useStyle();
