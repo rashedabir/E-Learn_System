@@ -315,3 +315,11 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+
+.video_stream {
+  .leftwatermark {
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+  }
+}

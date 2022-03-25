@@ -9,8 +9,7 @@ const VideoStream = () => {
   const [user] = state.userAPI.user;
 
   const userInfo = {
-    moderator: user.type === "student" ? false : true,
-    displayName: user.name,
+    displayName: `${user.name} (${user.type})`,
     email: user.userName,
   };
 
@@ -18,17 +17,24 @@ const VideoStream = () => {
     disableDeepLinking: true,
     prejoinPageEnabled: true,
     disableThirdPartyRequests: false,
+    disableWaterMark: true,
+    showBrandWatermark: false,
+    SHOW_BRAND_WATERMARK: false,
+    SHOW_JITSI_WATERMARK: false,
+    SHOW_WATERMARK_FOR_GUESTS: false,
+    SHOW_POWERED_BY: false,
+    remoteVideoMenu: {
+      disableKick: user.type === "instructor" ? false : true,
+    },
   };
 
   return (
-    <div>
+    <div className="video_stream">
       <JitsiMeeting
         roomName={streamId}
         getIFrameRef={(node) => (node.style.height = "800px")}
         userInfo={userInfo}
         configOverwrite={configOverwrite}
-
-        // jwt={token}
       />
     </div>
   );
