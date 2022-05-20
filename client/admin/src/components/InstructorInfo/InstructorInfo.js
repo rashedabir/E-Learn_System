@@ -12,14 +12,14 @@ import {
 import Navbar from "../navbar/Navbar";
 import { useStyles } from "./styles";
 import { Item } from "./styles";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import { toast } from "react-toastify";
 import axios from "axios";
 
 export default function InstructorInfo() {
   const classes = useStyles();
-
+  const navigate = useNavigate();
   const { id } = useParams();
   const state = useContext(GlobalState);
   const [token] = state.token;
@@ -31,6 +31,7 @@ export default function InstructorInfo() {
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
   const [status, setStatus] = useState("");
+  const [image, setImage] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -42,6 +43,7 @@ export default function InstructorInfo() {
           setMobile(instructor.mobile);
           setAddress(instructor.address);
           setStatus(instructor.status);
+          setImage(instructor.image);
         }
       });
     } else {
@@ -51,6 +53,7 @@ export default function InstructorInfo() {
       setMobile("");
       setAddress("");
       setStatus("");
+      setImage(false);
     }
   }, [id, instructors]);
 
@@ -58,7 +61,7 @@ export default function InstructorInfo() {
     try {
       if (window.confirm("Do you want to Approve this Instructor?")) {
         await axios.put(
-          `/api/admin/instructor/${_id}`,
+          `https://e-learn-bd.herokuapp.com/api/admin/instructor/${_id}`,
           { status: status },
           { headers: { Authorization: token } }
         );
@@ -70,13 +73,29 @@ export default function InstructorInfo() {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      if (window.confirm("Do you want to Delete this Instructor?")) {
+        await axios.delete(
+          `https://e-learn-bd.herokuapp.com/api/admin/instructor/${_id}`,
+          { headers: { Authorization: token } }
+        );
+      }
+      setCallback(!callback);
+      toast.info("Deleted");
+      navigate("/instructor");
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
+
   return (
     <Navbar>
       <Grid container spacing={3} padding={5}>
         <Grid item sm={12} md={4} className={classes.items}>
           <Item>
             <Avatar
-              src={user}
+              src={image ? image?.url : user}
               alt=""
               sx={{ width: 120, height: 120 }}
               className={classes.avatar}
@@ -93,6 +112,8 @@ export default function InstructorInfo() {
               variant="contained"
               color="secondary"
               sx={{ marginLeft: "16px" }}
+              type="button"
+              onClick={handleDelete}
             >
               Delete Account
             </Button>

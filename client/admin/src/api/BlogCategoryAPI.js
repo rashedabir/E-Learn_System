@@ -10,7 +10,7 @@ function BlogCategoryAPI(token) {
     if (token) {
       const getBlogCategory = async () => {
         try {
-          const res = await axios.get("/api/admin/blog_cetegory", {
+          const res = await axios.get("https://e-learn-bd.herokuapp.com/api/admin/blog_cetegory", {
             headers: { Authorization: token },
           });
           setBlogCategory(res.data.categories);

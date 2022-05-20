@@ -33,21 +33,22 @@ const AddBlogs = () => {
   useEffect(() => {
     if (blogId) {
       const getSingleBlog = async () => {
-        await axios.get(`/api/admin/blog/${blogId}`).then((res) => {
-          if (res.status === 200) {
-            const { blog } = res.data;
-            console.log(blog);
-            setTitle(blog.title);
-            setCategory(blog.category);
-            setDescription(blog.description);
-            setImage(blog.images);
-          } else {
-            setTitle("");
-            setDescription("");
-            setCategory("");
-            setImage(false);
-          }
-        });
+        await axios
+          .get(`https://e-learn-bd.herokuapp.com/api/admin/blog/${blogId}`)
+          .then((res) => {
+            if (res.status === 200) {
+              const blog = res.data;
+              setTitle(blog?.title);
+              setCategory(blog?.category);
+              setDescription(blog?.description);
+              setImage(blog?.images);
+            } else {
+              setTitle("");
+              setDescription("");
+              setCategory("");
+              setImage(false);
+            }
+          });
       };
       getSingleBlog();
     }
@@ -58,7 +59,7 @@ const AddBlogs = () => {
     try {
       if (blogId) {
         await axios.put(
-          `/api/admin/blog/${blogId}`,
+          `https://e-learn-bd.herokuapp.com/api/admin/blog/${blogId}`,
           {
             title: title,
             category: category,
@@ -71,7 +72,7 @@ const AddBlogs = () => {
         history(-1);
       } else {
         await axios.post(
-          "/api/admin/blog",
+          "https://e-learn-bd.herokuapp.com/api/admin/blog",
           {
             title: title,
             category: category,
@@ -94,12 +95,16 @@ const AddBlogs = () => {
       let formData = new FormData();
       formData.append("file", file);
       setLoading(true);
-      const res = await axios.post("/api/upload", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://e-learn-bd.herokuapp.com/api/upload",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       setLoading(false);
       setImage(res.data);
     } catch (error) {
@@ -111,7 +116,7 @@ const AddBlogs = () => {
     try {
       setLoading(true);
       await axios.post(
-        "/api/destroy",
+        "https://e-learn-bd.herokuapp.com/api/destroy",
         { public_id: image.public_id },
         {
           headers: { Authorization: token },

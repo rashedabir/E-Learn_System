@@ -40,7 +40,7 @@ const Login = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/admin/login", {
+      await axios.post("https://e-learn-bd.herokuapp.com/api/admin/login", {
         userName: userName,
         password: values.password,
       });

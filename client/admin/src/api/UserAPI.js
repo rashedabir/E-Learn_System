@@ -10,7 +10,7 @@ function UserAPI(token) {
     if (token) {
       const getUser = async () => {
         try {
-          const res = await axios.get("/api/admin/profile", {
+          const res = await axios.get("https://e-learn-bd.herokuapp.com/api/admin/profile", {
             headers: { Authorization: token },
           });
           setIsLogged(true);

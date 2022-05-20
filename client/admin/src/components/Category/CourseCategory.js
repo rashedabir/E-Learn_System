@@ -54,7 +54,7 @@ function Category() {
 
   const deleteCategory = async (id, name) => {
     if (window.confirm(`Want to delete ${name} Category`)) {
-      await axios.delete(`/api/admin/course_cetegory/${id}`, {
+      await axios.delete(`https://e-learn-bd.herokuapp.com/api/admin/course_cetegory/${id}`, {
         headers: { Authorization: token },
       });
       setCallback(!callback);
@@ -66,7 +66,7 @@ function Category() {
     if (onEdit) {
       try {
         await axios.put(
-          `/api/admin/course_cetegory/${id}`,
+          `https://e-learn-bd.herokuapp.com/api/admin/course_cetegory/${id}`,
           {
             name: name,
           },
@@ -84,7 +84,7 @@ function Category() {
     } else {
       try {
         await axios.post(
-          "/api/admin/course_cetegory/",
+          "https://e-learn-bd.herokuapp.com/api/admin/course_cetegory/",
           {
             name: name,
           },

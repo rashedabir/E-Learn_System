@@ -10,7 +10,7 @@ function CourseCategoryAPI(token) {
     if (token) {
       const getCourseCategory = async () => {
         try {
-          const res = await axios.get("/api/admin/course_cetegory", {
+          const res = await axios.get("https://e-learn-bd.herokuapp.com/api/admin/course_cetegory", {
             headers: { Authorization: token },
           });
           setCourseCategory(res.data.categories);

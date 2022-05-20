@@ -25,7 +25,7 @@ const Blogs = () => {
 
   useEffect(() => {
     const getBlogs = async () => {
-      await axios.get("/api/admin/blog").then((res) => {
+      await axios.get("https://e-learn-bd.herokuapp.com/api/admin/blog").then((res) => {
         if (res.status === 200) {
           setBlogs(res.data.blogs);
         }
@@ -37,7 +37,7 @@ const Blogs = () => {
   const deleteBlog = async (id) => {
     if (window.confirm("want to delete")) {
       await axios
-        .delete(`/api/admin/blog/${id}`, {
+        .delete(`https://e-learn-bd.herokuapp.com/api/admin/blog/${id}`, {
           headers: { Authorization: token },
         })
         .then((res) => {

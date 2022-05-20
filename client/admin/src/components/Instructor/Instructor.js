@@ -314,7 +314,9 @@ export default function Instructor() {
                         <TableCell>
                           <Grid container>
                             <Grid item lg={2}>
-                              <Avatar src={user} />
+                              <Avatar
+                                src={row?.image ? row?.image?.url : user}
+                              />
                             </Grid>
                             <Grid item lg={10}>
                               <Typography>{row.name}</Typography>

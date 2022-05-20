@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function InstructorAPI(token) {
-  const [instructors, setInstructors] = useState([]);
+function DashboardAPI(token) {
+  const [dashboard, setDashboard] = useState([]);
   const [callback, setCallback] = useState(false);
 
   useEffect(() => {
@@ -11,12 +11,12 @@ function InstructorAPI(token) {
       const getUser = async () => {
         try {
           const res = await axios.get(
-            "https://e-learn-bd.herokuapp.com/api/admin/instructor",
+            "https://e-learn-bd.herokuapp.com/api/admin/dashboard",
             {
               headers: { Authorization: token },
             }
           );
-          setInstructors(res.data.instructors);
+          setDashboard(res.data);
         } catch (error) {
           toast.error(error.response.data.msg);
         }
@@ -26,9 +26,9 @@ function InstructorAPI(token) {
   }, [token, callback]);
 
   return {
-    instructors: [instructors, setInstructors],
+    dashboard: [dashboard, setDashboard],
     callback: [callback, setCallback],
   };
 }
 
-export default InstructorAPI;
+export default DashboardAPI;

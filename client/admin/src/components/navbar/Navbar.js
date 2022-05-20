@@ -43,7 +43,7 @@ export default function Navbar(props) {
   };
 
   const logOut = async () => {
-    await axios.get("/api/logout");
+    await axios.get("https://e-learn-bd.herokuapp.com/api/logout");
     localStorage.clear();
     setIsLogged(false);
     window.location.href = "/";
