@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import CheckIcon from "@mui/icons-material/Check";
 import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
@@ -62,29 +63,28 @@ const SingleCourseDetails = () => {
     );
   };
 
+  const getData = async () => {
+    setLoading(true);
+    await axios
+      .get(`https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setCourse(res.data);
+          setLessons(res.data.lessons);
+          const { courseDetails, discussion } = res.data;
+          setRequirrements(courseDetails?.requirements);
+          setObjective(courseDetails?.objective);
+          setTask(res.data.tasks);
+          setDiscussion(discussion);
+          setLoading(false);
+        }
+      });
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      if (courseId) {
-        setLoading(true);
-        await axios
-          .get(
-            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
-          )
-          .then((res) => {
-            if (res.status === 200) {
-              setCourse(res.data);
-              setLessons(res.data.lessons);
-              const { courseDetails, discussion } = res.data;
-              setRequirrements(courseDetails?.requirements);
-              setObjective(courseDetails?.objective);
-              setTask(res.data.tasks);
-              setDiscussion(discussion);
-              setLoading(false);
-            }
-          });
-      }
-    };
-    getData();
+    if (courseId) {
+      getData();
+    }
   }, [courseId]);
 
   const [value, setValue] = React.useState(0);
@@ -264,7 +264,7 @@ const SingleCourseDetails = () => {
                 </TabPanel>
               )}
               <TabPanel value={2} index={2}>
-                <CourseDiscussion discussion={discussion} />
+                <CourseDiscussion getData={getData} discussion={discussion} />
               </TabPanel>
             </TabContext>
           </Box>

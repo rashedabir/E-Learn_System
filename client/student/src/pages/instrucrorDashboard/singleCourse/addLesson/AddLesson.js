@@ -19,9 +19,6 @@ const AddLesson = () => {
   const history = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  console.log(courseId);
-  console.log(lessonId);
-
   /*-------------------------videos-----------------------*/
 
   const [videos, setVideos] = useState([

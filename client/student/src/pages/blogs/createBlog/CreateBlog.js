@@ -39,7 +39,6 @@ const CreateBlog = () => {
           )
           .then((res) => {
             if (res.status === 200) {
-              console.log(res);
               const { data } = res;
               setTitle(data.title);
               setCategory(data.category);

@@ -13,8 +13,6 @@ const GeneralInformation = () => {
   const [token] = state.token;
   const [user] = state.userAPI.user;
 
-  console.log(user);
-
   // const [userName, setUserName] = useState("");
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");

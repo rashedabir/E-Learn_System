@@ -38,7 +38,10 @@ const Cards = ({ item, type }) => {
         <img
           className={classes.cardimg}
           width="100%"
-          src={item?.banner?.url || "https://picsum.photos/800/600?random=2"}
+          src={
+            item?.banner?.url ??
+            "https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg"
+          }
           alt=""
         />
         <button className={classes.tag}>{item?.category}</button>
@@ -51,7 +54,7 @@ const Cards = ({ item, type }) => {
           <div className={classes.avatar}>
             <img
               className={classes.avatarimg}
-              src="https://picsum.photos/800/600?random=2"
+              src="https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg"
               alt=""
             />
           </div>

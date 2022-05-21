@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Container, Grid, InputBase, Button, IconButton } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,7 +17,6 @@ const Home = () => {
   const handleSearch = () => {
     history("/courses");
     setSearch(find);
-    console.log(search);
   };
 
   useEffect(() => {
@@ -275,7 +275,10 @@ const Home = () => {
                 }}
               >
                 {" "}
-                <span className={classes.buttontxt}> Start Elearn Business</span>
+                <span className={classes.buttontxt}>
+                  {" "}
+                  Start Elearn Business
+                </span>
               </Button>
               <br />
             </div>

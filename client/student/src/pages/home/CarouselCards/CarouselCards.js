@@ -18,8 +18,6 @@ const CarouselCards = ({ courseList }) => {
   const [courses] = state.courseAPI.courses;
   const [loading] = state.courseAPI.loading;
 
-  console.log(loading);
-
   return (
     <div className={classes.root}>
       {loading ? (

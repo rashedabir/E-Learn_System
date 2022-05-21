@@ -12,18 +12,12 @@ const ParentTask = ({ item }) => {
   const [user] = state.userAPI.user;
   const [mark, setMark] = useState([]);
 
-  console.log(user);
-  console.log(item);
-
   useEffect(() => {
     const marks = item?.submissions.filter((list) => {
       return list?.student?.parent === user._id;
     });
-    console.log(marks);
     setMark(marks);
   }, [item, user._id]);
-
-  console.log(mark);
 
   function CircularProgressWithLabel(props) {
     return (

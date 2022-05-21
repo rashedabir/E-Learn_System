@@ -20,7 +20,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { GlobalState } from "../../../../GlobalState";
 
-const CourseDiscussion = ({ discussion }) => {
+const CourseDiscussion = ({ discussion, getData }) => {
   const state = useContext(GlobalState);
   const [token] = state.token;
   const [user] = state.userAPI.user;
@@ -70,7 +70,7 @@ const CourseDiscussion = ({ discussion }) => {
             .then(async (res) => {
               if (res.status === 200) {
                 Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                // await getData()
+                await getData();
               } else {
                 Swal.fire({
                   icon: "error",

@@ -1,35 +1,34 @@
-import React, { useContext, useEffect, useState } from "react";
+import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
+import BuildIcon from "@mui/icons-material/Build";
+import CreateIcon from "@mui/icons-material/Create";
+import FindInPageIcon from "@mui/icons-material/FindInPage";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import {
-  Container,
-  Grid,
-  Paper,
-  Typography,
+  Avatar,
+  Box,
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
-  Box,
-  Rating,
+  Container,
   FormLabel,
+  Grid,
+  Paper,
+  Rating,
   TextareaAutosize,
-  Avatar,
+  Typography,
 } from "@mui/material";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import axios from "axios";
+import PropTypes from "prop-types";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { GlobalState } from "../../../GlobalState";
 import { useStyle } from "./styles";
 
-import axios from "axios";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import BuildIcon from "@mui/icons-material/Build";
-import FindInPageIcon from "@mui/icons-material/FindInPage";
-import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
-import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
-import CreateIcon from "@mui/icons-material/Create";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import image from "../../../assets/react.png";
-import { GlobalState } from "../../../GlobalState";
-import { toast } from "react-toastify";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -228,12 +227,20 @@ const CourseDetails = () => {
                   <Paper className={classes.paper}>
                     <Grid container spacing={4} className={classes.tab2}>
                       <Grid item md={3} xs={12}>
-                        <img src={image} alt="" className={classes.img} />
+                        <img
+                          src={
+                            course?.instructor?.image
+                              ? course?.instructor?.image?.url
+                              : "https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg"
+                          }
+                          alt=""
+                          className={classes.img}
+                        />
                       </Grid>
                       <Grid item md={9} xs={12} className={classes.tab2grid2}>
                         <b className={classes.instructor}>Name</b>
                         <Typography variant="h6">
-                          {course?.courseDetails?.instructor?.name}
+                          {course?.instructor?.name}
                         </Typography>
                         <br />
                         <b className={classes.instructor}>Mobile</b>{" "}

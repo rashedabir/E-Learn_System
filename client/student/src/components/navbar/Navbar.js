@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
@@ -71,7 +72,6 @@ const Navbar = () => {
   const handleChange = (e) => {
     history("/courses");
     setSearch(e.target.value);
-    console.log(search);
   };
 
   return (

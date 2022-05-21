@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Container, Grid, TextField } from "@mui/material";
 import axios from "axios";
 import moment from "moment";
@@ -19,8 +20,6 @@ const AddTask = () => {
   const [endvalue, setEndValue] = useState();
   const { courseId, taskId } = useParams();
   const history = useNavigate();
-
-  console.log(startvalue);
 
   // task add
   const handleSubmit = async () => {
@@ -69,26 +68,27 @@ const AddTask = () => {
     }
   };
 
+  const getSingleTask = async () => {
+    setLoading(true);
+    await axios
+      .get(`https://e-learn-bd.herokuapp.com/api/task_update/${taskId}`, {
+        headers: { Authorization: token },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          const { task } = res.data;
+          setTitle(task?.title);
+          setDescription(task?.description);
+          setStartValue(moment(task?.start).format("YYYY-MM-DD"));
+          setEndValue(moment(task?.end).format("YYYY-MM-DD"));
+          setLoading(false);
+        }
+      });
+  };
+
   useEffect(() => {
     // task update
     if (taskId) {
-      const getSingleTask = async () => {
-        setLoading(true);
-        await axios
-          .get(`https://e-learn-bd.herokuapp.com/api/task_update/${taskId}`, {
-            headers: { Authorization: token },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              const { task } = res.data;
-              setTitle(task?.title);
-              setDescription(task?.description);
-              setStartValue(moment(task?.start).format("YYYY-MM-DD"));
-              setEndValue(moment(task?.end).format("YYYY-MM-DD"));
-              setLoading(false);
-            }
-          });
-      };
       getSingleTask();
     }
   }, [taskId, token]);

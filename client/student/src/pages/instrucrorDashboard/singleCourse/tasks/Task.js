@@ -9,11 +9,11 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { GlobalState } from "../../../../GlobalState";
 
-const Task = (props) => {
+const Task = ({ getData, tasks }) => {
   const classes = useStyle();
   const state = useContext(GlobalState);
   const [token] = state.token;
-  const { _id, title, description, start, end } = props.tasks;
+  const { _id, title, description, start, end } = tasks;
 
   const deleteTask = async () => {
     Swal.fire({
@@ -30,9 +30,10 @@ const Task = (props) => {
           .delete(`https://e-learn-bd.herokuapp.com/api/task_update/${_id}`, {
             headers: { Authorization: token },
           })
-          .then((res) => {
+          .then(async (res) => {
             if (res.status === 200) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              await getData();
             } else {
               Swal.fire({
                 icon: "error",

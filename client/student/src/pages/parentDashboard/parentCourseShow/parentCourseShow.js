@@ -14,8 +14,6 @@ const ParentCourseShow = ({ course }) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(courses);
-
   useEffect(() => {
     if (studentId) {
       const getCourses = async () => {
@@ -29,7 +27,6 @@ const ParentCourseShow = ({ course }) => {
           )
           .then((res) => {
             if (res.status === 200) {
-              console.log(res);
               const { enrolled } = res?.data;
               setCourses(enrolled);
               setLoading(false);

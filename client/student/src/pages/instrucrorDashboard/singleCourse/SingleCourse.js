@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import CheckIcon from "@mui/icons-material/Check";
 import CreateIcon from "@mui/icons-material/Create";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
@@ -30,28 +31,27 @@ const SingleCourse = () => {
   const [loading, setLoading] = useState(false);
   const history = useNavigate();
 
+  const getData = async () => {
+    setLoading(true);
+    await axios
+      .get(`https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setCourse(res.data);
+          setLessons(res.data.lessons);
+          setObjective(res.data.courseDetails.objective);
+          setReq(res.data.courseDetails.requirements);
+          setTask(res.data.tasks);
+          setDiscussion(res.data.discussion);
+          setLoading(false);
+        }
+      });
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      if (courseId) {
-        setLoading(true);
-        await axios
-          .get(
-            `https://e-learn-bd.herokuapp.com/api/course_details/${courseId}`
-          )
-          .then((res) => {
-            if (res.status === 200) {
-              setCourse(res.data);
-              setLessons(res.data.lessons);
-              setObjective(res.data.courseDetails.objective);
-              setReq(res.data.courseDetails.requirements);
-              setTask(res.data.tasks);
-              setDiscussion(res.data.discussion);
-              setLoading(false);
-            }
-          });
-      }
-    };
-    getData();
+    if (courseId) {
+      getData();
+    }
   }, [courseId]);
 
   const deleteCourse = async () => {
@@ -281,19 +281,23 @@ const SingleCourse = () => {
                   {/* map lesson  */}
                   <div className={classes.lessonWrapper}>
                     {lessons.map((lesson) => (
-                      <Lesson lessons={lesson} key={lesson._id} />
+                      <Lesson
+                        getData={getData}
+                        lessons={lesson}
+                        key={lesson._id}
+                      />
                     ))}
                   </div>
                 </TabPanel>
                 <TabPanel value="task">
                   {/* all task  */}
                   {task.map((task) => (
-                    <Task tasks={task} key={task._id} />
+                    <Task getData={getData} tasks={task} key={task._id} />
                   ))}
                 </TabPanel>
                 <TabPanel value="discussion">
                   {/* discussion lesson  */}
-                  <CourseDiscussion discussion={discussion} />
+                  <CourseDiscussion getData={getData} discussion={discussion} />
                 </TabPanel>
               </TabContext>
             </Box>

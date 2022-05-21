@@ -10,10 +10,9 @@ import { GlobalState } from "../../../../GlobalState";
 import LessonVideo from "./lessonsVideo/LessonVideo";
 import { useStyle } from "./styles";
 
-const Lesson = (props) => {
+const Lesson = ({ lessons, getData }) => {
   const classes = useStyle();
-  const { title, videos, _id } = props.lessons;
-  // const getData = props.getData()
+  const { title, videos, _id } = lessons;
   const state = useContext(GlobalState);
   const [token] = state.token;
 
@@ -38,7 +37,7 @@ const Lesson = (props) => {
           .then(async (res) => {
             if (res.status === 200) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              // await getData()
+              await getData();
             } else {
               Swal.fire({
                 icon: "error",

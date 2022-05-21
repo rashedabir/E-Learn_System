@@ -28,7 +28,6 @@ const ParentCourseDetails = () => {
           )
           .then((res) => {
             if (res.status === 200) {
-              console.log(res.data);
               setCourse(res.data);
               setObjective(res.data.courseDetails.objective);
               setRequirrements(res.data.courseDetails.requirements);

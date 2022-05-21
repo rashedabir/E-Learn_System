@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { GlobalState } from "../../../../GlobalState";
 
-const CourseDiscussion = ({ discussion }) => {
+const CourseDiscussion = ({ discussion, getData }) => {
   const state = useContext(GlobalState);
   const [token] = state.token;
   const [user] = state.userAPI.user;
@@ -38,7 +38,8 @@ const CourseDiscussion = ({ discussion }) => {
           headers: { Authorization: token },
         }
       );
-      toast.success("Submitted");
+      await getData();
+      toast.success("Disscussion Created");
     } catch (error) {
       toast.error(error.response.data.msg);
     }

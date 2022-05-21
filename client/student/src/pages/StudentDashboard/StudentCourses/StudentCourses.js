@@ -11,8 +11,6 @@ const StudentCourses = () => {
   const [list] = state.userAPI.list;
   const [loading] = state.userAPI.loading;
 
-  console.log(list);
-
   return (
     <div className={classes.root}>
       {loading ? (

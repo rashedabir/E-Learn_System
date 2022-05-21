@@ -35,8 +35,6 @@ const ParentDashboard = () => {
     getChild();
   }, [token]);
 
-  console.log(child);
-
   return (
     <div>
       <Container maxWidth="xl" className={classes.root}>
